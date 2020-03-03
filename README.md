@@ -139,14 +139,6 @@ You can open test2.sh and modify cloud MQTT setting. If you do not have a cloud 
 ```
 nano ~/test2.sh
 ```
-Go to line 17, you will see
-```
-#test=` python /home/ubuntu/stats.py`
-```
-Remove # to enable I2C screen display if it is present, so it looks like
-```
-test=` python /home/ubuntu/stats.py`
-```
 
 You will need to ensure a startup service to enable network
 ```
