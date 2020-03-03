@@ -307,8 +307,8 @@ sudo echo "/dev/mmcblk0p1  /boot           vfat    defaults          0       2">
 #### step 13: utility to download a subfolder or a file in a Github link
 
 ```
-sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
-sudo apt-get install npm
+sudo apt-get install nodejs-dev node-gyp libssl1.0-dev -y
+sudo apt-get install npm -y
 sudo npm install -g github-files-fetcher
 fetcher --url="hyper_link"
 ```
