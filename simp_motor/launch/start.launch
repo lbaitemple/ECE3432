@@ -1,0 +1,12 @@
+<launch>
+
+#Starts ROS sub for motors
+   <node name="MotorControl" pkg="simp_motor" type="Joydrive22Revision1.py" />
+
+#USB-Cam node with parameters   
+   <node pkg="joy" type="joy_node" name="RC_joy" respawn="true">
+    <param name="dev" value="/dev/input/js0" />
+   </node> 
+  
+</launch>
+

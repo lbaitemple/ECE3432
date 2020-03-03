@@ -1,0 +1,26 @@
+<launch>
+
+#Starts ROS sub for motors
+   <node name="MotorControl" pkg="simp_motor" type="Joydrive22Revision1.py" />
+
+#USB-Cam node with parameters   
+   <node name="usb_cam" pkg="usb_cam" type="usb_cam_node">
+   <param name="video_device" value="/dev/video0"/>
+   <param name="pixel_format" value ="mjpeg" />
+   <param name="image_width" value="176" />
+   <param name="image_height" value="144" />
+   <param name="camera_frame_id" value="usb_cam" />   
+   <param name="framerate" value="20" />
+</node>
+
+
+#Web service for usb-cam
+   <node name="web_video_server" pkg="web_video_server" type="web_video_server">
+</node>
+
+#Records all the videos and "joy" message topics used for Machine Learning
+   <node pkg="rosbag" type="record" name="rosbag_record" output="screen" 
+args="-o /home/ubuntu/Desktop/Danset /usb_cam/image_raw /joy" />
+  
+</launch>
+
