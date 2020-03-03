@@ -82,12 +82,9 @@ sudo usermod -G i2c $USER
 
 ### step 3: Setup everything for IP 
 
-* To get wireless connection working on boot you must edit **/etc/netplan/01-rpi-3-network.yaml** present in *cloudimg-rootfs* partition in your sdcard and add your SSID and PASSWORD using a HDMI screen monitor.
+* To get wireless connection working on boot you must edit **/etc/netplan/50-cloud-init.yaml** present in *cloudimg-rootfs* partition in your sdcard and add your SSID and PASSWORD using a HDMI screen monitor.
 Open file
-For 18.04.2
-```
-sudo nano /etc/netplan/01-rpi-3-network.yaml
-```
+
 For 18.04.3
 ```
 sudo nano /etc/netplan/50-cloud-init.yaml
@@ -209,51 +206,12 @@ rosdep update
 echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 ```
 
-### step 6: Install ROS2  [make sure you have a 32-bit image installed. Not completely tested it]
-https://index.ros.org/doc/ros2/Installation/Dashing/Linux-Install-Debians/#install-ros-2-packages
-
-
-```
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
-```
-
-```
-sudo apt update && sudo apt install curl gnupg2 lsb-release
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=armhf] http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
-```
-
-```
-sudo apt update
-sudo apt install ros-dashing-desktop -y
-sudo apt install python3-argcomplete
-```
-
-Build the code in the workspace
-```
-source /opt/ros/dashing/setup.bash
-echo "source /opt/ros/dashing/setup.bash" >> ~/.bashrc
-````
-
-
-Try some examples
-```
-. ~/ros2_dashing/install/local_setup.bash
-ros2 run demo_nodes_cpp talker
-```
-In another terminal source the setup file and then run a listener:
-```
-. ~/ros2_dashing/install/local_setup.bash
-ros2 run demo_nodes_py listener
-```
-#### step 7: Update firmware
+#### step 6: Update firmware
 ```
 sudo curl -L --output /usr/bin/rpi-update https://raw.githubusercontent.com/Hexxeh/rpi-update/master/rpi-update && sudo chmod +x /usr/bin/rpi-update
 sudo rpi-update
 ```
-#### step 8: GPIO run as non-root (/dev/mem no access)
+#### step 7: GPIO run as non-root (/dev/mem no access)
 ```
 sudo groupadd gpio
 sudo usermod -a -G gpio ubuntu
