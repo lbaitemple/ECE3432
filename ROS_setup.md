@@ -1,11 +1,18 @@
 After you install the ROS system, you can setup a workspace. 
 
 ```
-sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-pkg -y
 
+sudo apt install ros-melodic-joy -y
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
 catkin_make
 cd ~/catkin_ws/src
-
+fetcher --url="https://github.com/lbaitemple/ECE3432/tree/master/simp_motor"
+cd ~/catkin_ws
+rosdep install --from-paths src --ignore-src -r -y
+catkin_make
+cd ~
+fetcher --url="https://github.com/lbaitemple/ECE3432/blob/master/driving.sh"
+chmod +x driving.sh
+./driving.sh
 ```
