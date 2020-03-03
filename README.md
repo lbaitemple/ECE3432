@@ -1,6 +1,11 @@
 # ECE3432
 
 ## Instructions
+
+
+### Download 32-bit image
+http://cdimage.ubuntu.com/releases/bionic/release/ubuntu-18.04.3-preinstalled-server-armhf+raspi3.img.xz
+
 ### step 1: Upgrade System 
 Burn the image to SD card with dd/etcher/DiskWritter or your favorite tool.
 
