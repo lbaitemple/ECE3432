@@ -8,6 +8,7 @@ cd ~/catkin_ws
 catkin_make
 cd ~/catkin_ws/src
 fetcher --url="https://github.com/lbaitemple/ECE3432/tree/master/simp_motor"
+chmod +x simp_motor/src/Joydrive22Revision1.py
 cd ~/catkin_ws
 rosdep install --from-paths src --ignore-src -r -y
 catkin_make
