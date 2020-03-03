@@ -51,5 +51,9 @@ runt the python file
 wget https://raw.githubusercontent.com/lbaitemple/ubuntu_server_rpi/master/torch/rpi_camera_surveillance_system.py
 python3 rpi_camera_surveillance_system.py
 ```
-
+```
+fetcher --url="https://github.com/lbaitemple/ECE3432/blob/master/start.sh"
+chmod +x start.sh
+./start.sh
+```
 Then you can check the video stream by using a browser window by typing http://[pi_ip]:8000
