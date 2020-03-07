@@ -1,5 +1,7 @@
 # ECE3432
 
+Machine Learning Car was orginally created by Kendrick Tan (from Australia) [https://github.com/kendricktan/suiron]. 
+
 ## Instructions
 
 
