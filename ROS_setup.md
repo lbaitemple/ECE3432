@@ -57,3 +57,6 @@ chmod +x start.sh
 ./start.sh
 ```
 Then you can check the video stream by using a browser window by typing http://[pi_ip]:8000
+
+In you VM Guest OS, you will need to create a datalogger
+
