@@ -24,7 +24,7 @@ cd ~
 fetcher --url="https://github.com/lbaitemple/ECE3432/blob/master/VMWare/src/start.sh"
 chmod +x start.sh
 ```
-Please review the first line to modify your raspberry pi IP address in the script, then you can run
+Please review the first line to modify your raspberry pi IP address and data format (csv or img) in the script, then you can run
 ```
 ./start.sh
 ```
