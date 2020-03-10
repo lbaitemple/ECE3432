@@ -1,0 +1,7 @@
+{
+    "width": 148,
+    "height": 102,
+    "depth": 3,
+    "servo_cnn_name": "cnn_servo_model",
+    "motor_nn_name": "nn_motor_model"
+}
