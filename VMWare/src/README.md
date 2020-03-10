@@ -20,8 +20,12 @@ cd ~/teleop_ws
 rosdep install --from-paths src --ignore-src -r -y
 catkin_make
 cd ~
-fetcher --url=""
-chmod +x driving.sh
-./driving.sh
+fetcher --url="https://github.com/lbaitemple/ECE3432/blob/master/VMWare/src/start.sh"
+chmod +x start.sh
 ```
+Please review the first line to modify your raspberry pi IP address in the script, then you can run
+```
+./start.sh
+```
+When you need to stop, press Ctrl-C to quit.
 
