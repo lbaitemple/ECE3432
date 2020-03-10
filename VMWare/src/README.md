@@ -17,6 +17,7 @@ cd ~/teleop_ws/src
 fetcher --url="https://github.com/lbaitemple/ECE3432/tree/master/VMWare/src/subimage"
 chmod +x subimage/src/readData.py
 cd ~/teleop_ws
+fetcher --url="https://github.com/lbaitemple/ECE3432/blob/master/VMWare/src/settings.json"
 rosdep install --from-paths src --ignore-src -r -y
 catkin_make
 cd ~
