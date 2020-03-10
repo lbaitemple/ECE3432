@@ -14,14 +14,13 @@ mkdir -p ~/teleop_ws/src
 cd ~/teleop_ws
 catkin_make
 cd ~/teleop_ws/src
-fetcher --url="https://github.com/lbaitemple/ECE3432/tree/master/simp_motor"
-chmod +x simp_motor/src/Joydrive22Revision1.py
-pip install Adafruit_PCA9685
-cd ~/catkin_ws
+fetcher --url="https://github.com/lbaitemple/ECE3432/tree/master/VMWare/src/subimage"
+chmod +x subimage/src/readData.py
+cd ~/teleop_ws
 rosdep install --from-paths src --ignore-src -r -y
 catkin_make
 cd ~
-fetcher --url="https://github.com/lbaitemple/ECE3432/blob/master/driving.sh"
+fetcher --url=""
 chmod +x driving.sh
 ./driving.sh
 ```
