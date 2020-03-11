@@ -13,6 +13,9 @@ import numpy as np
 import os
 from threading import Lock
 
+
+DATAFORMAT=os.environ['FORMAT']
+
 with open('./settings.json') as d:
     SETTINGS = json.load(d)
 
@@ -59,7 +62,7 @@ def callback(data):
         s['motor']=speed
         s['servo']=turn
         print("Recording Inputs...")
-        suironio.record_inputs(s, np.array(img))
+        suironio.record_inputs(s, np.array(img), DATAFORMAT)
         suironio.unlock()
 
     lock.release()

@@ -8,7 +8,6 @@ from functions import cnn_to_raw
 from img_serializer import serialize_image
 from file_finder import get_new_filename
 import clock 
-import subprocess
 
 class SuironIO(clock.Action):
     """
@@ -41,21 +40,10 @@ class SuironIO(clock.Action):
     # Initialize settings before saving 
     def init_saving(self, folder='data', filename='output_', extension='.csv'):
         fileoutname = get_new_filename(folder=folder, filename=filename, extension=extension)
-	
+
         # Filename to save serial data and image data
         # Output file
         print(fileoutname)
-	self.imagefolder =fileoutname[0:fileoutname.find(".")]
-	self.imagefolder =self.imagefolder.replace("/", "/images/")
-
-	self.imagecount=0
-	if  not os.path.exists(self.imagefolder) and (os.environ['FORMAT']=="img"):
-		subprocess.check_output(['mkdir', '-p', self.imagefolder])
-    		#os.mkdir(self.imagefolder)
-    		print("Directory " , self.imagefolder ,  " Created ")
-#	else:    
-#    		print("Directory " , self.imagefolder ,  " already exists")
-		
         outfile = open(fileoutname, 'w') # Truncate file first
         self.outfile = open(fileoutname, 'a')
         self.df = pd.DataFrame([], columns=['image', 'servo', 'motor'])
@@ -77,7 +65,7 @@ class SuironIO(clock.Action):
         self.locked = False
     def check_lock(self):
         return self.locked
-    def record_inputs(self, s_inputs, frame, dataFormat):
+    def record_inputs(self, s_inputs, frame):
         # Frame is just a numpy array
         if (not self.check_lock()):
 #            frame = self.get_frame()
@@ -93,19 +81,12 @@ class SuironIO(clock.Action):
 
             # Append to memory
             # tolist so it actually appends the entire thing
-		if (dataFormat=="csv"):
-                	frame=self.normalize_frame(frame)
-                	dat=serialize_image(frame)
-                	print(frame.shape, len(dat))
-                	self.frame_results.append(dat)
-		elif(dataFormat=="img"):
-			filename=self.imagefolder+"/"+str(self.imagecount)+".jpg"
-			print(filename)
-			cv2.imwrite(filename, frame)
-			self.frame_results.append(filename)
-			self.imagecount=self.imagecount+1
-
-
+                frame=self.normalize_frame(frame)
+                dat=serialize_image(frame)
+                print(frame.shape, len(dat))
+#                if (len(dat)==self.sz):
+                self.frame_results.append(dat)
+#            print(serialize_image(frame))
                 self.servo_results.append(servo)
                 self.motorspeed_results.append(motor)
     		self.append_inputs()
