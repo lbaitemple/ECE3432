@@ -465,6 +465,36 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </tbody>
 </table>
 </section>
+<section id="sec-mangdang" class="slide level2">
+<h2>Mangdang</h2>
+<h3 id="a-quadruped-robot-dog-originated-from-a-stanford-project-click-here">A quadruped robot dog originated from a stanford project <a href="https://news.stanford.edu/2019/05/20/dog-like-robot-jumps-flips-trots/" class="button">click here</a></h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ul>
+<li class="fragment">A <span class="alert">Mangdang v2</span> and a <span class="alert">raspberry pi 4</span> 2GB<br></li>
+<li class="fragment">Better own two <a href="https://www.amazon.com/Sandisk-Micro-Class-Memory-Packaged/dp/B00FZV964A/ref=asc_df_B00FZV964A/?tag=hyprod-20&amp;linkCode=df0&amp;hvadid=309833041189&amp;hvpos=&amp;hvnetw=g&amp;hvrand=2861064339265814291&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9007206&amp;hvtargid=pla-406164573113&amp;psc=1" class="bg" style="--col: #e64173">32GB micro USB cards</a></li>
+</ul>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mangdang.png" width="400"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ul>
+<li class="fragment">software development is done using AWS Robomaker and AWS Cloud 9
+<ul>
+<li class="fragment">Docker, Linux, Python 3</li>
+<li class="fragment">Robot Operating System (ROS) and Gazebo</li>
+</ul></li>
+<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/references" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 <section id="sec-workflow" class="slide level2">
 <h2>AWS RoboMaker Workflow</h2>
 
@@ -506,7 +536,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="callout-content">
 <div>
 <ul>
-<li class="fragment">container can run a complete different OS than robot OS</li>
+<li class="fragment">container can run a complete different OS than robot OS (x86 and arm64)</li>
 <li class="fragment">container deployed from AWS ECR</li>
 <li class="fragment">message call from MQTT bridge</li>
 </ul>
@@ -965,6 +995,9 @@ sudo bash ./process_swap.sh 8192 /etc/fstab</code></pre>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-MiniPupperAWS" class="csl-entry" role="listitem">
 Gan, Afreez, and Li Bai. 2022. <span>“MiniPupper AWS - ROS1.”</span> 2022. <a href="https://github.com/lbaitemple/mini-pupper-aws">https://github.com/lbaitemple/mini-pupper-aws</a>.
+</div>
+<div id="ref-DanceRobot" class="csl-entry" role="listitem">
+Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots.”</span> 2022. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US</a>.
 </div>
 <div id="ref-BuildCloudRobot" class="csl-entry" role="listitem">
 Robots, Building Cloud Connected. 2021. <span>“Building Cloud Connected Robots.”</span> 2021. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/fa208b8e-83d6-4cc1-8356-bfa5b6184fae/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/fa208b8e-83d6-4cc1-8356-bfa5b6184fae/en-US</a>.
