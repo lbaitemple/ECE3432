@@ -1131,25 +1131,35 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="docker-example" class="slide level2">
 <h2>Docker Example</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Docker setup</a></li><li><a href="#tabset-8-2">Docker build</a></li><li><a href="#tabset-8-3">Docker test</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Dockerfile</a></li><li><a href="#tabset-8-2">ymal</a></li><li><a href="#tabset-8-3">Docker build</a></li><li><a href="#tabset-8-4">Docker test</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
 <ul>
-<li>Create a file named <span class="alert">Dockerfile</span> (from <a href="https://hub.docker.com/layers/library/ubuntu/18.04/images/sha256-dca176c9663a7ba4c1f0e710986f5a25e672842963d95b960191e2d9f7185ebe">dockerhub</a>)</li>
+<li>Create a file named <span class="alert">Dockerfile</span> (from <a href="https://hub.docker.com/layers/library/ubuntu/18.04/images/sha256-dca176c9663a7ba4c1f0e710986f5a25e672842963d95b960191e2d9f7185ebe">dockerhub</a>) and download <a href="files/echo-server.py">echo-server.py</a> in the same folder</li>
 </ul>
 <div class="sourceCode" id="cb25"><pre class="sourceCode numberSource docker number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href="#cb25-1"></a>FROM --platform=linux/amd64  ubuntu:18.04</span>
-<span id="cb25-2"><a href="#cb25-2"></a>RUN apt update &amp;&amp; apt install -y openssl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-2"><a href="#cb25-2"></a>RUN apt update &amp;&amp; apt install -y openssl</span>
+<span id="cb25-3"><a href="#cb25-3"></a>COPY echo-server.py /echo-server.py</span>
+<span id="cb25-4"><a href="#cb25-4"></a></span>
+<span id="cb25-5"><a href="#cb25-5"></a>EXPOSE 5001/tcp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-2">
 <ul>
-<li>Create a file named <span class="alert">doccker-compse.ymal</span></li>
+<li>Create a file named <span class="alert">docker-compose.ymal</span></li>
 </ul>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb26-1"><a href="#cb26-1"></a>version: "3"</span>
 <span id="cb26-2"><a href="#cb26-2"></a>services: </span>
 <span id="cb26-3"><a href="#cb26-3"></a>  my_image:</span>
 <span id="cb26-4"><a href="#cb26-4"></a>    build: </span>
 <span id="cb26-5"><a href="#cb26-5"></a>        context: ./</span>
-<span id="cb26-6"><a href="#cb26-6"></a>    image: binoic-bai:latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-6"><a href="#cb26-6"></a>    image: binoic-bai:latest</span>
+<span id="cb26-7"><a href="#cb26-7"></a>  echoserver:</span>
+<span id="cb26-8"><a href="#cb26-8"></a>    image: binoic-bai:latest</span>
+<span id="cb26-9"><a href="#cb26-9"></a>    command: python3 -u echo-server.py</span>
+<span id="cb26-10"><a href="#cb26-10"></a>    ports:</span>
+<span id="cb26-11"><a href="#cb26-11"></a>      - "5001:5001"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-8-3">
 <ul>
 <li>Run the command</li>
 </ul>
@@ -1159,10 +1169,19 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-3">
+<div id="tabset-8-4">
 <p>You can run the docker container and run a test</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">docker</span> run <span class="at">-it</span> binoic-bai:latest</span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Download <a href="files/echo-client.py">echo-client.py</a></li>
+<li>Terminal 1</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">docker-compose</span> <span class="at">--profile</span> echoserver up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Terminal 2</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="ex">python3</span> echo-client.py abcd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
