@@ -1131,13 +1131,13 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="docker-example" class="slide level2">
 <h2>Docker Example</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Docker setup</a></li><li><a href="#tabset-8-2">Docker test</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Docker setup</a></li><li><a href="#tabset-8-2">Docker build</a></li><li><a href="#tabset-8-3">Docker test</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
 <ul>
-<li>Create a file named <span class="alert">Dockerfile</span></li>
+<li>Create a file named <span class="alert">Dockerfile</span> (from <a href="https://hub.docker.com/layers/library/ubuntu/18.04/images/sha256-dca176c9663a7ba4c1f0e710986f5a25e672842963d95b960191e2d9f7185ebe">dockerhub</a>)</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource docker number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href="#cb25-1"></a>FROM --platform=amd64 ubuntu:18.04</span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource docker number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href="#cb25-1"></a>FROM --platform=linux/amd64  ubuntu:18.04</span>
 <span id="cb25-2"><a href="#cb25-2"></a>RUN apt update &amp;&amp; apt install -y openssl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Create a file named <span class="alert">doccker-compse.ymal</span></li>
@@ -1148,15 +1148,21 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb26-4"><a href="#cb26-4"></a>    build: </span>
 <span id="cb26-5"><a href="#cb26-5"></a>        context: ./</span>
 <span id="cb26-6"><a href="#cb26-6"></a>    image: binoic-bai:latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-2">
 <ul>
 <li>Run the command</li>
 </ul>
 <div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="ex">docker-compose</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check what image is available?</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-8-3">
 <p>You can run the docker container and run a test</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">docker</span> run <span class="at">-it</span> binoic-bai:latest</span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">docker</span> run <span class="at">-it</span> binoic-bai:latest</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
