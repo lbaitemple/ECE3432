@@ -1152,9 +1152,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb26-3"><a href="#cb26-3"></a>  my_image:</span>
 <span id="cb26-4"><a href="#cb26-4"></a>    build: </span>
 <span id="cb26-5"><a href="#cb26-5"></a>        context: ./</span>
-<span id="cb26-6"><a href="#cb26-6"></a>    image: binoic-bai:latest</span>
+<span id="cb26-6"><a href="#cb26-6"></a>    image: bionic-bai:latest</span>
 <span id="cb26-7"><a href="#cb26-7"></a>  echoserver:</span>
-<span id="cb26-8"><a href="#cb26-8"></a>    image: binoic-bai:latest</span>
+<span id="cb26-8"><a href="#cb26-8"></a>    image: bionic-bai:latest</span>
 <span id="cb26-9"><a href="#cb26-9"></a>    command: python3 -u echo-server.py</span>
 <span id="cb26-10"><a href="#cb26-10"></a>    ports:</span>
 <span id="cb26-11"><a href="#cb26-11"></a>      - "5001:5001"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1171,7 +1171,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div id="tabset-8-4">
 <p>You can run the docker container and run a test</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">docker</span> run <span class="at">-it</span> binoic-bai:latest</span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">docker</span> run <span class="at">-it</span> bionic-bai:latest</span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Download <a href="files/echo-client.py">echo-client.py</a></li>
