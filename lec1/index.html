@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2023-08-31">
+  <meta name="dcterms.date" content="2023-09-06">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -414,7 +414,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Robot Control using Raspberry Pi</h1>
-  <p class="subtitle">Lecture 1- A minimal introduction to AWS Academy</p>
+  <p class="subtitle">Lecture 1 - AWS Academy and Virtulaztion using Docker</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -430,7 +430,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">August 31, 2023</p>
+  <p class="date">September 6, 2023</p>
 </section>
 <section id="sec-appendix" class="slide level2">
 <h2>Topics</h2>
@@ -931,13 +931,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>check avaiable docker image</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span> /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
 <li>check avaiable docker process</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>[start a new process] vs [attach to a process]</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span> /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span> /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -956,18 +957,18 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>remove image</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>remove all images</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="va">$(</span><span class="ex">docker</span> images <span class="at">-aq</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="va">$(</span><span class="ex">docker</span> images <span class="at">-aq</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>prune image/network/volume/system</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">docker</span> image prune <span class="at">-a</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="ex">docker</span> network prune <span class="at">-a</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="ex">docker</span> volume prune <span class="at">-a</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="ex">docker</span> system prune <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="ex">docker</span> image prune <span class="at">-a</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="ex">docker</span> network prune <span class="at">-a</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="ex">docker</span> volume prune <span class="at">-a</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="ex">docker</span> system prune <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -981,51 +982,51 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>Create a file named <span class="alert">Dockerfile</span> (from <a href="https://hub.docker.com/layers/library/ubuntu/18.04/images/sha256-dca176c9663a7ba4c1f0e710986f5a25e672842963d95b960191e2d9f7185ebe">dockerhub</a>) and download <a href="files/echo-server.py">echo-server.py</a> in the same folder</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource docker number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href="#cb18-1"></a>FROM --platform=linux/amd64  ubuntu:18.04</span>
-<span id="cb18-2"><a href="#cb18-2"></a>RUN apt update &amp;&amp; apt install -y openssl python3</span>
-<span id="cb18-3"><a href="#cb18-3"></a>COPY echo-server.py /echo-server.py</span>
-<span id="cb18-4"><a href="#cb18-4"></a></span>
-<span id="cb18-5"><a href="#cb18-5"></a>EXPOSE 5001/tcp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource docker number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a href="#cb19-1"></a>FROM --platform=linux/amd64  ubuntu:18.04</span>
+<span id="cb19-2"><a href="#cb19-2"></a>RUN apt update &amp;&amp; apt install -y openssl python3</span>
+<span id="cb19-3"><a href="#cb19-3"></a>COPY echo-server.py /echo-server.py</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>EXPOSE 5001/tcp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-2">
 <ul>
 <li>Create a file named <span class="alert">docker-compose.yaml</span></li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">"3"</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">services</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="at">  </span><span class="fu">my_image</span><span class="kw">:</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="at">        </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ./</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> bionic-bai:latest</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a><span class="at">  </span><span class="fu">echoserver</span><span class="kw">:</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> bionic-bai:latest</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span><span class="at"> python3 -u echo-server.py</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"5001:5001"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">"3"</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">services</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="at">  </span><span class="fu">my_image</span><span class="kw">:</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="at">        </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ./</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> bionic-bai:latest</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="at">  </span><span class="fu">echoserver</span><span class="kw">:</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> bionic-bai:latest</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span><span class="at"> python3 -u echo-server.py</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"5001:5001"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-3">
 <ul>
 <li>Run the command</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ex">docker-compose</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ex">docker-compose</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check what image is available?</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-4">
 <p>You can run the docker container and run a test</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">docker</span> run <span class="at">-it</span> bionic-bai:latest</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="ex">docker</span> run <span class="at">-it</span> bionic-bai:latest</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Download <a href="files/echo-client.py">echo-client.py</a></li>
 <li>Terminal 1</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="ex">docker-compose</span> <span class="at">--profile</span> echoserver up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="ex">docker-compose</span> <span class="at">--profile</span> echoserver up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Terminal 2</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="ex">python3</span> echo-client.py abcd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="ex">python3</span> echo-client.py abcd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1050,7 +1051,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div class="callout-content">
 <p>Follow the instruction on <a href="https://github.com/lbaitemple/mini-pupper-aws">Github</a><span class="citation" data-cites="MiniPupperAWS">(<a href="#/references" role="doc-biblioref" onclick="">Gan and Bai 2022</a>)</span></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">git</span> clone https://github.com/mrkoz/mini-pupper-aws.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">git</span> clone https://github.com/mrkoz/mini-pupper-aws.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1081,23 +1082,23 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>Cloud 9 terminal using the following commands</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="bu">cd</span> mini-pupper-aws</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-base:1.0 <span class="at">-f</span> Dockerfile-Base</span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-robot:1.0 <span class="at">-f</span> Dockerfile-Robot</span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-simulation:1.0 <span class="at">-f</span> Dockerfile-Simulation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">cd</span> mini-pupper-aws</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-base:1.0 <span class="at">-f</span> Dockerfile-Base</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-robot:1.0 <span class="at">-f</span> Dockerfile-Robot</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-simulation:1.0 <span class="at">-f</span> Dockerfile-Simulation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-5-2">
 <ul>
 <li>Cloud 9 terminal</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">cd</span> mini-pupper-aws</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">pip</span> install Inject==3.5.4</span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">sudo</span> rosdep fix-permissions <span class="kw">&amp;&amp;</span> <span class="ex">rosdep</span> update <span class="at">--include-eol-distros</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="bu">cd</span> robot_ws</span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="at">-y</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a><span class="ex">colcon</span> build</span>
-<span id="cb27-7"><a href="#cb27-7"></a><span class="bu">cd</span> ../simulation_ws</span>
-<span id="cb27-8"><a href="#cb27-8"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="bu">cd</span> mini-pupper-aws</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="ex">pip</span> install Inject==3.5.4</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">sudo</span> rosdep fix-permissions <span class="kw">&amp;&amp;</span> <span class="ex">rosdep</span> update <span class="at">--include-eol-distros</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="bu">cd</span> robot_ws</span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="at">-y</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="ex">colcon</span> build</span>
+<span id="cb28-7"><a href="#cb28-7"></a><span class="bu">cd</span> ../simulation_ws</span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1111,27 +1112,27 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>easy way then use AWS ECR on AWS console</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-robot <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-simulation <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-robot <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-simulation <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Other way to run the commands using AWS account number (111122223333) and region (your-region) information</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">docker</span> tag mini-pupper-robot:1.0 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-robot:1.0</span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="ex">docker</span> push 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-robot:1.0</span>
-<span id="cb29-3"><a href="#cb29-3"></a></span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="ex">docker</span> tag mini-pupper-simulation:1.0 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-simulation:1.0</span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="ex">docker</span> push 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-simulation:1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">docker</span> tag mini-pupper-robot:1.0 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-robot:1.0</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="ex">docker</span> push 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-robot:1.0</span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="ex">docker</span> tag mini-pupper-simulation:1.0 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-simulation:1.0</span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="ex">docker</span> push 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-simulation:1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-6-2">
 <ul>
 <li>Open three Cloud 9 terminals and run the following command in each terminal</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
-<span id="cb30-3"><a href="#cb30-3"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/simulation_ws/install/setup.bash</span>
-<span id="cb30-4"><a href="#cb30-4"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb30-5"><a href="#cb30-5"></a><span class="co"># Add meshes to Gazbo paths</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a><span class="bu">export</span> <span class="va">GAZEBO_MODEL_PATH</span><span class="op">=</span><span class="va">$GAZEBO_MODEL_PATH</span>:<span class="va">$(</span><span class="ex">rospack</span> find mini_pupper_simulation<span class="va">)</span>/worlds/meshes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/simulation_ws/install/setup.bash</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="co"># Add meshes to Gazbo paths</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="bu">export</span> <span class="va">GAZEBO_MODEL_PATH</span><span class="op">=</span><span class="va">$GAZEBO_MODEL_PATH</span>:<span class="va">$(</span><span class="ex">rospack</span> find mini_pupper_simulation<span class="va">)</span>/worlds/meshes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1147,9 +1148,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>setup simulation application in AWS Robomaker</li>
 <li>setup simulation job using the robot application and simualtion application</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Add tool window, set Name to xterm, and Command to /usr/bin/xterm</li>
 </ul>
@@ -1158,14 +1159,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>Cloud 9 terminal 1</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="ex">roslaunch</span> mini_pupper_simulation aws_stage.launch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="ex">roslaunch</span> mini_pupper_simulation aws_stage.launch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Cloud 9 terminal 2</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/simulation_ws/install/setup.bash</span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="ex">roslaunch</span> mini_pupper_simulation aws_stage.launch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/simulation_ws/install/setup.bash</span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="bu">source</span> ~/environment/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="ex">roslaunch</span> mini_pupper_simulation aws_stage.launch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1180,8 +1181,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>open simulation job</li>
 <li>open xterm app</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="ex">./flip.sh</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="ex">./dance.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="ex">./flip.sh</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="ex">./dance.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check the dog in the dance move</li>
 </ul>
@@ -1190,8 +1191,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>Cloud 9 terminal 3</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="ex">rostopic</span> pub /dance_config std_msgs/String <span class="st">"data: 'demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="ex">rostopic</span> pub /dance_config std_msgs/String <span class="st">"data: 'demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check the dog in the dance move</li>
 </ul>
