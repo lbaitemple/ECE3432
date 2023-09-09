@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2023-09-07">
+  <meta name="dcterms.date" content="2023-09-09">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -430,7 +430,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">September 7, 2023</p>
+  <p class="date">September 9, 2023</p>
 </section>
 <section id="sec-mangdang" class="slide level2">
 <h2>Mangdang</h2>
@@ -575,6 +575,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div id="tabset-2-1">
 <ul>
 <li>Cloud 9 terminal</li>
+<li>copy and past one line at a time</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">cd</span> mini-pupper-aws/simulation_ws</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="bu">cd</span> src <span class="kw">&amp;&amp;</span> <span class="ex">vcs</span> import <span class="op">&lt;</span> .minipupper.repos <span class="at">--recursive</span> <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ..</span>
@@ -639,15 +640,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div id="tabset-4-2">
 <ul>
-<li>Go to <span class="alert">AWS Robomaker</span> in AWS console</li>
-<li>setup simulation job using the robot application and simualtion application from AWS ECR docker instances</li>
+<li><p>Go to <span class="alert">AWS Robomaker</span> in AWS console</p></li>
+<li><p>Go to robomaker setup <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></p></li>
+<li><p>setup simulation job using the robot application and simualtion application from AWS ECR docker instances</p></li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><p>Add tool window, set Name to xterm, and Command to /usr/bin/xterm</p></li>
-<li><p>Go to robomaker <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></p></li>
+<li>Add tool window, set Name to xterm, and Command to /usr/bin/xterm</li>
 </ul>
 </div>
 </div>
@@ -673,8 +674,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>open simulation job</li>
 <li>open xterm app</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">./flip.sh</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="ex">./dance.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">./move.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p>In robomaker, move.sh is to run “ros2 run teleop_twist_keyboard teleop_twist_keyboard”</p>
+</div>
 <ul>
 <li>check the dog in the move <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></li>
 </ul>
