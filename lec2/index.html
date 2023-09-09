@@ -579,10 +579,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">cd</span> mini-pupper-aws/simulation_ws</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="bu">cd</span> src <span class="kw">&amp;&amp;</span> <span class="ex">vcs</span> import <span class="op">&lt;</span> .minipupper.repos <span class="at">--recursive</span> <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ..</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">sudo</span> apt install python3-rosdep2 <span class="at">-y</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="ex">rosdep</span> update</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">rosdep</span> install <span class="at">--from</span> src <span class="at">-i</span> <span class="at">-y</span>  <span class="at">--skip-keys</span><span class="op">=</span>ecl_threads</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">pip</span> install Inject==3.5.4 setuptools==58.2.0</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">pip</span> install Inject==3.5.4 setuptools==58.2.0</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">sudo</span> apt install python3-rosdep2 <span class="at">-y</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">rosdep</span> update</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">rosdep</span> install <span class="at">--from</span> src <span class="at">-i</span> <span class="at">-y</span>  <span class="at">--skip-keys</span><span class="op">=</span>ecl_threads</span>
 <span id="cb4-7"><a href="#cb4-7"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-2">
