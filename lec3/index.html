@@ -666,6 +666,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="ros2-talker-example-excercise" class="slide level2">
 <h2>ROS2 Talker Example Excercise</h2>
 <ul>
+<li>ROS2 talker and listener nodes</li>
+<li>ROS2 topic</li>
+<li>publisher and subscriber</li>
+</ul>
+
+<img data-src="images/talker_listener.png" class="r-stretch quarto-figure-center"></section>
+<section id="download-source" class="slide level2">
+<h2>Download source</h2>
+<ul>
 <li>Let us run the following commands one line at a time</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ros2_ws/src</span>
@@ -673,15 +682,16 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb10-3"><a href="#cb10-3"></a><span class="fu">git</span> clone <span class="at">-b</span> humble https://github.com/ros2/demos/  humbledemos</span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Delete all other files and keep demo_nodes_cpp folders as</li>
+<li>Delete all other files and keep demo_nodes_py folders as</li>
 </ul>
 
-<img data-src="images/keep_demo_nodes.png" class="r-stretch quarto-figure-center"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<img data-src="images/talker_example_python.png" class="r-stretch quarto-figure-center"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install setuptools==58.2.0</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="ex">colcon</span> build <span class="at">--allow-overriding</span> demo_nodes_py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ros2-talker" class="slide level2">
 <h2>ROS2 Talker</h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">ros2</span> run demo_nodes_py talker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/talker.png" class="r-stretch quarto-figure-center"></section>
 <section id="ros2-listerner" class="slide level2">
@@ -691,7 +701,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">cd</span> ros2_ws/</span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="ex">ros2</span> run demo_nodes_py listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/listener.png" class="r-stretch quarto-figure-center"></section>
 <section id="code-modification" class="slide level2">
