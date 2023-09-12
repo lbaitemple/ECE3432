@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2023-09-11">
+  <meta name="dcterms.date" content="2023-09-12">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -411,7 +411,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">September 11, 2023</p>
+  <p class="date">September 12, 2023</p>
 </section>
 <section id="what-is-a-raspberry-pi" class="slide level2">
 <h2>What is a Raspberry Pi?</h2>
@@ -550,10 +550,13 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">ifconfig</span> wlan0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="images/ifconfig_1.png" width="406" class="r-stretch quarto-figure-center"><ul>
+<img data-src="images/ifconfig_1.png" width="200" class="r-stretch quarto-figure-center"><ul>
 <li>Open a wifi password file if no ip address is shown</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">sudo</span> nano /etc/netplan/50-cloud-init.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Ctlr-X, Y and Enter to save the file</li>
+</ul>
 <div class="footer">
 <p>If not ifconfig, try <code>sudo apt install net-tools -y</code></p>
 </div>
@@ -561,7 +564,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="content-in-50-cloud-init.yaml" class="slide level2">
 <h2>content in 50-cloud-init.yaml</h2>
 <ul>
-<li>need to access cloud 9 ubunut instance to create a new hash usign your Wifi password</li>
+<li>need to access cloud 9 ubunut instance to create a new hash using your Wifi password</li>
 </ul>
 
 <img data-src="images/jupyter_3.png" width="402" class="r-stretch quarto-figure-center"></section>
