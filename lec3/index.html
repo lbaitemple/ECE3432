@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2023-09-12">
+  <meta name="dcterms.date" content="2023-09-14">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -411,7 +411,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">September 12, 2023</p>
+  <p class="date">September 14, 2023</p>
 </section>
 <section id="what-is-a-raspberry-pi" class="slide level2">
 <h2>What is a Raspberry Pi?</h2>
@@ -600,120 +600,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>Use Ctrl-W and Ctrl-X to save and exit, then reboot</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">sudo</span> reboot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="sec-github" class="slide level2">
-<h2>Github</h2>
-<ul>
-<li><p>Code Hosting Platform</p></li>
-<li><p>Version Control: GitHub is built around Git, a distributed version control system.</p></li>
-<li><p>Collaboration and Social Features: GitHub provides tools for collaboration,</p></li>
-<li><p>Continuous Integration and Deployment (CI/CD): GitHub offers integration with various CI/CD tools</p></li>
-<li><p>Community and Marketplace: GitHub has a thriving community of developers and offers</p></li>
-</ul>
-</section>
-<section id="get-your-own-github-account" class="slide level2">
-<h2>Get your own github account</h2>
-<ul>
-<li><p>How to signup a Github account</p>
-<p><a href="https://github.com/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F&amp;source=header-home">Github Signup</a></p></li>
-<li><p>How to create a repository and document in README.md</p></li>
-<li><p>How to clone a repository, <a href="https://github.com/ros2/demos/">click here</a></p></li>
-</ul>
-</section>
-<section id="github-clone" class="slide level2">
-<h2>Github clone</h2>
-<ul>
-<li>Let us clone a github repository</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> clone https://github.com/ros2/demos/ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-<img data-src="images/git_clone.png" width="392" class="r-stretch quarto-figure-center"></section>
-<section id="github-branches" class="slide level2">
-<h2>Github branches</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> clone <span class="at">-b</span> branch <span class="pp">[</span><span class="ss">url</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">dest_directory</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">git</span> clone <span class="at">-b</span> foxy https://github.com/ros2/demos/  foxydemo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-<img data-src="images/git_clone_branch.png" width="392" class="r-stretch quarto-figure-center"></section>
-<section id="github-web-interface" class="slide level2">
-<h2>Github Web Interface</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/web_new_repo.png"></p>
-</figure>
-</div>
-<ul>
-<li>create a new repo to upload your code</li>
-</ul>
-</div><div class="column" style="width:45%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/web_collaborator.png"></p>
-</figure>
-</div>
-<ul>
-<li>add collaborator</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="github-desktop-app" class="slide level2">
-<h2>Github Desktop App</h2>
-<ul>
-<li>you can download the app <a href="https://desktop.github.com/">at here</a></li>
-<li>benefits: easy access, good for upload more than 100 files, empty folder, larger files, etc…</li>
-</ul>
-
-<img data-src="images/desktop_interface.png" width="579" class="r-stretch quarto-figure-center"></section>
-<section id="ros2-talker-example-excercise" class="slide level2">
-<h2>ROS2 Talker Example Excercise</h2>
-<ul>
-<li>ROS2 talker and listener nodes</li>
-<li>ROS2 topic</li>
-<li>publisher and subscriber</li>
-</ul>
-
-<img data-src="images/talker_listener.png" class="r-stretch quarto-figure-center"></section>
-<section id="download-source" class="slide level2">
-<h2>Download source</h2>
-<ul>
-<li>Let us run the following commands one line at a time</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ros2_ws/src</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">cd</span> ros2_ws/src</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">git</span> clone <span class="at">-b</span> humble https://github.com/ros2/demos/  humbledemos</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Delete all other files and keep demo_nodes_py folders as</li>
-</ul>
-
-<img data-src="images/talker_example_python.png" class="r-stretch quarto-figure-center"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install setuptools==58.2.0</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="ex">colcon</span> build <span class="at">--allow-overriding</span> demo_nodes_py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ros2-talker" class="slide level2">
-<h2>ROS2 Talker</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">ros2</span> run demo_nodes_py talker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-<img data-src="images/talker.png" class="r-stretch quarto-figure-center"></section>
-<section id="ros2-listerner" class="slide level2">
-<h2>ROS2 Listerner</h2>
-<ul>
-<li>open another new terminal</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">cd</span> ros2_ws/</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="ex">ros2</span> run demo_nodes_py listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-<img data-src="images/listener.png" class="r-stretch quarto-figure-center"></section>
-<section id="code-modification" class="slide level2">
-<h2>Code modification</h2>
-<ul>
-<li>change “publishing” as “Li publishing” in talker</li>
-<li>change “I heard” as “[your firstname] heard” in listener</li>
-<li>Upload the modified code to your Github</li>
-</ul>
 </section>
 <section id="sec-rndis" class="slide level2">
 <h2>Windows RNDIS Setup</h2>
