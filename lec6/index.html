@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2023-10-02">
+  <meta name="dcterms.date" content="2023-10-03">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -411,7 +411,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">October 2, 2023</p>
+  <p class="date">October 3, 2023</p>
 </section>
 <section id="sec-workflow" class="slide level2">
 <h2>AWS RoboMaker Workflow</h2>
@@ -737,14 +737,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb6-2"><a href="#cb6-2"></a><span class="bu">cd</span> greengrass-demo</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="ex">docker-compose</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="create-a-ecr" class="slide level2">
-<h2>Create a ECR</h2>
-
-<img data-src="images/ecr1.png" class="r-stretch quarto-figure-center"></section>
-<section id="upload-docker-image-on-ecr" class="slide level2">
-<h2>upload docker image on ECR</h2>
-
-<img data-src="images/copy_ecr.png" class="r-stretch quarto-figure-center"></section>
+<section>
+<section id="s3-setup" class="title-slide slide level1 center">
+<h1>S3 setup</h1>
+<p>Need to have a simple storage service (s3) to pass files from cloud to edge devices</p>
+</section>
 <section id="find-s3-on-aws-console" class="slide level2">
 <h2>Find S3 on AWS Console</h2>
 
@@ -756,9 +753,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="select-a-name-for-s3-repo" class="slide level2">
 <h2>select a name for s3 repo</h2>
 <ul>
-<li>try to use your name initials and date <img data-src="images/s3_3.png" data-fig-align="center"></li>
+<li>try to use your name initials and date (must be unique)</li>
 </ul>
-</section>
+
+<img data-src="images/s3_3.png" class="r-stretch quarto-figure-center"></section>
 <section id="setup-permision" class="slide level2">
 <h2>setup permision</h2>
 
@@ -773,13 +771,33 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="create-the-s3-repo" class="slide level2">
 <h2>Create the s3 Repo</h2>
 
-<img data-src="images/s3_6.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/s3_6.png" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="ecr-setup" class="title-slide slide level1 center">
+<h1>ECR setup</h1>
+<p>need to setup a repository to store docker instances</p>
+</section>
+<section id="create-a-ecr" class="slide level2">
+<h2>Create a ECR</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">ros-humble-greengrass-demo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="images/ecr1.png" class="r-stretch quarto-figure-center"></section>
+<section id="upload-docker-image-on-ecr" class="slide level2">
+<h2>upload docker image on ECR</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">ros-humble-greengrass-demo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="images/copy_ecr.png" class="r-stretch quarto-figure-center"></section>
 <section id="cloud-9-setup" class="slide level2">
 <h2>Cloud 9 Setup</h2>
+<ul>
+<li>revise line 4 with your s3 repository name</li>
+<li>revise line 5 with your ECR name (if it is needed)</li>
+</ul>
 
 <img data-src="images/aws_greengrass.png" class="r-stretch quarto-figure-center"></section>
-<section id="cloud-9-setup-1" class="slide level2">
-<h2>Cloud 9 Setup</h2>
+<section id="run-a-bash-script-in-cloud-9" class="slide level2">
+<h2>Run a bash script in Cloud 9</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">bash</span> ./awsgreengrass.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/aws_greengrass_2.png"></p>
@@ -917,7 +935,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <img src="images/temple.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>Li Bai</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
