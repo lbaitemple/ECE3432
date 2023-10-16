@@ -456,7 +456,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li class="fragment"><span class="alert">Virtualization</span>, Docker, Linux, Python 3</li>
 <li class="fragment">Robot Operating System (ROS) and Gazebo</li>
 </ul></li>
-<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/robomaker-simulation-application-options-1" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
+<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/references" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
 </ul>
 </div>
 </div>
@@ -486,7 +486,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 <div class="footer">
-<p>Credit from Building Cloud Connected Robots <span class="citation" data-cites="BuildCloudRobot">(<a href="#/robomaker-simulation-application-options-1" role="doc-biblioref" onclick=""><strong>BuildCloudRobot?</strong></a>)</span></p>
+<p>Credit from Building Cloud Connected Robots <span class="citation" data-cites="BuildCloudRobot">(<a href="#/references" role="doc-biblioref" onclick=""><strong>BuildCloudRobot?</strong></a>)</span></p>
 </div>
 </section>
 <section id="section" class="slide level2">
@@ -771,15 +771,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="minipupper-v2-setup-requirements" class="slide level2">
 <h2>Minipupper v2 setup Requirements</h2>
 <ul>
-<li>ASW Cloud 9 (with setup script used)</li>
+<li>ASW Cloud 9 (with a setup script used in a new instance)</li>
 </ul>
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> <span class="st">"https://bit.ly/robomaker2204"</span> <span class="kw">|</span> <span class="fu">sudo</span> <span class="at">-E</span> bash <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -788,7 +788,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <ul>
 <li><p>a mini pupper v2</p></li>
-<li><p>a new mini pupper v2 image, <a href="https://tuprd-my.sharepoint.com/:u:/r/personal/lbai_temple_edu/Documents/Pi_ubuntu/robot_dog/mangdang_v2_10_3_2023_s.zip?csf=1&amp;web=1&amp;e=UZpHxS">download here</a></p></li>
+<li><p>a new mini pupper v2 ubuntu prebuilt image, <a href="https://tuprd-my.sharepoint.com/:u:/r/personal/lbai_temple_edu/Documents/Pi_ubuntu/robot_dog/mangdang_v2_10_3_2023_s.zip?csf=1&amp;web=1&amp;e=UZpHxS">download here</a></p></li>
 <li><p>a <a href="https://tuprd-my.sharepoint.com/:t:/g/personal/lbai_temple_edu/EZR7vsibHPVGpcWEYKs4qeMBorxLJ43zrUfN3czajHWc_A?e=HfYxo8">wireless.txt</a></p></li>
 </ul>
 </section>
@@ -880,8 +880,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="remove-microsd-card-and-resert" class="slide level2">
-<h2>Remove microSD Card and resert</h2>
+<section id="remove-microsd-card-and-reinsert" class="slide level2">
+<h2>Remove microSD Card and reinsert</h2>
 <ul>
 <li>make sure you see a new driver <code>system-boot</code></li>
 </ul>
@@ -923,13 +923,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 
 <img data-src="images/copy_wifi.png" class="r-stretch quarto-figure-center"></section>
-<section id="boot-the-raspberry-pi-after-your-insert-microsd-card" class="slide level2">
-<h2>Boot the raspberry pi after your insert microSD card</h2>
+<section id="power-minipupper-after-insert-microsd-card" class="slide level2">
+<h2>Power minipupper after insert microSD card</h2>
 <ul>
-<li>If you see the IP address on the screen</li>
+<li>no IP address for first time bootup. Disconnect power and reconnect</li>
+<li>If you see the IP address on the screen, type <code>http://[ipaddress]:8080</code> for a web remote control</li>
 </ul>
 
-<img data-src="images/ip_adress.jpg" width="396" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/ip_adress.jpg" width="496" class="r-stretch quarto-figure-center"></section>
 <section id="jupyter-notebook-on-minipupper" class="slide level2" data-background-color="#A0666e">
 <h2>Jupyter notebook on minipupper</h2>
 <div class="panel-tabset">
@@ -1113,15 +1114,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="aws-iot-core" class="slide level2" data-background-color="#40666e">
-<h2>AWS IoT Core</h2>
+<section id="check-on-aws-iot-core" class="slide level2" data-background-color="#40666e">
+<h2>Check on AWS IoT Core</h2>
 <div class="panel-tabset">
 <ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">step 1</a></li><li><a href="#tabset-8-2">step 2</a></li><li><a href="#tabset-8-3">step 3</a></li><li><a href="#tabset-8-4">step 4</a></li><li><a href="#tabset-8-5">step 4</a></li><li><a href="#tabset-8-6">step 5</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_1.png"></p>
+<p><img data-src="images/iot_1.png" width="604"></p>
 </figure>
 </div>
 </div>
@@ -1131,7 +1132,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_2.png"></p>
+<p><img data-src="images/iot_2.png" width="707"></p>
 </figure>
 </div>
 </div>
@@ -1141,7 +1142,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_3.png"></p>
+<p><img data-src="images/iot_3.png" width="645"></p>
 </figure>
 </div>
 </div>
@@ -1151,7 +1152,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_4.png"></p>
+<p><img data-src="images/iot_4.png" width="664"></p>
 </figure>
 </div>
 </div>
@@ -1161,7 +1162,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_6.png"></p>
+<p><img data-src="images/iot_6.png" width="798"></p>
 </figure>
 </div>
 </div>
@@ -1171,7 +1172,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_5.png"></p>
+<p><img data-src="images/iot_5.png" width="908"></p>
 </figure>
 </div>
 </div>
@@ -1405,7 +1406,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Follow the instruction on <a href="https://github.com/lbaitemple/mini-pupper-aws">Github</a><span class="citation" data-cites="MiniPupperAWS">(<a href="#/robomaker-simulation-application-options-1" role="doc-biblioref" onclick="">Gan and Bai 2022</a>)</span></p>
+<p>Follow the instruction on <a href="https://github.com/lbaitemple/mini-pupper-aws">Github</a><span class="citation" data-cites="MiniPupperAWS">(<a href="#/references" role="doc-biblioref" onclick="">Gan and Bai 2022</a>)</span></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">cd</span> ~/environment/mini-pupper-aws/simulation_ws/src</span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="ex">vcs</span> import <span class="op">&lt;</span> .minipupper.repos <span class="at">--recursive</span> <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ..</span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="ex">pip</span> install Inject==3.5.4 setuptools==58.2.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1413,72 +1414,72 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 <div class="panel-tabset">
-<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">DCV</a></li><li><a href="#tabset-14-2">Robomaker</a></li></ul>
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">Robomaker</a></li><li><a href="#tabset-14-2">DCV</a></li></ul>
 <div class="tab-content">
 <div id="tabset-14-1">
-<ul>
-<li>A Cloud 9 Approach</li>
-<li>c4.xlarge (7.5vPU and 4GB)</li>
-</ul>
-</div>
-<div id="tabset-14-2">
 <ul>
 <li>A Robomaker approach using <span class="alert">AWS Docker Container Registry</span></li>
 <li>15 vCPU core</li>
 </ul>
 </div>
+<div id="tabset-14-2">
+<ul>
+<li>A Cloud 9 Approach</li>
+<li>c4.xlarge (7.5vPU and 4GB)</li>
+</ul>
+</div>
 </div>
 </div>
 </section>
-<section id="minipupper-aws-dancing-robot" class="slide level2">
+<section id="minipupper-aws-dancing-robot" class="slide level2" data-background-color="#40666e">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">DCV</a></li><li><a href="#tabset-15-2">Robomaker</a></li></ul>
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">Robomaker</a></li><li><a href="#tabset-15-2">DCV</a></li></ul>
 <div class="tab-content">
 <div id="tabset-15-1">
+<ul>
+<li>Cloud 9 terminal using the following commands</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="bu">cd</span> ~/environment/mini-pupper-aws</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-base:latest <span class="at">-f</span> Dockerfile-Base</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-simulation:latest <span class="at">-f</span> Dockerfile-Simulation</span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-robot:latest <span class="at">-f</span> Dockerfile-Robot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-15-2">
 <ul>
 <li>Cloud 9 terminal</li>
 <li>copy and past one line at a time</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ex">pip</span> install Inject==3.5.4 setuptools==58.2.0</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="ex">rosdep</span> update</span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="ex">rosdep</span> install <span class="at">--from</span> src <span class="at">-i</span> <span class="at">-y</span>  <span class="at">--skip-keys</span><span class="op">=</span>ecl_threads</span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-15-2">
-<ul>
-<li>Cloud 9 terminal using the following commands</li>
-</ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="bu">cd</span> ~/environment/mini-pupper-aws</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-base:latest <span class="at">-f</span> Dockerfile-Base</span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-simulation:latest <span class="at">-f</span> Dockerfile-Simulation</span>
-<span id="cb20-4"><a href="#cb20-4"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-robot:latest <span class="at">-f</span> Dockerfile-Robot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ex">pip</span> install Inject==3.5.4 setuptools==58.2.0</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="ex">rosdep</span> update</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="ex">rosdep</span> install <span class="at">--from</span> src <span class="at">-i</span> <span class="at">-y</span>  <span class="at">--skip-keys</span><span class="op">=</span>ecl_threads</span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="minipupper-aws-dancing-robot-1" class="slide level2">
+<section id="minipupper-aws-dancing-robot-1" class="slide level2" data-background-color="#40666e">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">DCV</a></li><li><a href="#tabset-16-2">Robomaker</a></li></ul>
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">Robomaker</a></li><li><a href="#tabset-16-2">DCV</a></li></ul>
 <div class="tab-content">
 <div id="tabset-16-1">
 <ul>
-<li>Open three Cloud 9 terminals and run the following command in each terminal</li>
-</ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">bash</span> ../scripts/simulation-entrypoint.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-16-2">
-<ul>
 <li>easy way then use <span class="alert">AWS ECR</span> on AWS console (mini-pupper-simulation)</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-simulation <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-simulation <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>skip step 2, and remove latest with 2.0, and replace <span class="alert">169615523284</span> with your account number</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="ex">docker</span> tag mini-pupper-simulation:latest 169615523284.dkr.ecr.us-east-1.amazonaws.com/mini-pupper-simulation:latest</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="ex">docker</span> push 169615523284.dkr.ecr.us-east-1.amazonaws.com/mini-pupper-simulation:latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">docker</span> tag mini-pupper-simulation:latest 169615523284.dkr.ecr.us-east-1.amazonaws.com/mini-pupper-simulation:latest</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="ex">docker</span> push 169615523284.dkr.ecr.us-east-1.amazonaws.com/mini-pupper-simulation:latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-16-2">
+<ul>
+<li>Open three Cloud 9 terminals and run the following command in each terminal</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">bash</span> ../scripts/simulation-entrypoint.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1486,31 +1487,31 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="minipupper-aws-dancing-robot-2" class="slide level2">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">DCV</a></li><li><a href="#tabset-17-2">Robomaker</a></li></ul>
+<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">Robomaker</a></li><li><a href="#tabset-17-2">DCV</a></li></ul>
 <div class="tab-content">
 <div id="tabset-17-1">
-<ul>
-<li>Cloud 9 terminal 1</li>
-</ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="ex">ros2</span> launch mini_pupper_gazebo gazebo.launch.py rviz:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Cloud 9 terminal 2</li>
-</ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> ros-humble-teleop-twist-keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-17-2">
 <ul>
 <li><p>Go to <span class="alert">AWS Robomaker</span> in AWS console</p></li>
 <li><p>Go to robomaker setup <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></p></li>
 <li><p>setup simulation job using the robot application and simualtion application from AWS ECR docker instances</p></li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Add tool window, set Name to xterm, and Command to /usr/bin/xterm</li>
 </ul>
+</div>
+<div id="tabset-17-2">
+<ul>
+<li>Cloud 9 terminal 1</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="bu">source</span> ./install/setup.bash</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="ex">ros2</span> launch mini_pupper_gazebo gazebo.launch.py rviz:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Cloud 9 terminal 2</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> ros-humble-teleop-twist-keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1518,29 +1519,25 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="minipupper-aws-dancing-robot-3" class="slide level2">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">DCV</a></li><li><a href="#tabset-18-2">Robomaker</a></li></ul>
+<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">Robomaker</a></li><li><a href="#tabset-18-2">DCV</a></li></ul>
 <div class="tab-content">
 <div id="tabset-18-1">
-<ul>
-<li>Cloud 9 terminal 3</li>
-</ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">source</span> /opt/ros/humble/setup.bash</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>check the dog in the move</li>
-</ul>
-</div>
-<div id="tabset-18-2">
 <ul>
 <li>open simulation job</li>
 <li>open xterm app</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">./move.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="footer">
-<p>In robomaker, move.sh is to run “ros2 run teleop_twist_keyboard teleop_twist_keyboard”</p>
-</div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="ex">./dancemove.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check the dog in the move <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></li>
+</ul>
+</div>
+<div id="tabset-18-2">
+<ul>
+<li>Cloud 9 terminal 3</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">./dancemove.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check the dog in the move</li>
 </ul>
 </div>
 </div>
@@ -1677,17 +1674,12 @@ ros2, launch, mini_pupper_dance, ndance.launch.py, hardware_connected:=false</co
 </div>
 </div>
 </section>
-<section id="robomaker-simulation-application-options-1" class="slide level2 smaller scrollable">
+<section id="robomaker-simulation-application-options-1" class="slide level2">
 <h2>Robomaker Simulation Application Options</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_9.png"></p>
-</figure>
-</div>
-<p><img src="images/temple.png" class="slide-logo"></p>
-<div class="footer footer-default">
-<p>Li Bai</p>
-</div>
+
+<img data-src="images/robomaker_9.png" class="r-stretch quarto-figure-center"></section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-MiniPupperAWS" class="csl-entry" role="listitem">
 Gan, Afreez, and Li Bai. 2022. <span>“MiniPupper AWS - ROS1.”</span> 2022. <a href="https://github.com/lbaitemple/mini-pupper-aws">https://github.com/lbaitemple/mini-pupper-aws</a>.
@@ -1695,6 +1687,10 @@ Gan, Afreez, and Li Bai. 2022. <span>“MiniPupper AWS - ROS1.”</span> 2022. <
 <div id="ref-DanceRobot" class="csl-entry" role="listitem">
 Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots.”</span> 2022. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US</a>.
 </div>
+</div>
+
+<img src="images/temple.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p>Li Bai</p>
 </div>
 </section></section>
     </div>
