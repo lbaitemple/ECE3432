@@ -11,6 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Li Bai">
+  <meta name="author" content="Afreez Gan">
   <meta name="dcterms.date" content="2023-10-21">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -428,6 +429,17 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
             Temple University
           </p>
     </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Afreez Gan 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:afreez@mangdang.net">afreez@mangdang.net</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Mangdang Inc.
+          </p>
+    </div>
 </div>
 
   <p class="date">October 21, 2023</p>
@@ -545,11 +557,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </section>
 <section>
-<section id="s3-setup-on-aws-cloud" class="title-slide slide level1 center" data-background-color="#40666e">
+<section id="s3-setup-on-aws-cloud" class="title-slide slide level1 aws-background center">
 <h1>S3 setup (on AWS cloud)</h1>
 <p>Need to have a simple storage service (s3) to pass files from cloud to edge devices</p>
 </section>
-<section id="s3-setup" class="slide level2" data-background-color="#40666e">
+<section id="s3-setup" class="slide level2 aws-background">
 <h2>S3 setup</h2>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">step 1</a></li><li><a href="#tabset-2-2">step 2</a></li><li><a href="#tabset-2-3">step 3</a></li><li><a href="#tabset-2-4">step 4</a></li><li><a href="#tabset-2-5">step 5</a></li><li><a href="#tabset-2-6">step 6</a></li></ul>
@@ -619,11 +631,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </section></section>
 <section>
-<section id="cloud-9-on-aws-cloud" class="title-slide slide level1 center" data-background-color="#40666e">
+<section id="cloud-9-on-aws-cloud" class="title-slide slide level1 aws-background center">
 <h1>Cloud 9 (on AWS cloud)</h1>
 <p>AWS Cloud9: Cloud-based IDE with code editor, debugger, and terminal. Supports popular languages, serverless app development, and remote access.</p>
 </section>
-<section id="cloud-9-setup" class="slide level2" data-background-color="#40666e">
+<section id="cloud-9-setup" class="slide level2 aws-background">
 <h2>Cloud 9 setup</h2>
 <div class="panel-tabset">
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">step 1</a></li><li><a href="#tabset-3-2">step 2</a></li><li><a href="#tabset-3-3">step 3</a></li><li><a href="#tabset-3-4">step 4</a></li><li><a href="#tabset-3-5">step 5</a></li><li><a href="#tabset-3-6">step 6</a></li><li><a href="#tabset-3-7">step 7</a></li></ul>
@@ -728,16 +740,16 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </section></section>
 <section>
-<section id="ecr-setup" class="title-slide slide level1 center" data-background-color="#40666e">
+<section id="ecr-setup" class="title-slide slide level1 aws-background center">
 <h1>ECR setup</h1>
 <p>need to setup a repository to store docker instances</p>
 </section>
-<section id="create-a-ecr" class="slide level2" data-background-color="#40666e">
+<section id="create-a-ecr" class="slide level2 aws-background">
 <h2>Create a ECR</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">ros-humble-greengrass-minipupper</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/ecr1.png" class="r-stretch quarto-figure-center"></section>
-<section id="download-codes-on-cloud9-instance" class="slide level2" data-background-color="#40666e">
+<section id="download-codes-on-cloud9-instance" class="slide level2 aws-background">
 <h2>Download codes on Cloud9 instance</h2>
 <ul>
 <li>Open your cloud 9 instance, run the command in a terminal window</li>
@@ -749,26 +761,45 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb4-4"><a href="#cb4-4"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/docker_instance.png" class="r-stretch quarto-figure-center"></section>
-<section id="run-a-docker-instance-to-generate-your-password-hash" class="slide level2" data-background-color="#40666e">
+<section id="run-a-docker-instance-to-generate-your-password-hash" class="slide level2 aws-background">
 <h2>Run a docker instance to generate your password hash</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">step 1</a></li><li><a href="#tabset-4-2">step 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
 <ul>
 <li>open a new docker instance</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">docker</span> run <span class="at">-it</span> bionic-bai:latest /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img data-src="images/docker_instance_1.png" data-fig-align="center"> - Enter your password to generate a new hash</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/docker_instance_1.png" width="939"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-2">
+<ul>
+<li>Enter your password to generate a new hash</li>
+</ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/docker_instance_2.png"></p>
 </figure>
 </div>
+<ul>
+<li>save the generated hash value for your WiFi access</li>
+</ul>
+</div>
+</div>
+</div>
 </section></section>
 <section>
-<section id="minipupper-setup-on-pupper" class="title-slide slide level1 center" data-background-color="#A0666e">
+<section id="minipupper-setup-on-pupper" class="title-slide slide level1 minipupper-background center">
 <h1>Minipupper setup (on pupper)</h1>
 <p>Edge device: will need a wifi access to Internet. We will use eduroam</p>
 </section>
-<section id="minipupper-v2-setup-requirements" class="slide level2">
+<section id="minipupper-v2-setup-requirements" class="slide level2 minipupper-background">
 <h2>Minipupper v2 setup Requirements</h2>
 <ul>
 <li>ASW Cloud 9 (with a setup script used in a new instance)</li>
@@ -795,9 +826,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="setup-raspberry-pi---balena-etcher-preflashed" class="slide level2">
 <h2>Setup Raspberry Pi - Balena Etcher (preflashed)</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">1.</a></li><li><a href="#tabset-4-2">2.</a></li><li><a href="#tabset-4-3">3.</a></li><li><a href="#tabset-4-4">4.</a></li><li><a href="#tabset-4-5">5.</a></li><li><a href="#tabset-4-6">6.</a></li><li><a href="#tabset-4-7">7.</a></li><li><a href="#tabset-4-8">8.</a></li><li><a href="#tabset-4-9">9.</a></li><li><a href="#tabset-4-10">10.</a></li><li><a href="#tabset-4-11">11.</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">1.</a></li><li><a href="#tabset-5-2">2.</a></li><li><a href="#tabset-5-3">3.</a></li><li><a href="#tabset-5-4">4.</a></li><li><a href="#tabset-5-5">5.</a></li><li><a href="#tabset-5-6">6.</a></li><li><a href="#tabset-5-7">7.</a></li><li><a href="#tabset-5-8">8.</a></li><li><a href="#tabset-5-9">9.</a></li><li><a href="#tabset-5-10">10.</a></li><li><a href="#tabset-5-11">11.</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-5-1">
 <ul>
 <li>Use Etcher to copy the new image to your MicroSD card</li>
 </ul>
@@ -807,70 +838,70 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-5-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_2.png" width="625"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-3">
+<div id="tabset-5-3">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_3.png" width="591"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-4">
+<div id="tabset-5-4">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_4.png" width="650"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-5">
+<div id="tabset-5-5">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_5.png" width="588"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-6">
+<div id="tabset-5-6">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_7.png" width="536"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-7">
+<div id="tabset-5-7">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_8.png" width="528"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-8">
+<div id="tabset-5-8">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_9.png" width="584"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-9">
+<div id="tabset-5-9">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_10.png" width="589"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-10">
+<div id="tabset-5-10">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_11.png" width="587"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-4-11">
+<div id="tabset-5-11">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/etcher_12.png" width="582"></p>
@@ -931,12 +962,12 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 
 <img data-src="images/ip_adress.jpg" width="496" class="r-stretch quarto-figure-center"></section>
-<section id="jupyter-notebook-on-minipupper" class="slide level2" data-background-color="#A0666e">
+<section id="jupyter-notebook-on-minipupper" class="slide level2 minipupper-background">
 <h2>Jupyter notebook on minipupper</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">step 1</a></li><li><a href="#tabset-5-2">step 2</a></li><li><a href="#tabset-5-3">step 3</a></li><li><a href="#tabset-5-4">step 4</a></li><li><a href="#tabset-5-5">step 5</a></li><li><a href="#tabset-5-6">step 6</a></li><li><a href="#tabset-5-7">step 7</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">step 1</a></li><li><a href="#tabset-6-2">step 2</a></li><li><a href="#tabset-6-3">step 3</a></li><li><a href="#tabset-6-4">step 4</a></li><li><a href="#tabset-6-5">step 5</a></li><li><a href="#tabset-6-6">step 6</a></li><li><a href="#tabset-6-7">step 7</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-6-1">
 <ul>
 <li>Open a browser, type <code>http://[ipaddress]:8888</code></li>
 <li>password <code>mangdang</code></li>
@@ -947,7 +978,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-6-2">
 <ul>
 <li>Open a new terminal</li>
 </ul>
@@ -957,7 +988,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-5-3">
+<div id="tabset-6-3">
 <ul>
 <li>Download mangdang folder</li>
 </ul>
@@ -968,7 +999,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-5-4">
+<div id="tabset-6-4">
 <ul>
 <li>Find the mangdang folder by refreshing the folder window</li>
 </ul>
@@ -978,7 +1009,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-5-5">
+<div id="tabset-6-5">
 <ul>
 <li>Find files in the mangdang folder</li>
 </ul>
@@ -988,7 +1019,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-5-6">
+<div id="tabset-6-6">
 <ul>
 <li>Open the <code>minipupper.ipynb</code> python notebook</li>
 </ul>
@@ -998,7 +1029,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-5-7">
+<div id="tabset-6-7">
 <ul>
 <li>Run the second block to install greengrass</li>
 </ul>
@@ -1011,17 +1042,17 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="find-aws-credential" class="slide level2" data-background-color="#40666e">
+<section id="find-aws-credential" class="slide level2 aws-background">
 <h2>Find AWS Credential</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">step 1</a></li><li><a href="#tabset-6-2">step 2</a></li><li><a href="#tabset-6-3">step 3</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">step 1</a></li><li><a href="#tabset-7-2">step 2</a></li><li><a href="#tabset-7-3">step 3</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
+<div id="tabset-7-1">
 <ul>
 <li>Log into AWS Academy <img data-src="images/aws_academy_1.png" data-fig-align="center" width="951"></li>
 </ul>
 </div>
-<div id="tabset-6-2">
+<div id="tabset-7-2">
 <ul>
 <li>Check AWS Details</li>
 </ul>
@@ -1031,7 +1062,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-6-3">
+<div id="tabset-7-3">
 <ul>
 <li>Find the login credential</li>
 </ul>
@@ -1044,12 +1075,12 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="jupyter-lab-on-pupper" class="slide level2" data-background-color="#A0666e">
+<section id="jupyter-lab-on-pupper" class="slide level2 minipupper-background">
 <h2>Jupyter lab on pupper</h2>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">step 1</a></li><li><a href="#tabset-7-2">step 2</a></li><li><a href="#tabset-7-3">step 3</a></li><li><a href="#tabset-7-4">step 4</a></li><li><a href="#tabset-7-5">step 5</a></li><li><a href="#tabset-7-6">step 6</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">step 1</a></li><li><a href="#tabset-8-2">step 2</a></li><li><a href="#tabset-8-3">step 3</a></li><li><a href="#tabset-8-4">step 4</a></li><li><a href="#tabset-8-5">step 5</a></li><li><a href="#tabset-8-6">step 6</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-8-1">
 <ul>
 <li>Go back to the jupyter lab on RPi4</li>
 <li>copy the AWS academy credential to apporiprate fileds</li>
@@ -1060,7 +1091,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-8-2">
 <ul>
 <li>Thing <code>ROS2_Minipupper</code> and thing group <code>ROS2_Minipuppers</code></li>
 <li>Run the block</li>
@@ -1071,7 +1102,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-7-3">
+<div id="tabset-8-3">
 <ul>
 <li>Ensure a thing and a thing group created</li>
 </ul>
@@ -1081,7 +1112,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-7-4">
+<div id="tabset-8-4">
 <ul>
 <li>Things are added on IoT Core</li>
 </ul>
@@ -1091,7 +1122,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-7-5">
+<div id="tabset-8-5">
 <ul>
 <li>Run the next block, add a greengrass user <code>ggc_user</code></li>
 </ul>
@@ -1101,7 +1132,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-7-6">
+<div id="tabset-8-6">
 <ul>
 <li>the greengrass user <code>ggc_user</code> is added</li>
 </ul>
@@ -1114,19 +1145,19 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="check-on-aws-iot-core" class="slide level2" data-background-color="#40666e">
+<section id="check-on-aws-iot-core" class="slide level2 aws-background">
 <h2>Check on AWS IoT Core</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">step 1</a></li><li><a href="#tabset-8-2">step 2</a></li><li><a href="#tabset-8-3">step 3</a></li><li><a href="#tabset-8-4">step 4</a></li><li><a href="#tabset-8-5">step 4</a></li><li><a href="#tabset-8-6">step 5</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">step 1</a></li><li><a href="#tabset-9-2">step 2</a></li><li><a href="#tabset-9-3">step 3</a></li><li><a href="#tabset-9-4">step 4</a></li><li><a href="#tabset-9-5">step 4</a></li><li><a href="#tabset-9-6">step 5</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1">
+<div id="tabset-9-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/iot_1.png" width="604"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-9-2">
 <ul>
 <li>Find Things on IoT</li>
 </ul>
@@ -1136,7 +1167,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-8-3">
+<div id="tabset-9-3">
 <ul>
 <li>Find Thing Group on IoT</li>
 </ul>
@@ -1146,7 +1177,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-8-4">
+<div id="tabset-9-4">
 <ul>
 <li>Find Thing Group on IoT</li>
 </ul>
@@ -1156,7 +1187,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-8-5">
+<div id="tabset-9-5">
 <ul>
 <li>Find thing on Greengrass</li>
 </ul>
@@ -1166,7 +1197,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-8-6">
+<div id="tabset-9-6">
 <ul>
 <li>Find Deployment on IoT</li>
 </ul>
@@ -1179,7 +1210,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="login-on-aws-cloud-9" class="slide level2" data-background-color="#40666e">
+<section id="login-on-aws-cloud-9" class="slide level2 aws-background">
 <h2>Login on AWS Cloud 9</h2>
 <ul>
 <li>make sure you add arm cross compile</li>
@@ -1193,7 +1224,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">cd</span> ~/environment/mini-pupper-aws</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="ex">docker-compose</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="upload-docker-image-on-ecr" class="slide level2" data-background-color="#40666e">
+<section id="upload-docker-image-on-ecr" class="slide level2 aws-background">
 <h2>upload docker image on ECR</h2>
 <ul>
 <li>Use ECR commands</li>
@@ -1201,7 +1232,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">ros-humble-greengrass-minipupper</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/copy_ecr.png" class="r-stretch quarto-figure-center"></section>
-<section id="cloud-9-setup-1" class="slide level2" data-background-color="#40666e">
+<section id="cloud-9-setup-1" class="slide level2 aws-background">
 <h2>Cloud 9 Setup</h2>
 <ul>
 <li>revise line 4 with your s3 repository name</li>
@@ -1209,14 +1240,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 
 <img data-src="images/aws_greengrass.png" class="r-stretch quarto-figure-center"></section>
-<section id="docker-compose-build" class="slide level2" data-background-color="#40666e">
+<section id="docker-compose-build" class="slide level2 aws-background">
 <h2>Docker-compose build</h2>
 <ul>
 <li>take about 1300 - 1400 seconds</li>
 </ul>
 
 <img data-src="images/docker-compose-time.png" class="r-stretch quarto-figure-center"></section>
-<section id="run-a-bash-script-in-cloud-9" class="slide level2" data-background-color="#40666e">
+<section id="run-a-bash-script-in-cloud-9" class="slide level2 aws-background">
 <h2>Run a bash script in Cloud 9</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">bash</span> ./awsgreengrass.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
@@ -1230,40 +1261,40 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </section>
-<section id="greengrass-deloyment-to-mini-pupper-v2" class="slide level2" data-background-color="#40666e">
-<h2>Greengrass Deloyment to Mini Pupper v2</h2>
+<section id="greengrass-deployment-to-mini-pupper-v2" class="slide level2 aws-background">
+<h2>Greengrass Deployment to Mini Pupper v2</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">step 1</a></li><li><a href="#tabset-9-2">step 2</a></li><li><a href="#tabset-9-3">step 3</a></li><li><a href="#tabset-9-4">step 4</a></li><li><a href="#tabset-9-5">step 5</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">step 1</a></li><li><a href="#tabset-10-2">step 2</a></li><li><a href="#tabset-10-3">step 3</a></li><li><a href="#tabset-10-4">step 4</a></li><li><a href="#tabset-10-5">step 5</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1">
+<div id="tabset-10-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/green_deploy_1.png" width="1044"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-9-2">
+<div id="tabset-10-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/green_deploy_2.png" width="670"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-9-3">
+<div id="tabset-10-3">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/green_deploy_3.png" width="727"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-9-4">
+<div id="tabset-10-4">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/green_deploy_4.png" width="806"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-9-5">
+<div id="tabset-10-5">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/green_deploy_6.png" width="686"></p>
@@ -1273,19 +1304,19 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="deloyment-on-iot-and-mini-pupper-v2" class="slide level2">
-<h2>Deloyment on IoT and Mini Pupper v2</h2>
+<section id="deployment-on-iot-and-mini-pupper-v2" class="slide level2">
+<h2>Deployment on IoT and Mini Pupper v2</h2>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">IoT deployment</a></li><li><a href="#tabset-10-2">jupyter on Mini Pupper v2</a></li></ul>
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">IoT deployment</a></li><li><a href="#tabset-11-2">jupyter on Mini Pupper v2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-11-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/green_deploy_5.png" width="573"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-11-2">
 <ul>
 <li>you can run the commands in a command terminal</li>
 </ul>
@@ -1299,19 +1330,22 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="deloyment-on-iot-and-mini-pupper-v2-1" class="slide level2">
-<h2>Deloyment on IoT and Mini Pupper v2</h2>
+<section id="deployment-on-iot-and-mini-pupper-v2-1" class="slide level2">
+<h2>Deployment on IoT and Mini Pupper v2</h2>
+<ul>
+<li>wait for about 7-10 minutes</li>
+</ul>
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">IoT deployment</a></li><li><a href="#tabset-11-2">jupyter on Mini Pupper v2</a></li></ul>
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">IoT deployment</a></li><li><a href="#tabset-12-2">jupyter on Mini Pupper v2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1">
+<div id="tabset-12-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/green_deploy_8.png" width="760"></p>
+<p><img data-src="images/green_deploy_9.png" width="760"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-11-2">
+<div id="tabset-12-2">
 <ul>
 <li>check what docker images are available</li>
 </ul>
@@ -1325,19 +1359,19 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="deloyment-on-iot-and-mini-pupper-v2-2" class="slide level2">
-<h2>Deloyment on IoT and Mini Pupper v2</h2>
+<section id="deployment-on-iot-and-mini-pupper-v2-2" class="slide level2">
+<h2>Deployment on IoT and Mini Pupper v2</h2>
 <div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">IoT deployment</a></li><li><a href="#tabset-12-2">jupyter on Mini Pupper v2</a></li></ul>
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">IoT deployment</a></li><li><a href="#tabset-13-2">jupyter on Mini Pupper v2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-12-1">
+<div id="tabset-13-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/green_deploy_9.png" width="683"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-12-2">
+<div id="tabset-13-2">
 <ul>
 <li>check what docker process are available</li>
 </ul>
@@ -1351,26 +1385,26 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="mqtt" class="slide level2" data-background-color="#40666e">
+<section id="mqtt" class="slide level2 aws-background">
 <h2>MQTT</h2>
 <div class="panel-tabset">
-<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">step 1</a></li><li><a href="#tabset-13-2">step 2</a></li><li><a href="#tabset-13-3">step 3</a></li></ul>
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">step 1</a></li><li><a href="#tabset-14-2">step 2</a></li><li><a href="#tabset-14-3">step 3</a></li></ul>
 <div class="tab-content">
-<div id="tabset-13-1">
+<div id="tabset-14-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/mqtt_1.png" width="889"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-13-2">
+<div id="tabset-14-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/mqtt_2.png" width="697"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-13-3">
+<div id="tabset-14-3">
 <ul>
 <li>Also, try <code>my_demo</code></li>
 </ul>
@@ -1383,7 +1417,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="demo-code" class="slide level2">
+<section id="demo-code" class="slide level2 aws-background">
 <h2>Demo Code</h2>
 
 <img data-src="images/check_code.png" width="623" class="r-stretch quarto-figure-center"></section></section>
@@ -1414,15 +1448,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 <div class="panel-tabset">
-<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">Robomaker</a></li><li><a href="#tabset-14-2">DCV</a></li></ul>
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">Robomaker</a></li><li><a href="#tabset-15-2">DCV</a></li></ul>
 <div class="tab-content">
-<div id="tabset-14-1">
+<div id="tabset-15-1">
 <ul>
 <li>A Robomaker approach using <span class="alert">AWS Docker Container Registry</span></li>
 <li>15 vCPU core</li>
 </ul>
 </div>
-<div id="tabset-14-2">
+<div id="tabset-15-2">
 <ul>
 <li>A Cloud 9 Approach</li>
 <li>c4.xlarge (7.5vPU and 4GB)</li>
@@ -1431,12 +1465,12 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="minipupper-aws-dancing-robot" class="slide level2" data-background-color="#40666e">
+<section id="minipupper-aws-dancing-robot" class="slide level2">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">Robomaker</a></li><li><a href="#tabset-15-2">DCV</a></li></ul>
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">Robomaker</a></li><li><a href="#tabset-16-2">DCV</a></li></ul>
 <div class="tab-content">
-<div id="tabset-15-1">
+<div id="tabset-16-1">
 <ul>
 <li>Cloud 9 terminal using the following commands</li>
 </ul>
@@ -1445,7 +1479,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb19-3"><a href="#cb19-3"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-simulation:latest <span class="at">-f</span> Dockerfile-Simulation</span>
 <span id="cb19-4"><a href="#cb19-4"></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-robot:latest <span class="at">-f</span> Dockerfile-Robot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-15-2">
+<div id="tabset-16-2">
 <ul>
 <li>Cloud 9 terminal</li>
 <li>copy and past one line at a time</li>
@@ -1458,28 +1492,40 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="minipupper-aws-dancing-robot-1" class="slide level2" data-background-color="#40666e">
+<section id="minipupper-aws-dancing-robot-1" class="slide level2">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">Robomaker</a></li><li><a href="#tabset-16-2">DCV</a></li></ul>
+<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">Robomaker</a></li><li><a href="#tabset-17-2">DCV</a></li></ul>
 <div class="tab-content">
-<div id="tabset-16-1">
+<div id="tabset-17-1">
 <ul>
-<li>easy way then use <span class="alert">AWS ECR</span> on AWS console (mini-pupper-simulation)</li>
+<li><p>Go to ECR create two repos</p>
+<table>
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><code>mini-pupper-simulation</code></th>
+<th style="text-align: center;"><code>mini-pupper-robot</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img data-src="images/ecr_simulation.png" width="296"></td>
+<td style="text-align: center;"><img data-src="images/ecr_robot.png" width="276"></td>
+</tr>
+</tbody>
+</table></li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-simulation <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>skip step 2, and remove latest with 2.0, and replace <span class="alert">169615523284</span> with your account number</li>
-</ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">docker</span> tag mini-pupper-simulation:latest 169615523284.dkr.ecr.us-east-1.amazonaws.com/mini-pupper-simulation:latest</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="ex">docker</span> push 169615523284.dkr.ecr.us-east-1.amazonaws.com/mini-pupper-simulation:latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-16-2">
+<div id="tabset-17-2">
 <ul>
 <li>Open three Cloud 9 terminals and run the following command in each terminal</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">bash</span> ../scripts/simulation-entrypoint.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">bash</span> ../scripts/simulation-entrypoint.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1487,31 +1533,31 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="minipupper-aws-dancing-robot-2" class="slide level2">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">Robomaker</a></li><li><a href="#tabset-17-2">DCV</a></li></ul>
+<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">Robomaker</a></li><li><a href="#tabset-18-2">DCV</a></li></ul>
 <div class="tab-content">
-<div id="tabset-17-1">
+<div id="tabset-18-1">
 <ul>
-<li><p>Go to <span class="alert">AWS Robomaker</span> in AWS console</p></li>
-<li><p>Go to robomaker setup <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></p></li>
-<li><p>setup simulation job using the robot application and simualtion application from AWS ECR docker instances</p></li>
-</ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Add tool window, set Name to xterm, and Command to /usr/bin/xterm</li>
+<li><p>Go to each repo and push docker instance on ECR (step 1, 3 and 4)</p>
+<table>
+<colgroup>
+<col style="width: 61%">
+<col style="width: 38%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img data-src="images/ecr_push.png" data-fig-align="center" width="360"></td>
+<td style="text-align: center;"><img data-src="images/aws_push.png"></td>
+</tr>
+</tbody>
+</table></li>
 </ul>
 </div>
-<div id="tabset-17-2">
+<div id="tabset-18-2">
 <ul>
 <li>Cloud 9 terminal 1</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="ex">ros2</span> launch mini_pupper_gazebo gazebo.launch.py rviz:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Cloud 9 terminal 2</li>
-</ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> ros-humble-teleop-twist-keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="bu">source</span> ./install/setup.bash</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="ex">ros2</span> launch mini_pupper_gazebo gazebo.launch.py rviz:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1519,23 +1565,50 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="minipupper-aws-dancing-robot-3" class="slide level2">
 <h2>MiniPupper AWS Dancing Robot</h2>
 <div class="panel-tabset">
-<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">Robomaker</a></li><li><a href="#tabset-18-2">DCV</a></li></ul>
+<ul id="tabset-19" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-19-1">Robomaker</a></li><li><a href="#tabset-19-2">DCV</a></li></ul>
 <div class="tab-content">
-<div id="tabset-18-1">
+<div id="tabset-19-1">
+<ul>
+<li><p>Go to <span class="alert">AWS Robomaker</span> in AWS console</p></li>
+<li><p>Go to robomaker setup <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></p></li>
+<li><p>setup simulation job using a robot application and a simualtion application from AWS ECR docker instances</p></li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Add tool window, set Name to xterm, and Command to /usr/bin/xterm</li>
+</ul>
+</div>
+<div id="tabset-19-2">
+<ul>
+<li>Cloud 9 terminal 2</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> ros-humble-teleop-twist-keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="minipupper-aws-dancing-robot-4" class="slide level2">
+<h2>MiniPupper AWS Dancing Robot</h2>
+<div class="panel-tabset">
+<ul id="tabset-20" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-20-1">Robomaker</a></li><li><a href="#tabset-20-2">DCV</a></li></ul>
+<div class="tab-content">
+<div id="tabset-20-1">
 <ul>
 <li>open simulation job</li>
 <li>open xterm app</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="ex">./dancemove.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="ex">./dancemove.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check the dog in the move <span class="button"><a href="#/sec-robomaker-gazebo">click here</a></span></li>
 </ul>
 </div>
-<div id="tabset-18-2">
+<div id="tabset-20-2">
 <ul>
 <li>Cloud 9 terminal 3</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">./dancemove.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="ex">./dancemove.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check the dog in the move</li>
 </ul>
@@ -1543,6 +1616,139 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
+<section id="sec-robomaker-gazebo" class="slide level2">
+<h2>Robomaker Setup</h2>
+<div class="panel-tabset">
+<ul id="tabset-21" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-21-1">1.</a></li><li><a href="#tabset-21-2">2.</a></li><li><a href="#tabset-21-3">3.</a></li><li><a href="#tabset-21-4">4.</a></li><li><a href="#tabset-21-5">5.</a></li><li><a href="#tabset-21-6">6.</a></li><li><a href="#tabset-21-7">7.</a></li><li><a href="#tabset-21-8">8.</a></li><li><a href="#tabset-21-9">9.</a></li><li><a href="#tabset-21-10">10.</a></li><li><a href="#tabset-21-11">11.</a></li><li><a href="#tabset-21-12">12.</a></li></ul>
+<div class="tab-content">
+<div id="tabset-21-1">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_1.png"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_2.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-21-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_3.png" width="569"></p>
+</figure>
+</div>
+<ul>
+<li>give a name <code>mini-pupper-robot-app</code></li>
+</ul>
+</div>
+<div id="tabset-21-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_3_1.png" width="708"></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="ex">ros2,</span> launch, mini_pupper_dance, ndance.launch.py, hardware_connected:=false<span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-21-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_8.png"></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="ex">GAZEBO_MASTER_URI</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="ex">http://ROBOMAKER_SIM_APP_IP:11345</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="ex">ROS_IP</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="ex">ROBOMAKER_SIM_APP_IP</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="ex">ROS_MASTER_URI</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="ex">http://ROBOMAKER_ROBOT_APP_IP:11311</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-21-5">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_3_3.png" width="708"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-21-6">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_add_tool.png" width="708"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-21-7">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_4.png" width="540"></p>
+</figure>
+</div>
+<ul>
+<li>give a name <code>mini-pupper-simulation-app</code></li>
+</ul>
+</div>
+<div id="tabset-21-8">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_7.png" width="827"></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="ex">ros2,</span> launch, mini_pupper_gazebo, gazebo.launch.py, rviz:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-21-9">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_8.png" width="1188"></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">GAZEBO_MASTER_URI</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="ex">http://ROBOMAKER_SIM_APP_IP:11345</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="ex">ROS_IP</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="ex">ROBOMAKER_SIM_APP_IP</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="ex">ROS_MASTER_URI</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="ex">http://ROBOMAKER_ROBOT_APP_IP:11311</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-21-10">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_create_1.png" width="685"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-21-11">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_9.png" width="685"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-21-12">
+<ul>
+<li>Wait for 4-5 minutes</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robomaker_run.png" width="685"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="robomaker-dance" class="slide level2">
+<h2>Robomaker Dance</h2>
+<ul>
+<li>reposition the minipupper in the model list</li>
+<li>type <code>./dancemove.sh</code> in xterm tool</li>
+</ul>
+
+<img data-src="images/robomaker_dance.png" class="r-stretch quarto-figure-center"></section>
 <section id="sec-dvc-gazebo" class="slide level2">
 <h2>DCV Gazebo</h2>
 <div class="columns">
@@ -1579,105 +1785,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="sec-robomaker-gazebo" class="slide level2">
-<h2>Robomaker Setup</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_1.png"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_2.png"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="robomaker-setup-applications" class="slide level2">
-<h2>Robomaker Setup Applications</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_3.png"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/robomaker_4.png" data-fig-align="center"> - give a name <code>mini-pupper-simulation-app</code></p>
-</div>
-</div>
-</section>
-<section id="robomaker-setup-simulation-application" class="slide level2">
-<h2>Robomaker Setup Simulation Application</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_5.png"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_6.png"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="robomaker-simulation-application-options" class="slide level2">
-<h2>Robomaker Simulation Application Options</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_7.png"></p>
-</figure>
-</div>
-<pre><code>ros2, launch, mini_pupper_gazebo, gazebo.launch.py, rviz:=false
-ros2, launch, mini_pupper_dance, ndance.launch.py, hardware_connected:=false</code></pre>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_8.png"></p>
-</figure>
-</div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">GAZEBO_MASTER_URI</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="ex">http://ROBOMAKER_SIM_APP_IP:11345</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a><span class="ex">ROS_IP</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a><span class="ex">ROBOMAKER_SIM_APP_IP</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a><span class="ex">ROS_MASTER_URI</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a><span class="ex">http://ROBOMAKER_ROBOT_APP_IP:11311</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="robomaker-simulation-add-tools" class="slide level2">
-<h2>Robomaker Simulation Add tools</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_11.png"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robomaker_10.png"></p>
-</figure>
-</div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="ex">/usr/bin/xterm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="robomaker-simulation-application-options-1" class="slide level2">
-<h2>Robomaker Simulation Application Options</h2>
-
-<img data-src="images/robomaker_9.png" class="r-stretch quarto-figure-center"></section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
