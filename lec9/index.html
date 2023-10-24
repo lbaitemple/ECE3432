@@ -520,6 +520,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>Offers both stable and rolling-release versions (Leap and Tumbleweed, respectively). Known for its strong focus on ease of use, stability, and comprehensive administration tools.</li>
 </ul>
 </section>
+<section id="wake-up-in-a-shell" class="slide level2">
+<h2>Wake up in a shell</h2>
+
+<img data-src="images/linux/wakeup.jpeg" width="482" class="r-stretch quarto-figure-center"></section>
 <section id="basic-commands-on-linux" class="slide level2">
 <h2>Basic Commands on Linux</h2>
 <ul>
@@ -580,7 +584,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div id="tabset-2-2">
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><strong>User</strong> (2-4th char):</a></li><li><a href="#tabset-1-2"><strong>Group</strong> (5-7th char):</a></li><li><a href="#tabset-1-3"><strong>Other </strong> (8-10th char):</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><strong>User</strong> (2-4th char):</a></li><li><a href="#tabset-1-2"><strong>Group</strong> (5-7th char):</a></li><li><a href="#tabset-1-3"><strong>Other</strong> (8-10th char):</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <ul>
@@ -793,11 +797,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="shell-scripts" class="slide level2">
 <h2>shell scripts</h2>
 <ul>
-<li><p>a text file containing a series of shell commands and other programming constructs that can be executed as a script</p></li>
-<li><p>example</p></li>
+<li>a text file containing a series of shell commands and other programming constructs that can be executed as a script</li>
 </ul>
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># This is a Bash script with a simple condition</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># This is a simple Bash script</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a></span>
 <span id="cb28-4"><a href="#cb28-4"></a><span class="bu">echo</span> <span class="st">"Hello, World!"</span></span>
 <span id="cb28-5"><a href="#cb28-5"></a></span>
@@ -806,17 +809,31 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb28-8"><a href="#cb28-8"></a><span class="va">age</span><span class="op">=</span>30</span>
 <span id="cb28-9"><a href="#cb28-9"></a></span>
 <span id="cb28-10"><a href="#cb28-10"></a><span class="co"># Print variable values</span></span>
-<span id="cb28-11"><a href="#cb28-11"></a><span class="bu">echo</span> <span class="st">"My name is </span><span class="va">$name</span><span class="st"> and I am </span><span class="va">$age</span><span class="st"> years old."</span></span>
-<span id="cb28-12"><a href="#cb28-12"></a></span>
-<span id="cb28-13"><a href="#cb28-13"></a><span class="co"># Define an age threshold</span></span>
-<span id="cb28-14"><a href="#cb28-14"></a><span class="va">age_threshold</span><span class="op">=</span>18</span>
-<span id="cb28-15"><a href="#cb28-15"></a></span>
-<span id="cb28-16"><a href="#cb28-16"></a><span class="co"># Add a condition to check if the person is an adult</span></span>
-<span id="cb28-17"><a href="#cb28-17"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$age</span><span class="st">"</span> <span class="ot">-ge</span> <span class="st">"</span><span class="va">$age_threshold</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb28-18"><a href="#cb28-18"></a>    <span class="bu">echo</span> <span class="st">"I am an adult."</span></span>
-<span id="cb28-19"><a href="#cb28-19"></a><span class="cf">else</span></span>
-<span id="cb28-20"><a href="#cb28-20"></a>    <span class="bu">echo</span> <span class="st">"I am not an adult."</span></span>
-<span id="cb28-21"><a href="#cb28-21"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="bu">echo</span> <span class="st">"My name is </span><span class="va">$name</span><span class="st"> and I am </span><span class="va">$age</span><span class="st"> years old."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="shell-script-example" class="slide level2">
+<h2>Shell script example</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># This is a Bash script with a simple condition</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="bu">echo</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co"># Define variables</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="va">name</span><span class="op">=</span><span class="st">"John"</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="va">age</span><span class="op">=</span>30</span>
+<span id="cb29-9"><a href="#cb29-9"></a></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="co"># Print variable values</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="bu">echo</span> <span class="st">"My name is </span><span class="va">$name</span><span class="st"> and I am </span><span class="va">$age</span><span class="st"> years old."</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="co"># Define an age threshold</span></span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="va">age_threshold</span><span class="op">=</span>18</span>
+<span id="cb29-15"><a href="#cb29-15"></a></span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="co"># Add a condition to check if the person is an adult</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$age</span><span class="st">"</span> <span class="ot">-ge</span> <span class="st">"</span><span class="va">$age_threshold</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb29-18"><a href="#cb29-18"></a>    <span class="bu">echo</span> <span class="st">"I am an adult."</span></span>
+<span id="cb29-19"><a href="#cb29-19"></a><span class="cf">else</span></span>
+<span id="cb29-20"><a href="#cb29-20"></a>    <span class="bu">echo</span> <span class="st">"I am not an adult."</span></span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="shell-excercise" class="slide level2">
 <h2><a href="">Shell Excercise*</a></h2>
