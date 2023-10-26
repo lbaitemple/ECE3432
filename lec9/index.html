@@ -561,7 +561,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>ls: list file in the system</li>
 <li>cd, pwd, mkdir, and rm for navigating the file system.</li>
-</ul></li>
+<li>shortcut commands</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>  <span class="ex">!!</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="ex">!s</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">mkdir</span> <span class="at">-p</span> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="bu">cd</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="bu">cd</span> ~</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="bu">cd</span> <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="file-manipulation" class="slide level2">
@@ -683,67 +690,67 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>software operating system</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">lsb_release</span> <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">lsb_release</span> <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>hardware process type</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">uname</span> <span class="at">-m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">uname</span> <span class="at">-m</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>memory usage</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">free</span> <span class="at">-th</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">free</span> <span class="at">-th</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-2">
 <ul>
 <li>update and upgrade latest software</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">sudo</span> apt update</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">sudo</span> apt upgrade <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">sudo</span> apt upgrade <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>find software available</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">apt-cache</span> search <span class="pp">[</span><span class="ss">keyword</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">apt-cache</span> search <span class="pp">[</span><span class="ss">keyword</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>find software installed</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">dpkg</span> <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">dpkg</span> <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-3">
 <ul>
 <li>check running process</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ps</span> <span class="at">-aux</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ps</span> <span class="at">-aux</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-4">
 <ul>
 <li>IP address</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">ifconfig</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">ifconfig</span> wlan0</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="ex">iwconfig</span> wlan0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">ifconfig</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="ex">ifconfig</span> wlan0</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="ex">iwconfig</span> wlan0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check what ports are open</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">netstat</span> <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">netstat</span> <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-5">
 <ul>
 <li>read a file</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">cat</span> filename</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">more</span> filename</span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">less</span> filename</span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="fu">nano</span> filename</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">cat</span> filename</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">more</span> filename</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">less</span> filename</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">nano</span> filename</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>search a file</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">grep</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">awk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">grep</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">awk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>replace a pattern in a file</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">sed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">sed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -753,7 +760,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li><p>check which shell environment <code>echo $SHELL</code></p></li>
 <li><p>“/bin/bash” for the Bash shell</p></li>
-<li><p>stat up file (.bashrc)</p></li>
+<li><p>start up file (.bashrc) - bash run command file</p></li>
 <li><p>setup environment variables</p></li>
 <li><p>setup alias</p></li>
 </ul>
@@ -763,8 +770,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div>
 <ul>
 <li class="fragment"><p>find out the wifi access point it connected!</p></li>
-<li class="fragment"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">iwconfig</span> wlan0 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li class="fragment"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="ex">iwconfig</span> wlan0 <span class="kw">|</span> <span class="fu">grep</span> SSID <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">':'</span> <span class="at">-f</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="ex">iwconfig</span> wlan0 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ex">iwconfig</span> wlan0 <span class="kw">|</span> <span class="fu">grep</span> SSID <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">':'</span> <span class="at">-f</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </div>
 </section>
@@ -773,48 +780,48 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>a versatile and powerful text processing tool</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ps</span> <span class="at">-aux</span> <span class="op">&gt;</span> process.txt</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">more</span> process.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">ps</span> <span class="at">-aux</span> <span class="op">&gt;</span> process.txt</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">more</span> process.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>example script</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">','</span> <span class="st">'{print $1, $3}'</span> process.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">','</span> <span class="st">'{print $1, $3}'</span> process.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>other example script to manipulate</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">awk</span> <span class="st">'{ sum = $1 + $2; print $0, sum }'</span> data.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">awk</span> <span class="st">'{ sum = $1 + $2; print $0, sum }'</span> data.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sed---stream-editor" class="slide level2">
 <h2>sed - stream editor</h2>
 <ul>
 <li>Search and Replace</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">sed</span> <span class="st">'s/search_pattern/replace_pattern/'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">sed</span> <span class="st">'s/search_pattern/replace_pattern/'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Delete Lines</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">sed</span> <span class="st">'/pattern_to_delete/d'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">sed</span> <span class="st">'/pattern_to_delete/d'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Insert and Append</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">sed</span> <span class="st">'/pattern_to_insert_before/i\text_to_insert'</span> input_file</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">sed</span> <span class="st">'/pattern_to_insert_after/a\text_to_insert'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">sed</span> <span class="st">'/pattern_to_insert_before/i\text_to_insert'</span> input_file</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">sed</span> <span class="st">'/pattern_to_insert_after/a\text_to_insert'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Substitution with Global Flag</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">sed</span> <span class="st">'s/pattern/replacement/g'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">sed</span> <span class="st">'s/pattern/replacement/g'</span> input_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="environment-variable" class="slide level2">
 <h2>environment variable</h2>
 <ul>
 <li>display environment variable</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">env</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">env</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>set environment variable</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="regular-expression---examples" class="slide level2">
 <h2>Regular Expression - examples</h2>
@@ -831,17 +838,17 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>a text file containing a series of shell commands and other programming constructs that can be executed as a script (test.sh)</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># This is a simple Bash script</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="bu">echo</span> <span class="st">"Hello, World!"</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a></span>
-<span id="cb28-6"><a href="#cb28-6"></a><span class="co"># Define variables</span></span>
-<span id="cb28-7"><a href="#cb28-7"></a><span class="va">name</span><span class="op">=</span><span class="st">"John"</span></span>
-<span id="cb28-8"><a href="#cb28-8"></a><span class="va">age</span><span class="op">=</span>30</span>
-<span id="cb28-9"><a href="#cb28-9"></a></span>
-<span id="cb28-10"><a href="#cb28-10"></a><span class="co"># Print variable values</span></span>
-<span id="cb28-11"><a href="#cb28-11"></a><span class="bu">echo</span> <span class="st">"My name is </span><span class="va">$name</span><span class="st"> and I am </span><span class="va">$age</span><span class="st"> years old."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># This is a simple Bash script</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="bu">echo</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co"># Define variables</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="va">name</span><span class="op">=</span><span class="st">"John"</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="va">age</span><span class="op">=</span>30</span>
+<span id="cb29-9"><a href="#cb29-9"></a></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="co"># Print variable values</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="bu">echo</span> <span class="st">"My name is </span><span class="va">$name</span><span class="st"> and I am </span><span class="va">$age</span><span class="st"> years old."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -853,12 +860,12 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="callout-content">
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">chmod</span> +x test.sh</span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="ex">./test.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">chmod</span> +x test.sh</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="ex">./test.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:20%;">
 <p>or</p>
 </div><div class="column" style="width:40%;">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">bash</span> ./test.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">bash</span> ./test.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -867,27 +874,27 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </section>
 <section id="shell-script-example" class="slide level2">
 <h2>Shell script example</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># This is a Bash script with a simple condition</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a></span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="bu">echo</span> <span class="st">"Hello, World!"</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="co"># Define variables</span></span>
-<span id="cb31-7"><a href="#cb31-7"></a><span class="va">name</span><span class="op">=</span><span class="st">"John"</span></span>
-<span id="cb31-8"><a href="#cb31-8"></a><span class="va">age</span><span class="op">=</span>30</span>
-<span id="cb31-9"><a href="#cb31-9"></a></span>
-<span id="cb31-10"><a href="#cb31-10"></a><span class="co"># Print variable values</span></span>
-<span id="cb31-11"><a href="#cb31-11"></a><span class="bu">echo</span> <span class="st">"My name is </span><span class="va">$name</span><span class="st"> and I am </span><span class="va">$age</span><span class="st"> years old."</span></span>
-<span id="cb31-12"><a href="#cb31-12"></a></span>
-<span id="cb31-13"><a href="#cb31-13"></a><span class="co"># Define an age threshold</span></span>
-<span id="cb31-14"><a href="#cb31-14"></a><span class="va">age_threshold</span><span class="op">=</span>18</span>
-<span id="cb31-15"><a href="#cb31-15"></a></span>
-<span id="cb31-16"><a href="#cb31-16"></a><span class="co"># Add a condition to check if the person is an adult</span></span>
-<span id="cb31-17"><a href="#cb31-17"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$age</span><span class="st">"</span> <span class="ot">-ge</span> <span class="st">"</span><span class="va">$age_threshold</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb31-18"><a href="#cb31-18"></a>    <span class="bu">echo</span> <span class="st">"I am an adult."</span></span>
-<span id="cb31-19"><a href="#cb31-19"></a><span class="cf">else</span></span>
-<span id="cb31-20"><a href="#cb31-20"></a>    <span class="bu">echo</span> <span class="st">"I am not an adult."</span></span>
-<span id="cb31-21"><a href="#cb31-21"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># This is a Bash script with a simple condition</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="bu">echo</span> <span class="st">"Hello, World!"</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="co"># Define variables</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="va">name</span><span class="op">=</span><span class="st">"John"</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="va">age</span><span class="op">=</span>30</span>
+<span id="cb32-9"><a href="#cb32-9"></a></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="co"># Print variable values</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a><span class="bu">echo</span> <span class="st">"My name is </span><span class="va">$name</span><span class="st"> and I am </span><span class="va">$age</span><span class="st"> years old."</span></span>
+<span id="cb32-12"><a href="#cb32-12"></a></span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="co"># Define an age threshold</span></span>
+<span id="cb32-14"><a href="#cb32-14"></a><span class="va">age_threshold</span><span class="op">=</span>18</span>
+<span id="cb32-15"><a href="#cb32-15"></a></span>
+<span id="cb32-16"><a href="#cb32-16"></a><span class="co"># Add a condition to check if the person is an adult</span></span>
+<span id="cb32-17"><a href="#cb32-17"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$age</span><span class="st">"</span> <span class="ot">-ge</span> <span class="st">"</span><span class="va">$age_threshold</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb32-18"><a href="#cb32-18"></a>    <span class="bu">echo</span> <span class="st">"I am an adult."</span></span>
+<span id="cb32-19"><a href="#cb32-19"></a><span class="cf">else</span></span>
+<span id="cb32-20"><a href="#cb32-20"></a>    <span class="bu">echo</span> <span class="st">"I am not an adult."</span></span>
+<span id="cb32-21"><a href="#cb32-21"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="shell-excercise" class="slide level2">
 <h2><a href="">Shell Excercise*</a></h2>
