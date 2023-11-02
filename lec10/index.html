@@ -778,7 +778,7 @@ cherry</code></pre>
 </ul>
 <div class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
-<pre><code>{'apple', 'banana', 'cherry'}</code></pre>
+<pre><code>{'apple', 'cherry', 'banana'}</code></pre>
 </div>
 </div>
 <ul>
@@ -787,8 +787,8 @@ cherry</code></pre>
 <div class="cell" data-execution_count="16">
 <div class="cell-output cell-output-stdout">
 <pre><code>apple
-banana
-cherry</code></pre>
+cherry
+banana</code></pre>
 </div>
 </div>
 <ul>
@@ -796,7 +796,7 @@ cherry</code></pre>
 </ul>
 <div class="cell" data-execution_count="17">
 <div class="cell-output cell-output-stdout">
-<pre><code>{'apple', 'banana', 'orange', 'cherry'}</code></pre>
+<pre><code>{'orange', 'apple', 'cherry', 'banana'}</code></pre>
 </div>
 </div>
 </div>
@@ -823,7 +823,7 @@ cherry</code></pre>
 </ul>
 <div class="cell" data-execution_count="18">
 <div class="cell-output cell-output-stdout">
-<pre><code>{'apple', 'orange', 'cherry'}</code></pre>
+<pre><code>{'orange', 'apple', 'cherry'}</code></pre>
 </div>
 </div>
 <ul>
@@ -832,8 +832,8 @@ cherry</code></pre>
 <div class="cell" data-execution_count="19">
 <div class="cell-output cell-output-stdout">
 <pre><code>apple
-banana
-cherry</code></pre>
+cherry
+banana</code></pre>
 </div>
 </div>
 </div>
@@ -1098,7 +1098,7 @@ Li
 <section id="python-package" class="slide level2">
 <h2>Python package</h2>
 <ul>
-<li>standard package <a href="https://pypi.org/">https://pypi.org/</a></li>
+<li>standard package <a href="https://pypi.org/" class="uri">https://pypi.org/</a></li>
 </ul>
 <pre><code>pip install package
 pip show package</code></pre>
@@ -1111,35 +1111,72 @@ pip show package</code></pre>
 </ul>
 <div class="sourceCode" id="cb62"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1"></a><span class="ex">pip</span> show MangDang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="json-file" class="slide level2">
+<h2>json file</h2>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">installation</a></li><li><a href="#tabset-11-2">example</a></li><li><a href="#tabset-11-3">excel to json</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1"></a><span class="ex">pip</span> install json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-11-2">
+<ul>
+<li><p>Here is <a href="files/example.json" target="_blank">an example json file</a></p></li>
+<li><p>Save the following into a python file <code>pexample.py</code></p></li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="im">import</span> json</span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'example.json'</span>) <span class="im">as</span> json_data:</span>
+<span id="cb64-3"><a href="#cb64-3"></a>  d <span class="op">=</span> json.load(json_data)</span>
+<span id="cb64-4"><a href="#cb64-4"></a>  </span>
+<span id="cb64-5"><a href="#cb64-5"></a><span class="bu">print</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>runt the file</li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1"></a><span class="ex">python3</span> pexample.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-11-3">
+<ul>
+<li>exce file <a href="files/example.xls" target="_blank">example.xls</a></li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1"></a><span class="ex">pip</span> install excel2json-3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>conversion</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a><span class="im">import</span> excel2json</span>
+<span id="cb67-2"><a href="#cb67-2"></a>excel2json.convert_from_file(<span class="st">'example.xls'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="python-excercise" class="slide level2">
 <h2><a href="https://github.com/lbaitemple/mini-pupper-aws/blob/main/robot_ws/src/mini_pupper_dance/scripts/dance.py">Python Excercise*</a></h2>
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Background</a></li><li><a href="#tabset-11-2">Requirement</a></li><li><a href="#tabset-11-3">Check off</a></li></ul>
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">Background</a></li><li><a href="#tabset-12-2">Requirement</a></li><li><a href="#tabset-12-3">Check off</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1">
+<div id="tabset-12-1">
 <ul>
 <li>In robot dance script - <a href="https://github.com/lbaitemple/mini-pupper-aws/blob/main/robot_ws/src/mini_pupper_dance/routines/demo.py" target="_blank">demo.py</a>,<br>
 </li>
 </ul>
-<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1"></a><span class="ex">dance_commands</span> = [</span>
-<span id="cb63-2"><a href="#cb63-2"></a><span class="st">'move_forward'</span><span class="ex">,</span> <span class="st">'stop'</span>, <span class="st">'look_down'</span>, <span class="st">'look_up'</span> , ...]</span>
-<span id="cb63-3"><a href="#cb63-3"></a><span class="ex">intervale_time</span> = 0.5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb68-1"><a href="#cb68-1"></a><span class="ex">dance_commands</span> = [</span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="st">'move_forward'</span><span class="ex">,</span> <span class="st">'stop'</span>, <span class="st">'look_down'</span>, <span class="st">'look_up'</span> , ...]</span>
+<span id="cb68-3"><a href="#cb68-3"></a><span class="ex">intervale_time</span> = 0.5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>we want to change it as</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1"></a><span class="ex">dance_commands</span> = [</span>
-<span id="cb64-2"><a href="#cb64-2"></a><span class="st">'move_forward:0.3:0.5'</span><span class="ex">,</span> <span class="st">'stop:0.3:0.3'</span>, <span class="st">'look_down:0.3:0.4'</span>, <span class="st">'look_up:0.2:0.2'</span>, ... </span>
-<span id="cb64-3"><a href="#cb64-3"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb69-1"><a href="#cb69-1"></a><span class="ex">dance_commands</span> = [</span>
+<span id="cb69-2"><a href="#cb69-2"></a><span class="st">'move_forward:0.3:0.5'</span><span class="ex">,</span> <span class="st">'stop:0.3:0.3'</span>, <span class="st">'look_down:0.3:0.4'</span>, <span class="st">'look_up:0.2:0.2'</span>, ... </span>
+<span id="cb69-3"><a href="#cb69-3"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-11-2">
+<div id="tabset-12-2">
 <ul>
 <li>write a python function that convert the dance_commands variable as</li>
 </ul>
-<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1"></a><span class="ex">processed_dance_commands</span> = [</span>
-<span id="cb65-2"><a href="#cb65-2"></a>    <span class="ex">{</span><span class="st">'action'</span><span class="ex">:</span> <span class="st">'move_forward'</span>,  <span class="st">'value'</span>: 0.3,  <span class="st">'interval'</span>: 0.5 },</span>
-<span id="cb65-3"><a href="#cb65-3"></a>    <span class="ex">{</span><span class="st">'action'</span><span class="ex">:</span> <span class="st">'stop'</span>,  <span class="st">'value'</span>: 0.3, <span class="st">'interval'</span>: 0.3 },</span>
-<span id="cb65-4"><a href="#cb65-4"></a>     <span class="ex">...</span></span>
-<span id="cb65-5"><a href="#cb65-5"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb70-1"><a href="#cb70-1"></a><span class="ex">processed_dance_commands</span> = [</span>
+<span id="cb70-2"><a href="#cb70-2"></a>    <span class="ex">{</span><span class="st">'action'</span><span class="ex">:</span> <span class="st">'move_forward'</span>,  <span class="st">'value'</span>: 0.3,  <span class="st">'interval'</span>: 0.5 },</span>
+<span id="cb70-3"><a href="#cb70-3"></a>    <span class="ex">{</span><span class="st">'action'</span><span class="ex">:</span> <span class="st">'stop'</span>,  <span class="st">'value'</span>: 0.3, <span class="st">'interval'</span>: 0.3 },</span>
+<span id="cb70-4"><a href="#cb70-4"></a>     <span class="ex">...</span></span>
+<span id="cb70-5"><a href="#cb70-5"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-11-3">
+<div id="tabset-12-3">
 <ul>
 <li>Demonstrate your modified python script and installed library</li>
 <li>How do you access the last element of new variable</li>
