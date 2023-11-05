@@ -427,7 +427,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="callout-content">
 <p>As the best practice in ROS is to design software as a collection of small programs, a communication mechanism between software is necessary and is provided by ROS.</p>
 <ul>
-<li><strong>ROS master</strong>: which is a process to facilitate the communication between robotics programs.</li>
+<li><strong>ROS master</strong>: which is a process to facilitate the communication between robotics programs. (ROS2 no need to start a ros core)</li>
 <li><strong>ROS nodes</strong>: a running instance of a ROS program implementing some robotics components.</li>
 <li><strong>ROS topics</strong>: named buses over which nodes exchange typed messages.</li>
 <li><strong>ROS messages</strong>: containing the information.</li>
@@ -435,6 +435,24 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </div>
+</section>
+<section id="install-ros2-natively-on-minipupper" class="slide level2">
+<h2>Install ROS2 natively on minipupper</h2>
+<ul>
+<li>get most updated source from github</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">cd</span> ~/mangdang</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>if not mangdang folder</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>run the following code and wait for 20 mintues</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">cd</span> ~/mangdang</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">bash</span> ros2-humble-desktop-main.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ros-standard-message" class="slide level2">
 <h2>ROS Standard Message</h2>
@@ -449,27 +467,27 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>create a <a href="https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">workspace (dev_ws)</a></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/environment/dev_ws/src</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="bu">cd</span> ~/environment/dev_ws/src</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/environment/dev_ws/src</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="bu">cd</span> ~/environment/dev_ws/src</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-2">
 <ul>
 <li>create a package (talker) <a href="https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><package_name></package_name></a></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python talker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python talker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Resolve dependencies</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">cd</span> ..</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">rosdep</span> update</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">rosdep</span> install <span class="at">-i</span> <span class="at">--from-path</span> src <span class="at">--rosdistro</span> humble <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">rosdep</span> update</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="ex">rosdep</span> install <span class="at">-i</span> <span class="at">--from-path</span> src <span class="at">--rosdistro</span> humble <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-3">
 <ul>
 <li>Write a <a href="https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html#write-the-publisher-node">publisher package</a></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">cd</span> src/talker/talker</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">wget</span> https://raw.githubusercontent.com/ros2/examples/foxy/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">cd</span> src/talker/talker</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">wget</span> https://raw.githubusercontent.com/ros2/examples/foxy/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>setup.py and setup.cfg</li>
 </ul>
@@ -480,29 +498,29 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>add the following two lines at lines 2 and 3 in setup.py</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">import</span> os</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="ex">from</span> glob import glob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">import</span> os</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">from</span> glob import glob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-2">
 <ul>
 <li>add the following two lines at lines 15 in setup.py</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a>        <span class="kw">(</span><span class="ex">os.path.join</span><span class="er">(</span><span class="st">'share'</span><span class="ex">,</span> package_name, <span class="st">'launch'</span><span class="kw">)</span><span class="ex">,</span> glob<span class="er">(</span><span class="st">'launch/*.launch.py'</span><span class="kw">))</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a>        <span class="kw">(</span><span class="ex">os.path.join</span><span class="er">(</span><span class="st">'share'</span><span class="ex">,</span> package_name, <span class="st">'launch'</span><span class="kw">)</span><span class="ex">,</span> glob<span class="er">(</span><span class="st">'launch/*.launch.py'</span><span class="kw">))</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-3">
 <ul>
 <li>Add the following line as an entry point (setup.py) - line 26</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>            <span class="st">'talker = talker.publisher_member_function:main'</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>            <span class="st">'talker = talker.publisher_member_function:main'</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-4">
 <ul>
 <li>Check setup.cfg</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">[develop]</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">script-dir=</span><span class="va">$base</span><span class="ex">/lib/my_package</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="ex">[install]</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="ex">install-scripts=</span><span class="va">$base</span><span class="ex">/lib/my_package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">[develop]</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="ex">script-dir=</span><span class="va">$base</span><span class="ex">/lib/my_package</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="ex">[install]</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="ex">install-scripts=</span><span class="va">$base</span><span class="ex">/lib/my_package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -511,48 +529,48 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>create a launch folder, and a new launch file talker.launch.py</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">from</span> launch import LaunchDescription</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="ex">from</span> launch_ros.actions import Node</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="ex">def</span> generate_launch_description<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">ld</span> = LaunchDescription<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="ex">node1</span> = Node<span class="er">(</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>              <span class="va">package</span><span class="op">=</span><span class="st">'talker'</span>,</span>
-<span id="cb9-8"><a href="#cb9-8"></a>              <span class="va">namespace</span><span class="op">=</span><span class="st">'raspberrypi'</span>,</span>
-<span id="cb9-9"><a href="#cb9-9"></a>              <span class="va">executable</span><span class="op">=</span><span class="st">'talker'</span>,</span>
-<span id="cb9-10"><a href="#cb9-10"></a>              <span class="va">name</span><span class="op">=</span><span class="st">'sim'</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>          <span class="kw">)</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a>  </span>
-<span id="cb9-13"><a href="#cb9-13"></a>  <span class="ex">ld.add_action</span><span class="er">(</span><span class="ex">node1</span><span class="kw">)</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a>  </span>
-<span id="cb9-15"><a href="#cb9-15"></a>  <span class="cf">return</span> <span class="fu">ld</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">from</span> launch import LaunchDescription</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">from</span> launch_ros.actions import Node</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="ex">def</span> generate_launch_description<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">ld</span> = LaunchDescription<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="ex">node1</span> = Node<span class="er">(</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>              <span class="va">package</span><span class="op">=</span><span class="st">'talker'</span>,</span>
+<span id="cb12-8"><a href="#cb12-8"></a>              <span class="va">namespace</span><span class="op">=</span><span class="st">'raspberrypi'</span>,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>              <span class="va">executable</span><span class="op">=</span><span class="st">'talker'</span>,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>              <span class="va">name</span><span class="op">=</span><span class="st">'sim'</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>          <span class="kw">)</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>  </span>
+<span id="cb12-13"><a href="#cb12-13"></a>  <span class="ex">ld.add_action</span><span class="er">(</span><span class="ex">node1</span><span class="kw">)</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>  </span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="cf">return</span> <span class="fu">ld</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-5">
 <ul>
 <li>In package.xml, you need to add the following to line 14</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>rclpy<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>std_msgs<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>ros2launch<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>rclpy<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>std_msgs<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>ros2launch<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-6">
 <ul>
 <li>compile and run the ROS2 code</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">pip</span> install setuptools==58.2.0</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">cd</span> ~/environment/dev_ws/</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="ex">colcon</span> build</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="ex">ros2</span> launch talker talker.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">pip</span> install setuptools==58.2.0</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="bu">cd</span> ~/environment/dev_ws/</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="ex">colcon</span> build</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="bu">source</span> ./install/setup.bash</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="ex">ros2</span> launch talker talker.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-7">
 <ul>
 <li>another way to compile and run the node</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">cd</span> ~/environment/dev_ws/</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">colcon</span> build <span class="at">--symlink-install</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="ex">ros2</span> run talker talker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="bu">cd</span> ~/environment/dev_ws/</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="ex">colcon</span> build <span class="at">--symlink-install</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="bu">source</span> ./install/setup.bash</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="ex">ros2</span> run talker talker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -573,28 +591,44 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="how-to-use-ros2" class="slide level2">
 <h2>How to use ROS2</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">topics</a></li><li><a href="#tabset-3-2">nodes</a></li><li><a href="#tabset-3-3">interface</a></li><li><a href="#tabset-3-4">serivces</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">topics</a></li><li><a href="#tabset-3-2">nodes</a></li><li><a href="#tabset-3-3">launch</a></li><li><a href="#tabset-3-4">interface/msg*</a></li><li><a href="#tabset-3-5">serivces*</a></li><li><a href="#tabset-3-6">actions**</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">ros2</span> topic list</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="ex">ros2</span> topic info <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="ex">ros2</span> topic pub <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span> msg_type  data</span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="ex">ros2</span> topic echo <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">ros2</span> topic list</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="ex">ros2</span> topic info <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="ex">ros2</span> topic pub <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span> msg_type  data</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="ex">ros2</span> topic echo <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-2">
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">ros2</span> node list</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="ex">ros2</span> node info <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">ros2</span> node list</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="ex">ros2</span> node info <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-3">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">ros2</span> node list</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="ex">ros2</span> node info <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>ros2 launch filename.launch.py</code></pre>
+<ul>
+<li>knowing the executable share folder location</li>
+<li>setup.py to include exectutable files</li>
+</ul>
 </div>
 <div id="tabset-3-4">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">ros2</span> service list</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="ex">ros2</span> service type <span class="pp">[</span><span class="ss">service_name</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ex">ros2</span> interface list</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="ex">ros2</span> interface info <span class="pp">[</span><span class="ss">topic</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-5">
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ex">ros2</span> service list</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="ex">ros2</span> service type <span class="pp">[</span><span class="ss">service_name</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-6">
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="ex">ros2</span> action list</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="ex">ros2</span> action info <span class="pp">[</span><span class="ss">service_name</span><span class="pp">]</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="ex">ros2</span> action send_goal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
+<ul>
+<li>* should know how to use it, but not knowing how to write codes</li>
+<li>** should know what it is and its purpose</li>
+</ul>
 </section>
 <section id="how-to-write-a-ros-interface" class="slide level2">
 <h2>How to write a <a href="https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">ROS interface</a></h2>
@@ -602,41 +636,41 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Interface</a></li><li><a href="#tabset-4-2">srv</a></li><li><a href="#tabset-4-3">CMakeLists.txt</a></li><li><a href="#tabset-4-4">package.xml</a></li><li><a href="#tabset-4-5">Compile</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_cmake  example_interfaces</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_cmake  example_interfaces</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-2">
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src/example_interfaces</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">mkdir</span> srv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src/example_interfaces</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">mkdir</span> srv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>add the following in <code>srv/AddTwoInts.srv</code></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ex">int64</span> a</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="ex">int64</span> b</span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="ex">---</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="ex">int64</span> sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="ex">int64</span> a</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="ex">int64</span> b</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="ex">---</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="ex">int64</span> sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-3">
 <ul>
 <li>add the following lines in CMakeLists.txt to line 13</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="ex">find_package</span><span class="er">(</span><span class="ex">rosidl_default_generators</span> REQUIRED<span class="kw">)</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="ex">rosidl_generate_interfaces</span><span class="er">(</span><span class="va">${PROJECT_NAME}</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="st">"srv/AddTwoInts.srv"</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="ex">find_package</span><span class="er">(</span><span class="ex">rosidl_default_generators</span> REQUIRED<span class="kw">)</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="ex">rosidl_generate_interfaces</span><span class="er">(</span><span class="va">${PROJECT_NAME}</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="st">"srv/AddTwoInts.srv"</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-4">
 <ul>
 <li>add the following in package.xml line 11</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">&lt;</span>buildtool_depend<span class="op">&gt;</span>rosidl_default_generators<span class="op">&lt;</span>/buildtool_depend<span class="op">&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>rosidl_default_runtime<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="op">&lt;</span>member_of_group<span class="op">&gt;</span>rosidl_interface_packages<span class="op">&lt;</span>/member_of_group<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">&lt;</span>buildtool_depend<span class="op">&gt;</span>rosidl_default_generators<span class="op">&lt;</span>/buildtool_depend<span class="op">&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="op">&lt;</span>exec_depend<span class="op">&gt;</span>rosidl_default_runtime<span class="op">&lt;</span>/exec_depend<span class="op">&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="op">&lt;</span>member_of_group<span class="op">&gt;</span>rosidl_interface_packages<span class="op">&lt;</span>/member_of_group<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-5">
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="bu">cd</span> ~/environment/dev_ws/</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> example_interfaces</span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="bu">source</span> install/setup.bash</span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="ex">ros2</span> interface show example_interfaces/srv/AddTwoInts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">cd</span> ~/environment/dev_ws/</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> example_interfaces</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="bu">source</span> install/setup.bash</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="ex">ros2</span> interface show example_interfaces/srv/AddTwoInts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -644,60 +678,232 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="how-to-write-a-ros-service" class="slide level2">
 <h2>How to write a <a href="https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">ROS service</a></h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">service</a></li><li><a href="#tabset-5-2">package.xml</a></li><li><a href="#tabset-5-3">main</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">service</a></li><li><a href="#tabset-5-2">package.xml</a></li><li><a href="#tabset-5-3">service code</a></li><li><a href="#tabset-5-4">client code</a></li><li><a href="#tabset-5-5">setup.py</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python py_srvcli <span class="at">--dependencies</span> rclpy example_interfaces</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python py_srvcli <span class="at">--dependencies</span> rclpy example_interfaces</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-5-2">
 <ul>
 <li>update the file as you see needed</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">&lt;</span>description<span class="op">&gt;</span>Python <span class="ex">client</span> server tutorial<span class="op">&lt;</span>/description<span class="op">&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="op">&lt;</span>maintainer <span class="va">email</span><span class="op">=</span><span class="st">"you@email.com"</span><span class="op">&gt;</span>Your <span class="ex">Name</span><span class="op">&lt;</span>/maintainer<span class="op">&gt;</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="op">&lt;</span>license<span class="op">&gt;</span>Apache <span class="ex">License</span> 2.0<span class="op">&lt;</span>/license<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">&lt;</span>description<span class="op">&gt;</span>Python <span class="ex">client</span> server tutorial<span class="op">&lt;</span>/description<span class="op">&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="op">&lt;</span>maintainer <span class="va">email</span><span class="op">=</span><span class="st">"you@email.com"</span><span class="op">&gt;</span>Your <span class="ex">Name</span><span class="op">&lt;</span>/maintainer<span class="op">&gt;</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="op">&lt;</span>license<span class="op">&gt;</span>Apache <span class="ex">License</span> 2.0<span class="op">&lt;</span>/license<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-5-3">
 <ul>
 <li>create a file <code>service_member_function.py</code></li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="bu">cd</span> py_srvcli/py_srvcli </span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">touch</span> service_member_function.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">cd</span> py_srvcli/py_srvcli </span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">touch</span> service_member_function.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>add the following into the file</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="ex">from</span> example_interfaces.srv import AddTwoInts</span>
-<span id="cb26-2"><a href="#cb26-2"></a></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="ex">import</span> rclpy</span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="ex">from</span> rclpy.node import Node</span>
-<span id="cb26-5"><a href="#cb26-5"></a></span>
-<span id="cb26-6"><a href="#cb26-6"></a></span>
-<span id="cb26-7"><a href="#cb26-7"></a><span class="ex">class</span> MinimalService<span class="er">(</span><span class="ex">Node</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb26-8"><a href="#cb26-8"></a></span>
-<span id="cb26-9"><a href="#cb26-9"></a>    <span class="ex">def</span> __init__<span class="er">(</span><span class="ex">self</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb26-10"><a href="#cb26-10"></a>        <span class="fu">super()</span><span class="ex">.__init__</span><span class="er">(</span><span class="st">'minimal_service'</span><span class="kw">)</span></span>
-<span id="cb26-11"><a href="#cb26-11"></a>        <span class="ex">self.srv</span> = self.create_service<span class="er">(</span><span class="ex">AddTwoInts,</span> <span class="st">'add_two_ints'</span>, self.add_two_ints_callback<span class="kw">)</span></span>
-<span id="cb26-12"><a href="#cb26-12"></a></span>
-<span id="cb26-13"><a href="#cb26-13"></a>    <span class="ex">def</span> add_two_ints_callback<span class="er">(</span><span class="ex">self,</span> request, response<span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb26-14"><a href="#cb26-14"></a>        <span class="ex">response.sum</span> = request.a + request.b</span>
-<span id="cb26-15"><a href="#cb26-15"></a>        <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Incoming request\na: %d b: %d'</span> % <span class="er">(</span><span class="ex">request.a,</span> request.b<span class="kw">))</span></span>
-<span id="cb26-16"><a href="#cb26-16"></a></span>
-<span id="cb26-17"><a href="#cb26-17"></a>        <span class="cf">return</span> <span class="ex">response</span></span>
-<span id="cb26-18"><a href="#cb26-18"></a></span>
-<span id="cb26-19"><a href="#cb26-19"></a></span>
-<span id="cb26-20"><a href="#cb26-20"></a><span class="ex">def</span> main<span class="er">(</span><span class="va">args</span><span class="op">=</span>None<span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb26-21"><a href="#cb26-21"></a>    <span class="ex">rclpy.init</span><span class="er">(</span><span class="va">args</span><span class="op">=</span>args<span class="kw">)</span></span>
-<span id="cb26-22"><a href="#cb26-22"></a></span>
-<span id="cb26-23"><a href="#cb26-23"></a>    <span class="ex">minimal_service</span> = MinimalService<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb26-24"><a href="#cb26-24"></a></span>
-<span id="cb26-25"><a href="#cb26-25"></a>    <span class="ex">rclpy.spin</span><span class="er">(</span><span class="ex">minimal_service</span><span class="kw">)</span></span>
-<span id="cb26-26"><a href="#cb26-26"></a></span>
-<span id="cb26-27"><a href="#cb26-27"></a>    <span class="fu">rclpy.shutdown()</span></span>
-<span id="cb26-28"><a href="#cb26-28"></a></span>
-<span id="cb26-29"><a href="#cb26-29"></a></span>
-<span id="cb26-30"><a href="#cb26-30"></a><span class="cf">if</span> <span class="ex">__name__</span> == <span class="st">'__main__'</span>:</span>
-<span id="cb26-31"><a href="#cb26-31"></a>    <span class="fu">main()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="ex">from</span> example_interfaces.srv import AddTwoInts</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="ex">import</span> rclpy</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="ex">from</span> rclpy.node import Node</span>
+<span id="cb31-5"><a href="#cb31-5"></a></span>
+<span id="cb31-6"><a href="#cb31-6"></a></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="ex">class</span> MinimalService<span class="er">(</span><span class="ex">Node</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a></span>
+<span id="cb31-9"><a href="#cb31-9"></a>    <span class="ex">def</span> __init__<span class="er">(</span><span class="ex">self</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a>        <span class="fu">super()</span><span class="ex">.__init__</span><span class="er">(</span><span class="st">'minimal_service'</span><span class="kw">)</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a>        <span class="ex">self.srv</span> = self.create_service<span class="er">(</span><span class="ex">AddTwoInts,</span> <span class="st">'add_two_ints'</span>, self.add_two_ints_callback<span class="kw">)</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a></span>
+<span id="cb31-13"><a href="#cb31-13"></a>    <span class="ex">def</span> add_two_ints_callback<span class="er">(</span><span class="ex">self,</span> request, response<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a>        <span class="ex">response.sum</span> = request.a + request.b</span>
+<span id="cb31-15"><a href="#cb31-15"></a>        <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Incoming request\na: %d b: %d'</span> % <span class="er">(</span><span class="ex">request.a,</span> request.b<span class="kw">))</span></span>
+<span id="cb31-16"><a href="#cb31-16"></a></span>
+<span id="cb31-17"><a href="#cb31-17"></a>        <span class="cf">return</span> <span class="ex">response</span></span>
+<span id="cb31-18"><a href="#cb31-18"></a></span>
+<span id="cb31-19"><a href="#cb31-19"></a></span>
+<span id="cb31-20"><a href="#cb31-20"></a><span class="ex">def</span> main<span class="er">(</span><span class="va">args</span><span class="op">=</span>None<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb31-21"><a href="#cb31-21"></a>    <span class="ex">rclpy.init</span><span class="er">(</span><span class="va">args</span><span class="op">=</span>args<span class="kw">)</span></span>
+<span id="cb31-22"><a href="#cb31-22"></a></span>
+<span id="cb31-23"><a href="#cb31-23"></a>    <span class="ex">minimal_service</span> = MinimalService<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb31-24"><a href="#cb31-24"></a></span>
+<span id="cb31-25"><a href="#cb31-25"></a>    <span class="ex">rclpy.spin</span><span class="er">(</span><span class="ex">minimal_service</span><span class="kw">)</span></span>
+<span id="cb31-26"><a href="#cb31-26"></a></span>
+<span id="cb31-27"><a href="#cb31-27"></a>    <span class="fu">rclpy.shutdown()</span></span>
+<span id="cb31-28"><a href="#cb31-28"></a></span>
+<span id="cb31-29"><a href="#cb31-29"></a></span>
+<span id="cb31-30"><a href="#cb31-30"></a><span class="cf">if</span> <span class="ex">__name__</span> == <span class="st">'__main__'</span>:</span>
+<span id="cb31-31"><a href="#cb31-31"></a>    <span class="fu">main()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-4">
+<ul>
+<li>create a file <code>client_member_function.py</code></li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">cd</span> py_srvcli/py_srvcli </span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">touch</span> client_member_function.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>add the following into the file</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="ex">import</span> sys</span>
+<span id="cb33-2"><a href="#cb33-2"></a></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="ex">from</span> example_interfaces.srv import AddTwoInts</span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="ex">import</span> rclpy</span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="ex">from</span> rclpy.node import Node</span>
+<span id="cb33-6"><a href="#cb33-6"></a></span>
+<span id="cb33-7"><a href="#cb33-7"></a></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="ex">class</span> MinimalClientAsync<span class="er">(</span><span class="ex">Node</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a></span>
+<span id="cb33-10"><a href="#cb33-10"></a>    <span class="ex">def</span> __init__<span class="er">(</span><span class="ex">self</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb33-11"><a href="#cb33-11"></a>        <span class="fu">super()</span><span class="ex">.__init__</span><span class="er">(</span><span class="st">'minimal_client_async'</span><span class="kw">)</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a>        <span class="ex">self.cli</span> = self.create_client<span class="er">(</span><span class="ex">AddTwoInts,</span> <span class="st">'add_two_ints'</span><span class="kw">)</span></span>
+<span id="cb33-13"><a href="#cb33-13"></a>        <span class="cf">while</span> <span class="ex">not</span> self.cli.wait_for_service<span class="er">(</span><span class="va">timeout_sec</span><span class="op">=</span>1.0<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a>            <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'service not available, waiting again...'</span><span class="kw">)</span></span>
+<span id="cb33-15"><a href="#cb33-15"></a>        <span class="ex">self.req</span> = AddTwoInts.Request<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb33-16"><a href="#cb33-16"></a></span>
+<span id="cb33-17"><a href="#cb33-17"></a>    <span class="ex">def</span> send_request<span class="er">(</span><span class="ex">self,</span> a, b<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb33-18"><a href="#cb33-18"></a>        <span class="ex">self.req.a</span> = a</span>
+<span id="cb33-19"><a href="#cb33-19"></a>        <span class="ex">self.req.b</span> = b</span>
+<span id="cb33-20"><a href="#cb33-20"></a>        <span class="ex">self.future</span> = self.cli.call_async<span class="er">(</span><span class="ex">self.req</span><span class="kw">)</span></span>
+<span id="cb33-21"><a href="#cb33-21"></a>        <span class="ex">rclpy.spin_until_future_complete</span><span class="er">(</span><span class="ex">self,</span> self.future<span class="kw">)</span></span>
+<span id="cb33-22"><a href="#cb33-22"></a>        <span class="cf">return</span> <span class="fu">self.future.result()</span></span>
+<span id="cb33-23"><a href="#cb33-23"></a></span>
+<span id="cb33-24"><a href="#cb33-24"></a></span>
+<span id="cb33-25"><a href="#cb33-25"></a><span class="ex">def</span> main<span class="er">(</span><span class="va">args</span><span class="op">=</span>None<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb33-26"><a href="#cb33-26"></a>    <span class="ex">rclpy.init</span><span class="er">(</span><span class="va">args</span><span class="op">=</span>args<span class="kw">)</span></span>
+<span id="cb33-27"><a href="#cb33-27"></a></span>
+<span id="cb33-28"><a href="#cb33-28"></a>    <span class="ex">minimal_client</span> = MinimalClientAsync<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb33-29"><a href="#cb33-29"></a>    <span class="ex">response</span> = minimal_client.send_request<span class="er">(</span><span class="ex">int</span><span class="er">(</span><span class="ex">sys.argv[1]</span><span class="kw">)</span><span class="ex">,</span> int<span class="er">(</span><span class="ex">sys.argv[2]</span><span class="kw">))</span></span>
+<span id="cb33-30"><a href="#cb33-30"></a>    <span class="fu">minimal_client.get_logger()</span><span class="ex">.info</span><span class="er">(</span></span>
+<span id="cb33-31"><a href="#cb33-31"></a>        <span class="st">'Result of add_two_ints: for %d + %d = %d'</span> %</span>
+<span id="cb33-32"><a href="#cb33-32"></a>        <span class="kw">(</span><span class="ex">int</span><span class="er">(</span><span class="ex">sys.argv[1]</span><span class="kw">)</span><span class="ex">,</span> int<span class="er">(</span><span class="ex">sys.argv[2]</span><span class="kw">)</span><span class="ex">,</span> response.sum<span class="kw">))</span></span>
+<span id="cb33-33"><a href="#cb33-33"></a></span>
+<span id="cb33-34"><a href="#cb33-34"></a>    <span class="fu">minimal_client.destroy_node()</span></span>
+<span id="cb33-35"><a href="#cb33-35"></a>    <span class="fu">rclpy.shutdown()</span></span>
+<span id="cb33-36"><a href="#cb33-36"></a></span>
+<span id="cb33-37"><a href="#cb33-37"></a></span>
+<span id="cb33-38"><a href="#cb33-38"></a><span class="cf">if</span> <span class="ex">__name__</span> == <span class="st">'__main__'</span>:</span>
+<span id="cb33-39"><a href="#cb33-39"></a>    <span class="fu">main()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-5">
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="va">entry_points</span><span class="op">=</span>{</span>
+<span id="cb34-2"><a href="#cb34-2"></a>    <span class="st">'console_scripts'</span><span class="ex">:</span> [</span>
+<span id="cb34-3"><a href="#cb34-3"></a>        <span class="st">'service = py_srvcli.service_member_function:main'</span><span class="ex">,</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>        <span class="st">'client = py_srvcli.client_member_function:main'</span><span class="ex">,</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>    <span class="ex">],</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="er">}</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-write-a-ros-action" class="slide level2">
+<h2>How to write a <a href="https://docs.ros.org/en/foxy/Tutorials/Intermediate/Creating-an-Action.html">ROS action</a></h2>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">action interface</a></li><li><a href="#tabset-6-2">action server</a></li><li><a href="#tabset-6-3">action client</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<ul>
+<li>define .action file</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Request</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="ex">---</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="co"># Result</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="ex">---</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="co"># Feedback</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>A request message is sent from an action client to an action server initiating a new goal.</p></li>
+<li><p>A result message is sent from an action server to an action client when a goal is done.</p></li>
+<li><p>Feedback messages are periodically sent from an action server to an action client with updates about a goal.</p></li>
+</ul>
+</div>
+<div id="tabset-6-2">
+<div class="sourceCode" id="cb36" data-code-line-numbers="1,21-22,25-28,32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="ex">import</span> time</span>
+<span id="cb36-2"><a href="#cb36-2"></a></span>
+<span id="cb36-3"><a href="#cb36-3"></a><span class="ex">import</span> rclpy</span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="ex">from</span> rclpy.action import ActionServer</span>
+<span id="cb36-5"><a href="#cb36-5"></a><span class="ex">from</span> rclpy.node import Node</span>
+<span id="cb36-6"><a href="#cb36-6"></a></span>
+<span id="cb36-7"><a href="#cb36-7"></a><span class="ex">from</span> action_tutorials_interfaces.action import Fibonacci</span>
+<span id="cb36-8"><a href="#cb36-8"></a></span>
+<span id="cb36-9"><a href="#cb36-9"></a><span class="ex">class</span> FibonacciActionServer<span class="er">(</span><span class="ex">Node</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb36-10"><a href="#cb36-10"></a>    <span class="ex">def</span> __init__<span class="er">(</span><span class="ex">self</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb36-11"><a href="#cb36-11"></a>        <span class="fu">super()</span><span class="ex">.__init__</span><span class="er">(</span><span class="st">'fibonacci_action_server'</span><span class="kw">)</span></span>
+<span id="cb36-12"><a href="#cb36-12"></a>        <span class="ex">self._action_server</span> = ActionServer<span class="er">(</span></span>
+<span id="cb36-13"><a href="#cb36-13"></a>            <span class="ex">self,</span></span>
+<span id="cb36-14"><a href="#cb36-14"></a>            <span class="ex">Fibonacci,</span></span>
+<span id="cb36-15"><a href="#cb36-15"></a>            <span class="st">'fibonacci'</span><span class="ex">,</span></span>
+<span id="cb36-16"><a href="#cb36-16"></a>            <span class="ex">self.execute_callback</span><span class="kw">)</span></span>
+<span id="cb36-17"><a href="#cb36-17"></a></span>
+<span id="cb36-18"><a href="#cb36-18"></a>    <span class="ex">def</span> execute_callback<span class="er">(</span><span class="ex">self,</span> goal_handle<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb36-19"><a href="#cb36-19"></a>        <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Executing goal...'</span><span class="kw">)</span></span>
+<span id="cb36-20"><a href="#cb36-20"></a></span>
+<span id="cb36-21"><a href="#cb36-21"></a>        <span class="ex">feedback_msg</span> = Fibonacci.Feedback<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb36-22"><a href="#cb36-22"></a>        <span class="ex">feedback_msg.partial_sequence</span> = [0, 1]</span>
+<span id="cb36-23"><a href="#cb36-23"></a></span>
+<span id="cb36-24"><a href="#cb36-24"></a>        <span class="cf">for</span> i <span class="kw">in</span> range<span class="er">(</span><span class="ex">1,</span> goal_handle.request.order<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb36-25"><a href="#cb36-25"></a>            <span class="ex">feedback_msg.partial_sequence.append</span><span class="er">(</span></span>
+<span id="cb36-26"><a href="#cb36-26"></a>                <span class="ex">feedback_msg.partial_sequence[i]</span> + feedback_msg.partial_sequence<span class="pp">[</span><span class="ss">i</span><span class="pp">-</span><span class="ss">1</span><span class="pp">]</span><span class="kw">)</span></span>
+<span id="cb36-27"><a href="#cb36-27"></a>            <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Feedback: {0}'</span><span class="ex">.format</span><span class="er">(</span><span class="ex">feedback_msg.partial_sequence</span><span class="kw">))</span></span>
+<span id="cb36-28"><a href="#cb36-28"></a>            <span class="ex">goal_handle.publish_feedback</span><span class="er">(</span><span class="ex">feedback_msg</span><span class="kw">)</span></span>
+<span id="cb36-29"><a href="#cb36-29"></a>            <span class="ex">time.sleep</span><span class="er">(</span><span class="ex">1</span><span class="kw">)</span></span>
+<span id="cb36-30"><a href="#cb36-30"></a>        <span class="fu">goal_handle.succeed()</span></span>
+<span id="cb36-31"><a href="#cb36-31"></a>        <span class="ex">result</span> = Fibonacci.Result<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb36-32"><a href="#cb36-32"></a>        <span class="ex">result.sequence</span> = feedback_msg.partial_sequence</span>
+<span id="cb36-33"><a href="#cb36-33"></a>        <span class="cf">return</span> <span class="ex">result</span></span>
+<span id="cb36-34"><a href="#cb36-34"></a></span>
+<span id="cb36-35"><a href="#cb36-35"></a><span class="ex">def</span> main<span class="er">(</span><span class="va">args</span><span class="op">=</span>None<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb36-36"><a href="#cb36-36"></a>    <span class="ex">rclpy.init</span><span class="er">(</span><span class="va">args</span><span class="op">=</span>args<span class="kw">)</span></span>
+<span id="cb36-37"><a href="#cb36-37"></a>    <span class="ex">fibonacci_action_server</span> = FibonacciActionServer<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb36-38"><a href="#cb36-38"></a>    <span class="ex">rclpy.spin</span><span class="er">(</span><span class="ex">fibonacci_action_server</span><span class="kw">)</span></span>
+<span id="cb36-39"><a href="#cb36-39"></a></span>
+<span id="cb36-40"><a href="#cb36-40"></a><span class="cf">if</span> <span class="ex">__name__</span> == <span class="st">'__main__'</span>:</span>
+<span id="cb36-41"><a href="#cb36-41"></a>    <span class="fu">main()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-3">
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1"></a><span class="ex">import</span> rclpy</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="ex">from</span> rclpy.action import ActionClient</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="ex">from</span> rclpy.node import Node</span>
+<span id="cb37-4"><a href="#cb37-4"></a></span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="ex">from</span> action_tutorials_interfaces.action import Fibonacci</span>
+<span id="cb37-6"><a href="#cb37-6"></a></span>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="ex">class</span> FibonacciActionClient<span class="er">(</span><span class="ex">Node</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb37-8"><a href="#cb37-8"></a>    <span class="ex">def</span> __init__<span class="er">(</span><span class="ex">self</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb37-9"><a href="#cb37-9"></a>        <span class="fu">super()</span><span class="ex">.__init__</span><span class="er">(</span><span class="st">'fibonacci_action_client'</span><span class="kw">)</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a>        <span class="ex">self._action_client</span> = ActionClient<span class="er">(</span><span class="ex">self,</span> Fibonacci, <span class="st">'fibonacci'</span><span class="kw">)</span></span>
+<span id="cb37-11"><a href="#cb37-11"></a>        </span>
+<span id="cb37-12"><a href="#cb37-12"></a>    <span class="ex">def</span> send_goal<span class="er">(</span><span class="ex">self,</span> order<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb37-13"><a href="#cb37-13"></a>        <span class="ex">goal_msg</span> = Fibonacci.Goal<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb37-14"><a href="#cb37-14"></a>        <span class="ex">goal_msg.order</span> = order</span>
+<span id="cb37-15"><a href="#cb37-15"></a></span>
+<span id="cb37-16"><a href="#cb37-16"></a>        <span class="fu">self._action_client.wait_for_server()</span></span>
+<span id="cb37-17"><a href="#cb37-17"></a></span>
+<span id="cb37-18"><a href="#cb37-18"></a>        <span class="ex">self._send_goal_future</span> = self._action_client.send_goal_async<span class="er">(</span><span class="ex">goal_msg,</span> feedback_callback=self.feedback_callback<span class="kw">)</span></span>
+<span id="cb37-19"><a href="#cb37-19"></a></span>
+<span id="cb37-20"><a href="#cb37-20"></a>        <span class="ex">self._send_goal_future.add_done_callback</span><span class="er">(</span><span class="ex">self.goal_response_callback</span><span class="kw">)</span></span>
+<span id="cb37-21"><a href="#cb37-21"></a></span>
+<span id="cb37-22"><a href="#cb37-22"></a>    <span class="ex">def</span> goal_response_callback<span class="er">(</span><span class="ex">self,</span> future<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb37-23"><a href="#cb37-23"></a>        <span class="ex">goal_handle</span> = future.result<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb37-24"><a href="#cb37-24"></a>        <span class="cf">if</span> <span class="ex">not</span> goal_handle.accepted:</span>
+<span id="cb37-25"><a href="#cb37-25"></a>            <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Goal rejected :('</span><span class="kw">)</span></span>
+<span id="cb37-26"><a href="#cb37-26"></a>            <span class="cf">return</span></span>
+<span id="cb37-27"><a href="#cb37-27"></a>        <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Goal accepted :)'</span><span class="kw">)</span></span>
+<span id="cb37-28"><a href="#cb37-28"></a>        <span class="ex">self._get_result_future</span> = goal_handle.get_result_async<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb37-29"><a href="#cb37-29"></a>        <span class="ex">self._get_result_future.add_done_callback</span><span class="er">(</span><span class="ex">self.get_result_callback</span><span class="kw">)</span></span>
+<span id="cb37-30"><a href="#cb37-30"></a>    <span class="ex">def</span> get_result_callback<span class="er">(</span><span class="ex">self,</span> future<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb37-31"><a href="#cb37-31"></a>        <span class="ex">result</span> = future.result<span class="er">(</span><span class="kw">)</span><span class="ex">.result</span></span>
+<span id="cb37-32"><a href="#cb37-32"></a>        <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Result: {0}'</span><span class="ex">.format</span><span class="er">(</span><span class="ex">result.sequence</span><span class="kw">))</span></span>
+<span id="cb37-33"><a href="#cb37-33"></a>        <span class="fu">rclpy.shutdown()</span></span>
+<span id="cb37-34"><a href="#cb37-34"></a></span>
+<span id="cb37-35"><a href="#cb37-35"></a>    <span class="ex">def</span> feedback_callback<span class="er">(</span><span class="ex">self,</span> feedback_msg<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb37-36"><a href="#cb37-36"></a>        <span class="ex">feedback</span> = feedback_msg.feedback</span>
+<span id="cb37-37"><a href="#cb37-37"></a>        <span class="fu">self.get_logger()</span><span class="ex">.info</span><span class="er">(</span><span class="st">'Received feedback: {0}'</span><span class="ex">.format</span><span class="er">(</span><span class="ex">feedback.partial_sequence</span><span class="kw">))</span></span>
+<span id="cb37-38"><a href="#cb37-38"></a></span>
+<span id="cb37-39"><a href="#cb37-39"></a><span class="ex">def</span> main<span class="er">(</span><span class="va">args</span><span class="op">=</span>None<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb37-40"><a href="#cb37-40"></a>    <span class="ex">rclpy.init</span><span class="er">(</span><span class="va">args</span><span class="op">=</span>args<span class="kw">)</span></span>
+<span id="cb37-41"><a href="#cb37-41"></a>    <span class="ex">action_client</span> = FibonacciActionClient<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb37-42"><a href="#cb37-42"></a>    <span class="ex">action_client.send_goal</span><span class="er">(</span><span class="ex">10</span><span class="kw">)</span></span>
+<span id="cb37-43"><a href="#cb37-43"></a>    <span class="ex">rclpy.spin</span><span class="er">(</span><span class="ex">action_client</span><span class="kw">)</span></span>
+<span id="cb37-44"><a href="#cb37-44"></a></span>
+<span id="cb37-45"><a href="#cb37-45"></a></span>
+<span id="cb37-46"><a href="#cb37-46"></a><span class="cf">if</span> <span class="ex">__name__</span> == <span class="st">'__main__'</span>:</span>
+<span id="cb37-47"><a href="#cb37-47"></a>    <span class="fu">main()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -705,39 +911,39 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="setup-a-ros2-service" class="slide level2">
 <h2>Setup a ROS2 service</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">method 1</a></li><li><a href="#tabset-6-2">method 2 (setup.py)</a></li><li><a href="#tabset-6-3">method 2 (launch)</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">method 1</a></li><li><a href="#tabset-7-2">method 2 (setup.py)</a></li><li><a href="#tabset-7-3">method 2 (launch)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">cd</span> ~/environment/dev_ws</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="ex">colcon</span> build</span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="bu">source</span> ./install/setup.bash</span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="ex">ros2</span> run py_srvcli service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-7-1">
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1"></a><span class="bu">cd</span> ~/environment/dev_ws</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="ex">colcon</span> build</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="bu">source</span> ./install/setup.bash</span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="ex">ros2</span> run py_srvcli service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-6-2">
+<div id="tabset-7-2">
 <ul>
 <li>add the following</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-6-3">
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src/py_srvcli</span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">mkdir</span> launch</span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">nano</span> launch/add.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="ex">from</span> launch import LaunchDescription</span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="ex">from</span> launch_ros.actions import Node</span>
-<span id="cb30-3"><a href="#cb30-3"></a></span>
-<span id="cb30-4"><a href="#cb30-4"></a><span class="ex">def</span> generate_launch_description<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">ld</span> = LaunchDescription<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a>  <span class="ex">node1</span> = Node<span class="er">(</span></span>
-<span id="cb30-7"><a href="#cb30-7"></a>              <span class="va">package</span><span class="op">=</span><span class="st">'py_srvcli'</span>,</span>
-<span id="cb30-8"><a href="#cb30-8"></a>              <span class="va">namespace</span><span class="op">=</span><span class="st">''</span>,</span>
-<span id="cb30-9"><a href="#cb30-9"></a>              <span class="va">executable</span><span class="op">=</span><span class="st">'service'</span>,</span>
-<span id="cb30-10"><a href="#cb30-10"></a>              <span class="va">name</span><span class="op">=</span><span class="st">'sim'</span></span>
-<span id="cb30-11"><a href="#cb30-11"></a>          <span class="kw">)</span></span>
-<span id="cb30-12"><a href="#cb30-12"></a>  </span>
-<span id="cb30-13"><a href="#cb30-13"></a>  <span class="ex">ld.add_action</span><span class="er">(</span><span class="ex">node1</span><span class="kw">)</span></span>
-<span id="cb30-14"><a href="#cb30-14"></a>  </span>
-<span id="cb30-15"><a href="#cb30-15"></a>  <span class="cf">return</span> <span class="fu">ld</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-7-3">
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1"></a><span class="bu">cd</span> ~/environment/dev_ws/src/py_srvcli</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">mkdir</span> launch</span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="fu">nano</span> launch/add.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="ex">from</span> launch import LaunchDescription</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="ex">from</span> launch_ros.actions import Node</span>
+<span id="cb41-3"><a href="#cb41-3"></a></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="ex">def</span> generate_launch_description<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb41-5"><a href="#cb41-5"></a>  <span class="fu">ld</span> = LaunchDescription<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb41-6"><a href="#cb41-6"></a>  <span class="ex">node1</span> = Node<span class="er">(</span></span>
+<span id="cb41-7"><a href="#cb41-7"></a>              <span class="va">package</span><span class="op">=</span><span class="st">'py_srvcli'</span>,</span>
+<span id="cb41-8"><a href="#cb41-8"></a>              <span class="va">namespace</span><span class="op">=</span><span class="st">''</span>,</span>
+<span id="cb41-9"><a href="#cb41-9"></a>              <span class="va">executable</span><span class="op">=</span><span class="st">'service'</span>,</span>
+<span id="cb41-10"><a href="#cb41-10"></a>              <span class="va">name</span><span class="op">=</span><span class="st">'sim'</span></span>
+<span id="cb41-11"><a href="#cb41-11"></a>          <span class="kw">)</span></span>
+<span id="cb41-12"><a href="#cb41-12"></a>  </span>
+<span id="cb41-13"><a href="#cb41-13"></a>  <span class="ex">ld.add_action</span><span class="er">(</span><span class="ex">node1</span><span class="kw">)</span></span>
+<span id="cb41-14"><a href="#cb41-14"></a>  </span>
+<span id="cb41-15"><a href="#cb41-15"></a>  <span class="cf">return</span> <span class="fu">ld</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -749,51 +955,51 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>open a terminal, and run the following commands</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">compile code</a></li><li><a href="#tabset-7-2">service</a></li><li><a href="#tabset-7-3">run</a></li><li><a href="#tabset-7-4">list</a></li><li><a href="#tabset-7-5">type</a></li><li><a href="#tabset-7-6">call</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">compile code</a></li><li><a href="#tabset-8-2">service</a></li><li><a href="#tabset-8-3">run</a></li><li><a href="#tabset-8-4">list</a></li><li><a href="#tabset-8-5">type</a></li><li><a href="#tabset-8-6">call</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="bu">cd</span> ~</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">git</span> clone <span class="at">-b</span> ros2-dev https://github.com/lbaitemple/mini-pupper-aws</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="bu">cd</span> mini-pupper-aws/robot_ws</span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="ex">pip</span> install setuptools==58.2.0</span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="fu">sudo</span> rosdep fix-permissions <span class="kw">&amp;&amp;</span> <span class="ex">rosdep</span> update <span class="at">--include-eol-distros</span></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="at">-y</span></span>
-<span id="cb31-7"><a href="#cb31-7"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-8-1">
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">git</span> clone <span class="at">-b</span> ros2-dev https://github.com/lbaitemple/mini-pupper-aws</span>
+<span id="cb42-3"><a href="#cb42-3"></a><span class="bu">cd</span> mini-pupper-aws/robot_ws</span>
+<span id="cb42-4"><a href="#cb42-4"></a><span class="ex">pip</span> install setuptools==58.2.0</span>
+<span id="cb42-5"><a href="#cb42-5"></a><span class="fu">sudo</span> rosdep fix-permissions <span class="kw">&amp;&amp;</span> <span class="ex">rosdep</span> update <span class="at">--include-eol-distros</span></span>
+<span id="cb42-6"><a href="#cb42-6"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="at">-y</span></span>
+<span id="cb42-7"><a href="#cb42-7"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-7-2">
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">source</span>  ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-8-2">
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="bu">source</span>  ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>s</p>
 </div>
-<div id="tabset-7-3">
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">source</span>  ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_config std_msgs/String <span class="st">"data: 'robot1.wav'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-8-3">
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="bu">source</span>  ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_config std_msgs/String <span class="st">"data: 'robot1.wav'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-7-4">
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-8-4">
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1"></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/minipupper/service_list.png"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-7-5">
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1"></a><span class="ex">ros2</span> service type /music_command</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-8-5">
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1"></a><span class="ex">ros2</span> service type /music_command</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/minipupper/music_type.png"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-7-6">
+<div id="tabset-8-6">
 <ul>
 <li>turn on music</li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="ex">ros2</span> service call /music_command std_srvs/srv/SetBool data:<span class="dt">\ </span>true<span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1"></a><span class="ex">ros2</span> service call /music_command std_srvs/srv/SetBool data:<span class="dt">\ </span>true<span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>turn off music</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1"></a><span class="ex">ros2</span> service call /music_command std_srvs/srv/SetBool data:<span class="dt">\ </span>false<span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1"></a><span class="ex">ros2</span> service call /music_command std_srvs/srv/SetBool data:<span class="dt">\ </span>false<span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -801,52 +1007,52 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="dance-script-modification" class="slide level2">
 <h2>Dance script modification</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">backup</a></li><li><a href="#tabset-8-2">revise my_demo.py</a></li><li><a href="#tabset-8-3">chatgpt func</a></li><li><a href="#tabset-8-4">revise dance.py</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">backup</a></li><li><a href="#tabset-9-2">revise my_demo.py</a></li><li><a href="#tabset-9-3">chatgpt func</a></li><li><a href="#tabset-9-4">revise dance.py</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1">
+<div id="tabset-9-1">
 <ul>
 <li>a good practice is to make a backup</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/mini_pupper_dance</span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">cp</span> dance.py dance.py.org</span>
-<span id="cb38-3"><a href="#cb38-3"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/routines/</span>
-<span id="cb38-4"><a href="#cb38-4"></a><span class="fu">cp</span> demo.py my_demo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/mini_pupper_dance</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="fu">cp</span> dance.py dance.py.org</span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/routines/</span>
+<span id="cb49-4"><a href="#cb49-4"></a><span class="fu">cp</span> demo.py my_demo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-9-2">
 <ul>
 <li>recall last lecture</li>
 <li>copy the follwoing code to <code>my_demo.py</code></li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1"></a><span class="ex">dance_commands</span> = [</span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="st">'move_forward:0.3:0.5'</span><span class="ex">,</span> </span>
-<span id="cb39-3"><a href="#cb39-3"></a><span class="st">'stop:0.3:0.3'</span><span class="ex">,</span></span>
-<span id="cb39-4"><a href="#cb39-4"></a><span class="st">'look_down:0.3:0.4'</span><span class="ex">,</span> </span>
-<span id="cb39-5"><a href="#cb39-5"></a><span class="st">'look_up:0.2:0.2'</span><span class="ex">,</span> ... </span>
-<span id="cb39-6"><a href="#cb39-6"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1"></a><span class="ex">dance_commands</span> = [</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="st">'move_forward:0.3:0.5'</span><span class="ex">,</span> </span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="st">'stop:0.3:0.3'</span><span class="ex">,</span></span>
+<span id="cb50-4"><a href="#cb50-4"></a><span class="st">'look_down:0.3:0.4'</span><span class="ex">,</span> </span>
+<span id="cb50-5"><a href="#cb50-5"></a><span class="st">'look_up:0.2:0.2'</span><span class="ex">,</span> ... </span>
+<span id="cb50-6"><a href="#cb50-6"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-3">
+<div id="tabset-9-3">
 <ul>
 <li>create a module file <code>util.py</code></li>
 <li>add your conversion function as follows</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1"></a><span class="ex">def</span> convertcmd<span class="er">(</span><span class="ex">dancecmds</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a>  <span class="ex">pass</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1"></a><span class="ex">def</span> convertcmd<span class="er">(</span><span class="ex">dancecmds</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a>  <span class="ex">pass</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-4">
+<div id="tabset-9-4">
 <p>at line 11,</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="ex">from</span> .util import convertcmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1"></a><span class="ex">from</span> .util import convertcmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>at line 48, change command as <code>ocommand</code></li>
 <li>at line 49 add</li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1"></a><span class="ex">processed_cmd</span> = convertcmd<span class="er">(</span><span class="ex">ocommand</span><span class="kw">)</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="bu">command</span> = processed_cmd<span class="pp">[</span><span class="st">'action'</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1"></a><span class="ex">processed_cmd</span> = convertcmd<span class="er">(</span><span class="ex">ocommand</span><span class="kw">)</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="bu">command</span> = processed_cmd<span class="pp">[</span><span class="st">'action'</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>at each command segment, you can add and replace as you see fit</li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="ex">velocity_cmd.linear.x</span> = processed_cmd<span class="pp">[</span><span class="st">'value'</span><span class="pp">]</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="ex">time.sleep</span><span class="er">(</span><span class="va">processed_cmd</span><span class="op">[</span><span class="st">'duration'</span><span class="op">]</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1"></a><span class="ex">velocity_cmd.linear.x</span> = processed_cmd<span class="pp">[</span><span class="st">'value'</span><span class="pp">]</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="ex">time.sleep</span><span class="er">(</span><span class="va">processed_cmd</span><span class="op">[</span><span class="st">'duration'</span><span class="op">]</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -854,19 +1060,19 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="dance-script-recompile" class="slide level2">
 <h2>Dance script recompile</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">compile</a></li><li><a href="#tabset-9-2">terminal 1</a></li><li><a href="#tabset-9-3">terminal 2</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">compile</a></li><li><a href="#tabset-10-2">terminal 1</a></li><li><a href="#tabset-10-3">terminal 2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1">
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="bu">cd</span> ~/mini-pupper-aws/robot_ws</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-10-1">
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1"></a><span class="bu">cd</span> ~/mini-pupper-aws/robot_ws</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-9-2">
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="ex">ros2</span> launch mini_pupper_dance dance.launch.py hardware_connected:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-10-2">
+<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="ex">ros2</span> launch mini_pupper_dance dance.launch.py hardware_connected:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-9-3">
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb46-2"><a href="#cb46-2"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /dance_config std_msgs/String <span class="st">"data: 'my_demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-10-3">
+<div class="sourceCode" id="cb57"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /dance_config std_msgs/String <span class="st">"data: 'my_demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <ul>
 <li class="fragment"><p>dance works natively on the minipupper</p></li>
@@ -880,24 +1086,24 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="add-music-serive-in-dance-launch-file" class="slide level2">
 <h2>add music serive in dance launch file</h2>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">setup.py</a></li><li><a href="#tabset-10-2">find the launch file</a></li><li><a href="#tabset-10-3">test it</a></li></ul>
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">setup.py</a></li><li><a href="#tabset-11-2">find the launch file</a></li><li><a href="#tabset-11-3">test it</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-11-1">
 <ul>
 <li>what files are include in install packages lines 15-16</li>
 <li>take a look at executable file at lines 27-31</li>
 </ul>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-11-2">
 <ul>
 <li>launch file <code>ndance.launch.py</code></li>
 <li>add a music service node</li>
 <li>how do you can find the music executable file</li>
 </ul>
 </div>
-<div id="tabset-10-3">
-<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1"></a><span class="bu">source</span> </span>
-<span id="cb47-2"><a href="#cb47-2"></a><span class="ex">ros2</span> launch mini_pupper_dance ndance.launch.py hardware_connected:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-11-3">
+<div class="sourceCode" id="cb58"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1"></a><span class="bu">source</span> </span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="ex">ros2</span> launch mini_pupper_dance ndance.launch.py hardware_connected:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
