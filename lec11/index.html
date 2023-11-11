@@ -986,12 +986,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="tab-content">
 <div id="tabset-8-1">
 <div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="bu">cd</span> ~</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">git</span> clone <span class="at">-b</span> ros2-dev https://github.com/lbaitemple/mini-pupper-aws</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">git</span> clone <span class="at">-b</span> final_project https://github.com/lbaitemple/mini-pupper-aws</span>
 <span id="cb44-3"><a href="#cb44-3"></a><span class="bu">cd</span> mini-pupper-aws/robot_ws</span>
 <span id="cb44-4"><a href="#cb44-4"></a><span class="ex">pip</span> install setuptools==58.2.0</span>
 <span id="cb44-5"><a href="#cb44-5"></a><span class="fu">sudo</span> rosdep fix-permissions <span class="kw">&amp;&amp;</span> <span class="ex">rosdep</span> update <span class="at">--include-eol-distros</span></span>
-<span id="cb44-6"><a href="#cb44-6"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="at">-y</span></span>
-<span id="cb44-7"><a href="#cb44-7"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-6"><a href="#cb44-6"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="dt">\</span></span>
+<span id="cb44-7"><a href="#cb44-7"></a>     <span class="at">--skip-keys</span><span class="op">=</span>gazebo_plugins <span class="dt">\</span></span>
+<span id="cb44-8"><a href="#cb44-8"></a>    <span class="at">--skip-keys</span><span class="op">=</span>velodyne_gazebo_plugins <span class="at">-y</span></span>
+<span id="cb44-9"><a href="#cb44-9"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-8-2">
 <div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1"></a><span class="bu">source</span>  ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
@@ -1030,81 +1032,87 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="dance-script-modification" class="slide level2">
-<h2>Dance script modification</h2>
-<div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">backup</a></li><li><a href="#tabset-9-2">revise my_demo.py</a></li><li><a href="#tabset-9-3">chatgpt func</a></li><li><a href="#tabset-9-4">revise dance.py</a></li></ul>
-<div class="tab-content">
-<div id="tabset-9-1">
-<ul>
-<li>a good practice is to make a backup</li>
-</ul>
-<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/mini_pupper_dance</span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="fu">cp</span> dance.py dance.py.orig</span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/routines/</span>
-<span id="cb51-4"><a href="#cb51-4"></a><span class="fu">cp</span> demo.py my_demo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-9-2">
-<ul>
-<li>recall last lecture</li>
-<li>copy the follwoing code to <code>my_demo.py</code></li>
-</ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1"></a><span class="ex">dance_commands</span> = [</span>
-<span id="cb52-2"><a href="#cb52-2"></a><span class="st">'move_forward:0.3:0.5'</span><span class="ex">,</span> </span>
-<span id="cb52-3"><a href="#cb52-3"></a><span class="st">'stop:0.3:0.3'</span><span class="ex">,</span></span>
-<span id="cb52-4"><a href="#cb52-4"></a><span class="st">'look_down:0.3:0.4'</span><span class="ex">,</span> </span>
-<span id="cb52-5"><a href="#cb52-5"></a><span class="st">'look_up:0.2:0.2'</span><span class="ex">,</span> ... </span>
-<span id="cb52-6"><a href="#cb52-6"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-9-3">
-<ul>
-<li>create a module file <code>util.py</code></li>
-<li>add your conversion function as follows</li>
-</ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1"></a><span class="ex">def</span> convertcmd<span class="er">(</span><span class="ex">dancecmds</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb53-2"><a href="#cb53-2"></a>  <span class="ex">pass</span></span>
-<span id="cb53-3"><a href="#cb53-3"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-9-4">
-<p>at line 11,</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1"></a><span class="ex">from</span> .util import convertcmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>at line 48, change command as <code>ocommand</code></li>
-<li>at line 49 add</li>
-</ul>
-<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1"></a><span class="ex">processed_cmd</span> = convertcmd<span class="er">(</span><span class="ex">ocommand</span><span class="kw">)</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a><span class="bu">command</span> = processed_cmd<span class="pp">[</span><span class="st">'action'</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>at each command segment, you can add and replace as you see fit</li>
-</ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1"></a><span class="ex">velocity_cmd.linear.x</span> = processed_cmd<span class="pp">[</span><span class="st">'value'</span><span class="pp">]</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a><span class="ex">time.sleep</span><span class="er">(</span><span class="va">processed_cmd</span><span class="op">[</span><span class="st">'duration'</span><span class="op">]</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="dance-script-recompile" class="slide level2">
 <h2>Dance script recompile</h2>
+<ul>
+<li>check your Dockerfile ….</li>
+</ul>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">compile</a></li><li><a href="#tabset-10-2">terminal 1</a></li><li><a href="#tabset-10-3">terminal 2</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">compile</a></li><li><a href="#tabset-9-2">terminal 1</a></li><li><a href="#tabset-9-3">terminal 2</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
-<div class="sourceCode" id="cb57"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1"></a><span class="bu">cd</span> ~/mini-pupper-aws/robot_ws</span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-9-1">
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1"></a><span class="bu">cd</span> ~/mini-pupper-aws/robot_ws</span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="dt">\</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a>     <span class="at">--skip-keys</span><span class="op">=</span>gazebo_plugins <span class="dt">\</span></span>
+<span id="cb51-4"><a href="#cb51-4"></a>    <span class="at">--skip-keys</span><span class="op">=</span>velodyne_gazebo_plugins <span class="at">-y</span></span>
+<span id="cb51-5"><a href="#cb51-5"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-10-2">
-<div class="sourceCode" id="cb58"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb58-2"><a href="#cb58-2"></a><span class="ex">ros2</span> launch mini_pupper_dance ndance.launch.py hardware_connected:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-9-2">
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="ex">ros2</span> launch mini_pupper_dance ndance.launch.py hardware_connected:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-10-3">
-<div class="sourceCode" id="cb59"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb59-2"><a href="#cb59-2"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /dance_config std_msgs/String <span class="st">"data: 'my_demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-9-3">
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /dance_config std_msgs/String <span class="st">"data: 'my_demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <ul>
 <li class="fragment"><p>dance works natively on the minipupper</p></li>
 <li class="fragment"><p>why do we need to run it in docker?</p></li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="dance-script-modification" class="slide level2">
+<h2>Dance script modification</h2>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">backup</a></li><li><a href="#tabset-10-2">revise my_demo.py</a></li><li><a href="#tabset-10-3">chatgpt func</a></li><li><a href="#tabset-10-4">revise dance.py</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<ul>
+<li>a good practice is to make a backup</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/mini_pupper_dance</span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="fu">cp</span> dance.py dance.py.orig</span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="bu">cd</span> ~/robot_ws/src/mini_pupper_ros/mini_pupper_dance/routines/</span>
+<span id="cb54-4"><a href="#cb54-4"></a><span class="fu">cp</span> demo.py my_demo.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-2">
+<ul>
+<li>recall last lecture</li>
+<li>copy the follwoing code to <code>my_demo.py</code></li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1"></a><span class="ex">dance_commands</span> = [</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="st">'move_forward:0.3:0.5'</span><span class="ex">,</span> </span>
+<span id="cb55-3"><a href="#cb55-3"></a><span class="st">'stop:0.3:0.3'</span><span class="ex">,</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a><span class="st">'look_down:0.3:0.4'</span><span class="ex">,</span> </span>
+<span id="cb55-5"><a href="#cb55-5"></a><span class="st">'look_up:0.2:0.2'</span><span class="ex">,</span> ... </span>
+<span id="cb55-6"><a href="#cb55-6"></a><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-3">
+<ul>
+<li>create a module file <code>util.py</code></li>
+<li>add your conversion function as follows</li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1"></a><span class="ex">def</span> convertcmd<span class="er">(</span><span class="ex">dancecmds</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a>  <span class="ex">pass</span></span>
+<span id="cb56-3"><a href="#cb56-3"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-4">
+<p>at line 11,</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1"></a><span class="ex">from</span> .util import convertcmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>at line 48, change command as <code>ocommand</code></li>
+<li>at line 49 add</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1"></a><span class="ex">processed_cmd</span> = convertcmd<span class="er">(</span><span class="ex">ocommand</span><span class="kw">)</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="bu">command</span> = processed_cmd<span class="pp">[</span><span class="st">'action'</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>at each command segment, you can add and replace as you see fit</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1"></a><span class="ex">velocity_cmd.linear.x</span> = processed_cmd<span class="pp">[</span><span class="st">'value'</span><span class="pp">]</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="ex">time.sleep</span><span class="er">(</span><span class="va">processed_cmd</span><span class="op">[</span><span class="st">'duration'</span><span class="op">]</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
