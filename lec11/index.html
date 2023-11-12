@@ -985,7 +985,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span>
 <span id="cb44-2"><a href="#cb44-2"></a><span class="bu">cd</span> ~/mangdang</span>
-<span id="cb44-3"><a href="#cb44-3"></a><span class="fu">bash</span> ./ros2-humble-ros-base-main.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="fu">bash</span> ./ros2-humble-ros-base-main.sh</span>
+<span id="cb44-4"><a href="#cb44-4"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="minipupper-dance-code" class="slide level2">
 <h2>Minipupper dance code</h2>
@@ -1023,22 +1024,24 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb48"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1"></a><span class="st">'volume:on:100'</span><span class="ex">,</span>    </span>
 <span id="cb48-2"><a href="#cb48-2"></a><span class="st">'music:on:how.wav'</span><span class="ex">,</span></span>
 <span id="cb48-3"><a href="#cb48-3"></a><span class="st">'music:off'</span><span class="ex">,</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>feel free to add more …</li>
+</ul>
 </div>
 <div id="tabset-8-2">
-<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1"></a><span class="bu">cd</span> ~</span>
-<span id="cb49-2"><a href="#cb49-2"></a><span class="bu">cd</span> mini-pupper-aws/robot_ws</span>
-<span id="cb49-3"><a href="#cb49-3"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="dt">\</span></span>
-<span id="cb49-4"><a href="#cb49-4"></a>     <span class="at">--skip-keys</span><span class="op">=</span>gazebo_plugins <span class="dt">\</span></span>
-<span id="cb49-5"><a href="#cb49-5"></a>    <span class="at">--skip-keys</span><span class="op">=</span>velodyne_gazebo_plugins <span class="at">-y</span></span>
-<span id="cb49-6"><a href="#cb49-6"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>open a new terminal</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1"></a><span class="bu">cd</span> ~/mini-pupper-aws/robot_ws</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">--rosdistro</span><span class="op">=</span><span class="va">${ROS_DISTRO}</span> <span class="at">--skip-keys</span><span class="op">=</span>gazebo_plugins <span class="at">--skip-keys</span><span class="op">=</span>velodyne_gazebo_plugins <span class="at">-y</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-8-3">
 <div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
 <span id="cb50-2"><a href="#cb50-2"></a><span class="ex">ros2</span> launch mini_pupper_dance  refine_dance.launch.py hardware_connected:=false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-8-4">
-<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1"></a><span class="bu">source</span> ~/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /dance_config std_msgs/String <span class="st">"data: 'my_demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1"></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /dance_config std_msgs/String <span class="st">"data: 'my_demo'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
