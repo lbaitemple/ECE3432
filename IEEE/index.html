@@ -11,6 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Li Bai">
+  <meta name="author" content="Lillian Drasin">
   <meta name="author" content="Afreez Gan">
   <meta name="dcterms.date" content="2024-04-06">
   <title>Robot Control using Raspberry Pi</title>
@@ -431,6 +432,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
+Lillian Drasin 
+</div>
+        <p class="quarto-title-affiliation">
+            Temple University
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
 Afreez Gan 
 </div>
 <div class="quarto-title-author-email">
@@ -461,7 +470,7 @@ Afreez Gan
 <tr class="header">
 <th style="text-align: center;"><div class="columns">
 <div class="column" style="width:100%;">
-<p>http://bit.ly/mangdang23</p>
+<p>http://bit.ly/mangdang24</p>
 </div>
 </div></th>
 </tr>
@@ -654,8 +663,8 @@ Afreez Gan
 <h2>MinipupperV2 Setup Requirements</h2>
 <ul>
 <li><p>a Minipupper v2 robot</p></li>
-<li><p>Minipupper v2 ubuntu prebuilt image, <a href="https://tuprd-my.sharepoint.com/:u:/g/personal/lbai_temple_edu/ERXsOY-ahmZKpuM_uKCJUiEBBbO18B0DIA_2c8CuXRQ0UA?e=oU8V17" target="_blank">download here</a></p></li>
-<li><p>a <a href="https://tuprd-my.sharepoint.com/:t:/g/personal/lbai_temple_edu/EZR7vsibHPVGpcWEYKs4qeMBorxLJ43zrUfN3czajHWc_A?e=HfYxo8" target="_blank">wireless.txt</a></p></li>
+<li><p>Minipupper v2 ubuntu prebuilt image, <a href="https://tuprd-my.sharepoint.com/:u:/g/personal/lbai_temple_edu/EarSBo0IciVPh25YzkM9J6oBA2qAgzDDPtVma-c40Hjojg?e=fUd5vZ" target="_blank">download here</a></p></li>
+<li><p>a <a href="">wireless.txt</a>, in cloud 9 git repo - mini_pupper_aws/wireless folder</p></li>
 </ul>
 </section>
 <section id="setup-raspberry-pi---balena-etcher-preflashed" class="slide level2">
@@ -867,77 +876,23 @@ Afreez Gan
 <h2>Remove miniSD, connect it to Minipupper SD slot</h2>
 
 <img data-src="images/robodogsdcard.jpg" width="400" class="r-stretch quarto-figure-center"></section>
-<section id="insert-microsd-card-to-minipupper-and-power-on" class="slide level2">
-<h2>Insert MicroSD Card to Minipupper and Power On</h2>
+<section id="insert-microsd-card-to-minipupper" class="slide level2">
+<h2>Insert MicroSD Card to Minipupper</h2>
 <ul>
-<li>If the IP address does not show up on first time boot up, wait for power on sound and screen flash, then disconnect power and reconnect</li>
-<li>If you see the IP address on the screen in the second time power on, type <code>http://[ipaddress]:8080</code> for a web remote control</li>
+<li><p>If the IP address does not show up on first time boot up, wait for power on sound and screen flash, then disconnect power and reconnect</p></li>
+<li><p>If you see the IP address on the screen in the second time power on, type <code>http://[ipaddress]:8080</code> for a web remote control</p></li>
 </ul>
+</section>
+<section id="minipupper-powered-on" class="slide level2">
+<h2>Minipupper Powered On</h2>
 
-<img data-src="images/ip_adress.jpg" width="496" class="r-stretch quarto-figure-center"></section></section>
-<section>
-<section id="ecr-setup" class="title-slide slide level1 aws-background center">
-<h1>ECR setup</h1>
-<p>Set up a repository to store docker instances</p>
-</section>
-<section id="what-is-a-docker-instance" class="slide level2">
-<h2>What is a Docker Instance?</h2>
-<ul>
-<li>a virtual computer that runs on your computer</li>
-<li>contains everything needed to run only specific piece of software,
-<ul>
-<li>application service including the code, libraries, and other dependencies</li>
-</ul></li>
-</ul>
-</section>
-<section id="create-an-ecr" class="slide level2 aws-background">
-<h2>Create an ECR</h2>
-<div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">1</a></li><li><a href="#tabset-4-2">2</a></li><li><a href="#tabset-4-3">3</a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1">
-<ul>
-<li>Search and open ECR in AWS</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">ros-humble-greengrass-minipupper-v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ecr1.png" width="414"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-2">
-<ul>
-<li><p>Select repository name</p></li>
-<li><p>open “view push commands”</p>
-<p><img data-src="images/pushcommands1-02.png" width="484"></p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src=".png"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-3">
-<ul>
-<li>Return to a new terminal in Cloud 9</li>
-<li>Paste each push command one line at a time</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ECR03.png" width="426"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
+<img data-src="images/ip_adress.jpg" width="500" class="r-stretch quarto-figure-center"></section>
 <section id="jupyter-lab-on-minipupper" class="slide level2 minipupper-background">
 <h2>Jupyter Lab on Minipupper</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">1</a></li><li><a href="#tabset-5-2">2</a></li><li><a href="#tabset-5-3">3</a></li><li><a href="#tabset-5-4">4</a></li><li><a href="#tabset-5-5">5</a></li><li><a href="#tabset-5-6">6</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">1</a></li><li><a href="#tabset-4-2">2</a></li><li><a href="#tabset-4-3">3</a></li><li><a href="#tabset-4-4">4</a></li><li><a href="#tabset-4-5">5</a></li><li><a href="#tabset-4-6">6</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-4-1">
 <ul>
 <li>Open a browser, type <code>http://[ipaddress]:8888</code></li>
 <li>password <code>mangdang</code></li>
@@ -948,7 +903,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-4-2">
 <ul>
 <li>Open a new terminal</li>
 </ul>
@@ -958,14 +913,14 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-5-3">
+<div id="tabset-4-3">
 <ul>
 <li>Download <code>mangdang</code> folder</li>
 <li>Refresh page for folder to appear</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> clone https://github.com/lbaitemple/mangdang.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> clone https://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-5-4">
+<div id="tabset-4-4">
 <ul>
 <li>Find files in the <code>mangdang</code> folder</li>
 <li>Do NOT run first block (remove docker) !</li>
@@ -976,7 +931,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-5-5">
+<div id="tabset-4-5">
 <ul>
 <li>Open the <code>minipupper.ipynb</code> python notebook
 <ol type="1">
@@ -990,7 +945,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-5-6">
+<div id="tabset-4-6">
 <ul>
 <li>Run the second block to install greengrass</li>
 </ul>
@@ -1006,14 +961,14 @@ Afreez Gan
 <section id="find-aws-credentials" class="slide level2 aws-background">
 <h2>Find AWS Credentials</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">1</a></li><li><a href="#tabset-6-2">2</a></li><li><a href="#tabset-6-3">3</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">1</a></li><li><a href="#tabset-5-2">2</a></li><li><a href="#tabset-5-3">3</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
+<div id="tabset-5-1">
 <ul>
 <li>Log into AWS Academy <img data-src="images/aws_academy_1.png" data-fig-align="center" width="951"></li>
 </ul>
 </div>
-<div id="tabset-6-2">
+<div id="tabset-5-2">
 <ul>
 <li>Check AWS Details</li>
 </ul>
@@ -1023,7 +978,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-6-3">
+<div id="tabset-5-3">
 <ul>
 <li>Find the login credential</li>
 </ul>
@@ -1039,9 +994,9 @@ Afreez Gan
 <section id="return-to-jupyter-lab" class="slide level2 minipupper-background">
 <h2>Return to Jupyter Lab</h2>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">1</a></li><li><a href="#tabset-7-2">2</a></li><li><a href="#tabset-7-3">3</a></li><li><a href="#tabset-7-4">4</a></li><li><a href="#tabset-7-5">5</a></li><li><a href="#tabset-7-6">6</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">1</a></li><li><a href="#tabset-6-2">2</a></li><li><a href="#tabset-6-3">3</a></li><li><a href="#tabset-6-4">4</a></li><li><a href="#tabset-6-5">5</a></li><li><a href="#tabset-6-6">6</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-6-1">
 <ul>
 <li>Return to Jupyter Lab on RPi4 <code>http://[ip address]:8888</code></li>
 <li>Copy the AWS academy credentials one at a time to appropriate fields</li>
@@ -1052,7 +1007,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-6-2">
 <ul>
 <li><p>Thing <code>ROS2_Minipupper</code> and thing group <code>ROS2_Minipuppers</code></p></li>
 <li><p>Run the block</p></li>
@@ -1063,7 +1018,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-7-3">
+<div id="tabset-6-3">
 <ul>
 <li>Ensure a thing and a thing group created</li>
 </ul>
@@ -1073,7 +1028,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-7-4">
+<div id="tabset-6-4">
 <ul>
 <li>Ensure things are added on IoT Core</li>
 </ul>
@@ -1083,7 +1038,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-7-5">
+<div id="tabset-6-5">
 <ul>
 <li>Run the next block, add a greengrass user <code>ggc_user</code></li>
 <li>Should only be done after the docker image build is completed</li>
@@ -1094,7 +1049,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-7-6">
+<div id="tabset-6-6">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/jupyter_lab12.png" width="906"></p>
@@ -1104,78 +1059,6 @@ Afreez Gan
 <li>ensure the Greengrass user <code>ggc_user</code> is added</li>
 <li>DO NOT run the last step yet, this will be run after deployment</li>
 </ul>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="s3-setup-on-aws-cloud" class="title-slide slide level1 aws-background center">
-<h1>S3 Setup on AWS Cloud</h1>
-
-</section>
-<section id="what-is-s3" class="slide level2">
-<h2>What is S3?</h2>
-<ul>
-<li>Simple Storage Service (S3)</li>
-<li>Moves files from a big storage area in the cloud to smaller devices closer to where files are needed</li>
-</ul>
-</section>
-<section id="s3-setup" class="slide level2 aws-background">
-<h2>S3 setup</h2>
-<div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">1</a></li><li><a href="#tabset-8-2">2</a></li><li><a href="#tabset-8-3">3</a></li><li><a href="#tabset-8-4">4</a></li><li><a href="#tabset-8-5">5</a></li></ul>
-<div class="tab-content">
-<div id="tabset-8-1">
-<ul>
-<li>Search for S3 on AWS Console, select first option</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/s3_1.png" width="1074"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-8-2">
-<ul>
-<li>Setup a S3 by selecting “create bucket”</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/creatbucket.png" width="409"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-8-3">
-<ul>
-<li>Use name and date for S3 bucket repo naming</li>
-<li>Record your created name!</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/s3bucketname.png" width="583"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-8-4">
-<ul>
-<li>Deselect “block permission”</li>
-<li>Acknowledge settings</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/s3_5.png" width="652"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-8-5">
-<ul>
-<li>Create the S3 bucket</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/s3_6.png" width="625"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1192,16 +1075,16 @@ Afreez Gan
 <section id="check-iot-core-things" class="slide level2 aws-background">
 <h2>Check IoT Core Things</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">1</a></li><li><a href="#tabset-9-2">2</a></li><li><a href="#tabset-9-3">3</a></li><li><a href="#tabset-9-4">4</a></li><li><a href="#tabset-9-5">5</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">1</a></li><li><a href="#tabset-7-2">2</a></li><li><a href="#tabset-7-3">3</a></li><li><a href="#tabset-7-4">4</a></li><li><a href="#tabset-7-5">5</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1">
+<div id="tabset-7-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/iot_1.png" width="604"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-9-2">
+<div id="tabset-7-2">
 <ul>
 <li>Find Things on IoT in the drop down menu under “Manage”</li>
 </ul>
@@ -1211,7 +1094,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-9-3">
+<div id="tabset-7-3">
 <ul>
 <li>Find Thing Group on IoT</li>
 <li>thing group is the ROS2_Minipupper</li>
@@ -1222,7 +1105,7 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-9-4">
+<div id="tabset-7-4">
 <ul>
 <li>Find thing on Greengrass under drop down menu</li>
 <li>Select core devices and find the thing group</li>
@@ -1233,13 +1116,142 @@ Afreez Gan
 </figure>
 </div>
 </div>
-<div id="tabset-9-5">
+<div id="tabset-7-5">
 <ul>
 <li>Find Deployment on IoT</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/iot_5.png" width="908"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="ecr-setup" class="title-slide slide level1 aws-background center">
+<h1>ECR setup</h1>
+<p>When the docker image is completed (30 minutes), set up a repository to store docker instances</p>
+</section>
+<section id="what-is-a-docker-instance" class="slide level2">
+<h2>What is a Docker Instance?</h2>
+<ul>
+<li>a virtual computer that runs on your computer</li>
+<li>contains everything needed to run only specific piece of software,</li>
+<li>application service including the code, libraries, and other dependencies</li>
+<li>can be transferred from cloud to device, device to cloud (using green grass)</li>
+</ul>
+</section>
+<section id="create-an-ecr" class="slide level2 aws-background">
+<h2>Create an ECR</h2>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">1</a></li><li><a href="#tabset-8-2">2</a></li><li><a href="#tabset-8-3">3</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<ul>
+<li>Search and open ECR in AWS</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">ros-humble-greengrass-minipupper-v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ecr1.png" width="414"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-8-2">
+<ul>
+<li><p>Select repository name</p></li>
+<li><p>open “view push commands”</p>
+<p><img data-src="images/pushcommands1-02.png" width="484"></p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src=".png"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-8-3">
+<ul>
+<li>Return to a new terminal in Cloud 9</li>
+<li>Paste each push command one line at a time</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ECR03.png" width="426"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="s3-setup-on-aws-cloud" class="title-slide slide level1 aws-background center">
+<h1>S3 Setup on AWS Cloud</h1>
+
+</section>
+<section id="what-is-s3" class="slide level2">
+<h2>What is S3?</h2>
+<ul>
+<li>Simple Storage Service (S3)</li>
+<li>Moves configuration files from cloud to device, device to cloud (generally storage files)</li>
+<li>Make sure the name is unique</li>
+</ul>
+</section>
+<section id="s3-setup" class="slide level2 aws-background">
+<h2>S3 setup</h2>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">1</a></li><li><a href="#tabset-9-2">2</a></li><li><a href="#tabset-9-3">3</a></li><li><a href="#tabset-9-4">4</a></li><li><a href="#tabset-9-5">5</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<ul>
+<li>Search for S3 on AWS Console, select first option</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_1.png" width="1074"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-2">
+<ul>
+<li>Setup a S3 by selecting “create bucket”</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/creatbucket.png" width="815"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-3">
+<ul>
+<li>Use name and date for S3 bucket repo naming</li>
+<li>Remember your created name!</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3bucketname.png" width="690"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-4">
+<ul>
+<li>Deselect “block permission”</li>
+<li>Acknowledge settings</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_5.png" width="652"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-5">
+<ul>
+<li>Create the S3 bucket</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_6.png" width="625"></p>
 </figure>
 </div>
 </div>
@@ -1256,8 +1268,8 @@ Afreez Gan
 </ul>
 
 <img data-src="images/aws_greengrass.png" class="r-stretch quarto-figure-center"></section>
-<section id="run-a-bash-script-in-cloud-9" class="slide level2 aws-background">
-<h2>Run a Bash Script in Cloud 9</h2>
+<section id="run-a-bash-script-to-create-a-component" class="slide level2 aws-background">
+<h2>Run a Bash Script to create a component</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">bash</span> ./awsgreengrass.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1329,7 +1341,7 @@ Afreez Gan
 </figure>
 </div>
 <ul>
-<li>Wait for about 7-10 minutes</li>
+<li>Wait for up to 15 minutes</li>
 </ul>
 </div>
 <div id="tabset-11-2">
@@ -1419,7 +1431,7 @@ Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots
 </div>
 
 <img src="images/temple.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p>Revised by Lillian Drasin</p>
+<p>Li Bai</p>
 </div>
 </section></section>
     </div>
