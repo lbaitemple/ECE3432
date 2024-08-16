@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="class1_files/libs/clipboard/clipboard.min.js"></script>
-<script src="class1_files/libs/quarto-html/tabby.min.js"></script>
-<script src="class1_files/libs/quarto-html/popper.min.js"></script>
-<script src="class1_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="class1_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="class1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="class1_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="class1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="class2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="class2_files/libs/quarto-html/tabby.min.js"></script>
+<script src="class2_files/libs/quarto-html/popper.min.js"></script>
+<script src="class2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="class2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="class2_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="class2_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="class2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2024-08-27">
+  <meta name="dcterms.date" content="2024-08-29">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="class1_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="class1_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="class2_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="class2_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -95,35 +95,15 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
-  <link rel="stylesheet" href="class1_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="class1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  </style>
+  <link rel="stylesheet" href="class2_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="class2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -416,7 +396,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Robot Control using Raspberry Pi</h1>
-  <p class="subtitle">Lecture 1 - Setting Up AWS and Python Environment</p>
+  <p class="subtitle">Lecture 2 - Setting Up Minipupper</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -432,515 +412,219 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">August 27, 2024</p>
+  <p class="date">August 29, 2024</p>
 </section>
-<section id="sec-mangdang" class="slide level2">
-<h2>Mangdang</h2>
-<h3 id="a-quadruped-robot-dog-originated-from-a-stanford-project-click-here">A quadruped robot dog originated from a stanford project <a href="https://news.stanford.edu/2019/05/20/dog-like-robot-jumps-flips-trots/" class="button">click here</a></h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div>
+<section id="setup-a-hostspot-from-your-computer" class="slide level2">
+<h2>Setup a Hostspot from your computer</h2>
 <ul>
-<li class="fragment">A <span class="alert">Mangdang v2</span> and a <span class="alert">Raspberry Pi Compute Module 4</span> 2GB<br></li>
-<li class="fragment">Better own two <a href="https://www.amazon.com/Sandisk-Micro-Class-Memory-Packaged/dp/B00FZV964A/ref=asc_df_B00FZV964A/?tag=hyprod-20&amp;linkCode=df0&amp;hvadid=309833041189&amp;hvpos=&amp;hvnetw=g&amp;hvrand=2861064339265814291&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9007206&amp;hvtargid=pla-406164573113&amp;psc=1" class="bg" style="--col: #e64173">32GB micro SD cards</a></li>
+<li><p><a href="https://www.macworld.com/article/670875/how-to-share-wi-fi-from-mac.html">Mac OS</a></p></li>
+<li><p><a href="https://www.geeksforgeeks.org/how-to-create-and-configure-wi-fi-hotspot-in-windows-10/">Windows 10</a></p></li>
+<li><p><a href="https://techcommunity.microsoft.com/t5/windows-11/how-to-set-up-a-mobile-hotspot-in-windows-11/m-p/2764785">Windows 11</a></p></li>
+<li><p>complete your AWS Cloud setup in previous class</p></li>
 </ul>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/mangdang.png" class="quarto-figure quarto-figure-center" width="400"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div>
-<ul>
-<li class="fragment">software development is done using AWS Robomaker and AWS Cloud 9
-<ul>
-<li class="fragment"><span class="alert">Virtualization</span>, Docker, Linux, Python 3</li>
-<li class="fragment">Robot Operating System (ROS) and Gazebo</li>
-</ul></li>
-<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/references" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
-</ul>
-</div>
-</div>
-</div>
 </section>
-<section id="minipupper-documentation" class="slide level2">
-<h2>Minipupper Documentation</h2>
+<section id="aws-cloud-9" class="slide level2 aws-background">
+<h2>AWS Cloud 9</h2>
 <ul>
-<li><a href="https://github.com/mangdangroboticsclub/mini_pupper">Minipupper Github</a></li>
+<li>Download the repo and to setup a configuration file</li>
 </ul>
-
-<img data-src="images/hla.png" class="quarto-figure quarto-figure-center r-stretch" width="606"></section>
-<section id="miniupper-v2" class="slide level2">
-<h2>Miniupper v2</h2>
-<ul>
-<li>Hardware covered</li>
-<li><a href="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp">mini pupper v2 board support package</a></li>
-</ul>
-
-<img data-src="images/hla2.png" class="quarto-figure quarto-figure-center r-stretch" width="606"></section>
-<section id="course-in-2023" class="slide level2">
-<h2>Course in 2023</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div>
-<ul>
-<li class="fragment">ROS2 dance router</li>
-<li class="fragment">create docker container using greengrass IoT</li>
-</ul>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-&quot;center">
-<figure>
-<p><img data-src="images/class2023.png" class="quarto-figure quarto-figure-&quot;center"></p>
-</figure>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> fall2024 https://github.com/lbaitemple/mini-pupper-aws</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="course-in-2024" class="slide level2">
-<h2>Course in 2024</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div>
+<section id="minipupperv2-setup-requirements" class="slide level2 minipupper-background">
+<h2>MinipupperV2 Setup Requirements</h2>
 <ul>
-<li class="fragment">ROS2 line following</li>
-<li class="fragment">ROS2 dance router</li>
-<li class="fragment">Google Gemini</li>
-<li class="fragment">Final project</li>
+<li><p>a Minipupper v2 robot</p></li>
+<li><p>Minipupper v2 ubuntu prebuilt image, <a href="https://tuprd-my.sharepoint.com/:u:/g/personal/lbai_temple_edu/EVDprOjjN3hOm4KjWsKRGzgBI9CSovMsZgOFrv-C2Qq-LA?e=273oCd" target="_blank">download here</a></p></li>
+<li><p>a <a href="">wireless.txt</a>, in cloud 9 git repo - mini_pupper_aws/wireless folder</p></li>
 </ul>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/class2024.png" class="quarto-figure quarto-figure-center" width="606"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
-<section id="sec-workflow" class="slide level2">
-<h2>AWS RoboMaker Workflow</h2>
-
-<img data-src="images/introduction-01-dev-cycle.png" class="quarto-figure quarto-figure-center r-stretch"><div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<div>
-<ul>
-<li class="fragment">Simulation in Robomaker (or DCV) using Gazebo (simulation_ws)</li>
-<li class="fragment">Deployment using IoT Greengrass 2.0 (robot_ws)</li>
-<li class="fragment">Docker container registry (contain OS integrity)</li>
-<li class="fragment">Cloud storage (S3 - Simple Storage Services)</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="footer">
-<p>Credit from Building Cloud Connected Robots <span class="citation" data-cites="BuildCloudRobot">(<a href="#/references" role="doc-biblioref" onclick="">Robots 2021</a>)</span></p>
-</div>
-</section>
-<section id="aws-academy" class="slide level2">
-<h2>AWS Academy</h2>
-<h3 id="elastic-computing-using-aws-academy-account-setup">Elastic Computing using AWS Academy <span class="button"><a href="#/aws-academy-1">account setup</a></span></h3>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Canvas shell</strong></p>
-</div>
-<div class="callout-content">
-<div>
-<ul>
-<li class="fragment">You get a canvas page (not the same as Temple’s Canvas) <a href="https://awsacademy.instructure.com/">AWS Academy</a> on Chrome</li>
-<li class="fragment">multi-course tiles - create a nickname in the console</li>
-<li class="fragment">Manage your cloud instance for a course -learner lab
-<ul>
-<li class="fragment">start lab/end lab, $100 credit</li>
-<li class="fragment"><img data-src="images/lab_start.png" class="quarto-figure quarto-figure-center" width="700"></li>
-</ul></li>
-<li class="fragment">After you start the lab, click on the green dot for AWS Console
-<ul>
-<li class="fragment"><img data-src="images/lab_ready.png" class="quarto-figure quarto-figure-center" width="700"></li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="sec-awsconsole" class="slide level2">
-<h2>AWS Console Management</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aws_man_console.png" class="quarto-figure quarto-figure-center" width="600"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div>
-<ul>
-<li class="fragment">search for services</li>
-<li class="fragment">recent services</li>
-<li class="fragment">account or role information</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>The remote desktop using NICE DCV can be fragile in Firefox, Safari and Edge - please use Google Chrome.</p>
-<pre><code>1.  Cloud 9 - virtual instance, 
-2.  IAM - user management, role, policy
-3.  Simple Storage Service (S3)
-4.  robomaker, etc.</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="aws-academy-1" class="slide level2">
-<h2>AWS Academy</h2>
-<h3 id="sec-academy">AWS Academy Account Setup</h3>
+<section id="setup-raspberry-pi---balena-etcher-preflashedhardware-flash" class="slide level2">
+<h2>Setup Raspberry Pi - Balena Etcher (preflashed/hardware flash)</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">No account</a></li><li><a href="#tabset-1-2">With an account</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1</a></li><li><a href="#tabset-1-2">2</a></li><li><a href="#tabset-1-3">3</a></li><li><a href="#tabset-1-4">4</a></li><li><a href="#tabset-1-5">5</a></li><li><a href="#tabset-1-6">6</a></li><li><a href="#tabset-1-7">7</a></li><li><a href="#tabset-1-8">8</a></li><li><a href="#tabset-1-9">9</a></li><li><a href="#tabset-1-10">10</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<ol type="1">
-<li>Check an email from AWS Academy<br> <img data-src="images/awsemail.png" class="quarto-figure quarto-figure-center" width="400"></li>
-<li>Follow <a href="files/AWS.pdf">the instruction</a> at to setup an account which is different than your University’s account</li>
-</ol>
+<ul>
+<li>Download Balena Etcher <a href="https://etcher.balena.io/" class="uri">https://etcher.balena.io/</a> to copy the new image to your MicroSD card</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_1.png" class="quarto-figure quarto-figure-center" width="584"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-1-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_2.png" class="quarto-figure quarto-figure-center" width="625"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_3.png" class="quarto-figure quarto-figure-center" width="591"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_4.png" class="quarto-figure quarto-figure-center" width="650"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-5">
 <ul>
-<li><p>You should have access to <a href="https://awsacademy.instructure.com/">AWS Canvas Console</a>. <img data-src="images/awscanvas.png" class="quarto-figure quarto-figure-center" width="500"></p></li>
-<li><p>Better rename a nickname by clicking on ⋮ of the course tile</p></li>
+<li>Check to ensure your SD card is selected to flash to SDHC, NOT your computer!</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_5.png" class="quarto-figure quarto-figure-center" width="588"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-6">
+<p>NOTE: the following step will not apply to you if you own a computer using Windows</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_7.png" class="quarto-figure quarto-figure-center" width="536"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-7">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_8.png" class="quarto-figure quarto-figure-center" width="528"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-8">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_9.png" class="quarto-figure quarto-figure-center" width="584"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-9">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_11.png" class="quarto-figure quarto-figure-center" width="587"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-10">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_12.png" class="quarto-figure quarto-figure-center" width="582"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section>
-<section id="aws-identity-and-access-management-iam" class="title-slide slide level1 center" data-background-color="#40666e">
-<h1>AWS <br>Identity and Access Management (IAM)</h1>
-
-</section>
-<section id="user-and-permission" class="slide level2">
-<h2>User and Permission</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<div>
+<section id="remove-microsd-card-and-reinsert" class="slide level2">
+<h2>Remove MicroSD Card and Reinsert</h2>
 <ul>
-<li class="fragment">User</li>
-<li class="fragment">User group</li>
-<li class="fragment">Permission (policy, json file)</li>
-<li class="fragment">Role</li>
+<li>make sure you see a new driver <code>system-boot</code></li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<iframe data-external="1" src="https://www.youtube.com/embed/PjKvwxTTSUk" width="600" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-<div class="footer">
-<p>AWS Academy uses Labrole to manage permission</p>
-</div>
-</section>
-<section id="setup-aws-cloud-9" class="slide level2">
-<h2>Setup AWS Cloud 9 …</h2>
-<h3 id="requirements-for-instance-setup">Requirements for instance setup</h3>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Need create an EC2 instance</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>create a new environment <img data-src="images/create_cloud.png" class="quarto-figure quarto-figure-center" width="100"></li>
-<li>New EC2 instance</li>
-<li>c4.xlarge, ubuntu 22.04, Secure Shell (SSH)</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="cloud-9" class="slide level2" data-background-color="#40666e">
-<h2>Cloud 9</h2>
-
-<aside><div>
-<p><span class="fg">AWS Cloud9: Cloud-based IDE with code editor, debugger, and terminal. Supports popular languages, serverless app development, and remote access.</span></p>
-</div></aside></section>
-<section id="sec-cloud9" class="slide level2">
-<h2>Cloud 9</h2>
-<h3 id="select-ec2-instance">Select EC2 Instance</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/cloud9_instance.png" width="606"></p>
-</div><div class="column" style="width:40%;">
-<ul>
-<li>c4.xlarge (7.5GB and 4 vCPU)</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="cloud-9-1" class="slide level2">
-<h2>Cloud 9</h2>
-<h3 id="select-ec2-os">Select EC2 OS</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/cloud9_os.png"></p>
-</div><div class="column" style="width:40%;">
-<ul>
-<li>Ubuntu 22.04 (Jammy)</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="cloud-9-2" class="slide level2">
-<h2>Cloud 9</h2>
-<h3 id="create-os">Create OS</h3>
-
-<img data-src="images/cloud9_create.png" class="r-stretch"></section>
-<section id="cloud-9-3" class="slide level2">
-<h2>Cloud 9</h2>
-<h3 id="opencreate-cloud-9">Open/Create Cloud 9</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/open_create_cloud9.png"></p>
-</div><div class="column" style="width:40%;">
-<ul>
-<li>click open to access cloud 9</li>
-<li>add other cloud 9 instance by clicking on create environment</li>
-<li>make sure you do not have a lot instances becasue they run when you start the lab</li>
-</ul>
-</div>
-</div>
-</section></section>
-<section>
-<section id="cloud-9-ide" class="title-slide slide level1 center" data-background-color="#40666e">
-<h1>Cloud 9 IDE</h1>
-
-</section>
-<section id="cloud-9-ide-1" class="slide level2">
-<h2>Cloud 9 IDE</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/cloud9_ide.png" width="475"></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="fu">uname</span> <span class="at">-m</span></span>
-<span id="cb2-2"><a href=""></a><span class="fu">df</span> <span class="at">-lh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column" style="width:40%;">
-<ol type="1">
-<li>user setting (large fonts, background colors, etc)</li>
-<li>open a new terminal window</li>
-<li>open a new file editor window</li>
-<li>open other new table window</li>
-</ol>
-</div>
-</div>
-</section>
-<section id="cloud-9-ide-2" class="slide level2">
-<h2>Cloud 9 IDE</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Install DCV, ROS, Docker and Gazebo</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Run the following command in a terminal window</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> <span class="st">"https://bit.ly/robomaker2204"</span> <span class="kw">|</span> <span class="fu">sudo</span> <span class="at">-E</span> bash <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Wait for 10 minutes</li>
-<li>Run the following command to reboot the system</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="fu">sudo</span> reboot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Try</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">uname</span> <span class="at">-m</span></span>
-<span id="cb5-2"><a href=""></a><span class="fu">df</span> <span class="at">-lh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="dcv" class="title-slide slide level1 center">
-<h1>DCV</h1>
-<div class="footer">
-<p>Docker Desktop <a href="https://github.com/Tiryoh/docker-ros-desktop-vnc" class="button">ROS1</a> and <a href="https://github.com/Tiryoh/docker-ros2-desktop-vnc" class="button">ROS2</a></p>
-<p>DCV: Windows, Linux support with native clients, web browser access.</p>
-</div>
-</section>
-<section id="sec-dcv" class="slide level2">
-<h2>Access DCV from cloud 9</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="images/dcv_access.png"></p>
-<ul>
-<li>check the menu bar</li>
-<li>click on preview application</li>
-<li>click on preview running application</li>
-</ul>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="images/check_new_driver.png" class="quarto-figure quarto-figure-left" width="350"></p>
+</figure>
+</div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/preview_icon.png"> - click on the expansion icon to open a new tab</p>
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-right" width="415"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="xwindow-from-dcv" class="slide level2">
-<h2>XWindow from DCV</h2>
-
-<img data-src="images/desktop.png" class="r-stretch"></section>
-<section id="allow-xwindow-on-browser" class="slide level2">
-<h2>Allow XWindow on Browser</h2>
-
-<img data-src="images/desktop_allow.png" class="r-stretch"></section>
-<section id="dcv-from-running-xeyes-application" class="slide level2">
-<h2>DCV from running xeyes application</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="images/check_cmd.png"></p>
-</div><div class="column" style="width:50%;">
+<section id="generating-a-password-hash" class="slide level2 aws-background">
+<h2>Generating a Password Hash</h2>
 <ul>
-<li>make sure you setup DISPLAY variable</li>
+<li>Passowrd Hash: cryptographic representation of a password</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb6-2"><a href=""></a><span class="ex">xeyes</span> <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="xeyes-application-in-the-browser-window" class="slide level2">
-<h2>Xeyes Application in the browser window</h2>
 
-<img data-src="images/xeyes.png" class="r-stretch"></section>
-<section id="google-gemini" class="slide level2">
-<h2>Google Gemini</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li>Go to Canvas, request your Google credit using your temple.edu email address</li>
-<li>Apply the credit using your gmail account</li>
-<li>Link the credit to a project</li>
-<li>Setup a service account with the project</li>
-<li>Enable google gemini APIs for the project</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="images/gcp-01.png" width="658"></p>
-</div>
-</div>
-</section>
-<section id="create-google-project-personal-account" class="slide level2">
-<h2>Create Google Project (personal account)</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><a href="https://console.cloud.google.com/apis/credentials?_ga=2.42000101.1977046864.1723467260-438780224.1720043305">Google credential link</a></li>
-<li>make sure you select your personal gmail account</li>
-</ul>
-</div>
-</div>
-</div>
+<img data-src="images/password-hashing-01.png" class="quarto-figure quarto-figure-center r-stretch" width="500"></section>
+<section id="generate-your-password-hash" class="slide level2 aws-background">
+<h2>Generate your Password Hash</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">create a project</a></li><li><a href="#tabset-2-2">select the project</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">1</a></li><li><a href="#tabset-2-2">2</a></li><li><a href="#tabset-2-3">3</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<p><img data-src="images/google_createproject_1.png" width="500"></p>
+<ul>
+<li>Now we open a new terminal to setup another docker image to setup wifi on the minipupper</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="bu">cd</span> mini-pupper-aws/wifipasswd</span>
+<span id="cb2-2"><a href=""></a><span class="ex">docker-compose</span> build</span>
+<span id="cb2-3"><a href=""></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/passwordhashnewterminal.png" class="quarto-figure quarto-figure-center" width="548" height="337"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/downloadcodeoncloud9.png" class="quarto-figure quarto-figure-center" width="747"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-2-2">
-<p><img data-src="images/google_createproject_2.png" width="500"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="link-service-account" class="slide level2">
-<h2>Link service account</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
 <ul>
-<li><a href="https://console.cloud.google.com/apis/credentials?_ga=2.42000101.1977046864.1723467260-438780224.1720043305">Google credential link</a></li>
-<li>make sure you select your personal gmail account</li>
+<li>paste commands to open a new docker instance</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">docker</span> run <span class="at">-it</span> bionic-bai:latest /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/docker_instance_1.png" class="quarto-figure quarto-figure-center" width="939"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-3">
+<ul>
+<li>Paste command after the #</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>replace “password” in command line with your password used to log in to school organization email</li>
+<li>enter to regenerate unique hash</li>
+<li>“Ctrl +S” to save changes in wireless.txt file</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/docker_instance_2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<ul>
+<li>save value for your WiFi access (in google doc or notebook)!</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">create credential</a></li><li><a href="#tabset-3-2">service account</a></li><li><a href="#tabset-3-3">keys</a></li><li><a href="#tabset-3-4">key</a></li><li><a href="#tabset-3-5">json</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_credential_service_account1.png" class="quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-3-2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_credential_service_account2.png" class="quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-3-3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_credential_service_account3.png" class="quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-3-4">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_credential_service_account4.png" class="quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-3-5">
+</section>
+<section id="revise-the-id-as-eduroam-in-wireless.txt" class="slide level2 aws-background">
+<h2>Revise the ID as eduroam in wireless.txt</h2>
+<ul>
+<li>Open downloaded Minipupper file</li>
+<li>Open wireless.txt file at the bottom</li>
+<li>“Ctrl + S” to save</li>
+<li>Line 1: use your school email address</li>
+<li>Line 2: use the hash passcode that you previously saved in a document or notebook</li>
+<li>(see next slide for example)</li>
+</ul>
+</section>
+<section id="revising-the-wifi-setting" class="slide level2">
+<h2>Revising the WiFi setting</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-right">
 <figure>
-<p><img data-src="images/google_credential_service_account5.png" class="quarto-figure quarto-figure-center" width="500"></p>
+<p><img data-src="images/revisewirelesstxt.png" class="quarto-figure quarto-figure-right"></p>
 </figure>
 </div>
 </div><div class="column" style="width:30%;">
@@ -954,161 +638,197 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div class="callout-content">
 <ul>
-<li>SAVE this json file and keep it private</li>
+<li>Line 1 and line 2 for eduroam, but other students can login your robot (unsecure)</li>
+<li>You can use previous hotspot setting for line 5 and line 6 (more secure, not shraing your hostpot)</li>
+<li>line 7 and line 8 for your home WiFi</li>
 </ul>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="setup-api" class="slide level2">
-<h2>setup API</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
+<section id="copy-the-wifi-password-file" class="slide level2">
+<h2>Copy the wifi password file</h2>
 <ul>
-<li>vertex ai API</li>
-<li>google TTS and STT API</li>
+<li>Drag and drop the wireless.txt into <code>system-boot</code> folder</li>
 </ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/copy_wifi.png" class="quarto-figure quarto-figure-center" width="645"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wirelesstextdragdrop-02.png" class="quarto-figure quarto-figure-center" width="343"></p>
+</figure>
 </div>
 </div>
 </div>
+</section>
+<section id="remove-minisd-connect-it-to-minipupper-sd-slot" class="slide level2">
+<h2>Remove miniSD, connect it to Minipupper SD slot</h2>
+
+<img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center r-stretch" width="400"></section>
+<section id="insert-microsd-card-to-minipupper" class="slide level2">
+<h2>Insert MicroSD Card to Minipupper</h2>
+<ul>
+<li><p>If the IP address does not show up on first time boot up, wait for power on sound and screen flash, then disconnect power and reconnect</p></li>
+<li><p>If you see the IP address on the screen in the second time power on, type <code>http://[ipaddress]:8080</code> for a web remote control</p></li>
+</ul>
+</section>
+<section id="minipupper-powered-on" class="slide level2">
+<h2>Minipupper Powered On</h2>
+
+<img data-src="images/ip_adress.jpg" class="quarto-figure quarto-figure-center r-stretch" width="500"></section>
+<section id="jupyter-lab-on-minipupper" class="slide level2 minipupper-background">
+<h2>Jupyter Lab on Minipupper</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">API/services</a></li><li><a href="#tabset-4-2">enable</a></li><li><a href="#tabset-4-3">search</a></li><li><a href="#tabset-4-4">API enable</a></li><li><a href="#tabset-4-5">status</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">1</a></li><li><a href="#tabset-3-2">2</a></li><li><a href="#tabset-3-3">3</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_enableapi_1.png" class="quarto-figure quarto-figure-center" width="779"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_enableapi_2.png" class="quarto-figure quarto-figure-center" width="1068"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_enableapi_3.png" class="quarto-figure quarto-figure-center" width="606"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-4">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_enableapi_4.png" class="quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-5">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/google_enableapi_5.png" class="quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="check-credits" class="slide level2">
-<h2>check credits</h2>
+<div id="tabset-3-1">
 <ul>
-<li><a href="https://console.cloud.google.com/" class="uri">https://console.cloud.google.com/</a></li>
-<li>billing</li>
+<li>Open a browser, type <code>http://[ipaddress]:8888</code></li>
+<li>password <code>mangdang</code></li>
 </ul>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Billing API</a></li><li><a href="#tabset-5-2">Manage account</a></li><li><a href="#tabset-5-3">select account</a></li><li><a href="#tabset-5-4">view cost</a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/check_billing_1.png" class="quarto-figure quarto-figure-center" width="442"></p>
+<p><img data-src="images/ip_window.png" class="quarto-figure quarto-figure-center" width="591" height="377"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-3-2">
+<ul>
+<li>Open a new terminal</li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/check_billing_2.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/jupyter_lab1.png" class="quarto-figure quarto-figure-center" width="589"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-5-3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/check_billing_3.png" class="quarto-figure quarto-figure-center" width="397"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-5-4">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/check_billing_4.png" class="quarto-figure quarto-figure-center" width="618"></p>
-</figure>
-</div>
+<div id="tabset-3-3">
+<ul>
+<li>Download <code>mangdang</code> folder</li>
+<li>Refresh page for folder to appear</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">git</span> clone https://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="homework-exercise" class="slide level2">
-<h2>Homework Exercise*</h2>
-<p>Setup a Hotspot from your computer</p>
+<section id="web-contorl-the-robot" class="slide level2">
+<h2>Web contorl the robot</h2>
 <ul>
-<li><a href="https://www.macworld.com/article/670875/how-to-share-wi-fi-from-mac.html">Mac OS</a></li>
-<li><a href="https://www.geeksforgeeks.org/how-to-create-and-configure-wi-fi-hotspot-in-windows-10/">Windows 10</a></li>
-<li><a href="https://techcommunity.microsoft.com/t5/windows-11/how-to-set-up-a-mobile-hotspot-in-windows-11/m-p/2764785">Windows 11</a></li>
+<li>Open a browser, type `http://[ipaddress]:8080</li>
+<li>Activate the robot with your smart phone browser (same WiFi)`</li>
 </ul>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-DanceRobot" class="csl-entry" role="listitem">
-Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots.”</span> 2022. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US</a>.
-</div>
-<div id="ref-BuildCloudRobot" class="csl-entry" role="listitem">
-Robots, Building Cloud Connected. 2021. <span>“Building Cloud Connected Robots.”</span> 2021. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/fa208b8e-83d6-4cc1-8356-bfa5b6184fae/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/fa208b8e-83d6-4cc1-8356-bfa5b6184fae/en-US</a>.
-</div>
-</div>
+<section id="introduction-to-linux-commands" class="slide level2">
+<h2>Introduction to Linux Commands</h2>
+<ul>
+<li>Linux commands are used to interact with the operating system through the terminal.</li>
+<li>Commands are typically composed of a command name, options, and arguments.</li>
+<li>Understanding basic Linux commands is essential for navigating and managing a Linux system.</li>
+</ul>
+</section>
+<section id="pwd---print-working-directory" class="slide level2">
+<h2><code>pwd</code> - Print Working Directory</h2>
+<ul>
+<li><strong>Command</strong>: <code>pwd</code></li>
+<li><strong>Explanation</strong>: Displays the current directory you are working in.</li>
+<li><strong>Example</strong>: ```bash pwd</li>
+</ul>
+</section>
+<section id="ls---list-directory-contents" class="slide level2">
+<h2><code>ls</code> - List Directory Contents</h2>
+<ul>
+<li><strong>Command</strong>: <code>ls</code></li>
+<li><strong>Explanation</strong>: Lists files and directories in the current directory.</li>
+<li><strong>Options</strong>:
+<ul>
+<li><code>-l</code>: Detailed list with permissions, owner, size, etc.</li>
+<li><code>-a</code>: Includes hidden files.</li>
+<li><code>-t</code>: sort files by time.</li>
+<li><code>-h</code>: human readable.</li>
+</ul></li>
+<li><strong>Example</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a>  <span class="fu">ls</span> <span class="at">-la</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="cd---change-directory" class="slide level2">
+<h2><code>cd</code> - Change Directory</h2>
+<ul>
+<li><p><strong>Command</strong>: <code>cd</code></p></li>
+<li><p><strong>Explanation</strong>: Changes the current directory to a specified directory.</p></li>
+<li><p><strong>Usage</strong>:</p>
+<ul>
+<li><code>cd /path/to/directory</code>: Move to a specific directory.</li>
+<li><code>cd ..</code>: Move up one directory level.</li>
+<li><code>cd ~</code>: Move to the home directory.</li>
+</ul></li>
+<li><p><strong>Example</strong>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="bu">cd</span> /home/user/Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="mkdir-and-rmdir---create-and-remove-directories" class="slide level2">
+<h2><code>mkdir</code> and <code>rmdir</code> - Create and Remove Directories</h2>
+<ul>
+<li><p><strong>Commands</strong>:</p>
+<ul>
+<li><code>mkdir</code>: Creates a new directory.</li>
+<li><code>rmdir</code>: Removes an empty directory.</li>
+</ul></li>
+<li><p><strong>Example</strong>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">mkdir</span> new_folder</span>
+<span id="cb8-2"><a href=""></a><span class="fu">rmdir</span> new_folder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="class-next-week" class="slide level2">
+<h2>Class next week</h2>
+<ul>
+<li>make sure you have your Google service account json file</li>
+<li>Install ROS2 using chatGPT (ubuntu 22.04 - humble) or using <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros">Mangdang setup</a></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb9-2"><a href=""></a><span class="fu">sudo</span> apt update</span>
+<span id="cb9-3"><a href=""></a><span class="fu">git</span> clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git</span>
+<span id="cb9-4"><a href=""></a><span class="ex">~/ros2_setup_scripts_ubuntu/ros2-humble-ros-base-main.sh</span></span>
+<span id="cb9-5"><a href=""></a><span class="bu">source</span> /opt/ros/humble/setup.bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>verify the <a href="https://foxglove.dev/blog/installing-ros2-humble-on-ubuntu">installed ROS demo program</a></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb10-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_py listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>Li Bai</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="class1_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="class2_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="class1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="class1_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
