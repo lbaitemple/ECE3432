@@ -435,7 +435,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li><p>a Minipupper v2 robot</p></li>
 <li><p>Minipupper v2 ubuntu prebuilt image, <a href="https://tuprd-my.sharepoint.com/:u:/g/personal/lbai_temple_edu/EVDprOjjN3hOm4KjWsKRGzgBI9CSovMsZgOFrv-C2Qq-LA?e=273oCd" target="_blank">download here</a></p></li>
-<li><p>a <a href="">wireless.txt</a>, in cloud 9 git repo - mini_pupper_aws/wireless folder</p></li>
+<li><p>a <a href="https://raw.githubusercontent.com/lbaitemple/mini-pupper-aws/fall2024/wifipasswd/wireless.txt">wireless.txt</a>, in cloud 9 git repo - mini_pupper_aws/wireless folder</p></li>
 </ul>
 </section>
 <section id="setup-raspberry-pi---balena-etcher-preflashedhardware-flash" class="slide level2">
@@ -687,7 +687,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="jupyter-lab-on-minipupper" class="slide level2 minipupper-background">
 <h2>Jupyter Lab on Minipupper</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">1</a></li><li><a href="#tabset-3-2">2</a></li><li><a href="#tabset-3-3">3</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">1</a></li><li><a href="#tabset-3-2">2</a></li><li><a href="#tabset-3-3">3</a></li><li><a href="#tabset-3-4">4</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
 <ul>
@@ -716,6 +716,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>Refresh page for folder to appear</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">git</span> clone https://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-4">
+<ul>
+<li>change <a href="https://chatgpt.com/share/4549b053-1eb4-4d9f-b600-aeef7ac30e90">priority of access points</a></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="fu">sudo</span> nano /etc/netplan/50-cloud-init.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>make your hotspot as higher priority than eduroam’s priority</li>
+</ul>
 </div>
 </div>
 </div>
@@ -757,7 +766,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul></li>
 <li><strong>Example</strong>:</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a>  <span class="fu">ls</span> <span class="at">-la</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a>  <span class="fu">ls</span> <span class="at">-la</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cd---change-directory" class="slide level2">
 <h2><code>cd</code> - Change Directory</h2>
@@ -771,7 +780,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li><code>cd ~</code>: Move to the home directory.</li>
 </ul></li>
 <li><p><strong>Example</strong>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="bu">cd</span> /home/user/Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="bu">cd</span> /home/user/Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="mkdir-and-rmdir---create-and-remove-directories" class="slide level2">
@@ -783,26 +792,25 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li><code>rmdir</code>: Removes an empty directory.</li>
 </ul></li>
 <li><p><strong>Example</strong>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">mkdir</span> new_folder</span>
-<span id="cb8-2"><a href=""></a><span class="fu">rmdir</span> new_folder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="fu">mkdir</span> new_folder</span>
+<span id="cb9-2"><a href=""></a><span class="fu">rmdir</span> new_folder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="class-next-week" class="slide level2">
 <h2>Class next week</h2>
 <ul>
-<li>make sure you have your Google service account json file</li>
 <li>Install ROS2 using chatGPT (ubuntu 22.04 - humble) or using <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros">Mangdang setup</a></li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">cd</span> ~</span>
-<span id="cb9-2"><a href=""></a><span class="fu">sudo</span> apt update</span>
-<span id="cb9-3"><a href=""></a><span class="fu">git</span> clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git</span>
-<span id="cb9-4"><a href=""></a><span class="ex">~/ros2_setup_scripts_ubuntu/ros2-humble-ros-base-main.sh</span></span>
-<span id="cb9-5"><a href=""></a><span class="bu">source</span> /opt/ros/humble/setup.bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb10-2"><a href=""></a><span class="fu">sudo</span> apt update</span>
+<span id="cb10-3"><a href=""></a><span class="fu">git</span> clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git</span>
+<span id="cb10-4"><a href=""></a><span class="ex">~/ros2_setup_scripts_ubuntu/ros2-humble-ros-base-main.sh</span></span>
+<span id="cb10-5"><a href=""></a><span class="bu">source</span> /opt/ros/humble/setup.bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>verify the <a href="https://foxglove.dev/blog/installing-ros2-humble-on-ubuntu">installed ROS demo program</a></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
-<span id="cb10-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_py listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb11-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_py listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
