@@ -682,19 +682,32 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb13-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb13-3"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="minipupper-aws-rviz" class="slide level2">
+<h2>MiniPupper AWS [rviz]</h2>
+<ul>
+<li>3D Visualization</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="co"># Terminal 5</span></span>
+<span id="cb14-2"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
+<span id="cb14-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb14-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup rviz.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><img data-src="images/rviz.png" class="quarto-figure quarto-figure-center" width="658"></li>
+</ul>
+</section>
 <section id="minipupper-aws-ros2-topic-pub" class="slide level2">
 <h2>MiniPupper AWS [ros2 topic pub]</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="co"># Terminal 5</span></span>
-<span id="cb14-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb14-3"><a href=""></a></span>
-<span id="cb14-4"><a href=""></a><span class="ex">ros2</span> topic pub /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
-<span id="cb14-5"><a href=""></a><span class="st">  x: 1.0</span></span>
-<span id="cb14-6"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb14-7"><a href=""></a><span class="st">  z: 0.0</span></span>
-<span id="cb14-8"><a href=""></a><span class="st">angular:</span></span>
-<span id="cb14-9"><a href=""></a><span class="st">  x: 0.0</span></span>
-<span id="cb14-10"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb14-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="co"># Terminal 5</span></span>
+<span id="cb15-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb15-3"><a href=""></a></span>
+<span id="cb15-4"><a href=""></a><span class="ex">ros2</span> topic pub /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb15-5"><a href=""></a><span class="st">  x: 1.0</span></span>
+<span id="cb15-6"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb15-7"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb15-8"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb15-9"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb15-10"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb15-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="homework-exercise" class="slide level2">
 <h2>Homework Exercise*</h2>
