@@ -425,7 +425,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="ros-version" class="slide level2">
 <h2>ROS Version</h2>
 <ul>
-<li><p>Ubuntu version</p></li>
+<li><p><a href="https://blog.yanghong.dev/ros2-history/"><img data-src="images/rosversion.png"></a></p></li>
 <li><p><a href="https://docs.ros.org/en/humble/Installation.html">source install or binary installation</a></p></li>
 <li><p>search for different ROS packages (or ros dependencies)</p></li>
 </ul>
@@ -549,12 +549,16 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </section>
 <section id="minpupper-aws" class="slide level2">
 <h2>MinPupper AWS</h2>
+
+<img data-src="images/hla.png" class="quarto-figure quarto-figure-center r-stretch" width="606"><div>
 <ul>
-<li>using DCV (multiple terminal windows - short setup time)</li>
-<li>using Robomaker (minimum access in terminals - long setup time, but more computing process)</li>
+<li class="fragment">AWS is used to simulate a robot (gazebo)</li>
+<li class="fragment">using DCV (multiple terminal windows - short setup time)</li>
+<li class="fragment">AWS is x86 (think it as a PC)</li>
 </ul>
+</div>
 </section>
-<section id="sec-minipupper" class="slide level2">
+<section id="minipupper-on-aws" class="slide level2">
 <h2>MiniPupper on AWS</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -569,123 +573,128 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="bu">cd</span> ~</span>
 <span id="cb8-2"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
 <span id="cb8-3"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
-<span id="cb8-4"><a href=""></a><span class="ex">./pc_install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href=""></a><span class="fu">chmod</span> +x ./pc_install.sh</span>
+<span id="cb8-5"><a href=""></a><span class="ex">./pc_install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <ul>
-<li>we will do the ROS setup on minipupper (physical robot)</li>
+<li>minipupper on a virtual environment (not on the physical robot)</li>
 </ul>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">DCV</a></li><li><a href="#tabset-1-2">Robomaker [not ready]</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
+<h3 id="dcv">DCV</h3>
 <ul>
 <li>A Cloud 9 Approach</li>
 <li>c4.xlarge (7.5vPU and 4GB)</li>
 </ul>
-</div>
-<div id="tabset-1-2">
-<ul>
-<li>A Robomaker approach using <span class="alert">AWS Docker Container Registry</span></li>
-<li>15 vCPU core</li>
-</ul>
-</div>
-</div>
-</div>
 </section>
 <section id="minipupper-on-aws-bringup" class="slide level2">
 <h2>MiniPupper on AWS [bringup]</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">DCV</a></li><li><a href="#tabset-2-2">Robomaker [not ready]</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
+<div>
 <ul>
-<li>Cloud 9 terminal</li>
+<li class="fragment"><p>Open terminal</p></li>
+<li class="fragment"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="co"># Terminal 1</span></span>
+<span id="cb9-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb9-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><p>bring up all hardware in AWS not hardware</p></li>
+<li class="fragment"><p>you can use the control-c or control-z to cancel the process</p></li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">cd</span> ../simulation_ws</span>
-<span id="cb9-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-2-2">
-<ul>
-<li>Cloud 9 terminal using the following commands</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="bu">cd</span> mini-pupper-aws</span>
-<span id="cb10-2"><a href=""></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-base:1.0 <span class="at">-f</span> Dockerfile-Base</span>
-<span id="cb10-3"><a href=""></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-robot:1.0 <span class="at">-f</span> Dockerfile-Robot</span>
-<span id="cb10-4"><a href=""></a><span class="ex">docker</span> build . <span class="at">-t</span> mini-pupper-simulation:1.0 <span class="at">-f</span> Dockerfile-Simulation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
 </div>
 </section>
-<section id="minipupper-gazebo-on-aws" class="slide level2">
-<h2>MiniPupper Gazebo on AWS</h2>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">DCV</a></li><li><a href="#tabset-3-2">Robomaker [not ready]</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
+<section id="minipupper-on-aws-gazebo" class="slide level2">
+<h2>MiniPupper on AWS [Gazebo]</h2>
 <ul>
-<li>open Xwindows</li>
-<li>Open three Cloud 9 terminals and run the following command in each terminal</li>
+<li><p>Open Xwindows</p></li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/preview_app.png" class="quarto-figure quarto-figure-center" width="458"></p>
+</figure>
+</div></li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/preview_app.png" class="quarto-figure quarto-figure-center" width="458"></p>
+</figure>
+</div></li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb11-2"><a href=""></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
-<span id="cb11-3"><a href=""></a><span class="bu">source</span> ~/environment/mini-pupper-aws/simulation_ws/install/setup.bash</span>
-<span id="cb11-4"><a href=""></a><span class="bu">source</span> ~/environment/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb11-5"><a href=""></a><span class="co"># Add meshes to Gazbo paths</span></span>
-<span id="cb11-6"><a href=""></a><span class="bu">export</span> <span class="va">GAZEBO_MODEL_PATH</span><span class="op">=</span><span class="va">$GAZEBO_MODEL_PATH</span>:<span class="va">$(</span><span class="ex">rospack</span> find mini_pupper_simulation<span class="va">)</span>/worlds/meshes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-3-2">
-<ul>
-<li>easy way then use AWS ECR on AWS console</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-robot <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span>
-<span id="cb12-2"><a href=""></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> mini-pupper-simulation <span class="kw">|</span> <span class="fu">grep</span> repositoryUri</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Other way to run the commands using AWS account number (111122223333) and region (your-region) information</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="ex">docker</span> tag mini-pupper-robot:1.0 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-robot:1.0</span>
-<span id="cb13-2"><a href=""></a><span class="ex">docker</span> push 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-robot:1.0</span>
-<span id="cb13-3"><a href=""></a></span>
-<span id="cb13-4"><a href=""></a><span class="ex">docker</span> tag mini-pupper-simulation:1.0 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-simulation:1.0</span>
-<span id="cb13-5"><a href=""></a><span class="ex">docker</span> push 111122223333.dkr.ecr.your-region.amazonaws.com/mini-pupper-simulation:1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="minipupper-aws-robot" class="slide level2">
-<h2>MiniPupper AWS Robot</h2>
-<div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">DCV</a></li><li><a href="#tabset-4-2">Robomaker [not ready]</a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1">
+<section id="minipupper-on-aws-gazebo-1" class="slide level2">
+<h2>MiniPupper on AWS [Gazebo]</h2>
 <ul>
-<li>Cloud 9 terminal 1</li>
+<li><p>kill the bring up because gazebo.launch include a bringup launch</p></li>
+<li><p>go back to cloud 9, and open another terminal</p></li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">roslaunch</span> mini_pupper_simulation aws_stage.launch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="co"># Terminal 1</span></span>
+<span id="cb10-2"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
+<span id="cb10-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb10-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_gazebo gazebo.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Cloud 9 terminal 2</li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/gazebo.png" class="quarto-figure quarto-figure-center" width="658"></p>
+</figure>
+</div></li>
+<li><p>need to export DISPLAY each time if you want to display a GUI</p></li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="bu">source</span> /opt/ros/melodic/setup.bash</span>
-<span id="cb15-2"><a href=""></a><span class="bu">source</span> ~/environment/mini-pupper-aws/simulation_ws/install/setup.bash</span>
-<span id="cb15-3"><a href=""></a><span class="bu">source</span> ~/environment/mini-pupper-aws/robot_ws/install/setup.bash</span>
-<span id="cb15-4"><a href=""></a><span class="ex">roslaunch</span> mini_pupper_simulation aws_stage.launch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-4-2">
+</section>
+<section id="minipupper-on-aws-gazebo-2" class="slide level2">
+<h2>MiniPupper on AWS [Gazebo]</h2>
 <ul>
-<li>setup robot application in AWS Robomaker</li>
-<li>setup simulation application in AWS Robomaker</li>
-<li>setup simulation job using the robot application and simualtion application</li>
+<li><p>view the models on gazebo</p></li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/gazebo2.png" class="quarto-figure quarto-figure-center" width="558"></p>
+</figure>
+</div></li>
+<li><p>manipulate views</p></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="va">GAZEBO_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_SIM_APP_IP:11345</span>
-<span id="cb16-2"><a href=""></a><span class="va">ROS_IP</span><span class="op">=</span>ROBOMAKER_SIM_APP_IP</span>
-<span id="cb16-3"><a href=""></a><span class="va">ROS_MASTER_URI</span><span class="op">=</span>http://ROBOMAKER_ROBOT_APP_IP:11311</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="minipupper-on-aws-ros2-topics" class="slide level2">
+<h2>miniPupper on AWS [ros2 topics]</h2>
 <ul>
-<li>Add tool window, set Name to xterm, and Command to /usr/bin/xterm</li>
+<li>check what topics published</li>
 </ul>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="co"># Terminal 3</span></span>
+<span id="cb11-2"><a href=""></a><span class="ex">ros2</span> topic list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ros2topic.png" class="quarto-figure quarto-figure-center" width="858"></p>
+</figure>
+</div></li>
+<li><p>you can try ros2 node list, info</p></li>
+</ul>
+</section>
+<section id="minipupper-on-aws-rqt_graph" class="slide level2">
+<h2>miniPupper on AWS [rqt_graph]</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="co"># Terminal 3</span></span>
+<span id="cb12-2"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
+<span id="cb12-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb12-4"><a href=""></a><span class="ex">rqt_graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><img data-src="images/rqt_graph.png" class="quarto-figure quarto-figure-center" width="858"></li>
+</ul>
+</section>
+<section id="minipupper-aws-teleop" class="slide level2">
+<h2>MiniPupper AWS [Teleop]</h2>
+<ul>
+<li>control the robot using teleop</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="co"># Terminal 4</span></span>
+<span id="cb13-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb13-3"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="minipupper-aws-ros2-topic-pub" class="slide level2">
+<h2>MiniPupper AWS [ros2 topic pub]</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="co"># Terminal 5</span></span>
+<span id="cb14-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb14-3"><a href=""></a></span>
+<span id="cb14-4"><a href=""></a><span class="ex">ros2</span> topic pub /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb14-5"><a href=""></a><span class="st">  x: 1.0</span></span>
+<span id="cb14-6"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb14-7"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb14-8"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb14-9"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb14-10"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb14-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="homework-exercise" class="slide level2">
 <h2>Homework Exercise*</h2>
