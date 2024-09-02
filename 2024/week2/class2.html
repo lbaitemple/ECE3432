@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="class1_files/libs/clipboard/clipboard.min.js"></script>
-<script src="class1_files/libs/quarto-html/tabby.min.js"></script>
-<script src="class1_files/libs/quarto-html/popper.min.js"></script>
-<script src="class1_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="class1_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="class1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="class1_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="class1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="class2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="class2_files/libs/quarto-html/tabby.min.js"></script>
+<script src="class2_files/libs/quarto-html/popper.min.js"></script>
+<script src="class2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="class2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="class2_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="class2_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="class2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2024-09-03">
+  <meta name="dcterms.date" content="2024-09-05">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="class1_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="class1_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="class2_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="class2_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -96,14 +96,14 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="class1_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="class1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
-  <link href="class1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="class2_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="class2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="class2_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -396,7 +396,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Robot Control using Raspberry Pi</h1>
-  <p class="subtitle">Lecture 3 - ROS2 and Simulation on AWS</p>
+  <p class="subtitle">Lecture 4 - ROS2 on Minipupper</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -412,171 +412,79 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">September 3, 2024</p>
+  <p class="date">September 5, 2024</p>
 </section>
-<section id="ros-history" class="slide level2">
-<h2>ROS history</h2>
+<section id="understand-ip-address" class="slide level2">
+<h2>Understand IP address</h2>
 <ul>
-<li><p>originally developed in 2007 at the Stanford AI Laboratory (grand challenge 2000)</p></li>
-<li><p>OSRF (since 2013)</p></li>
-<li><p>De facto standard for robot programming</p></li>
-</ul>
-</section>
-<section id="ros-version" class="slide level2">
-<h2>ROS Version</h2>
+<li><p>Public IP address (xxx.xxx.xxx.xxx) where xxx =[0-255]</p></li>
+<li><p>Local Area Network</p>
 <ul>
-<li><p><a href="https://blog.yanghong.dev/ros2-history/"><img data-src="images/rosversion.png" width="1934"></a></p></li>
-<li><p><a href="https://docs.ros.org/en/humble/Installation.html">source install or binary installation</a></p></li>
-<li><p><a href="https://github.com/Tiryoh/ros2_setup_scripts_ubuntu">good shell scripts</a></p></li>
-</ul>
-</section>
-<section id="ros2-version" class="slide level2">
-<h2>ROS2 version</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://nas.yanghong.dev:8200/wp-content/uploads/2024/02/image-189-556x1024.png" class="quarto-figure quarto-figure-center" width="435"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><p>search for different ROS packages (or ros dependencies)</p></li>
-<li><p>search for ROS2 package so we resue packages</p></li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">rosdep</span> init</span>
-<span id="cb1-2"><a href=""></a><span class="ex">apt-cache</span> search camera</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="ros-philosophy" class="slide level2">
-<h2>ROS Philosophy</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div>
-<ul>
-<li class="fragment">Peer to peer: Individual programs communicate over defined API (ROS messages, services, etc.)</li>
-<li class="fragment">Distributed: programs can be run on multiple computers and communicate over the network</li>
-<li class="fragment">Multi-lingual: ROS modules can be written in C++ and <span class="alert">Python</span></li>
-<li class="fragment">Free and open-source</li>
-</ul>
-</div>
-</div><div class="column" style="width:50%;">
-<div>
-<ul>
-<li class="fragment"><div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ros2_topic.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div></li>
-<li class="fragment"><div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/Example-of-ROS-publish-subscribe-model-topic-The-messages-in-the-topic-are-received-by.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div></li>
-<li class="fragment"><p><img data-src="images/rqt_graph_2_nodes_with_debug.png"></p></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="ros-bringup" class="slide level2">
-<h2>ROS bringup</h2>
-<ul>
-<li>The process of starting up a robot’s entire software stack, including launching all necessary nodes, drivers, and configurations.</li>
-<li>Include launching drivers for sensors and actuators, such as cameras, LiDAR, and motors.</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># or source ~/ros2_ws/install/setup.bash</span></span>
-<span id="cb2-2"><a href=""></a></span>
-<span id="cb2-3"><a href=""></a><span class="co"># false because no physical robot</span></span>
-<span id="cb2-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=False   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ros-gazebo" class="slide level2">
-<h2>ROS Gazebo</h2>
-<ul>
-<li>Realistic Simulation: Simulate complex environments and robots with realistic physics, sensor noise, and environmental factors.
-<ul>
-<li>robot_description, robot_mesh, robot_world</li>
+<li>192.168.1.x/8</li>
+<li>172.10.x.x/16</li>
+<li>10.x.x.x/24</li>
 </ul></li>
-<li>ROS Control: Use ROS packages to control robot movements and behaviors within the simulation.</li>
-<li>Sensor Simulation: Test sensor-based algorithms using simulated data from virtual sensors.</li>
-<li>Visualization: Visualize the robot and its environment in 3D, providing insights into how algorithms perform.</li>
+<li><p>VPN (virutal private network) to put remote IP nodes in one network</p></li>
+<li><p>tunnel (or tun interface)</p></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># or source ~/ros2_ws/install/setup.bash</span></span>
-<span id="cb3-2"><a href=""></a></span>
-<span id="cb3-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_gazebo gazebo.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="ros-rviz" class="slide level2">
-<h2>ROS Rviz</h2>
+<section id="vpn-setup-on-aws" class="slide level2">
+<h2>VPN Setup on AWS</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh</span>
+<span id="cb1-2"><a href=""></a><span class="fu">chmod</span> +x openvpn-install.sh</span>
+<span id="cb1-3"><a href=""></a><span class="fu">sudo</span> ./openvpn-install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>3D Visualization</li>
-<li>Interactive Markers:</li>
-<li>Plugins and Displays</li>
-<li>Debugging and Development</li>
+<li>when the question is asked, please use the following options</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># or source ~/ros2_ws/install/setup.bash</span></span>
-<span id="cb4-2"><a href=""></a></span>
-<span id="cb4-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup rviz.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="va">APPROVE_INSTALL</span><span class="op">=</span>y</span>
+<span id="cb2-2"><a href=""></a><span class="va">APPROVE_IP</span><span class="op">=</span>y</span>
+<span id="cb2-3"><a href=""></a><span class="va">IPV6_SUPPORT</span><span class="op">=</span>n</span>
+<span id="cb2-4"><a href=""></a><span class="va">PORT_CHOICE</span><span class="op">=</span>1</span>
+<span id="cb2-5"><a href=""></a><span class="va">PROTOCOL_CHOICE</span><span class="op">=</span>1</span>
+<span id="cb2-6"><a href=""></a><span class="va">DNS</span><span class="op">=</span>1</span>
+<span id="cb2-7"><a href=""></a><span class="va">COMPRESSION_ENABLED</span><span class="op">=</span>n</span>
+<span id="cb2-8"><a href=""></a><span class="va">CUSTOMIZE_ENC</span><span class="op">=</span>n</span>
+<span id="cb2-9"><a href=""></a><span class="va">CLIENT</span><span class="op">=</span>pupper</span>
+<span id="cb2-10"><a href=""></a><span class="va">PASS</span><span class="op">=</span>1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="ros-teleop" class="slide level2">
-<h2>ROS teleop</h2>
+<section id="ros-services" class="slide level2">
+<h2>ROS Services</h2>
 <ul>
-<li>Remote Control</li>
-<li>packages such as <code>teleop_twist_keyboard</code> or <code>teleop_twist_joy</code></li>
+<li><p>ROS pub/sub are the best effort proctol</p></li>
+<li><p>ROS services using client/server</p></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb5-2"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb6-2"><a href=""></a><span class="ex">ros2</span> launch teleop_twist_joy teleop-launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ros2-launch-file" class="slide level2">
-<h2>ROS2 Launch file</h2>
-<ul>
-<li><a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/ros2-dev/mini_pupper_dance/launch/dance.launch.py">dance.launch.py</a> [generate_launch_description and nodes ]</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
-<span id="cb7-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a></span>
-<span id="cb7-5"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb7-6"><a href=""></a>    dance_server_node <span class="op">=</span> Node(</span>
-<span id="cb7-7"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
-<span id="cb7-8"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb7-9"><a href=""></a>            executable<span class="op">=</span><span class="st">"service"</span>,</span>
-<span id="cb7-10"><a href=""></a>            name<span class="op">=</span><span class="st">"dance_server"</span>,</span>
-<span id="cb7-11"><a href=""></a>        )</span>
-<span id="cb7-12"><a href=""></a>    dance_client_node <span class="op">=</span> Node(</span>
-<span id="cb7-13"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
-<span id="cb7-14"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb7-15"><a href=""></a>            executable<span class="op">=</span><span class="st">"client"</span>,</span>
-<span id="cb7-16"><a href=""></a>            name<span class="op">=</span><span class="st">"dance_client"</span>,</span>
-<span id="cb7-17"><a href=""></a>        )</span>
-<span id="cb7-18"><a href=""></a>    pose_controller_node <span class="op">=</span> Node(</span>
-<span id="cb7-19"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
-<span id="cb7-20"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb7-21"><a href=""></a>            executable<span class="op">=</span><span class="st">"pose_controller"</span>,</span>
-<span id="cb7-22"><a href=""></a>            name<span class="op">=</span><span class="st">"pose_controller"</span>,</span>
-<span id="cb7-23"><a href=""></a>        )</span>
-<span id="cb7-24"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb7-25"><a href=""></a>        dance_server_node,</span>
-<span id="cb7-26"><a href=""></a>        dance_client_node,</span>
-<span id="cb7-27"><a href=""></a>        pose_controller_node</span>
-<span id="cb7-28"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="minpupper-aws" class="slide level2">
-<h2>MinPupper AWS</h2>
 
-<img data-src="images/hla.png" class="quarto-figure quarto-figure-center r-stretch" width="606"><div>
+<img data-src="images/ros2_service.jpg" class="quarto-figure quarto-figure-center r-stretch" width="463"></section>
+<section id="jupyter-lab-on-minipupper" class="slide level2">
+<h2>Jupyter Lab on MiniPupper</h2>
 <ul>
-<li class="fragment">AWS is used to simulate a robot (gazebo)</li>
-<li class="fragment">using DCV (multiple terminal windows - short setup time)</li>
-<li class="fragment">AWS is x86 (think it as a PC)</li>
+<li><p>open jupyter lab using a browser</p></li>
+<li><p>http://[ipadress]:8888</p></li>
+<li><p>password <code>mangdang</code></p></li>
+<li><p>open new terminal</p></li>
+<li><p><img data-src="images/jupyterlab.png" width="653"></p></li>
 </ul>
-</div>
 </section>
-<section id="minipupper-on-aws" class="slide level2">
-<h2>MiniPupper on AWS</h2>
+<section id="add-swap-memory" class="slide level2">
+<h2>Add swap memory</h2>
+<ul>
+<li>check memory</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="fu">free</span> <span class="at">-th</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>add more swap memory</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="fu">sudo</span> dd if=/dev/zero of=/swap1 bs=1M count=4096</span>
+<span id="cb4-2"><a href=""></a><span class="fu">sudo</span> mkswap /swap1</span>
+<span id="cb4-3"><a href=""></a><span class="fu">sudo</span> swapon /swap1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Add a line to the bottom of the file</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">sudo</span> nano /etc/fstab</span>
+<span id="cb5-2"><a href=""></a><span class="ex">/swap1</span> swap swap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ros2-on-minipupper" class="slide level2">
+<h2>ROS2 on MiniPupper</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -587,150 +495,196 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div class="callout-content">
 <p>Follow the instruction on <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros">Github</a></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="bu">cd</span> ~</span>
-<span id="cb8-2"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
-<span id="cb8-3"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
-<span id="cb8-4"><a href=""></a><span class="fu">chmod</span> +x ./pc_install.sh</span>
-<span id="cb8-5"><a href=""></a><span class="ex">./pc_install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>install ROS2</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb6-2"><a href=""></a><span class="fu">git</span> clone github.com/Tiryoh/ros2_setup_scripts_ubuntu</span>
+<span id="cb6-3"><a href=""></a><span class="bu">cd</span> ros2_setup_scripts_ubuntu</span>
+<span id="cb6-4"><a href=""></a><span class="fu">bash</span> ./ros2-humble-ros-base-main.sh</span>
+<span id="cb6-5"><a href=""></a><span class="ex">pip</span> install pyaudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>install the minipupper ROS2</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
+<span id="cb7-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb7-3"><a href=""></a><span class="ex">./pupper_install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="images/mangdangros.png" width="653"></p>
 </div>
 </div>
 </div>
-<ul>
-<li>minipupper on a virtual environment (not on the physical robot)</li>
-</ul>
-<h3 id="dcv">DCV</h3>
-<ul>
-<li>A Cloud 9 Approach</li>
-<li>c4.xlarge (7.5vPU and 4GB)</li>
-</ul>
 </section>
-<section id="minipupper-on-aws-bringup" class="slide level2">
-<h2>MiniPupper on AWS [bringup]</h2>
-<div>
-<ul>
-<li class="fragment"><p>Open terminal</p></li>
-<li class="fragment"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="co"># Terminal 1</span></span>
-<span id="cb9-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb9-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li class="fragment"><p>bring up all hardware in AWS not hardware</p></li>
-<li class="fragment"><p>you can use the control-c or control-z to cancel the process</p></li>
-</ul>
-</div>
+<section id="ros2-on-minipupper-bringup" class="slide level2">
+<h2>ROS2 on MiniPupper [bringup]</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="co"># Terminal 1 (ssh)</span></span>
+<span id="cb8-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb8-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="minipupper-on-aws-gazebo" class="slide level2">
-<h2>MiniPupper on AWS [Gazebo]</h2>
+<section id="ros2-on-minipupper-music-service" class="slide level2">
+<h2>ROS2 on Minipupper [Music service]</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="fu">sudo</span> apt-get install ffmpeg portaudio19-dev <span class="at">-y</span></span>
+<span id="cb9-2"><a href=""></a><span class="ex">pip</span> install pydub pyaudio pydub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><p>Open Xwindows</p></li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/preview_app.png" class="quarto-figure quarto-figure-center" width="458"></p>
-</figure>
-</div></li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/preview_app.png" class="quarto-figure quarto-figure-center" width="458"></p>
-</figure>
-</div></li>
+<li>start music server</li>
 </ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="co"># terminal 2</span></span>
+<span id="cb10-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>using a client to start the music</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="co"># terminal 3</span></span>
+<span id="cb11-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>using a client to stop the music</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="co"># terminal 4</span></span>
+<span id="cb12-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb12-3"><a href=""></a></span>
+<span id="cb12-4"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="minipupper-on-aws-gazebo-1" class="slide level2">
-<h2>MiniPupper on AWS [Gazebo]</h2>
-<ul>
-<li><p>kill the bring up because gazebo.launch include a bringup launch</p></li>
-<li><p>go back to cloud 9, and open another terminal</p></li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="co"># Terminal 1</span></span>
-<span id="cb10-2"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb10-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb10-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_gazebo gazebo.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/gazebo.png" class="quarto-figure quarto-figure-center" width="658"></p>
-</figure>
-</div></li>
-<li><p>need to export DISPLAY each time if you want to display a GUI</p></li>
-</ul>
-</section>
-<section id="minipupper-on-aws-gazebo-2" class="slide level2">
-<h2>MiniPupper on AWS [Gazebo]</h2>
-<ul>
-<li><p>view the models on gazebo</p></li>
-<li><div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/gazebo2.png" class="quarto-figure quarto-figure-center" width="558"></p>
-</figure>
-</div></li>
-<li><p>manipulate views</p></li>
-</ul>
-</section>
-<section id="minipupper-on-aws-ros2-topics" class="slide level2">
-<h2>miniPupper on AWS [ros2 topics]</h2>
-<ul>
-<li>check what topics published</li>
-</ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="co"># Terminal 3</span></span>
-<span id="cb11-2"><a href=""></a><span class="ex">ros2</span> topic list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ros2topic.png" class="quarto-figure quarto-figure-center" width="858"></p>
-</figure>
-</div></li>
-<li><p>you can try ros2 node list, info</p></li>
-</ul>
-</section>
-<section id="minipupper-on-aws-rqt_graph" class="slide level2">
-<h2>miniPupper on AWS [rqt_graph]</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="co"># Terminal 3</span></span>
-<span id="cb12-2"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb12-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb12-4"><a href=""></a><span class="ex">rqt_graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><img data-src="images/rqt_graph.png" class="quarto-figure quarto-figure-center" width="858"></li>
-</ul>
-</section>
-<section id="minipupper-aws-teleop" class="slide level2">
-<h2>MiniPupper AWS [Teleop]</h2>
-<ul>
-<li>control the robot using teleop</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="co"># Terminal 4</span></span>
+<section id="ros2-on-minipupper-ros2-topic" class="slide level2">
+<h2>ROS2 on MiniPupper [ros2 topic]</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="co"># Terminal on jupyter terminal</span></span>
 <span id="cb13-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb13-3"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href=""></a></span>
+<span id="cb13-4"><a href=""></a><span class="ex">ros2</span> topic pub /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb13-5"><a href=""></a><span class="st">  x: 1.0</span></span>
+<span id="cb13-6"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb13-7"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb13-8"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb13-9"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb13-10"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb13-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="minipupper-aws-rviz" class="slide level2">
-<h2>MiniPupper AWS [rviz]</h2>
+<section id="aws-cloud9-on-ec2" class="slide level2">
+<h2>AWS Cloud9 on EC2</h2>
 <ul>
-<li>3D Visualization</li>
-</ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="co"># Terminal 5</span></span>
-<span id="cb14-2"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
-<span id="cb14-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb14-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup rviz.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><img data-src="images/rviz.png" class="quarto-figure quarto-figure-center" width="658"></li>
+<li><p>check what ec2 instance is running with cloud9</p></li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ec2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div></li>
 </ul>
 </section>
-<section id="minipupper-aws-ros2-topic-pub" class="slide level2">
-<h2>MiniPupper AWS [ros2 topic pub]</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="co"># Terminal 5</span></span>
-<span id="cb15-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb15-3"><a href=""></a></span>
-<span id="cb15-4"><a href=""></a><span class="ex">ros2</span> topic pub /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
-<span id="cb15-5"><a href=""></a><span class="st">  x: 1.0</span></span>
-<span id="cb15-6"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb15-7"><a href=""></a><span class="st">  z: 0.0</span></span>
-<span id="cb15-8"><a href=""></a><span class="st">angular:</span></span>
-<span id="cb15-9"><a href=""></a><span class="st">  x: 0.0</span></span>
-<span id="cb15-10"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb15-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="aws-instances" class="slide level2">
+<h2>AWS instances</h2>
+
+<img data-src="images/ec2_instane.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="aws-running-instances" class="slide level2">
+<h2>AWS running instances</h2>
+
+<img data-src="images/ec2_running_instance.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="aws-open-vpn-port" class="slide level2">
+<h2>AWS open VPN port</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1</a></li><li><a href="#tabset-1-2">2</a></li><li><a href="#tabset-1-3">3</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/checking_security.png" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/inboudsecurity.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rule.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="minipuppper-on-vpn" class="slide level2">
+<h2>Minipuppper on VPN</h2>
+<ul>
+<li>install openvpn</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="fu">sudo</span> apt install openvpn <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">EC2 IP</a></li><li><a href="#tabset-2-2">Minipupper ovpn</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ec2_publicip.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/puppervpn_minipupper.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="fu">sudo</span> openvpn pupper.ovpn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="awspupper-vpn-check" class="slide level2">
+<h2>AWS/Pupper VPN check</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">AWS Terminal</a></li><li><a href="#tabset-3-2">Minipupper Terminal</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
+<span id="cb16-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/awsvpn1.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
+<span id="cb17-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pupperovpn2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="connecting-mini-pupper-to-ec2" class="slide level2">
+<h2>Connecting Mini Pupper to EC2</h2>
+<ul>
+<li>using ROS_DOMAIN_ID</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>try to review the services</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Can you call the music service from EC2 ?</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
+<span id="cb20-2"><a href=""></a></span>
+<span id="cb20-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb20-4"><a href=""></a></span>
+<span id="cb20-5"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="homework-exercise" class="slide level2">
 <h2>Homework Exercise*</h2>
 <ul>
-<li><p>setup a <a href="https://github.com/angristan/openvpn-install">VPN</a> on EC2 cloud 9</p></li>
-<li><p>setup a VPN client on mini_pupper</p></li>
+<li><p>make other music files in a home user folder</p></li>
+<li><p>revise the code on minipupper</p></li>
 </ul>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
@@ -743,21 +697,21 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="class1_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="class2_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="class1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="class1_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="class1_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="class2_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
