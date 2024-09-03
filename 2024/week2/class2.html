@@ -420,9 +420,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li><p>Public IP address (xxx.xxx.xxx.xxx) where xxx =[0-255]</p></li>
 <li><p>Local Area Network</p>
 <ul>
-<li>192.168.1.x/8</li>
-<li>172.10.x.x/16</li>
-<li>10.x.x.x/24</li>
+<li>192.168.1.x/8 (class A)</li>
+<li>172.10.x.x/16 (class B)</li>
+<li>10.x.x.x/24 (class C)</li>
 </ul></li>
 <li><p>VPN (virutal private network) to put remote IP nodes in one network</p></li>
 <li><p>tunnel (or tun interface)</p></li>
@@ -462,9 +462,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li><p>http://[ipadress]:8888</p></li>
 <li><p>password <code>mangdang</code></p></li>
 <li><p>open new terminal</p></li>
-<li><p><img data-src="images/jupyterlab.png" width="653"></p></li>
 </ul>
-</section>
+
+<img data-src="images/jupyterlab.png" class="quarto-figure quarto-figure-center r-stretch" width="868"></section>
 <section id="add-swap-memory" class="slide level2">
 <h2>Add swap memory</h2>
 <ul>
@@ -509,7 +509,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
 <span id="cb7-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
 <span id="cb7-3"><a href=""></a><span class="ex">./pupper_install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img data-src="images/mangdangros.png" width="653"></p>
+<p><img data-src="images/mangdangros.png" width="553"></p>
 </div>
 </div>
 </div>
@@ -531,6 +531,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb10-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
 <span id="cb10-3"><a href=""></a></span>
 <span id="cb10-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ros2-on-minipupper-music-service-request" class="slide level2">
+<h2>ROS2 on Minipupper [Music service request]</h2>
 <ul>
 <li>using a client to start the music</li>
 </ul>
@@ -620,14 +623,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div id="tabset-2-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ec2_publicip.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/ec2_publicip.png" class="quarto-figure quarto-figure-center" width="871"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/puppervpn_minipupper.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/puppervpn_minipupper.png" class="quarto-figure quarto-figure-center" width="714"></p>
 </figure>
 </div>
 </div>

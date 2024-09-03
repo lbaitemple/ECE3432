@@ -444,8 +444,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li><p>search for different ROS packages (or ros dependencies)</p></li>
 <li><p>search for ROS2 package so we resue packages</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">rosdep</span> init</span>
-<span id="cb1-2"><a href=""></a><span class="ex">apt-cache</span> search camera</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">sudo</span> rosdep init</span>
+<span id="cb1-2"><a href=""></a><span class="ex">rosdep</span> update</span>
+<span id="cb1-3"><a href=""></a><span class="ex">apt-cache</span> search camera</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -646,7 +647,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li><div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/gazebo.png" class="quarto-figure quarto-figure-center" width="658"></p>
+<p><img data-src="images/gazebo.png" class="quarto-figure quarto-figure-center" width="575"></p>
 </figure>
 </div></li>
 <li><p>need to export DISPLAY each time if you want to display a GUI</p></li>
@@ -674,7 +675,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li><div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ros2topic.png" class="quarto-figure quarto-figure-center" width="858"></p>
+<p><img data-src="images/ros2topic.png" class="quarto-figure quarto-figure-center" width="709"></p>
 </figure>
 </div></li>
 <li><p>you can try ros2 node list, info</p></li>
