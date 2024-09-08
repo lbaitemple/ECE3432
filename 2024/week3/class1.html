@@ -547,30 +547,33 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb12-4"><a href=""></a>  camera: true</span>
 <span id="cb12-5"><a href=""></a>ports: </span>
 <span id="cb12-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>recomplie code</li>
-</ul>
+</section>
+<section id="recomplie-code" class="slide level2">
+<h2>Recomplie code</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="bu">cd</span> ~<span class="dt">\r</span>os2_ws</span>
 <span id="cb13-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span>  mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="copy-ymal-file" class="slide level2">
-<h2>Copy ymal file</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> .ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="copy-camera-ymal-file-to-.ros" class="slide level2">
+<h2>Copy camera ymal file to .ros</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
+<span id="cb15-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="run-r0s2-code-on-lcd" class="slide level2">
 <h2>Run R0S2 code on LCD</h2>
 <ul>
 <li>bring up all hardware</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="co">#terminal 1</span></span>
-<span id="cb15-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb15-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="co">#terminal 1</span></span>
+<span id="cb16-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb16-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check which topic with <a href="https://docs.ros2.org/latest/api/sensor_msgs/msg/Image.html">ROS 2 Image message type</a></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="co">#terminal 2</span></span>
-<span id="cb16-2"><a href=""></a><span class="ex">ros2</span> topic list</span>
-<span id="cb16-3"><a href=""></a><span class="ex">ros2</span> info /image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="co">#terminal 2</span></span>
+<span id="cb17-2"><a href=""></a><span class="ex">ros2</span> topic list</span>
+<span id="cb17-3"><a href=""></a><span class="ex">ros2</span> topic info /image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>/image_raw has the ROS2 message type Image</li>
 </ul>
@@ -581,69 +584,80 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li><p>LCD drive can only subscribe to /mini_pupper_lcd/image_raw</p></li>
 <li><p>Remap message topic from /mini_pupper_lcd/image_raw to /image_raw</p></li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="co">#terminal 2</span></span>
-<span id="cb17-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb17-3"><a href=""></a></span>
-<span id="cb17-4"><a href=""></a><span class="co"># will not work</span></span>
-<span id="cb17-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_driver display_interface.launch.py  /mini_pupper_lcd/image_raw:=/image_raw</span>
-<span id="cb17-6"><a href=""></a></span>
-<span id="cb17-7"><a href=""></a><span class="co"># change it to ros2 run</span></span>
-<span id="cb17-8"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--remap</span> mini_pupper_lcd/image_raw:=/image_raw</span>
-<span id="cb17-9"><a href=""></a></span>
-<span id="cb17-10"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--ros-args</span> <span class="at">-r</span> mini_pupper_lcd/image_raw:=/image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="co">#terminal 2</span></span>
+<span id="cb18-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb18-3"><a href=""></a></span>
+<span id="cb18-4"><a href=""></a><span class="co"># will not work</span></span>
+<span id="cb18-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_driver display_interface.launch.py  /mini_pupper_lcd/image_raw:=/image_raw</span>
+<span id="cb18-6"><a href=""></a></span>
+<span id="cb18-7"><a href=""></a><span class="co"># change it to ros2 run</span></span>
+<span id="cb18-8"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--remap</span> mini_pupper_lcd/image_raw:=/image_raw</span>
+<span id="cb18-9"><a href=""></a></span>
+<span id="cb18-10"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--ros-args</span> <span class="at">-r</span> mini_pupper_lcd/image_raw:=/image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="remap-in-launch-file" class="slide level2">
 <h2>Remap in Launch file</h2>
 <ul>
 <li>try to remapping in launch file (<code>display_interface.launch.py</code>)</li>
 </ul>
-<div class="sourceCode" id="cb18" data-code-line-numbers="7-9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb18-2"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb18-3"><a href=""></a>        Node(</span>
-<span id="cb18-4"><a href=""></a>            package<span class="op">=</span><span class="st">'mini_pupper_driver'</span>,</span>
-<span id="cb18-5"><a href=""></a>            executable<span class="op">=</span><span class="st">'display_interface'</span>,</span>
-<span id="cb18-6"><a href=""></a>            name<span class="op">=</span><span class="st">'display_interface'</span>,</span>
-<span id="cb18-7"><a href=""></a>            remappings<span class="op">=</span>[</span>
-<span id="cb18-8"><a href=""></a>                (<span class="st">"mini_pupper_lcd/image_raw"</span>, <span class="st">"image_raw"</span>)</span>
-<span id="cb18-9"><a href=""></a>            ],</span>
-<span id="cb18-10"><a href=""></a>            output<span class="op">=</span><span class="st">'screen'</span></span>
-<span id="cb18-11"><a href=""></a>        )</span>
-<span id="cb18-12"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19" data-code-line-numbers="7-9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb19-2"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb19-3"><a href=""></a>        Node(</span>
+<span id="cb19-4"><a href=""></a>            package<span class="op">=</span><span class="st">'mini_pupper_driver'</span>,</span>
+<span id="cb19-5"><a href=""></a>            executable<span class="op">=</span><span class="st">'display_interface'</span>,</span>
+<span id="cb19-6"><a href=""></a>            name<span class="op">=</span><span class="st">'display_interface'</span>,</span>
+<span id="cb19-7"><a href=""></a>            remappings<span class="op">=</span>[</span>
+<span id="cb19-8"><a href=""></a>                (<span class="st">"mini_pupper_lcd/image_raw"</span>, <span class="st">"image_raw"</span>)</span>
+<span id="cb19-9"><a href=""></a>            ],</span>
+<span id="cb19-10"><a href=""></a>            output<span class="op">=</span><span class="st">'screen'</span></span>
+<span id="cb19-11"><a href=""></a>        )</span>
+<span id="cb19-12"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>run the code</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_driver display_interface.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_driver display_interface.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="connecting-from-other-mini-pupper-lcd" class="slide level2">
 <h2>Connecting from other Mini Pupper LCD</h2>
 <ul>
 <li>One dedicated minipupper to launch brngup</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
-<span id="cb20-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
+<span id="cb21-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>using the same ROS_DOMAIN_ID</li>
 <li>for other minipuppers to subscribe</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
-<span id="cb21-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_driver display_interface.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
+<span id="cb22-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_driver display_interface.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ros2-on-minipupper-ros2-topic" class="slide level2">
 <h2>ROS2 on MiniPupper [ros2 topic]</h2>
 <ul>
 <li>check /cmd_vel topic to send a movement message</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="co"># Terminal on jupyter terminal</span></span>
-<span id="cb22-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb22-3"><a href=""></a></span>
-<span id="cb22-4"><a href=""></a><span class="ex">ros2</span> topic pub /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
-<span id="cb22-5"><a href=""></a><span class="st">  x: 1.0</span></span>
-<span id="cb22-6"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb22-7"><a href=""></a><span class="st">  z: 0.0</span></span>
-<span id="cb22-8"><a href=""></a><span class="st">angular:</span></span>
-<span id="cb22-9"><a href=""></a><span class="st">  x: 0.0</span></span>
-<span id="cb22-10"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb22-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="co"># Terminal on jupyter terminal</span></span>
+<span id="cb23-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb23-3"><a href=""></a></span>
+<span id="cb23-4"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb23-5"><a href=""></a><span class="st">  x: 1.0</span></span>
+<span id="cb23-6"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb23-7"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb23-8"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb23-9"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb23-10"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb23-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>to stop</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb24-2"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb24-3"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb24-4"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb24-5"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb24-6"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb24-7"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb24-8"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
