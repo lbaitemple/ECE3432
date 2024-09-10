@@ -507,36 +507,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="bu">cd</span> ~<span class="dt">\r</span>os2_ws</span>
 <span id="cb11-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="check-camera-using-ros2" class="slide level2">
-<h2>Check Camera using ROS2</h2>
-<ul>
-<li>revise code changes in <code>display_interface.py</code> in ros2_ws</li>
-</ul>
-<div class="sourceCode" id="cb12" data-code-line-numbers="5,16,20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="im">import</span> PIL</span>
-<span id="cb12-2"><a href=""></a><span class="im">import</span> rclpy</span>
-<span id="cb12-3"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb12-4"><a href=""></a><span class="im">import</span> cv2</span>
-<span id="cb12-5"><a href=""></a><span class="im">import</span> PIL.Image</span>
-<span id="cb12-6"><a href=""></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> Image</span>
-<span id="cb12-7"><a href=""></a><span class="im">from</span> cv_bridge <span class="im">import</span> CvBridge</span>
-<span id="cb12-8"><a href=""></a><span class="im">from</span> MangDang.LCD.ST7789 <span class="im">import</span> ST7789</span>
-<span id="cb12-9"><a href=""></a></span>
-<span id="cb12-10"><a href=""></a></span>
-<span id="cb12-11"><a href=""></a><span class="kw">class</span> DisplayNode(Node):</span>
-<span id="cb12-12"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb12-13"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'display_interface'</span>)</span>
-<span id="cb12-14"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="st">"Initializing display interface"</span>)</span>
-<span id="cb12-15"><a href=""></a>        <span class="va">self</span>.bridge <span class="op">=</span> CvBridge()</span>
-<span id="cb12-16"><a href=""></a>        <span class="va">self</span>.sub <span class="op">=</span> <span class="va">self</span>.create_subscription(Image, <span class="st">'/mini_pupper_lcd/image_raw'</span>, <span class="va">self</span>.callback, <span class="dv">10</span>)</span>
-<span id="cb12-17"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="st">"Creating LCD hardware interface"</span>)</span>
-<span id="cb12-18"><a href=""></a>        <span class="va">self</span>.disp <span class="op">=</span> ST7789()</span>
-<span id="cb12-19"><a href=""></a>        <span class="va">self</span>.disp.begin()</span>
-<span id="cb12-20"><a href=""></a>        <span class="co">#self.disp.clear()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="copy-camera-ymal-file-to-.ros" class="slide level2">
+<h2>Copy camera ymal file to .ros</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
+<span id="cb12-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="enable-the-camera-in-config" class="slide level2">
-<h2>Enable the Camera in config</h2>
+<section id="enable-the-camera-in-mini_pupper_bringup" class="slide level2">
+<h2>Enable the Camera in [mini_pupper_bringup]</h2>
 <ul>
-<li>Change</li>
+<li>Change config.yaml</li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>sensors:</span>
 <span id="cb13-2"><a href=""></a>  lidar: true</span>
@@ -554,17 +533,38 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb14-5"><a href=""></a>ports: </span>
 <span id="cb14-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="check-lcd-display-mini_pupper_driver" class="slide level2">
+<h2>Check LCD Display [mini_pupper_driver]</h2>
+<ul>
+<li>revise code changes in <code>display_interface.py</code></li>
+</ul>
+<div class="sourceCode" id="cb15" data-code-line-numbers="5,16,20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="im">import</span> PIL</span>
+<span id="cb15-2"><a href=""></a><span class="im">import</span> rclpy</span>
+<span id="cb15-3"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb15-4"><a href=""></a><span class="im">import</span> cv2</span>
+<span id="cb15-5"><a href=""></a><span class="im">import</span> PIL.Image</span>
+<span id="cb15-6"><a href=""></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> Image</span>
+<span id="cb15-7"><a href=""></a><span class="im">from</span> cv_bridge <span class="im">import</span> CvBridge</span>
+<span id="cb15-8"><a href=""></a><span class="im">from</span> MangDang.LCD.ST7789 <span class="im">import</span> ST7789</span>
+<span id="cb15-9"><a href=""></a></span>
+<span id="cb15-10"><a href=""></a></span>
+<span id="cb15-11"><a href=""></a><span class="kw">class</span> DisplayNode(Node):</span>
+<span id="cb15-12"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb15-13"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'display_interface'</span>)</span>
+<span id="cb15-14"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="st">"Initializing display interface"</span>)</span>
+<span id="cb15-15"><a href=""></a>        <span class="va">self</span>.bridge <span class="op">=</span> CvBridge()</span>
+<span id="cb15-16"><a href=""></a>        <span class="va">self</span>.sub <span class="op">=</span> <span class="va">self</span>.create_subscription(Image, <span class="st">'/mini_pupper_lcd/image_raw'</span>, <span class="va">self</span>.callback, <span class="dv">10</span>)</span>
+<span id="cb15-17"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="st">"Creating LCD hardware interface"</span>)</span>
+<span id="cb15-18"><a href=""></a>        <span class="va">self</span>.disp <span class="op">=</span> ST7789()</span>
+<span id="cb15-19"><a href=""></a>        <span class="va">self</span>.disp.begin()</span>
+<span id="cb15-20"><a href=""></a>        <span class="co">#self.disp.clear()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="recomplie-code" class="slide level2">
 <h2>Recomplie code</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="bu">cd</span> ~<span class="dt">\r</span>os2_ws</span>
-<span id="cb15-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="bu">cd</span> ~<span class="dt">\r</span>os2_ws</span>
+<span id="cb16-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span>  mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="copy-camera-ymal-file-to-.ros" class="slide level2">
-<h2>Copy camera ymal file to .ros</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
-<span id="cb17-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span>  mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="run-r0s2-code-on-lcd" class="slide level2">
 <h2>Run R0S2 code on LCD</h2>
@@ -670,6 +670,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb26-6"><a href=""></a><span class="st">  x: 0.0</span></span>
 <span id="cb26-7"><a href=""></a><span class="st">  y: 0.0</span></span>
 <span id="cb26-8"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="project-1" class="slide level2">
+<h2>Project 1 *</h2>
+<ul>
+<li><p>check <code>line following code</code> in <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/tree/ros2-dev">the repository</a></p></li>
+<li><p>What topics are used to publish the movement (/cmd_vel)</p></li>
+<li><p>check the readme</p></li>
+<li><p>try to use red_dot_detector to stop the mini_pupper</p></li>
+</ul>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
