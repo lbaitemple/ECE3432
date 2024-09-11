@@ -466,7 +466,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb5-2"><a href=""></a><span class="fu">git</span> clone http://github.com/Tiryoh/ros2_setup_scripts_ubuntu</span>
 <span id="cb5-3"><a href=""></a><span class="bu">cd</span> ros2_setup_scripts_ubuntu</span>
 <span id="cb5-4"><a href=""></a><span class="fu">bash</span> ./ros2-humble-ros-base-main.sh</span>
-<span id="cb5-5"><a href=""></a><span class="ex">pip</span> install pyaudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href=""></a><span class="fu">sudo</span> apt install portaudio19-dev python3-pyaudio <span class="at">-y</span></span>
+<span id="cb5-6"><a href=""></a><span class="ex">pip</span> install pyaudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>add the following line into ~/.bashrc</li>
 </ul>
@@ -659,9 +660,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb25-9"><a href=""></a><span class="st">  x: 0.0</span></span>
 <span id="cb25-10"><a href=""></a><span class="st">  y: 0.0</span></span>
 <span id="cb25-11"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>to stop</li>
-</ul>
+</section>
+<section id="to-stop-the-minipupper" class="slide level2">
+<h2>To stop the minipupper</h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
 <span id="cb26-2"><a href=""></a><span class="st">  x: 0.0</span></span>
 <span id="cb26-3"><a href=""></a><span class="st">  y: 0.0</span></span>
