@@ -600,6 +600,72 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb13-4"><a href=""></a></span>
 <span id="cb13-5"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="ros-launch-file" class="slide level2">
+<h2>ROS launch file</h2>
+<ul>
+<li><p>how to get a launch template file (extenstion .launch.py)</p></li>
+<li><p>example <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/ros2-dev/mini_pupper_dance/launch/dance.launch.py">dance.launch.py</a></p></li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a></span>
+<span id="cb14-2"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
+<span id="cb14-3"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
+<span id="cb14-4"><a href=""></a></span>
+<span id="cb14-5"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb14-6"><a href=""></a>  </span>
+<span id="cb14-7"><a href=""></a>    node1 <span class="op">=</span>  Node(</span>
+<span id="cb14-8"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
+<span id="cb14-9"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb14-10"><a href=""></a>            executable<span class="op">=</span><span class="st">"service"</span>,</span>
+<span id="cb14-11"><a href=""></a>            name<span class="op">=</span><span class="st">"dance_server"</span>,</span>
+<span id="cb14-12"><a href=""></a>        )</span>
+<span id="cb14-13"><a href=""></a>    node2 <span class="op">=</span> Node(</span>
+<span id="cb14-14"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
+<span id="cb14-15"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb14-16"><a href=""></a>            executable<span class="op">=</span><span class="st">"client"</span>,</span>
+<span id="cb14-17"><a href=""></a>            name<span class="op">=</span><span class="st">"client"</span>,</span>
+<span id="cb14-18"><a href=""></a>        )</span>
+<span id="cb14-19"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb14-20"><a href=""></a>       node1l,</span>
+<span id="cb14-21"><a href=""></a>       node2</span>
+<span id="cb14-22"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ros-excuutable" class="slide level2">
+<h2>ROS excuutable</h2>
+<ul>
+<li><p>must located in setup.py</p></li>
+<li><p>example in <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/ros2-dev/mini_pupper_music/launch/music.launch.py">music</a></p></li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">launch file</a></li><li><a href="#tabset-4-2">setup.py in mini_pupper_music</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
+<span id="cb15-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
+<span id="cb15-3"><a href=""></a></span>
+<span id="cb15-4"><a href=""></a></span>
+<span id="cb15-5"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb15-6"><a href=""></a>    music_server_node <span class="op">=</span> Node(</span>
+<span id="cb15-7"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_music"</span>,</span>
+<span id="cb15-8"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb15-9"><a href=""></a>            executable<span class="op">=</span><span class="st">"service"</span>,</span>
+<span id="cb15-10"><a href=""></a>            name<span class="op">=</span><span class="st">"music_server"</span>,</span>
+<span id="cb15-11"><a href=""></a>        )</span>
+<span id="cb15-12"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb15-13"><a href=""></a>        music_server_node</span>
+<span id="cb15-14"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-4-2">
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a></span>
+<span id="cb16-2"><a href=""></a>...</span>
+<span id="cb16-3"><a href=""></a>    entry_points<span class="op">=</span>{</span>
+<span id="cb16-4"><a href=""></a>        <span class="st">'console_scripts'</span>: [</span>
+<span id="cb16-5"><a href=""></a>            <span class="st">'service = mini_pupper_music.music_server:main'</span>,</span>
+<span id="cb16-6"><a href=""></a>        ],</span>
+<span id="cb16-7"><a href=""></a>    },</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="homework-exercise" class="slide level2">
 <h2>Homework Exercise*</h2>
 <ul>
