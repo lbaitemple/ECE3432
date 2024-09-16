@@ -414,6 +414,78 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 
   <p class="date">September 17, 2024</p>
 </section>
+<section id="ros-services" class="slide level2">
+<h2>ROS Services</h2>
+<ul>
+<li><p>ROS pub/sub are the best effort proctol</p></li>
+<li><p>ROS services using client/server</p></li>
+</ul>
+
+<img data-src="images/ros2_service.jpg" class="quarto-figure quarto-figure-center r-stretch" width="463"></section>
+<section id="ros2-on-minipupper-music-service" class="slide level2">
+<h2>ROS2 on Minipupper [Music service]</h2>
+<ul>
+<li>install dependencies</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">sudo</span> apt-get install ffmpeg portaudio19-dev <span class="at">-y</span></span>
+<span id="cb1-2"><a href=""></a><span class="ex">pip</span> install pydub pyaudio pydub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>start music server <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/tree/ros2-dev/mini_pupper_music">instruction at here</a></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="co"># terminal 2</span></span>
+<span id="cb2-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ros2-on-minipupper-music-service-request" class="slide level2">
+<h2>ROS2 on Minipupper [Music service request]</h2>
+<ul>
+<li>using a client to start the music</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="co"># terminal 3</span></span>
+<span id="cb3-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>using a client to stop the music</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="co"># terminal 3 or terminal 4</span></span>
+<span id="cb4-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="modify-the-music-location" class="slide level2">
+<h2>Modify the music location</h2>
+<ul>
+<li><p>mini_pupper_music (server code) to play a music file</p></li>
+<li><p>more specifically</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>    <span class="co"># line number starts at line 70 in the code</span></span>
+<span id="cb5-2"><a href=""></a>    <span class="kw">def</span> get_valid_file_path(<span class="va">self</span>, file_name):</span>
+<span id="cb5-3"><a href=""></a>        package_name <span class="op">=</span> <span class="st">'mini_pupper_music'</span></span>
+<span id="cb5-4"><a href=""></a>        package_path <span class="op">=</span> get_package_share_directory(package_name)</span>
+<span id="cb5-5"><a href=""></a>        file_path <span class="op">=</span> os.path.join(package_path, <span class="st">'audio'</span>, file_name)</span>
+<span id="cb5-6"><a href=""></a>        <span class="cf">if</span> os.path.isfile(file_path):</span>
+<span id="cb5-7"><a href=""></a>            <span class="cf">return</span> file_path</span>
+<span id="cb5-8"><a href=""></a>        <span class="cf">else</span>:</span>
+<span id="cb5-9"><a href=""></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>hard code the file path</li>
+</ul>
+</section>
+<section id="a-better-way-use-an-environment-varilable" class="slide level2">
+<h2>A better way: Use an environment varilable</h2>
+<div>
+<ul>
+<li class="fragment"><p><code>export VARIABLE="some string"</code></p></li>
+<li class="fragment"><p><code>env</code></p></li>
+<li class="fragment"><p>read the variable from python</p></li>
+<li class="fragment"><p>use the <a href="https://chatgpt.com/share/66e6f9c9-ec60-8008-a4fb-02db0be02ab6">chargpt code</a></p></li>
+<li class="fragment"><p>think about put your music files in <code>/home/ubuntu/music</code> folder</p></li>
+<li class="fragment"><p>rerun the code</p></li>
+</ul>
+</div>
+</section>
 <section id="understand-ip-address" class="slide level2">
 <h2>Understand IP address</h2>
 <ul>
@@ -426,59 +498,22 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </section>
 <section id="vpn-setup-on-aws" class="slide level2">
 <h2>VPN Setup on AWS</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh</span>
-<span id="cb1-2"><a href=""></a><span class="fu">chmod</span> +x openvpn-install.sh</span>
-<span id="cb1-3"><a href=""></a><span class="fu">sudo</span> ./openvpn-install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh</span>
+<span id="cb6-2"><a href=""></a><span class="fu">chmod</span> +x openvpn-install.sh</span>
+<span id="cb6-3"><a href=""></a><span class="fu">sudo</span> ./openvpn-install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>when the question is asked, please use the following options</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="va">APPROVE_INSTALL</span><span class="op">=</span>y</span>
-<span id="cb2-2"><a href=""></a><span class="va">APPROVE_IP</span><span class="op">=</span>y</span>
-<span id="cb2-3"><a href=""></a><span class="va">IPV6_SUPPORT</span><span class="op">=</span>n</span>
-<span id="cb2-4"><a href=""></a><span class="va">PORT_CHOICE</span><span class="op">=</span>1</span>
-<span id="cb2-5"><a href=""></a><span class="va">PROTOCOL_CHOICE</span><span class="op">=</span>1</span>
-<span id="cb2-6"><a href=""></a><span class="va">DNS</span><span class="op">=</span>1</span>
-<span id="cb2-7"><a href=""></a><span class="va">COMPRESSION_ENABLED</span><span class="op">=</span>n</span>
-<span id="cb2-8"><a href=""></a><span class="va">CUSTOMIZE_ENC</span><span class="op">=</span>n</span>
-<span id="cb2-9"><a href=""></a><span class="va">CLIENT</span><span class="op">=</span>pupper</span>
-<span id="cb2-10"><a href=""></a><span class="va">PASS</span><span class="op">=</span>1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ros-services" class="slide level2">
-<h2>ROS Services</h2>
-<ul>
-<li><p>ROS pub/sub are the best effort proctol</p></li>
-<li><p>ROS services using client/server</p></li>
-</ul>
-
-<img data-src="images/ros2_service.jpg" class="quarto-figure quarto-figure-center r-stretch" width="463"></section>
-<section id="ros2-on-minipupper-music-service" class="slide level2">
-<h2>ROS2 on Minipupper [Music service]</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="fu">sudo</span> apt-get install ffmpeg portaudio19-dev <span class="at">-y</span></span>
-<span id="cb3-2"><a href=""></a><span class="ex">pip</span> install pydub pyaudio pydub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>start music server</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="co"># terminal 2</span></span>
-<span id="cb4-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb4-3"><a href=""></a></span>
-<span id="cb4-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ros2-on-minipupper-music-service-request" class="slide level2">
-<h2>ROS2 on Minipupper [Music service request]</h2>
-<ul>
-<li>using a client to start the music</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="co"># terminal 3</span></span>
-<span id="cb5-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>using a client to stop the music</li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="co"># terminal 4</span></span>
-<span id="cb6-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb6-3"><a href=""></a></span>
-<span id="cb6-4"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="va">APPROVE_INSTALL</span><span class="op">=</span>y</span>
+<span id="cb7-2"><a href=""></a><span class="va">APPROVE_IP</span><span class="op">=</span>y</span>
+<span id="cb7-3"><a href=""></a><span class="va">IPV6_SUPPORT</span><span class="op">=</span>n</span>
+<span id="cb7-4"><a href=""></a><span class="va">PORT_CHOICE</span><span class="op">=</span>1</span>
+<span id="cb7-5"><a href=""></a><span class="va">PROTOCOL_CHOICE</span><span class="op">=</span>1</span>
+<span id="cb7-6"><a href=""></a><span class="va">DNS</span><span class="op">=</span>1</span>
+<span id="cb7-7"><a href=""></a><span class="va">COMPRESSION_ENABLED</span><span class="op">=</span>n</span>
+<span id="cb7-8"><a href=""></a><span class="va">CUSTOMIZE_ENC</span><span class="op">=</span>n</span>
+<span id="cb7-9"><a href=""></a><span class="va">CLIENT</span><span class="op">=</span>pupper</span>
+<span id="cb7-10"><a href=""></a><span class="va">PASS</span><span class="op">=</span>1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="aws-cloud9-on-ec2" class="slide level2">
 <h2>AWS Cloud9 on EC2</h2>
@@ -533,7 +568,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>install openvpn</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="fu">sudo</span> apt install openvpn <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">sudo</span> apt install openvpn <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">EC2 IP</a></li><li><a href="#tabset-2-2">Minipupper ovpn</a></li></ul>
 <div class="tab-content">
@@ -553,7 +588,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">sudo</span> openvpn pupper.ovpn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="fu">sudo</span> openvpn pupper.ovpn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="awspupper-vpn-check" class="slide level2">
 <h2>AWS/Pupper VPN check</h2>
@@ -561,8 +596,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">AWS Terminal</a></li><li><a href="#tabset-3-2">Minipupper Terminal</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
-<span id="cb9-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
+<span id="cb10-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/awsvpn1.png" class="quarto-figure quarto-figure-center"></p>
@@ -570,8 +605,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 <div id="tabset-3-2">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
-<span id="cb10-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
+<span id="cb11-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/pupperovpn2.png" class="quarto-figure quarto-figure-center"></p>
@@ -586,19 +621,19 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>using ROS_DOMAIN_ID</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>try to review the services</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Can you call the music service from EC2 ?</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
-<span id="cb13-2"><a href=""></a></span>
-<span id="cb13-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb13-4"><a href=""></a></span>
-<span id="cb13-5"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
+<span id="cb14-2"><a href=""></a></span>
+<span id="cb14-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb14-4"><a href=""></a></span>
+<span id="cb14-5"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ros-launch-file" class="slide level2">
 <h2>ROS launch file</h2>
@@ -606,28 +641,28 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li><p>how to get a launch template file (extenstion .launch.py)</p></li>
 <li><p>example <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/ros2-dev/mini_pupper_dance/launch/dance.launch.py">dance.launch.py</a></p></li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a></span>
-<span id="cb14-2"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
-<span id="cb14-3"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
-<span id="cb14-4"><a href=""></a></span>
-<span id="cb14-5"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb14-6"><a href=""></a>  </span>
-<span id="cb14-7"><a href=""></a>    node1 <span class="op">=</span>  Node(</span>
-<span id="cb14-8"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
-<span id="cb14-9"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb14-10"><a href=""></a>            executable<span class="op">=</span><span class="st">"service"</span>,</span>
-<span id="cb14-11"><a href=""></a>            name<span class="op">=</span><span class="st">"dance_server"</span>,</span>
-<span id="cb14-12"><a href=""></a>        )</span>
-<span id="cb14-13"><a href=""></a>    node2 <span class="op">=</span> Node(</span>
-<span id="cb14-14"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
-<span id="cb14-15"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb14-16"><a href=""></a>            executable<span class="op">=</span><span class="st">"client"</span>,</span>
-<span id="cb14-17"><a href=""></a>            name<span class="op">=</span><span class="st">"client"</span>,</span>
-<span id="cb14-18"><a href=""></a>        )</span>
-<span id="cb14-19"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb14-20"><a href=""></a>       node1l,</span>
-<span id="cb14-21"><a href=""></a>       node2</span>
-<span id="cb14-22"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a></span>
+<span id="cb15-2"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
+<span id="cb15-3"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
+<span id="cb15-4"><a href=""></a></span>
+<span id="cb15-5"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb15-6"><a href=""></a>  </span>
+<span id="cb15-7"><a href=""></a>    node1 <span class="op">=</span>  Node(</span>
+<span id="cb15-8"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
+<span id="cb15-9"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb15-10"><a href=""></a>            executable<span class="op">=</span><span class="st">"service"</span>,</span>
+<span id="cb15-11"><a href=""></a>            name<span class="op">=</span><span class="st">"dance_server"</span>,</span>
+<span id="cb15-12"><a href=""></a>        )</span>
+<span id="cb15-13"><a href=""></a>    node2 <span class="op">=</span> Node(</span>
+<span id="cb15-14"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_dance"</span>,</span>
+<span id="cb15-15"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb15-16"><a href=""></a>            executable<span class="op">=</span><span class="st">"client"</span>,</span>
+<span id="cb15-17"><a href=""></a>            name<span class="op">=</span><span class="st">"client"</span>,</span>
+<span id="cb15-18"><a href=""></a>        )</span>
+<span id="cb15-19"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb15-20"><a href=""></a>       node1l,</span>
+<span id="cb15-21"><a href=""></a>       node2</span>
+<span id="cb15-22"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ros-executable" class="slide level2">
 <h2>ROS executable</h2>
@@ -639,29 +674,29 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">launch file</a></li><li><a href="#tabset-4-2">setup.py in mini_pupper_music</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
-<span id="cb15-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
-<span id="cb15-3"><a href=""></a></span>
-<span id="cb15-4"><a href=""></a></span>
-<span id="cb15-5"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb15-6"><a href=""></a>    music_server_node <span class="op">=</span> Node(</span>
-<span id="cb15-7"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_music"</span>,</span>
-<span id="cb15-8"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb15-9"><a href=""></a>            executable<span class="op">=</span><span class="st">"service"</span>,</span>
-<span id="cb15-10"><a href=""></a>            name<span class="op">=</span><span class="st">"music_server"</span>,</span>
-<span id="cb15-11"><a href=""></a>        )</span>
-<span id="cb15-12"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb15-13"><a href=""></a>        music_server_node</span>
-<span id="cb15-14"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
+<span id="cb16-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
+<span id="cb16-3"><a href=""></a></span>
+<span id="cb16-4"><a href=""></a></span>
+<span id="cb16-5"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb16-6"><a href=""></a>    music_server_node <span class="op">=</span> Node(</span>
+<span id="cb16-7"><a href=""></a>            package<span class="op">=</span><span class="st">"mini_pupper_music"</span>,</span>
+<span id="cb16-8"><a href=""></a>            namespace<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb16-9"><a href=""></a>            executable<span class="op">=</span><span class="st">"service"</span>,</span>
+<span id="cb16-10"><a href=""></a>            name<span class="op">=</span><span class="st">"music_server"</span>,</span>
+<span id="cb16-11"><a href=""></a>        )</span>
+<span id="cb16-12"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb16-13"><a href=""></a>        music_server_node</span>
+<span id="cb16-14"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-2">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a></span>
-<span id="cb16-2"><a href=""></a>...</span>
-<span id="cb16-3"><a href=""></a>    entry_points<span class="op">=</span>{</span>
-<span id="cb16-4"><a href=""></a>        <span class="st">'console_scripts'</span>: [</span>
-<span id="cb16-5"><a href=""></a>            <span class="st">'service = mini_pupper_music.music_server:main'</span>,</span>
-<span id="cb16-6"><a href=""></a>        ],</span>
-<span id="cb16-7"><a href=""></a>    },</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a></span>
+<span id="cb17-2"><a href=""></a>...</span>
+<span id="cb17-3"><a href=""></a>    entry_points<span class="op">=</span>{</span>
+<span id="cb17-4"><a href=""></a>        <span class="st">'console_scripts'</span>: [</span>
+<span id="cb17-5"><a href=""></a>            <span class="st">'service = mini_pupper_music.music_server:main'</span>,</span>
+<span id="cb17-6"><a href=""></a>        ],</span>
+<span id="cb17-7"><a href=""></a>    },</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -671,13 +706,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li><p>make other music files in a home user folder</p></li>
 <li><p>revise the code on minipupper</p></li>
-</ul>
-</section>
-<section id="homework-exercise-1" class="slide level2">
-<h2>Homework Exercise*</h2>
-<ul>
-<li>please create a personal gmail address (we cannot use gemini with temple email address)</li>
-<li>you can use your personal gmail address, but Gemini may collect your personal data</li>
+<li><p>project 2 - run the mini_pupper_dance server <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/tree/ros2-dev/mini_pupper_dance">instruction at here</a></p></li>
+<li><p>please create a personal gmail address (we cannot use gemini with temple email address)</p></li>
+<li><p>you can use your personal gmail address, but Gemini may collect your personal data</p></li>
 </ul>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
