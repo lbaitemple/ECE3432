@@ -577,7 +577,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div id="tabset-2-2">
 <ul>
-<li>install openvpn</li>
+<li>install openvpn<br>
+</li>
+<li>ensure public IP address is the same in .ovpn file</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">sudo</span> apt install openvpn <span class="at">-y</span></span>
 <span id="cb8-2"><a href=""></a><span class="fu">sudo</span> openvpn pupper.ovpn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -589,7 +591,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="fu">sudo</span> openvpn pupper.ovpn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="awspupper-vpn-check" class="slide level2">
 <h2>AWS/Pupper VPN check</h2>
@@ -597,8 +598,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">AWS Terminal</a></li><li><a href="#tabset-3-2">Minipupper Terminal</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
-<span id="cb10-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
+<span id="cb9-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/awsvpn1.png" class="quarto-figure quarto-figure-center"></p>
@@ -606,8 +607,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 <div id="tabset-3-2">
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
-<span id="cb11-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="fu">sudo</span> apt install net-tools <span class="at">-y</span></span>
+<span id="cb10-2"><a href=""></a><span class="ex">ifconfig</span> tun0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/pupperovpn2.png" class="quarto-figure quarto-figure-center"></p>
@@ -620,21 +621,44 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="connecting-mini-pupper-to-ec2" class="slide level2">
 <h2>Connecting Mini Pupper to EC2</h2>
 <ul>
-<li>using ROS_DOMAIN_ID</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
 <li>try to review the services</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>try to review the nodes</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">ros2</span> node list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Can you call the music service from EC2 ?</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>42</span>
-<span id="cb14-2"><a href=""></a></span>
-<span id="cb14-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb14-4"><a href=""></a></span>
-<span id="cb14-5"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb13-2"><a href=""></a></span>
+<span id="cb13-3"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section>
+<section id="ros2-run-vs-ros2-launch" class="title-slide slide level1 center">
+<h1>ROS2 Run vs ROS2 launch</h1>
+
+</section>
+<section id="red-dot-detector-example" class="slide level2">
+<h2>Red Dot Detector Example</h2>
+<div>
+<ul>
+<li class="fragment"><p>one node to bring up all hardware - which can be have multiple nodes</p></li>
+<li class="fragment"><p>Recall how to make the robot move</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb14-2"><a href=""></a><span class="st">  x: 1.0</span></span>
+<span id="cb14-3"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb14-4"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb14-5"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb14-6"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb14-7"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb14-8"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li class="fragment"><p><a href="https://chatgpt.com/share/66e97b43-99f0-8008-94a8-d955155fc8d7">one node to run the movement</a></p></li>
+<li class="fragment"><p>one node to run detector</p></li>
+<li class="fragment"><p>add them into one launch file or two files</p></li>
+</ul>
+</div>
 </section>
 <section id="ros-launch-file" class="slide level2">
 <h2>ROS launch file</h2>
@@ -695,6 +719,13 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
+<section id="install-ros2-on-wsl-win11" class="slide level2">
+<h2>Install ROS2 on WSL (Win11)</h2>
+<ul>
+<li><iframe data-external="1" src="https://www.youtube.com/embed/F3n0SMAFheM" width="1024" height="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></li>
+<li><p><a href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html#install-ros-2-packages">Ubuntu 22.04 Humble Installation</a></p></li>
+</ul>
+</section>
 <section id="homework-exercise" class="slide level2">
 <h2>Homework Exercise*</h2>
 <ul>
@@ -710,7 +741,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <p>Li Bai</p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
