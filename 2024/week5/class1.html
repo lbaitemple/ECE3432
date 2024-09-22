@@ -783,8 +783,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div class="callout-content">
 <ul>
-<li>vertex ai API</li>
-<li>google TTS and STT API</li>
+<li>Vertex AI API</li>
+<li>Cloud Speech-to-Textand Cloud Text-to-Speech API</li>
 </ul>
 </div>
 </div>
@@ -876,7 +876,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>create a hidden folder</li>
 </ul>
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="fu">mkdir</span> ~/.gemini</span>
-<span id="cb16-2"><a href=""></a><span class="fu">mv</span> cred.json ~/.gemini</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-2"><a href=""></a><span class="fu">mv</span> creds.json ~/.gemini</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="check-gemini-vision" class="slide level2">
 <h2>Check Gemini Vision</h2>
@@ -892,37 +892,45 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 </div>
 </section>
+<section id="setup-the-soundrc-file" class="slide level2">
+<h2>Setup the soundrc file</h2>
+<ul>
+<li>setup soundrc file</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="bu">cd</span> ~/mangdang</span>
+<span id="cb18-2"><a href=""></a><span class="fu">bash</span> ./create_asound_conf.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="images/soundrc.png" class="r-stretch"></section>
 <section id="google-gemini-demo" class="slide level2">
 <h2>Google Gemini Demo</h2>
 <ul>
 <li>Git clone the gemini code</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="bu">cd</span> ~</span>
-<span id="cb18-2"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/apps-md-robots</span>
-<span id="cb18-3"><a href=""></a><span class="bu">cd</span> apps-md-robots</span>
-<span id="cb18-4"><a href=""></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> python3-pyaudio</span>
-<span id="cb18-5"><a href=""></a><span class="fu">sudo</span> pip install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb19-2"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/apps-md-robots</span>
+<span id="cb19-3"><a href=""></a><span class="bu">cd</span> apps-md-robots/ai-app/</span>
+<span id="cb19-4"><a href=""></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> python3-pyaudio</span>
+<span id="cb19-5"><a href=""></a><span class="fu">sudo</span> pip install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>replace credential in env.sample</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="va">API_KEY_PATH</span><span class="op">=&lt;</span>Your <span class="ex">own</span> api key PATH<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="va">API_KEY_PATH</span><span class="op">=&lt;</span>Your <span class="ex">own</span> api key PATH<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>as</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="va">API_KEY_PATH</span><span class="op">=</span>/home/ubuntu/.gemini/cred.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="va">API_KEY_PATH</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="set-up-environment-variable" class="slide level2">
 <h2>Set up Environment variable</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="fu">cp</span> env.sample .env</span>
-<span id="cb21-2"><a href=""></a><span class="bu">source</span> .env</span>
-<span id="cb21-3"><a href=""></a><span class="ex">python</span> gemini-md-bot.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="bu">cd</span> ..</span>
+<span id="cb22-2"><a href=""></a><span class="fu">cp</span> env.sample .env</span>
+<span id="cb22-3"><a href=""></a><span class="bu">source</span> .env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>run code</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="bu">cd</span> ai_apps/</span>
-<span id="cb22-2"><a href=""></a><span class="ex">python</span> ai_app.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="ex">python</span>  python ai-app/ai_app.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>other environment variable</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="bu">export</span> <span class="va">GOOGLE_APPLICATION_CREDENTIALS</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">export</span> <span class="va">GOOGLE_APPLICATION_CREDENTIALS</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
