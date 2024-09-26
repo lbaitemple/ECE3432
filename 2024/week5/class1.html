@@ -941,6 +941,57 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>other environment variable and save it to <code>.bashrc</code></li>
 </ul>
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">export</span> <span class="va">GOOGLE_APPLICATION_CREDENTIALS</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="run-services" class="slide level2">
+<h2>Run Services</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="fu">sudo</span> systemctl status ai.service</span>
+<span id="cb25-2"><a href=""></a><span class="fu">sudo</span> systemctl status joy.service</span>
+<span id="cb25-3"><a href=""></a><span class="fu">sudo</span> systemctl status robot.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="save-microsd-card-to-an-image" class="slide level2">
+<h2>Save MicroSD Card to an Image</h2>
+<p>You can save your MicroSD card to an image file</p>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Windows</a></li><li><a href="#tabset-6-2">Mac</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p><img data-src="images/win32imager.png"></p>
+</div>
+<div id="tabset-6-2">
+<ul>
+<li>using terminal windows to find disk numer</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">diskutil</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>say if you have microSD read as /dev/disk4</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="fu">sudo</span> dd if=/dev/disk4 of=/Users/name/imagefile.img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pishrink" class="slide level2">
+<h2>PiShrink</h2>
+<ul>
+<li>you can save the file smalelr usign pishrink</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Ubuntu</a></li><li><a href="#tabset-7-2">Mac</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<ul>
+<li>use link <a href="https://github.com/Drewsif/PiShrink">here</a></li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a> <span class="ex">pishrink</span> imagefile.img <span class="pp">[</span><span class="ss">newimagefile.img</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-7-2">
+<ul>
+<li>use link <a href="https://github.com/lbaitemple/PiShrink-macOS">here</a></li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a> <span class="ex">pishrink</span> imagefile.img <span class="pp">[</span><span class="ss">newimagefile.img</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
