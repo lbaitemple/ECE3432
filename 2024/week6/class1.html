@@ -443,7 +443,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="docker-installation" class="slide level2">
 <h2>Docker Installation</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Ubuntu</a></li><li><a href="#tabset-1-2">Mac OS</a></li><li><a href="#tabset-1-3">Windows</a></li><li><a href="#tabset-1-4">WSL</a></li><li><a href="#tabset-1-5">Cloud 9</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Ubuntu</a></li><li><a href="#tabset-1-2">Mac OS</a></li><li><a href="#tabset-1-3">Windows</a></li><li><a href="#tabset-1-4">WSL</a></li><li><a href="#tabset-1-5">WSL2</a></li><li><a href="#tabset-1-6">Cloud 9</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <ul>
@@ -481,6 +481,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 </div>
 <div id="tabset-1-5">
+<ul>
+<li><iframe data-external="1" src="https://www.youtube.com/embed/D46VybHqe0M" width="824" height="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></li>
+</ul>
+</div>
+<div id="tabset-1-6">
 <ul>
 <li>preinstalled but run very slow (7.5GB and 4 vCPU)</li>
 <li>x86 processor (if need docker conainer for arm, will need to run qmad for cross compiler)</li>
@@ -699,6 +704,65 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </div>
+</section>
+<section id="ros2-example" class="slide level2">
+<h2>ROS2 example</h2>
+<ul>
+<li>try this on your AWS cloud 9 instance</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> ros2-dev-music https://github.com/lbaitemple/mini_pupper_ros_aws/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>ensure we can setup for arm process</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a></span>
+<span id="cb23-2"><a href=""></a><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> <span class="at">--no-install-recommends</span> qemu-user-static binfmt-support  docker-compose </span>
+<span id="cb23-3"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--enable</span> qemu-arm</span>
+<span id="cb23-4"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--display</span> qemu-arm</span>
+<span id="cb23-5"><a href=""></a></span>
+<span id="cb23-6"><a href=""></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> qemu-user-static binfmt-support</span>
+<span id="cb23-7"><a href=""></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--privileged</span> multiarch/qemu-user-static <span class="at">--reset</span> <span class="at">-p</span> yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="check-dockerfile-and-docker-compose.yaml" class="slide level2">
+<h2>Check Dockerfile and docker-compose.yaml</h2>
+<ul>
+<li>see what you will need to do with Dockerfile</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">cd</span> mini_pupper_ros_aws/</span>
+<span id="cb24-2"><a href=""></a><span class="ex">docker-compose</span> build </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>find the docker image and export it as an image.tar</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="ex">docker</span> save <span class="at">-o</span> image_name.tar ros-humble-greengrass-minipupper:latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="setup-on-minipupper" class="slide level2">
+<h2>setup on minipupper</h2>
+<ul>
+<li><p>create an audio folder on minipupper <code>mkdir ~/audio</code></p></li>
+<li><p>move imag_name.tar and docker-compose.yaml to the minipupper</p></li>
+<li><p>load the image</p></li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">docker</span> load <span class="at">-i</span> image_name.tar </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="run-the-music-in-docker-exec" class="slide level2">
+<h2>Run the music in docker exec</h2>
+<ul>
+<li>check the service in docker exec</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="bu">source</span> /opt/ros_demos/setup.bash </span>
+<span id="cb27-2"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span>
+<span id="cb27-3"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>send music file to the topic in docker exec</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>robot1.mp3<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>stop the music using the topic in docker exec</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>stop<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check log of docker container</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="ex">docker-compose</span> logs pupper-robot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
