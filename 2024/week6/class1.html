@@ -752,31 +752,47 @@ sudo chmod +x /usr/local/bin/docker-compose</code></pre>
 <section id="run-docker-on-minipupper" class="slide level2">
 <h2>Run docker on minipupper</h2>
 <ul>
+<li>check the docker-compose.yml</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href=""></a><span class="at">  </span><span class="fu">pupper-robot</span><span class="kw">:</span></span>
+<span id="cb28-2"><a href=""></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> ros-humble-greengrass-minipupper:latest</span></span>
+<span id="cb28-3"><a href=""></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span><span class="at"> ros2 launch mini_pupper_music music.launch.py</span></span>
+<span id="cb28-4"><a href=""></a><span class="at">    </span><span class="fu">network_mode</span><span class="kw">:</span><span class="at"> </span><span class="st">"host"</span></span>
+<span id="cb28-5"><a href=""></a><span class="at">    </span><span class="fu">privileged</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb28-6"><a href=""></a><span class="at">    </span><span class="fu">user</span><span class="kw">:</span><span class="at"> root</span></span>
+<span id="cb28-7"><a href=""></a><span class="at">    </span><span class="fu">devices</span><span class="kw">:</span></span>
+<span id="cb28-8"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"/dev/snd:/dev/snd"</span><span class="co">   # Pass the sound device from the host to the container</span></span>
+<span id="cb28-9"><a href=""></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb28-10"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /tmp/esp32-proxy.socket:/tmp/esp32-proxy.socket</span></span>
+<span id="cb28-11"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /home/ubuntu/audio:/app/audio </span></span>
+<span id="cb28-12"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /home/ggc_user/aws_iot_params.yaml:/config/aws_iot_params.yaml</span></span>
+<span id="cb28-13"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /home/ubuntu/.asoundrc:/etc/asound.conf</span><span class="co">   # Share ALSA configuration</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
 <li>docker compose up with docker-compose.yaml file</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="ex">docker-compose</span> up <span class="at">-d</span></span>
-<span id="cb28-2"><a href=""></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="pp">[</span><span class="ss">continer_id</span><span class="pp">]</span> /robot-entrypoint.sh /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="ex">docker-compose</span>  <span class="at">--profile</span> pupper-robot  up <span class="at">-d</span></span>
+<span id="cb29-2"><a href=""></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="pp">[</span><span class="ss">continer_id</span><span class="pp">]</span> /robot-entrypoint.sh /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="run-the-music-in-docker-exec" class="slide level2">
 <h2>Run the music in docker exec</h2>
 <ul>
 <li>check the service in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="bu">source</span> /opt/ros_demos/setup.bash </span>
-<span id="cb29-2"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span>
-<span id="cb29-3"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="bu">source</span> /opt/ros_demos/setup.bash </span>
+<span id="cb30-2"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span>
+<span id="cb30-3"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>send music file to the topic in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>robot1.mp3<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>robot1.mp3<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>stop the music using the topic in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>stop<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>stop<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check log of docker container</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="ex">docker-compose</span> logs pupper-robot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="ex">docker-compose</span> logs pupper-robot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
