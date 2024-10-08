@@ -14,4 +14,8 @@
 
 [lecture 7](https://lbaitemple.github.io/ECE3432/lec7)
 
-[lecture 8](https://lbaitemple.github.io/ECE3432/lec8)
+[lecture 9](https://lbaitemple.github.io/ECE3432/lec9)
+
+[lecture 10](https://lbaitemple.github.io/ECE3432/lec10)
+
+[lecture 11](https://lbaitemple.github.io/ECE3432/lec11)
