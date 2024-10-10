@@ -7,16 +7,12 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="index_files/libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="index_files/libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Li Bai">
-  <meta name="author" content="Lillian Drasin">
-  <meta name="author" content="Afreez Gan">
-  <meta name="dcterms.date" content="2024-04-06">
-  <title>Robot Control using Raspberry Pi</title>
+  <meta name="dcterms.date" content="2024-10-06">
+  <title>Robot Control using Raspberry Pi CM4</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -36,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -47,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -99,26 +95,7 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -248,7 +225,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -411,13 +389,16 @@
       margin-right: 0; 
     }
   </style>
+  <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Robot Control using Raspberry Pi</h1>
+  <h1 class="title">Robot Control using Raspberry Pi CM4</h1>
   <p class="subtitle">Workshop - A minimal introduction to Minipupper V2</p>
 
 <div class="quarto-title-authors">
@@ -432,1020 +413,964 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
             Temple University
           </p>
     </div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Lillian Drasin 
-</div>
-<div class="quarto-title-author-email">
-<a href="mailto:lillian.drasin@temple.edu">lillian.drasin@temple.edu</a>
-</div>
-        <p class="quarto-title-affiliation">
-            Temple University
-          </p>
-    </div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Afreez Gan 
-</div>
-<div class="quarto-title-author-email">
-<a href="mailto:afreez@mangdang.net">afreez@mangdang.net</a>
-</div>
-        <p class="quarto-title-affiliation">
-            Mangdang Inc.
-          </p>
-    </div>
 </div>
 
-  <p class="date">April 6, 2024</p>
+  <p class="date">October 6, 2024</p>
 </section>
-<section id="a-great-appreciation-to" class="slide level2 appendix">
-<h2>A great appreciation to</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/50th-logo-color.png"></p>
-</figure>
-</div>
-<p><img data-src="images/karen_galuch.png" data-fig-align="center" width="478"><img data-src="images/chris_wright.png" data-fig-align="center" width="478"></p>
-<p>&nbsp;- $4,500 gifted to purchase mangdang robots for SAC 2024</p>
-<table style="width:40%;">
-<colgroup>
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><div class="columns">
-<div class="column" style="width:100%;">
-<p>http://bit.ly/mangdang24</p>
-</div>
-</div></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="mangdang" class="slide level2" data-background-video="./vids/dog.mp4" data-background-video-loop="true" data-background-opacity="0.15">
-<h2>Mangdang</h2>
-<h3 id="a-quadruped-robot-dog-originating-from-a-stanford-project-click-here">A quadruped robot dog originating from a stanford project <a href="https://news.stanford.edu/2019/05/20/dog-like-robot-jumps-flips-trots/" class="button">click here</a></h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="system-requirements" class="slide level2">
+<h2>System Requirements</h2>
 <div>
 <ul>
-<li class="fragment">A <span class="alert">Mangdang v2</span><br></li>
-<li class="fragment">32GB micro SD cards</li>
+<li class="fragment"><p>One PC Windows 11 (Home edition or Professional edition)</p></li>
+<li class="fragment"><p>32GB MicroSD Card</p></li>
+<li class="fragment"><p>Minipupper V2</p></li>
 </ul>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/mangdang.png" width="400"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
+</section>
+<section id="process-slide" class="slide level2">
+<h2>Process of the Day</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
 <div>
-<ul>
-<li class="fragment">AWS Robomaker and AWS Cloud 9
-<ul>
-<li class="fragment"><span class="alert">Virtualization</span>, Docker, Linux, Python 3</li>
-<li class="fragment">Robot Operating System (ROS) and Gazebo</li>
-</ul></li>
-<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/references" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="footer">
-<p>Credit from Building Cloud Connected Robots <span class="citation" data-cites="BuildCloudRobot">(<a href="#/references" role="doc-biblioref" onclick=""><strong>BuildCloudRobot?</strong></a>)</span></p>
-</div>
-</section>
-<section id="cloud-computing" class="slide level2">
-<h2>Cloud Computing</h2>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(("Software setup")) --&gt; B(("Network setup"))
+  B --&gt; C(("Hardware check: camera and audio"))
+  C --&gt; D(("Google Gemini"))
+  C --&gt; E((" Linux ROS2 "))
+  E --&gt; F(("camera view"))
+  E --&gt; G(("line following"))
+  
+  %% Define custom styles for each node
+  classDef nodeStyle width:150px, text-align:center, white-space:pre-wrap;
+  classDef coloredNode fill:#1f96,stroke:#333,stroke-width:2px,width:150px,white-space:pre-wrap,text-align:center;
 
-<img data-src="images/art_greengrass.png" class="r-stretch quarto-figure-center"></section>
-<section id="aws-greengrass-deployment-process" class="slide level2">
-<h2>AWS Greengrass Deployment Process</h2>
 
-<img data-src="images/introduction-02-arch.png" class="r-stretch quarto-figure-center"></section>
-<section id="minipupper-setup-workflow" class="slide level2">
-<h2>Minipupper Setup Workflow</h2>
-
-<img data-src="images/MinipupperWorkflow2.0.png" width="3600" class="r-stretch quarto-figure-center"></section>
-<section id="launch-aws-lab" class="slide level2 aws-background">
-<h2>Launch AWS Lab</h2>
-<ul>
-<li>Click “start lab”</li>
-<li>Wait for circle next to AWS to turn green</li>
-</ul>
-
-<img data-src="images/launchawslab.png" class="r-stretch quarto-figure-center"></section>
-<section>
-<section id="cloud-9-on-aws-cloud" class="title-slide slide level1 aws-background center">
-<h1>Cloud 9 (on AWS cloud)</h1>
-<ul>
-<li>Integrated development environment (IDE) provided by Amazon Web Services (AWS), allows code to be written, run, and debugged in the cloud</li>
-<li>Docker: software that allows for building, testing, and deployment of applications</li>
-<li>Cross compile: compiling code on host system to run on target system</li>
-<li>Develop component; Robot Operating System (ROS) code</li>
-<li>Create a piece of software that can run on devices connected to Greengrass</li>
-</ul>
-</section>
-<section id="cloud-9-setup" class="slide level2 aws-background">
-<h2>Cloud 9 Setup</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1</a></li><li><a href="#tabset-1-2">2</a></li><li><a href="#tabset-1-3">3</a></li><li><a href="#tabset-1-4">4</a></li><li><a href="#tabset-1-5">5</a></li><li><a href="#tabset-1-6">6</a></li><li><a href="#tabset-1-7">7</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<ul>
-<li>Search Cloud9 in AWS console</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aws_cloud9.png" width="1000"></p>
-</figure>
+  %% Apply the custom style to the nodes
+  class A,C,D,E,F,G nodeStyle;
+  class B coloredNode;
+  
+  %% Add slide references to each block (adjust according to your presentation setup)
+  click A "#software" "Go to Software setup slide"
+  click B "#network" "Go to Network setup slide"
+  click C "#hardware" "Go to Hardware slide"
+  click D "#gemini" "Go to Google Gemini slide"
+  click E "#ros2" "Go to ROS slide"
+  click F "#ros2" "Go to ROS slide"
+  click G "#linefollowing" "Go to ROS line following slide"
+  
+</pre>
 </div>
-</div>
-<div id="tabset-1-2">
-<ul>
-<li>Select “create environment”</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aws_cloud9_1.png" width="1287"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-3">
-<ul>
-<li>Name the new instance <code>minipupperv2</code></li>
-<li>Select “New EC2 Instance”</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aws_cloud9_3.png" width="550"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-4">
-<ul>
-<li>Select additional instance types</li>
-<li>Choose c4.xlarge from drop-down menu</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/cloud9_instance.png" width="505"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-5">
-<ul>
-<li>Under “platform” drop-down menu, choose Ubuntu 22.04 (Jammy)</li>
-<li>Select secure shell (ssh)</li>
-</ul>
-<p><img data-src="images/cloud9step5.png" width="450"></p>
-</div>
-<div id="tabset-1-6">
-<ul>
-<li>Create OS</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/cloud9_create.png" width="790"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-7">
-<ul>
-<li>click “open” to access Cloud9</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/Cloud9_7.png" width="1650"></p>
-</figure>
-</div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 </section>
-<section id="cloud-9-ide" class="slide level2">
-<h2>Cloud 9 IDE</h2>
-
-<img data-src="images/cloud9_ide.png" width="477" class="r-stretch quarto-figure-center"><div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Install DCV, ROS, Docker and Gazebo ~10 mins</strong></p>
-</div>
-<div class="callout-content">
+<section id="software" class="slide level2">
+<h2>Install VScode</h2>
 <ul>
-<li>Run the following command in a terminal window</li>
+<li>edit file in text mode</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> <span class="st">"https://bit.ly/robomaker2204"</span> <span class="kw">|</span> <span class="fu">sudo</span> <span class="at">-E</span> bash <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Wait for 10 minutes, or until prompted to enter code</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">sudo</span> reboot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://code.visualstudio.com/download"><img data-src="images/vscode.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
 </div>
 </section>
-<section id="docker-compose-build" class="slide level2 aws-background">
-<h2>Docker-compose build</h2>
+<section id="install-window-terminal" class="slide level2">
+<h2>Install Window Terminal</h2>
 <ul>
-<li>Copy to terminal one line at one time</li>
-<li>“enter” after each paste</li>
-<li>To save time, we will run a docker container which takes about 1300 - 2200 seconds (~30 minutes)</li>
+<li>seems to be better than power shell</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">git</span> clone <span class="at">-b</span> ieee-dev https://github.com/lbaitemple/mini-pupper-aws</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="bu">cd</span> mini-pupper-aws</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">docker-compose</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="images/docker-compose-time.png" class="r-stretch quarto-figure-center"></section>
-<section id="minipupperv2-setup-requirements" class="slide level2 minipupper-background">
-<h2>MinipupperV2 Setup Requirements</h2>
+<img data-src="images/window_terminal.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="install-balena-etcher" class="slide level2">
+<h2>Install Balena Etcher</h2>
 <ul>
-<li><p>a Minipupper v2 robot</p></li>
-<li><p>Minipupper v2 ubuntu prebuilt image, <a href="https://tuprd-my.sharepoint.com/:u:/g/personal/lbai_temple_edu/EYP_1-WG8FpPusyH0exbNTsBfz1GiQbTRGv0UzocD-0eoA?e=CkW4Zc" target="_blank">download here</a></p></li>
-<li><p>a <a href="">wireless.txt</a>, in cloud 9 git repo - mini_pupper_aws/wireless folder</p></li>
+<li>Download Balena Etcher <a href="https://etcher.balena.io/" class="uri">https://etcher.balena.io/</a> to copy the new image to your MicroSD card</li>
 </ul>
-</section>
+
+<img data-src="images/etcher.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="install-wsl" class="slide level2">
+<h2>Install WSL</h2>
+<ul>
+<li>run cmd in administrative mode</li>
+<li>setup username and password</li>
+</ul>
+
+<img data-src="images/wsl_install.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="wsl-folders-on-windows" class="slide level2">
+<h2>WSL folders on Windows</h2>
+
+<img data-src="images/wsl_home_folder.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="setup-raspberry-pi---balena-etcher-preflashed" class="slide level2">
 <h2>Setup Raspberry Pi - Balena Etcher (preflashed)</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">1</a></li><li><a href="#tabset-2-2">2</a></li><li><a href="#tabset-2-3">3</a></li><li><a href="#tabset-2-4">4</a></li><li><a href="#tabset-2-5">5</a></li><li><a href="#tabset-2-6">6</a></li><li><a href="#tabset-2-7">7</a></li><li><a href="#tabset-2-8">8</a></li><li><a href="#tabset-2-9">9</a></li><li><a href="#tabset-2-10">10</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1</a></li><li><a href="#tabset-1-2">2</a></li><li><a href="#tabset-1-3">3</a></li><li><a href="#tabset-1-4">4</a></li><li><a href="#tabset-1-5">5</a></li><li><a href="#tabset-1-6">6</a></li><li><a href="#tabset-1-7">7</a></li><li><a href="#tabset-1-8">8</a></li><li><a href="#tabset-1-9">9</a></li><li><a href="#tabset-1-10">10</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-1-1">
 <ul>
 <li>Download Balena Etcher <a href="https://etcher.balena.io/" class="uri">https://etcher.balena.io/</a> to copy the new image to your MicroSD card</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/etcher_1.png" width="584"></p>
+<p><img data-src="images/etcher_1.png" class="quarto-figure quarto-figure-center" width="584"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_2.png" class="quarto-figure quarto-figure-center" width="625"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_3.png" class="quarto-figure quarto-figure-center" width="591"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_4.png" class="quarto-figure quarto-figure-center" width="650"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-5">
+<ul>
+<li>Check to ensure your SD card is selected to flash to SDHC, NOT your computer!</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_5.png" class="quarto-figure quarto-figure-center" width="588"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-6">
+<p>NOTE: the following step will not apply to you if you own a computer using Windows</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_7.png" class="quarto-figure quarto-figure-center" width="536"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-7">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_8.png" class="quarto-figure quarto-figure-center" width="528"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-8">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_9.png" class="quarto-figure quarto-figure-center" width="584"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-9">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_11.png" class="quarto-figure quarto-figure-center" width="587"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-10">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_12.png" class="quarto-figure quarto-figure-center" width="582"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="network" class="slide level2">
+<h2>Connection Methods</h2>
+<ul>
+<li><p><a href="#/method_1">method 1: Mobile hotspot on Windows 11/10</a></p>
+<ul>
+<li>easy, but cannot work between wsl and minipupper</li>
+</ul></li>
+<li><p><a href="#/method_2">method 2: Wireless router</a></p>
+<ul>
+<li>work with ROS operation (WSL &amp; robot), do not require mutlicast enable on the router</li>
+</ul></li>
+<li><p><a href="#/method_3">method 3: eduroam (need to generate a hash in ubuntu 18.04)</a></p>
+<ul>
+<li>not work with ROS2 operation (WSL &amp; robot), but require mutlicast enable on the router</li>
+</ul></li>
+</ul>
+</section>
+<section id="method_1" class="slide level2">
+<h2>Mobile Hostpot on Windows 11 - method 1</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Lookup</a></li><li><a href="#tabset-2-2">Setup</a></li><li><a href="#tabset-2-3">Wireless.txt</a></li><li><a href="#tabset-2-4">file</a></li><li><a href="#tabset-2-5">insert</a></li><li><a href="#tabset-2-6">test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mobilehotspot.png" class="quarto-figure quarto-figure-center" width="629"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/etcher_2.png" width="625"></p>
+<p><img data-src="images/hotspot_ip_address.png" class="quarto-figure quarto-figure-center" width="349"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-3">
+<ul>
+<li>open power shell and</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="bu">cd</span> ~/Downloads</span>
+<span id="cb1-2"><a href=""></a><span class="fu">wget</span> https://raw.githubusercontent.com/lbaitemple/mini-pupper-aws/refs/heads/fall2024/wifipasswd/wireless.txt <span class="at">-O</span> wireless.txt</span>
+<span id="cb1-3"><a href=""></a><span class="ex">code</span> wireless.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/etcher_3.png" width="591"></p>
+<p><img data-src="images/revisewirelesstxt_2.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-4">
+<ul>
+<li>make sure you see a new driver system-boot</li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/etcher_4.png" width="650"></p>
+<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-center" width="415"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-5">
-<ul>
-<li>Check to ensure your SD card is selected to flash to SDHC, NOT your computer!</li>
-</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/etcher_5.png" width="588"></p>
+<p><img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center" width="800"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-2-6">
-<p>NOTE: the following step will not apply to you if you own a computer using Windows</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/etcher_7.png" width="536"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-7">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_8.png" width="528"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-8">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_9.png" width="584"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-9">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_11.png" width="587"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-10">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_12.png" width="582"></p>
+<p><img data-src="images/webcontroller_ip.png" class="quarto-figure quarto-figure-center" width="961"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="remove-microsd-card-and-reinsert" class="slide level2">
-<h2>Remove MicroSD Card and Reinsert</h2>
-<ul>
-<li>make sure you see a new driver <code>system-boot</code></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/check_new_driver.png" width="350"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/wirelesstextdragdrop-04.png" width="415"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="generating-a-password-hash" class="slide level2 aws-background">
-<h2>Generating a Password Hash</h2>
-<ul>
-<li>Passowrd Hash: cryptographic representation of a password</li>
-</ul>
-
-<img data-src="images/password-hashing-01.png" width="500" class="r-stretch quarto-figure-center"></section>
-<section id="generate-your-password-hash" class="slide level2 aws-background">
-<h2>Generate your Password Hash</h2>
+<section id="method_2" class="slide level2">
+<h2>Wireless router - method 2</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">1</a></li><li><a href="#tabset-3-2">2</a></li><li><a href="#tabset-3-3">3</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Setup</a></li><li><a href="#tabset-3-2">wireless.txt</a></li><li><a href="#tabset-3-3">file</a></li><li><a href="#tabset-3-4">insert card</a></li><li><a href="#tabset-3-5">test</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<ul>
-<li>Now we open a new terminal to setup another docker image to setup wifi on the minipupper</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">cd</span> mini-pupper-aws/wifipasswd</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">docker-compose</span> build</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/passwordhashnewterminal.png" width="548" height="337"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/downloadcodeoncloud9.png" width="747"></p>
+<p><img data-src="images/tp_link.jpg" class="quarto-figure quarto-figure-center" width="629"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-3-2">
 <ul>
-<li>paste commands to open a new docker instance</li>
+<li>open window terminal (wireless.txt downloaded already)</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">docker</span> run <span class="at">-it</span> bionic-bai:latest /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="bu">cd</span> ~/Downloads</span>
+<span id="cb2-2"><a href=""></a><span class="ex">code</span> wireless.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>get TU wireless credential in class</li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/docker_instance_1.png" width="939"></p>
+<p><img data-src="images/revisewirelesstxt_1.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-3-3">
 <ul>
-<li>Paste command after the #</li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>replace “password” in command line with your password used to log in to school organization email</li>
-<li>enter to regenerate unique hash</li>
-<li>“Ctrl +S” to save changes in wireless.txt file</li>
+<li>make sure you see a new driver system-boot</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/docker_instance_2.png"></p>
+<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-center" width="415"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-5">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontroller_ip.png" class="quarto-figure quarto-figure-center" width="961"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="method_3" class="slide level2">
+<h2>eduroam - method 3</h2>
+<ul>
+<li><p>Generating a Password Hash (case sensitive, space sensitive)</p></li>
+<li><p>Passowrd Hash: cryptographic representation of a password</p></li>
+</ul>
+
+<img data-src="images/password-hashing-01.png" class="quarto-figure quarto-figure-center r-stretch" width="500"></section>
+<section id="generate-your-password-hash" class="slide level2 aws-background">
+<h2>Generate your Password Hash</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">wsl</a></li><li><a href="#tabset-4-2">hash</a></li><li><a href="#tabset-4-3">credential</a></li><li><a href="#tabset-4-4">mv file</a></li><li><a href="#tabset-4-5">insert card</a></li><li><a href="#tabset-4-6">IP</a></li><li><a href="#tabset-4-7">test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<ul>
+<li>Now we open a new power shell terminal to setup another wsl distro</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--install</span> ubuntu-18.04</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_18.04.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>replace “password” in command line with your password used to log in to school organization email</li>
+<li>enter to regenerate unique hash</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_password_hash.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 <ul>
 <li>save value for your WiFi access (in google doc or notebook)!</li>
 </ul>
 </div>
-</div>
-</div>
-</section>
-<section id="revise-the-id-as-eduroam-in-wireless.txt" class="slide level2 aws-background">
-<h2>Revise the ID as eduroam in wireless.txt</h2>
+<div id="tabset-4-3">
 <ul>
-<li>Open downloaded Minipupper file</li>
-<li>Open wireless.txt file at the bottom</li>
-<li>“Ctrl + S” to save</li>
 <li>Line 1: use your school email address</li>
-<li>Line 2: use the hash passcode that you previously saved in a document or notebook</li>
-<li>Line 5-6: backup solution to put WIFI_AP1=ieeer2 and WIFI_AP1_PWD=ieeer2r1<br>
-</li>
-<li>(see next slide for example)</li>
+<li>Line 2: use the hash passcode that you previously saved in a document or notebook <img data-src="images/revisewirelesstxt.png" class="quarto-figure quarto-figure-center"></li>
 </ul>
-</section>
-<section id="revising-the-id" class="slide level2">
-<h2>Revising the ID</h2>
-
-<img data-src="images/revisewirelesstxt.png" class="r-stretch quarto-figure-right"></section>
-<section id="copy-the-wifi-password-file" class="slide level2">
-<h2>Copy the wifi password file</h2>
-<ul>
-<li>Drag and drop the wireless.txt into <code>system-boot</code> folder</li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/copy_wifi.png" width="645"></p>
-</figure>
 </div>
-</div><div class="column" style="width:50%;">
+<div id="tabset-4-4">
+<ul>
+<li>make sure you see a new driver system-boot</li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/wirelesstextdragdrop-02.png" width="343"></p>
+<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-center" width="415"></p>
 </figure>
 </div>
 </div>
+<div id="tabset-4-5">
+<ul>
+<li>IP address does not show up on first time boot up, wait for power on sound, then disconnect power and reconnect</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-6">
+<ul>
+<li>reboot second time, you can see the IP address</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ip_adress.jpg" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-7">
+<ul>
+<li>If you see the IP address on the screen in the second time power on, type <code>http://[ipaddress]:8080</code> for a web remote control</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontrol.png" class="quarto-figure quarto-figure-center" width="900"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="remove-minisd-connect-it-to-minipupper-sd-slot" class="slide level2">
-<h2>Remove miniSD, connect it to Minipupper SD slot</h2>
+<section id="web-control---activate-the-robot" class="slide level2">
+<h2>Web Control - Activate the robot</h2>
 
-<img data-src="images/robodogsdcard.jpg" width="400" class="r-stretch quarto-figure-center"></section>
-<section id="insert-microsd-card-to-minipupper" class="slide level2">
-<h2>Insert MicroSD Card to Minipupper</h2>
-<ul>
-<li><p>If the IP address does not show up on first time boot up, wait for power on sound and screen flash, then disconnect power and reconnect</p></li>
-<li><p>If you see the IP address on the screen in the second time power on, type <code>http://[ipaddress]:8080</code> for a web remote control</p></li>
-</ul>
-</section>
-<section id="minipupper-powered-on" class="slide level2">
-<h2>Minipupper Powered On</h2>
+<img data-src="images/webcontrol_2.png" class="quarto-figure quarto-figure-center r-stretch" width="519"></section>
+<section id="web-control---make-it-for-dance-move" class="slide level2">
+<h2>Web Control - Make it for dance move</h2>
 
-<img data-src="images/ip_adress.jpg" width="500" class="r-stretch quarto-figure-center"></section>
-<section id="jupyter-lab-on-minipupper" class="slide level2 minipupper-background">
-<h2>Jupyter Lab on Minipupper</h2>
+<img data-src="images/webcontrol_3.png" class="quarto-figure quarto-figure-center r-stretch" width="519"></section>
+<section id="web-control---make-it-for-walk" class="slide level2">
+<h2>Web Control - Make it for walk</h2>
+
+<img data-src="images/webcontrol_5.png" class="quarto-figure quarto-figure-center r-stretch" width="519"></section>
+<section id="revise-the-wifi-in-jupyter-lab" class="slide level2">
+<h2>Revise the WiFi in Jupyter Lab</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">1</a></li><li><a href="#tabset-4-2">2</a></li><li><a href="#tabset-4-3">3</a></li><li><a href="#tabset-4-4">4</a></li><li><a href="#tabset-4-5">5</a></li><li><a href="#tabset-4-6">6</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Jupyter Lab</a></li><li><a href="#tabset-5-2">WiFi Configuration</a></li><li><a href="#tabset-5-3">Caution</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-5-1">
 <ul>
 <li>Open a browser, type <code>http://[ipaddress]:8888</code></li>
 <li>password <code>mangdang</code></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ip_window.png" width="591" height="377"></p>
+<p><img data-src="images/ip_window.png" class="quarto-figure quarto-figure-center" width="591" height="377"></p>
 </figure>
 </div>
-</div>
-<div id="tabset-4-2">
-<ul>
-<li>Open a new terminal</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/jupyter_lab1.png" width="589"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-3">
-<ul>
-<li>Download <code>mangdang</code> folder</li>
-<li>Refresh page for folder to appear</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> clone https://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-4-4">
-<ul>
-<li>Find files in the <code>mangdang</code> folder</li>
-<li>Do NOT run first block (remove docker) !</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/jupyter_lab4.png" width="618"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-5">
-<ul>
-<li>Open the <code>minipupper.ipynb</code> python notebook
-<ol type="1">
-<li>move cursor down to line</li>
-<li>click “run” button</li>
-</ol></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/jupyter_lab5.png" width="721"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-6">
-<ul>
-<li>Run the second block to install greengrass</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/jupyter_lab6.png" width="595"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="find-aws-credentials" class="slide level2 aws-background">
-<h2>Find AWS Credentials</h2>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">1</a></li><li><a href="#tabset-5-2">2</a></li><li><a href="#tabset-5-3">3</a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1">
-<ul>
-<li>Log into AWS Academy <img data-src="images/aws_academy_1.png" data-fig-align="center" width="951"></li>
-</ul>
 </div>
 <div id="tabset-5-2">
-<ul>
-<li>Check AWS Details</li>
-</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">sudo</span> nano /etc/netplan/50-cloud-init.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/aws_academy_2.png" width="383"></p>
+<p><img data-src="images/wireless_config.png" class="quarto-figure quarto-figure-center" width="639" height="400"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-5-3">
 <ul>
-<li>Find the login credential</li>
+<li><p>at least keep one connection working</p></li>
+<li><p><code>50-cloud-init.yaml</code> is indentation sensentive, any mistake will have no IP address shown</p></li>
+<li><p>If file changed, try the following commands to ensure if you have any errors before reboot</p></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aws_academy_3.png" width="476"></p>
-</figure>
-</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="fu">sudo</span> netplan apply</span>
+<span id="cb6-2"><a href=""></a><span class="fu">sudo</span> netplan generate <span class="at">--debug</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>the worst sitation is to use a HDMI monitor and a USB cable to troubleshoot the yaml file</li>
+</ul>
 </div>
 </div>
 </div>
 </section>
-<section id="return-to-jupyter-lab" class="slide level2 minipupper-background">
-<h2>Return to Jupyter Lab</h2>
+<section id="minipupper-powered-on" class="slide level2">
+<h2>Minipupper Powered On</h2>
+<ul>
+<li><p>which method is better?</p>
+<ul>
+<li>best method 2 (need have multicast enabled),</li>
+<li>easy method 1 (not always reliable)</li>
+<li>good method 3 (no multicast and school dependent)</li>
+</ul></li>
+<li><p>Common problem with WSL not seeing the robot in the LAN</p>
+<ul>
+<li>WSL &amp; robot operation - bridge vs nat mode</li>
+<li>nat mode create a seperated LAN (no good)</li>
+<li>bridge mode so robot can talk with WSL</li>
+</ul></li>
+</ul>
+</section>
+<section id="wsl-mirror-mode" class="slide level2">
+<h2>WSL Mirror Mode</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">1</a></li><li><a href="#tabset-6-2">2</a></li><li><a href="#tabset-6-3">3</a></li><li><a href="#tabset-6-4">4</a></li><li><a href="#tabset-6-5">5</a></li><li><a href="#tabset-6-6">6</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">config</a></li><li><a href="#tabset-6-2">content</a></li><li><a href="#tabset-6-3">reset</a></li><li><a href="#tabset-6-4">verify</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
-<ul>
-<li>Return to Jupyter Lab on RPi4</li>
-<li><code>http://[ipaddress]:8888</code></li>
-<li>AWS academy credentials one at a time to appropriate fields</li>
-</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/jupyter_lab7.png" width="590"></p>
+<p><img data-src="images/wslconfig.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-6-2">
-<ul>
-<li><p>Thing <code>ROS2_Minipupper</code> and thing group <code>ROS2_Minipuppers</code></p></li>
-<li><p>Run the block</p></li>
-</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href=""></a>[wsl2]</span>
+<span id="cb7-2"><a href=""></a>networkingMode=mirrored</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/jupyter_lab8.png" width="702"></p>
+<p><img data-src="images/wslcontent.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-6-3">
-<ul>
-<li>Ensure a thing and a thing group created</li>
-</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--shutdown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/jupyter_lab9.png" width="527"></p>
+<p><img data-src="images/wsl_shutdown.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-6-4">
-<ul>
-<li>Ensure things are added on IoT Core</li>
-</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="ex">wslinfo</span> <span class="at">--networking-mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/jupyter_lab10.png" width="450"></p>
+<p><img data-src="images/wslmode.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-<div id="tabset-6-5">
-<ul>
-<li>Run the next block, add a greengrass user <code>ggc_user</code></li>
-<li>Should only be done after the docker image build is completed</li>
-</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/jupyter_lab11.png" width="454"></p>
+<p><img data-src="images/wsl_net.png" class="quarto-figure quarto-figure-center" width="900"></p>
 </figure>
 </div>
-</div>
-<div id="tabset-6-6">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/jupyter_lab12.png" width="906"></p>
-</figure>
-</div>
-<ul>
-<li>ensure the Greengrass user <code>ggc_user</code> is added</li>
-<li>DO NOT run the last step yet, this will be run after deployment</li>
-</ul>
 </div>
 </div>
 </div>
 </section>
-<section id="checking-on-aws-iot-core" class="slide level2">
-<h2>Checking on AWS IoT Core</h2>
-<ul>
-<li>these steps ensure that all things and thing groups have been created in AWS
-<ul>
-<li>Thing (two places): Physical objects that are embedded with sensors, software, and other technologies</li>
-<li>Thing group: you can put multiple things in one group</li>
-<li>Deployments: load docker ECR container to Things in a Thing group</li>
-</ul></li>
-</ul>
-</section>
-<section id="check-iot-core-things" class="slide level2 aws-background">
-<h2>Check IoT Core Things</h2>
+<section id="firewall-enable-port-multicast" class="slide level2">
+<h2>Firewall enable port (multicast)</h2>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">1</a></li><li><a href="#tabset-7-2">2</a></li><li><a href="#tabset-7-3">3</a></li><li><a href="#tabset-7-4">4</a></li><li><a href="#tabset-7-5">5</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">1</a></li><li><a href="#tabset-7-2">2</a></li><li><a href="#tabset-7-3">3</a></li><li><a href="#tabset-7-4">4</a></li><li><a href="#tabset-7-5">5</a></li><li><a href="#tabset-7-6">6</a></li><li><a href="#tabset-7-7">7</a></li><li><a href="#tabset-7-8">8</a></li><li><a href="#tabset-7-9">9</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_1.png" width="604"></p>
+<p><img data-src="images/window_defender_1.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-7-2">
-<ul>
-<li>Find Things on IoT in the drop down menu under “Manage”</li>
-</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot2.png" width="707"></p>
+<p><img data-src="images/window_defender_2.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-7-3">
-<ul>
-<li>Find thing on Greengrass under drop down menu</li>
-<li>Select core devices and find the thing group</li>
-</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_6.png" width="798"></p>
+<p><img data-src="images/window_defender_3.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-7-4">
-<ul>
-<li>Find Thing Group on IoT</li>
-<li>thing group is the ROS2_Minipupper</li>
-</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_4-01.png" width="645"></p>
+<p><img data-src="images/window_defender_4.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-7-5">
-<ul>
-<li>Find Deployment on IoT</li>
-</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/iot_5.png" width="908"></p>
+<p><img data-src="images/window_defender_5.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-7-6">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/window_defender_6.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-7-7">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/window_defender_7.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-7-8">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/window_defender_8.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-7-9">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/window_defender_9.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="ecr-setup" class="title-slide slide level1 aws-background center">
-<h1>ECR setup</h1>
-<p>When the docker image is completed (30 minutes), set up a repository to store docker instances</p>
 </section>
-<section id="what-is-a-docker-instance" class="slide level2">
-<h2>What is a Docker Instance?</h2>
+<section id="ros2-udp-port-access" class="slide level2">
+<h2>ROS2 UDP port Access</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html"><img data-src="images/ros_port.png" class="quarto-figure quarto-figure-center" height="500"></a></p>
+</figure>
+</div>
+</section>
+<section id="hardware" class="slide level2">
+<h2>Hardware Check</h2>
 <ul>
-<li>a virtual computer that runs on your computer</li>
-<li>contains everything needed to run only specific piece of software,</li>
-<li>application service including the code, libraries, and other dependencies</li>
-<li>can be transferred from cloud to device, device to cloud (using green grass)</li>
+<li>download the mangdang using the following command</li>
 </ul>
-</section>
-<section id="create-an-ecr" class="slide level2 aws-background">
-<h2>Create an ECR</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">1</a></li><li><a href="#tabset-8-2">2</a></li><li><a href="#tabset-8-3">3</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">setup</a></li><li><a href="#tabset-8-2">camera check</a></li><li><a href="#tabset-8-3">audio check</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
 <ul>
-<li>Search and open ECR in AWS</li>
+<li>run ieee2024.ipynb</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">ros-humble-greengrass-minipupper-v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ecr1.png" width="414"></p>
+<p><img data-src="images/hardwaresetup.png" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-8-2">
 <ul>
-<li><p>Select repository name</p></li>
-<li><p>open “view push commands”</p>
-<p><img data-src="images/pushcommands1-02.png" width="484"></p></li>
+<li>run camera_test.ipynb</li>
+<li>you check camera by running each cell in jupyter notebook</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src=".png"></p>
+<p><img data-src="images/cameraview.png" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-8-3">
 <ul>
-<li>Return to a new terminal in Cloud 9</li>
-<li>Paste each push command one line at a time</li>
+<li>record 5 second audio and play back</li>
 </ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="bu">cd</span> ~/mini_pupper_bsp/demos/</span>
+<span id="cb11-2"><a href=""></a><span class="ex">python</span> audio_test.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ECR03.png" width="426"></p>
+<p><img data-src="images/audiocheck.png" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="s3-setup-on-aws-cloud" class="title-slide slide level1 aws-background center">
-<h1>S3 Setup on AWS Cloud</h1>
-
 </section>
-<section id="what-is-s3" class="slide level2">
-<h2>What is S3?</h2>
+<section id="gemini" class="slide level2">
+<h2>Gemini</h2>
 <ul>
-<li>Simple Storage Service (S3)</li>
-<li>Moves configuration files from cloud to device, device to cloud (generally storage files)</li>
-<li>Make sure the name is unique</li>
+<li>download the code to</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb12-2"><a href=""></a><span class="fu">git</span> clone https://github.com/lbaitemple/apps-md-robots</span>
+<span id="cb12-3"><a href=""></a><span class="bu">cd</span> gemini-md-bot</span>
+<span id="cb12-4"><a href=""></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>add credential in env.sample</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="fu">cp</span> env.sample .env</span>
+<span id="cb13-2"><a href=""></a><span class="ex">python</span> gemini-md-bot.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section>
+<section id="ros2" class="title-slide slide level1 center">
+<h1>ROS2</h1>
+<ul>
+<li>ROS2 can be installed on minipupper and WSL</li>
+<li>ensure multicast port open in your Wi-Fi network</li>
 </ul>
 </section>
-<section id="s3-setup" class="slide level2 aws-background">
-<h2>S3 setup</h2>
+<section id="ros2-installation" class="slide level2">
+<h2>ROS2 Installation</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">1</a></li><li><a href="#tabset-9-2">2</a></li><li><a href="#tabset-9-3">3</a></li><li><a href="#tabset-9-4">4</a></li><li><a href="#tabset-9-5">5</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">install on WSL</a></li><li><a href="#tabset-9-2">install on Minipupper</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1">
-<ul>
-<li>Search for S3 on AWS Console, select first option</li>
-</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
+<span id="cb14-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb14-3"><a href=""></a><span class="fu">bash</span> ./pc_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/s3_1.png" width="1074"></p>
+<p><img data-src="images/pc_ros.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-9-2">
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
+<span id="cb15-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb15-3"><a href=""></a><span class="fu">bash</span> ./pupper_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Setup a S3 by selecting “create bucket”</li>
+<li>Copy camera ymal file to .ros</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/creatbucket.png" width="815"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-9-3">
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
+<span id="cb16-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Use name and date for S3 bucket repo naming</li>
-<li>Remember your created name!</li>
+<li>enable camera in config.yaml as follows</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/s3bucketname.png" width="690"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-9-4">
-<ul>
-<li>Deselect “block permission”</li>
-<li>Acknowledge settings</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/s3_5.png" width="652"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-9-5">
-<ul>
-<li>Create the S3 bucket</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/s3_6.png" width="625"></p>
-</figure>
-</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href=""></a>sensors:</span>
+<span id="cb17-2"><a href=""></a>  lidar: false</span>
+<span id="cb17-3"><a href=""></a>  imu: true</span>
+<span id="cb17-4"><a href=""></a>  camera: true</span>
+<span id="cb17-5"><a href=""></a>ports: </span>
+<span id="cb17-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="cloud9-final-setup" class="slide level2 aws-background">
-<h2>Cloud9 Final Setup</h2>
-<p>Once the docker image build is complete, return to Cloud9…</p>
-<ul>
-<li>Select mini-pupper-aws drop-down menu</li>
-<li>Double click awsgreengrass.sh</li>
-<li>Substitute your S3 repository name in line 4</li>
-</ul>
-
-<img data-src="images/aws_greengrass.png" class="r-stretch quarto-figure-center"></section>
-<section id="run-a-bash-script-to-create-a-component" class="slide level2 aws-background">
-<h2>Run a Bash Script to create a component</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">bash</span> ./awsgreengrass.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aws_greengrass_2.png"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/aws_greengrass_3.png"></p>
-</figure>
-</div>
+<section id="code-revised-and-recomplie" class="slide level2">
+<h2>Code revised and Recomplie</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="bu">cd</span> ~<span class="dt">\r</span>os2_ws</span>
+<span id="cb18-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span>  mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="greengrass-deployment-to-mini-pupper-v2" class="slide level2 aws-background">
-<h2>Greengrass Deployment to Mini Pupper v2</h2>
+<section id="demo-cmd_vel" class="slide level2">
+<h2>Demo (cmd_vel)</h2>
+<ul>
+<li>ensure your computer and laptop on the router network</li>
+<li>prefer ROS_DOMAIN_ID is setup differnetly for different peole</li>
+</ul>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">1</a></li><li><a href="#tabset-10-2">2</a></li><li><a href="#tabset-10-3">3</a></li><li><a href="#tabset-10-4">4</a></li><li><a href="#tabset-10-5">5</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">minipupper</a></li><li><a href="#tabset-10-2">PC (WSL)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
-<ul>
-<li>Find deployments in left drop down menu</li>
-<li>Select and open deployment</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/green_deploy_1.png" width="1044"></p>
-</figure>
-</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb20-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb20-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb20-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-10-2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/green_deploy_2.png" width="670"></p>
-</figure>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb21-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb21-3"><a href=""></a><span class="ex">ros2</span> topic list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>if you see /cmd_vel, run</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb22-2"><a href=""></a><span class="st">  x: 1.0</span></span>
+<span id="cb22-3"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb22-4"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb22-5"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb22-6"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb22-7"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb22-8"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-10-3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/green_deploy_3.png" width="727"></p>
-</figure>
 </div>
+</section>
+<section id="music-logic" class="slide level2">
+<h2>Music logic</h2>
+<div style="text-align: center;">
+<div style="width: 80%; margin: auto;">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+  participant Minipupper
+  participant Router
+  Minipupper-&gt;&gt;WSL: Hello WSL, I run the music server!
+  loop Healthcheck
+    WSL-&gt;&gt;WSL: Let me check&lt;br&gt; ros2 service list (sub) &lt;br&gt; /play_music  /stop_music exist
+  end
+  Note right of WSL: Find ROS &lt;br/&gt;services!
+  WSL--&gt;&gt;Minipupper: Great! call /play_music 
+  WSL-&gt;&gt;Minipupper: base on what I can hear, call /stop_music
+  Minipupper--&gt;&gt;WSL: help me check red dot so I can stop!
+</pre>
 </div>
-<div id="tabset-10-4">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/green_deploy_4.png" width="806"></p>
-</figure>
+<p></p></figure><p></p>
 </div>
-</div>
-<div id="tabset-10-5">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/green_deploy_6.png" width="686"></p>
-</figure>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="deployment-on-iot-and-mini-pupper-v2" class="slide level2">
-<h2>Deployment on IoT and Mini Pupper v2</h2>
+<section id="demo-music_service" class="slide level2">
+<h2>Demo (music_service)</h2>
+<ul>
+<li>ensure your computer and laptop on the router network</li>
+</ul>
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">IoT Deployment</a></li><li><a href="#tabset-11-2">IoT Deployment Success</a></li></ul>
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">minipupper</a></li><li><a href="#tabset-11-2">PC (WSL)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/green_deploy_5.png" width="573"></p>
-</figure>
-</div>
 <ul>
-<li>Wait for up to 15 minutes</li>
+<li>install dependcies</li>
 </ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="fu">sudo</span> apt-get install ffmpeg portaudio19-dev <span class="at">-y</span></span>
+<span id="cb23-2"><a href=""></a><span class="ex">pip</span> install pydub pyaudio pydub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>start music server</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb24-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb24-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb24-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-11-2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/green_deploy_9.png" width="683"></p>
-</figure>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb25-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb25-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb25-4"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>if you see /music_servrice, run</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>stop music</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="linefollowing" class="slide level2">
+<h2>Line following logic</h2>
+<div style="text-align: center;">
+<div style="width: 80%; margin: auto;">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+  participant Minipupper
+  participant Router
+  Minipupper-&gt;&gt;WSL: Hello WSL, I run the bringup!
+  loop Healthcheck
+    WSL-&gt;&gt;WSL: Let me check&lt;br&gt; cmd_vel (sub)&lt;br&gt; and image_raw (pub)
+  end
+  Note right of WSL: Find ROS &lt;br/&gt;topics!
+  WSL--&gt;&gt;Minipupper: Great! subscribe image_raw, publish cmd_vel 
+  WSL-&gt;&gt;Minipupper: base on line shown, here is your cmd_vel
+  Minipupper--&gt;&gt;WSL: help me check red dot so I can stop!
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="jupyter-lab-on-minipupper-v2" class="slide level2">
-<h2>Jupyter Lab on MiniPupper v2</h2>
+<section id="demo-line-following" class="slide level2">
+<h2>Demo (line following)</h2>
+<ul>
+<li>ensure your computer and laptop on the router network</li>
+<li>make sure your camera works</li>
+</ul>
 <div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">1</a></li><li><a href="#tabset-12-2">2</a></li></ul>
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">minipupper</a></li><li><a href="#tabset-12-2">check camera (WSL)</a></li><li><a href="#tabset-12-3">PC (WSL)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-12-1">
 <ul>
-<li>check what docker images are available</li>
+<li>start bring up</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/rpi_green_2.png"></p>
-</figure>
-</div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb28-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb28-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb28-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-12-2">
 <ul>
-<li>paste command to check what docker process are available</li>
+<li>check image_raw toic</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb29-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb29-3"><a href=""></a><span class="ex">ros2</span> topic list <span class="kw">|</span> <span class="fu">grep</span> image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/rpi_green_3.png"></p>
+<p><img data-src="images/wsl_ros.png" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
+</div>
+<ul>
+<li>if image_raw exists, run the following</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-12-3">
+<ul>
+<li>recognition node to recognize line, pid:=true</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb31-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dance-logic" class="slide level2">
+<h2>Dance logic</h2>
+<div style="text-align: center;">
+<div style="width: 80%; margin: auto;">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+  participant Minipupper
+  participant Router
+  Minipupper-&gt;&gt;WSL: Hello WSL, I run the bringup!
+  Minipupper-&gt;&gt;WSL: Hello WSL, I run the music_service!
+  Minipupper-&gt;&gt;WSL: Hello WSL, I run the dance_service!
+  loop Healthcheck
+    WSL-&gt;&gt;WSL: Let me check&lt;br&gt; cmd_vel (sub)&lt;br&gt; music_service 
+  end
+  Note right of WSL: Find ROS &lt;br/&gt;topics and services!
+  WSL-&gt;&gt;Minipupper: ros2 service list
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="mqtt" class="slide level2 aws-background">
-<h2>MQTT</h2>
+<section id="demo-dance" class="slide level2">
+<h2>Demo (Dance)</h2>
+<ul>
+<li>ensure your computer and laptop on the router network</li>
+<li>make sure you launch bring and music service on minipupper</li>
+</ul>
 <div class="panel-tabset">
-<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">Part 1</a></li><li><a href="#tabset-13-2">Part 2</a></li></ul>
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">minipupper</a></li><li><a href="#tabset-13-2">minipupper (dance)</a></li><li><a href="#tabset-13-3">PC (WSL)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-13-1">
 <ul>
-<li>try <code>demo</code> in message payload to see minipupper dance</li>
+<li>start bring up</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/mqtt_2.png" width="697"></p>
-</figure>
-</div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="co"># terminal 1</span></span>
+<span id="cb32-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb32-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb32-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb32-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-13-2">
 <ul>
-<li>Also, try <code>my_demo</code></li>
+<li>music service</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/mqtt_3.png" width="1116"></p>
-</figure>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="co"># terminal 2</span></span>
+<span id="cb33-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb33-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb33-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb33-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>dance service</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href=""></a><span class="co"># terminal 3</span></span>
+<span id="cb34-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb34-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb34-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb34-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_dance dance.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-13-3">
+<ul>
+<li>check what service avaiable</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb35-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb35-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb35-4"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="demo-code" class="slide level2 aws-background">
-<h2>Demo Code</h2>
-
-<img data-src="images/check_code.png" width="623" class="r-stretch quarto-figure-center"></section>
-<section id="aws-robomaker---simulation" class="slide level2">
-<h2>AWS Robomaker - (Simulation)</h2>
-<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="vids/robomaker_1.mp4"></video>
-</section>
-<section id="acknowledgments" class="slide level2 appendix">
-<h2>Acknowledgments</h2>
-<p><img data-src="images/matt.png" data-fig-align="center" width="316"> <img data-src="images/nigel.png" data-fig-align="center" width="316"> <img data-src="images/adam.png" data-fig-align="center" width="100"></p>
-<p><img data-src="images/emily_doherty.png" width="209"></p>
-<p>Thank for technical supports from the AWS Robomaker team!</p>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-DanceRobot" class="csl-entry" role="listitem">
-Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots.”</span> 2022. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US</a>.
+<div class="quarto-auto-generated-content">
+<p><img src="images/temple.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<div class="reveal has-logo">
+<p><a href="#target-slide"> <img src="images/temple.png" alt="Temple Logo" style="width: 50px; height: auto;"> </a></p>
 </div>
 </div>
-
-<img src="images/temple.png" class="slide-logo r-stretch"><div class="footer footer-default">
-<p>Li Bai</p>
 </div>
 </section></section>
     </div>
@@ -1476,7 +1401,6 @@ Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': true,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1695,18 +1619,7 @@ Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1738,11 +1651,50 @@ Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1752,8 +1704,17 @@ Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1767,7 +1728,11 @@ Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1809,7 +1774,6 @@ Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots
       }
     });
     </script>
-    
     
 
 </body></html>
