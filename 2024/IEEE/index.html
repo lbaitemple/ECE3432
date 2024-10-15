@@ -439,8 +439,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
   B --&gt; C(("Hardware check: camera and audio"))
   C --&gt; D(("Google Gemini"))
   C --&gt; E((" Linux ROS2 "))
-  E --&gt; F(("camera view"))
+  E --&gt; F(("Music &amp; Dance"))
   E --&gt; G(("line following"))
+  E --&gt; H(("p2p - multicast setup"))
   
   %% Define custom styles for each node
   classDef nodeStyle width:150px, text-align:center, white-space:pre-wrap;
@@ -448,7 +449,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 
 
   %% Apply the custom style to the nodes
-  class A,C,D,E,F,G nodeStyle;
+  class A,C,D,E,F,G,H nodeStyle;
   class B coloredNode;
   
   %% Add slide references to each block (adjust according to your presentation setup)
@@ -457,9 +458,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
   click C "#hardware" "Go to Hardware slide"
   click D "#gemini" "Go to Google Gemini slide"
   click E "#ros2" "Go to ROS slide"
-  click F "#ros2" "Go to ROS slide"
+  click F "#dance" "Go to ROS slide"
   click G "#linefollowing" "Go to ROS line following slide"
-  
+  click H "#multicast" "Go to ROS line following slide"
+  %%click H "#multicast" "Go to Multicast setup slide"  
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -1287,7 +1289,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="dance-logic" class="slide level2">
+<section id="dance" class="slide level2">
 <h2>Dance logic</h2>
 <div style="text-align: center;">
 <div style="width: 80%; margin: auto;">
@@ -1364,11 +1366,74 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </div>
+</section>
+<section id="multicast" class="slide level2">
+<h2>Multicast</h2>
+<ul>
+<li>Generally referred as peer-to-peer network</li>
+<li>ROS2 uses multicast for communicate (list topics)</li>
+<li>husarnet can be used to setup a p2p multicast</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://app.husarnet.com/"><img data-src="images/husarnet.png" class="quarto-figure quarto-figure-center" height="300"></a></p>
+</figure>
+</div>
+</section>
+<section id="multicast-setup" class="slide level2">
+<h2>Multicast Setup</h2>
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">WSL</a></li><li><a href="#tabset-14-2">minipupper</a></li><li><a href="#tabset-14-3">ROS2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<ul>
+<li>install the wsl as a registered node</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
+<span id="cb36-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check service</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href=""></a> <span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://app.husarnet.com/"><img data-src="images/hus_addelement.png" class="quarto-figure quarto-figure-center" height="300"></a></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-2">
+<ul>
+<li>install the wsl as a registered node</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
+<span id="cb38-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check service</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href=""></a> <span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/hus_ifconfig.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-3">
+<ul>
+<li>we can use CYCLONEDDS</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://husarnet.com/docs/ros2/custom-cyclonedds-xml/"><img data-src="images/hus_multicast.png" class="quarto-figure quarto-figure-center" height="300"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <div class="reveal has-logo">
-<p><a href="#process-slide"> <img src="images/temple.png" alt="Temple Logo" style="width: 25px; height: auto;"> <span style="font-size: 18px;">Li Bai</span> </a></p>
+<p><a href="#process-slide"> <img src="images/temple.png" alt="Temple Logo" style="width: 20px; height: auto;"> <span style="font-size: 14px;">Li Bai</span> </a></p>
 </div>
 </div>
 </div>
