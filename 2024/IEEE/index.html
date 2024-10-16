@@ -1383,21 +1383,26 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="multicast-setup" class="slide level2">
 <h2>Multicast Setup</h2>
 <div class="panel-tabset">
-<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">WSL</a></li><li><a href="#tabset-14-2">minipupper</a></li><li><a href="#tabset-14-3">ROS2</a></li></ul>
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">WSL</a></li><li><a href="#tabset-14-2">minipupper</a></li></ul>
 <div class="tab-content">
 <div id="tabset-14-1">
 <ul>
-<li>install the wsl as a registered node</li>
+<li>install husarnet service</li>
 </ul>
 <div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
-<span id="cb36-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>check service</li>
-</ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href=""></a> <span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
+<span id="cb36-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://app.husarnet.com/"><img data-src="images/hus_addelement.png" class="quarto-figure quarto-figure-center" height="300"></a></p>
+<p><a href="https://app.husarnet.com/"><img data-src="images/hus_addelement.png" class="quarto-figure quarto-figure-center" height="150"></a></p>
+</figure>
+</div>
+<ul>
+<li>install the wsl as a registered node</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://app.husarnet.com/"><img data-src="images/setup_name.png" class="quarto-figure quarto-figure-center" height="120"></a></p>
 </figure>
 </div>
 </div>
@@ -1405,27 +1410,76 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>install the wsl as a registered node</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
-<span id="cb38-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
+<span id="cb37-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
+<span id="cb37-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>check service</li>
+<li>register your minipupper and check interface</li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href=""></a> <span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="ex">ifconfig</span> hnet0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/hus_ifconfig.png" class="quarto-figure quarto-figure-center" height="200"></p>
+<p><img data-src="images/hus_ifconfig.png" class="quarto-figure quarto-figure-center" height="150"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-14-3">
+</div>
+</div>
+</section>
+<section id="husarnet" class="slide level2">
+<h2>Husarnet</h2>
 <ul>
-<li>we can use CYCLONEDDS</li>
+<li>Husarnet is a global P2P network layer for DDS using in ROS2</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>FastDDS</strong></p>
+<ul>
+<li><p>high-throughput, large, complex systems</p></li>
+<li><p>suitable for large, complex systems where high flexibility and configurability</p></li>
+<li><p>setup on WSL (windows 11)</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>CyclonDDS</strong></p>
+<ul>
+<li><p>low-latency, resource-constrained, and real-time systems,</p></li>
+<li><p>good for embedded system (such as raspberry pi)</p></li>
+<li><p>setup on minipupper</p></li>
+</ul>
+</div></div>
+</section>
+<section id="dds-setup" class="slide level2">
+<h2>DDS Setup</h2>
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">WSL (fastDDS)</a></li><li><a href="#tabset-15-2">pupper (cycloneDDS)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<ul>
+<li>check <code>rmw_fastrtps_cpp</code> (avaiable by default)</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> fastrtps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>if not</li>
+</ul>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-fastrtps-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>update in <code>/home/ubuntu/fastdds-simple.xml</code></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://husarnet.com/docs/ros2/custom-cyclonedds-xml/"><img data-src="images/hus_multicast.png" class="quarto-figure quarto-figure-center" height="300"></a></p>
+<p><img data-src="images/fastdds.png" class="quarto-figure quarto-figure-center" height="180"></p>
 </figure>
 </div>
+</div>
+<div id="tabset-15-2">
+<ul>
+<li>check <code>rmw_cyclonedds_cpp</code> (avaiable by default)</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> cyclonedds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>if not</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-cyclonedds-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
