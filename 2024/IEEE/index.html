@@ -1057,10 +1057,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb12-3"><a href=""></a><span class="bu">cd</span> gemini-md-bot</span>
 <span id="cb12-4"><a href=""></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
+<li>get a minipupper_cred.json <span style="color: red; text-transform: uppercase;">(please asked)</span></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="fu">mkdir</span> ~/.gemini/creds</span>
+<span id="cb13-2"><a href=""></a><span class="fu">cp</span> ~/minipupper_cred.json ~/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
 <li>add credential in env.sample</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="fu">cp</span> env.sample .env</span>
-<span id="cb13-2"><a href=""></a><span class="ex">python</span> gemini-md-bot.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="fu">cp</span> env.sample .env</span>
+<span id="cb14-2"><a href=""></a><span class="ex">python</span> gemini-md-bot.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section>
 <section id="ros2" class="title-slide slide level1 center">
@@ -1076,9 +1081,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">install on WSL</a></li><li><a href="#tabset-9-2">install on Minipupper</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1">
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
-<span id="cb14-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
-<span id="cb14-3"><a href=""></a><span class="fu">bash</span> ./pc_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
+<span id="cb15-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb15-3"><a href=""></a><span class="fu">bash</span> ./pc_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/pc_ros.png" class="quarto-figure quarto-figure-center"></p>
@@ -1086,33 +1091,33 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 <div id="tabset-9-2">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
-<span id="cb15-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
-<span id="cb15-3"><a href=""></a><span class="fu">bash</span> ./pupper_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
+<span id="cb16-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb16-3"><a href=""></a><span class="fu">bash</span> ./pupper_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Copy camera ymal file to .ros</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
-<span id="cb16-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
+<span id="cb17-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>enable camera in config.yaml as follows</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href=""></a>sensors:</span>
-<span id="cb17-2"><a href=""></a>  lidar: false</span>
-<span id="cb17-3"><a href=""></a>  imu: true</span>
-<span id="cb17-4"><a href=""></a>  camera: true</span>
-<span id="cb17-5"><a href=""></a>ports: </span>
-<span id="cb17-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>sensors:</span>
+<span id="cb18-2"><a href=""></a>  lidar: false</span>
+<span id="cb18-3"><a href=""></a>  imu: true</span>
+<span id="cb18-4"><a href=""></a>  camera: true</span>
+<span id="cb18-5"><a href=""></a>ports: </span>
+<span id="cb18-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="code-revised-and-recomplie" class="slide level2">
 <h2>Code revised and Recomplie</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="bu">cd</span> ~<span class="dt">\r</span>os2_ws</span>
-<span id="cb18-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="bu">cd</span> ~<span class="dt">\r</span>os2_ws</span>
+<span id="cb19-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span>  mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span>  mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="demo-cmd_vel" class="slide level2">
 <h2>Demo (cmd_vel)</h2>
@@ -1124,26 +1129,26 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">minipupper</a></li><li><a href="#tabset-10-2">PC (WSL)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
-<span id="cb20-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb20-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb20-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-10-2">
 <div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
 <span id="cb21-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb21-3"><a href=""></a><span class="ex">ros2</span> topic list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb21-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-2">
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb22-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb22-3"><a href=""></a><span class="ex">ros2</span> topic list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>if you see /cmd_vel, run</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
-<span id="cb22-2"><a href=""></a><span class="st">  x: 1.0</span></span>
-<span id="cb22-3"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb22-4"><a href=""></a><span class="st">  z: 0.0</span></span>
-<span id="cb22-5"><a href=""></a><span class="st">angular:</span></span>
-<span id="cb22-6"><a href=""></a><span class="st">  x: 0.0</span></span>
-<span id="cb22-7"><a href=""></a><span class="st">  y: 0.0</span></span>
-<span id="cb22-8"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
+<span id="cb23-2"><a href=""></a><span class="st">  x: 1.0</span></span>
+<span id="cb23-3"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb23-4"><a href=""></a><span class="st">  z: 0.0</span></span>
+<span id="cb23-5"><a href=""></a><span class="st">angular:</span></span>
+<span id="cb23-6"><a href=""></a><span class="st">  x: 0.0</span></span>
+<span id="cb23-7"><a href=""></a><span class="st">  y: 0.0</span></span>
+<span id="cb23-8"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1189,29 +1194,29 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>install dependcies</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="fu">sudo</span> apt-get install ffmpeg portaudio19-dev <span class="at">-y</span></span>
-<span id="cb23-2"><a href=""></a><span class="ex">pip</span> install pydub pyaudio pydub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="fu">sudo</span> apt-get install ffmpeg portaudio19-dev <span class="at">-y</span></span>
+<span id="cb24-2"><a href=""></a><span class="ex">pip</span> install pydub pyaudio pydub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>start music server</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
-<span id="cb24-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb24-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb24-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-11-2">
 <div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
 <span id="cb25-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
 <span id="cb25-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb25-4"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-11-2">
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb26-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb26-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb26-4"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>if you see /music_servrice, run</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>stop music</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1258,18 +1263,18 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>start bring up</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
-<span id="cb28-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb28-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb28-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb29-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb29-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb29-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-12-2">
 <ul>
 <li>check image_raw toic</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
-<span id="cb29-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb29-3"><a href=""></a><span class="ex">ros2</span> topic list <span class="kw">|</span> <span class="fu">grep</span> image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb30-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb30-3"><a href=""></a><span class="ex">ros2</span> topic list <span class="kw">|</span> <span class="fu">grep</span> image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/wsl_ros.png" class="quarto-figure quarto-figure-center" height="300"></p>
@@ -1278,14 +1283,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>if image_raw exists, run the following</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-12-3">
 <ul>
 <li>recognition node to recognize line, pid:=true</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb31-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb32-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1332,38 +1337,38 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>start bring up</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="co"># terminal 1</span></span>
-<span id="cb32-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
-<span id="cb32-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb32-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb32-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="co"># terminal 1</span></span>
+<span id="cb33-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb33-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb33-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb33-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-13-2">
 <ul>
 <li>music service</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="co"># terminal 2</span></span>
-<span id="cb33-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
-<span id="cb33-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb33-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb33-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>dance service</li>
-</ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href=""></a><span class="co"># terminal 3</span></span>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href=""></a><span class="co"># terminal 2</span></span>
 <span id="cb34-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
 <span id="cb34-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
 <span id="cb34-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb34-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_dance dance.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>dance service</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href=""></a><span class="co"># terminal 3</span></span>
+<span id="cb35-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb35-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb35-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb35-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_dance dance.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-13-3">
 <ul>
 <li>check what service avaiable</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
-<span id="cb35-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb35-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb35-4"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
+<span id="cb36-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<span id="cb36-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb36-4"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1390,9 +1395,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>install husarnet service</li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
-<span id="cb36-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
-<span id="cb36-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
+<span id="cb37-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
+<span id="cb37-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>install the wsl as a registered node</li>
 </ul>
@@ -1415,9 +1420,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>install husarnet service</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
-<span id="cb37-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
-<span id="cb37-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
+<span id="cb38-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
+<span id="cb38-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>install AWS as a registered node(setup as a ROS Master)</li>
 </ul>
@@ -1431,13 +1436,13 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>install the wsl as a registered node</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
-<span id="cb38-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
-<span id="cb38-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
+<span id="cb39-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
+<span id="cb39-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>register your minipupper and check interface</li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href=""></a><span class="ex">ifconfig</span> hnet0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href=""></a><span class="ex">ifconfig</span> hnet0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/hus_ifconfig.png" class="quarto-figure quarto-figure-center" height="150"></p>
@@ -1478,11 +1483,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>check <code>rmw_fastrtps_cpp</code> (avaiable by default)</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> fastrtps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> fastrtps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>if not</li>
 </ul>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-fastrtps-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-fastrtps-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>update in <code>/home/ubuntu/fastdds-simple.xml</code></li>
 </ul>
@@ -1496,11 +1501,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>check <code>rmw_fastrtps_cpp</code> (available by default)</li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> fastrtps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> fastrtps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>if not</li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-fastrtps-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-fastrtps-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>update in <code>/home/ubuntu/fastdds-simple.xml</code></li>
 </ul>
@@ -1514,11 +1519,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>check <code>rmw_cyclonedds_cpp</code> (not available by default)</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> cyclonedds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> cyclonedds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>if not</li>
 </ul>
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-cyclonedds-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-cyclonedds-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>update in /home/ubuntu/cyclonedds.xml</li>
 </ul>
@@ -1535,38 +1540,38 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">WSL (fastDDS)</a></li><li><a href="#tabset-16-2">AWS- (if ~WSL)</a></li><li><a href="#tabset-16-3">pupper (cycloneDDS)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-16-1">
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
-<span id="cb46-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>file:///home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
+<span id="cb47-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>file:///home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check if you can run talker/listener</li>
 </ul>
-<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
-<span id="cb47-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb48-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-16-2">
-<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
-<span id="cb48-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>file:///home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
+<span id="cb49-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>file:///home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check if you can run talker/listener</li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
-<span id="cb49-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb50-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-16-3">
-<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_cyclonedds_cpp</span>
-<span id="cb50-2"><a href=""></a><span class="bu">export</span> <span class="va">CYCLONEDDS_URI</span><span class="op">=</span>file:///home/ubuntu/cyclonedds.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_cyclonedds_cpp</span>
+<span id="cb51-2"><a href=""></a><span class="bu">export</span> <span class="va">CYCLONEDDS_URI</span><span class="op">=</span>file:///home/ubuntu/cyclonedds.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check if you can run talker/listener</li>
 </ul>
-<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
-<span id="cb51-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb52-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <ul>
 <li>once succeed, run bring up on the robot, and display /image_raw using</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
