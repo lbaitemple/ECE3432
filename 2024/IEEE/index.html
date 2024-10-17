@@ -436,12 +436,13 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
   A(("Software setup")) --&gt; B(("Network setup"))
-  B --&gt; C(("Hardware check: camera and audio"))
+  B --&gt; C(("Hardware check: network, camera and audio"))
   C --&gt; D(("Google Gemini"))
   C --&gt; E((" Linux ROS2 "))
   E --&gt; F(("Music &amp; Dance"))
   E --&gt; G(("line following"))
-  E --&gt; H(("p2p - multicast setup"))
+  B --&gt; H(("p2p - multicast setup"))
+  C --&gt; H(("p2p - multicast setup"))
   
   %% Define custom styles for each node
   classDef nodeStyle width:150px, text-align:center, white-space:pre-wrap;
@@ -450,7 +451,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 
   %% Apply the custom style to the nodes
   class A,C,D,E,F,G,H nodeStyle;
-  class B coloredNode;
+  class B,H coloredNode;
   
   %% Add slide references to each block (adjust according to your presentation setup)
   click A "#software" "Go to Software setup slide"
@@ -1150,7 +1151,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="music-logic" class="slide level2">
 <h2>Music logic</h2>
 <div style="text-align: center;">
-<div style="width: 80%; margin: auto;">
+<div style="width: 60%; height: 60%; margin: auto;">
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1218,7 +1219,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="linefollowing" class="slide level2">
 <h2>Line following logic</h2>
 <div style="text-align: center;">
-<div style="width: 80%; margin: auto;">
+<div style="width: 60%; height: 60%; margin: auto;">
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1292,7 +1293,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="dance" class="slide level2">
 <h2>Dance logic</h2>
 <div style="text-align: center;">
-<div style="width: 80%; margin: auto;">
+<div style="width: 60%; height: 60%; margin: auto;">
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1392,19 +1393,23 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="ex">curl</span> https://install.husarnet.com/install.sh <span class="kw">|</span> <span class="fu">sudo</span> bash</span>
 <span id="cb36-2"><a href=""></a><span class="fu">sudo</span> husarnet daemon service-install</span>
 <span id="cb36-3"><a href=""></a><span class="fu">sudo</span> systemctl status husarnet.service </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>install the wsl as a registered node</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://app.husarnet.com/"><img data-src="images/hus_addelement.png" class="quarto-figure quarto-figure-center" height="150"></a></p>
 </figure>
 </div>
-<ul>
-<li>install the wsl as a registered node</li>
-</ul>
+</div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://app.husarnet.com/"><img data-src="images/setup_name.png" class="quarto-figure quarto-figure-center" height="120"></a></p>
 </figure>
 </div>
+</div></div>
 </div>
 <div id="tabset-14-2">
 <ul>
@@ -1483,13 +1488,13 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/fastdds.png" class="quarto-figure quarto-figure-center" height="180"></p>
+<p><img data-src="images/fastdds.png" class="quarto-figure quarto-figure-center" height="160"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-15-2">
 <ul>
-<li>check <code>rmw_fastrtps_cpp</code> (avaiable by default)</li>
+<li>check <code>rmw_fastrtps_cpp</code> (available by default)</li>
 </ul>
 <div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> fastrtps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -1501,22 +1506,67 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/aws_hur.png" class="quarto-figure quarto-figure-center" height="180"></p>
+<p><img data-src="images/aws_hur.png" class="quarto-figure quarto-figure-center" height="160"></p>
 </figure>
 </div>
 </div>
 <div id="tabset-15-3">
 <ul>
-<li>check <code>rmw_cyclonedds_cpp</code> (avaiable by default)</li>
+<li>check <code>rmw_cyclonedds_cpp</code> (not available by default)</li>
 </ul>
 <div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href=""></a><span class="ex">ros2</span> pkg list <span class="kw">|</span> <span class="fu">grep</span> cyclonedds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>if not</li>
 </ul>
 <div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rmw-cyclonedds-cpp <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>update in /home/ubuntu/cyclonedds.xml</li>
+</ul>
 </div>
 </div>
 </div>
+</section>
+<section id="system-environemnt-varilable-setup" class="slide level2">
+<h2>System Environemnt Varilable Setup</h2>
+<ul>
+<li>best save in <code>~/.bashrc</code></li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">WSL (fastDDS)</a></li><li><a href="#tabset-16-2">AWS- (if ~WSL)</a></li><li><a href="#tabset-16-3">pupper (cycloneDDS)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
+<span id="cb46-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>file:///home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check if you can run talker/listener</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb47-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-16-2">
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
+<span id="cb48-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>file:///home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check if you can run talker/listener</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb49-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-16-3">
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_cyclonedds_cpp</span>
+<span id="cb50-2"><a href=""></a><span class="bu">export</span> <span class="va">CYCLONEDDS_URI</span><span class="op">=</span>file:///home/ubuntu/cyclonedds.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check if you can run talker/listener</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
+<span id="cb51-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<ul>
+<li>once succeed, run bring up on the robot, and display /image_raw using</li>
+</ul>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
