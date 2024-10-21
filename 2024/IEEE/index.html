@@ -424,6 +424,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li class="fragment"><p>One PC Windows 11 (Home edition or Professional edition)</p>
 <ul>
 <li class="fragment">windows subsystem linux on windows feature enabled</li>
+<li class="fragment">virutal machine on windows feature enabled</li>
 </ul></li>
 <li class="fragment"><p>32GB MicroSD Card (preflashed)</p></li>
 <li class="fragment"><p>Minipupper V2</p></li>
@@ -1006,7 +1007,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">setup</a></li><li><a href="#tabset-9-2">camera check</a></li><li><a href="#tabset-9-3">audio check</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">setup</a></li><li><a href="#tabset-9-2">camera check</a></li><li><a href="#tabset-9-3">audio check</a></li><li><a href="#tabset-9-4">BSP Abstraction</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1">
 <ul>
@@ -1041,6 +1042,13 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
+<div id="tabset-9-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/hla.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -1054,7 +1062,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb10-3"><a href=""></a><span class="bu">cd</span> apps-md-robots</span>
 <span id="cb10-4"><a href=""></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>add credential in env.sample <span style="color: red; text-transform: Uppercase;">(pregenerated)</span></li>
+<li>add credential in env.sample (<span style="color: red; text-transform: Uppercase;">pregenerated</span>)</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="fu">mkdir</span> ~/.gemini/creds</span>
 <span id="cb11-2"><a href=""></a><span class="fu">cp</span> ~/minipupper_creds.json ~/.gemini/creds.json</span>
