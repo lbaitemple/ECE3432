@@ -1054,6 +1054,17 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </section>
 <section id="gemini" class="slide level2">
 <h2>Gemini</h2>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">LLM</a></li><li><a href="#tabset-10-2">Installation</a></li><li><a href="#tabset-10-3">Demo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://lbaitemple.github.io/ECE3432/2024/week5/class1#/link-service-account"><img data-src="images/llm_2.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div>
+<div id="tabset-10-2">
 <ul>
 <li>download the code to</li>
 </ul>
@@ -1062,18 +1073,26 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb10-3"><a href=""></a><span class="bu">cd</span> apps-md-robots</span>
 <span id="cb10-4"><a href=""></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>add credential in env.sample (<span style="color: red; text-transform: Uppercase;">pregenerated</span>)</li>
+<li>add <a href="https://lbaitemple.github.io/ECE3432/2024/week5/class1#/link-service-account">credential file</a> in env.sample (<span style="color: red; ">Pregenerated</span>)</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="fu">mkdir</span> ~/.gemini/creds</span>
 <span id="cb11-2"><a href=""></a><span class="fu">cp</span> ~/minipupper_creds.json ~/.gemini/creds.json</span>
 <span id="cb11-3"><a href=""></a><span class="fu">cp</span> env.sample .env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-3">
 <ul>
-<li>run the app</li>
+<li>Run the app</li>
 </ul>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="co"># run AI app</span></span>
 <span id="cb12-2"><a href=""></a><span class="ex">python</span> ai_app/ai_app.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>need to reset the LCD screen</li>
+</ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="co"># get screen to show IP</span></span>
 <span id="cb13-2"><a href=""></a><span class="fu">sudo</span> systemctl restart robot  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
 <section>
 <section id="ros2" class="title-slide slide level1 center">
@@ -1086,9 +1105,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="ros2-installation" class="slide level2">
 <h2>ROS2 Installation</h2>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">install on WSL</a></li><li><a href="#tabset-10-2">install on Minipupper</a></li></ul>
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">install on WSL</a></li><li><a href="#tabset-11-2">install on Minipupper</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-11-1">
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
 <span id="cb14-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
 <span id="cb14-3"><a href=""></a><span class="fu">bash</span> ./pc_install.sh</span>
@@ -1100,7 +1119,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-11-2">
 <ul>
 <li><p><a href="#/ros2_pupper">ROS2 preinstalled on MicroSD card</a></p></li>
 <li><p>ensure camera enabled in <code>~/ros2_ws/src/mini_pupper_bringup/config/config.yaml</code> as follows</p></li>
@@ -1154,9 +1173,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="multicast-setup" class="slide level2">
 <h2>Multicast Setup</h2>
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">WSL</a></li><li><a href="#tabset-11-2">Minipupper</a></li><li><a href="#tabset-11-3">AWS*</a></li></ul>
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">WSL</a></li><li><a href="#tabset-12-2">Minipupper</a></li><li><a href="#tabset-12-3">AWS*</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1">
+<div id="tabset-12-1">
 <ul>
 <li>install husarnet service</li>
 </ul>
@@ -1181,7 +1200,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div></div>
 </div>
-<div id="tabset-11-2">
+<div id="tabset-12-2">
 <ul>
 <li>install the wsl as a registered node</li>
 </ul>
@@ -1198,7 +1217,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-11-3">
+<div id="tabset-12-3">
 <ul>
 <li>install husarnet service</li>
 </ul>
@@ -1220,9 +1239,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="dds-setup" class="slide level2">
 <h2>DDS Setup</h2>
 <div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">WSL (fastDDS)</a></li><li><a href="#tabset-12-2">Minipupper (cycloneDDS)</a></li><li><a href="#tabset-12-3">AWS (fastDDS)*</a></li></ul>
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">WSL (fastDDS)</a></li><li><a href="#tabset-13-2">Minipupper (cycloneDDS)</a></li><li><a href="#tabset-13-3">AWS (fastDDS)*</a></li></ul>
 <div class="tab-content">
-<div id="tabset-12-1">
+<div id="tabset-13-1">
 <ul>
 <li>check <code>rmw_fastrtps_cpp</code> (preinstalled on ROS2)</li>
 </ul>
@@ -1238,7 +1257,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-12-2">
+<div id="tabset-13-2">
 <ul>
 <li>check <code>rmw_cyclonedds_cpp</code> (installed on microSD card)</li>
 </ul>
@@ -1247,7 +1266,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>update in /home/ubuntu/cyclonedds.xml <img data-src="images/cyclonedds.png" class="quarto-figure quarto-figure-center" height="160"></li>
 </ul>
 </div>
-<div id="tabset-12-3">
+<div id="tabset-13-3">
 <ul>
 <li>check <code>rmw_fastrtps_cpp</code> (available by default)</li>
 </ul>
@@ -1274,9 +1293,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>best save export variables in <code>~/.bashrc</code></li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">WSL (fastDDS)</a></li><li><a href="#tabset-13-2">Minipupper (cycloneDDS)</a></li><li><a href="#tabset-13-3">AWS*</a></li></ul>
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">WSL (fastDDS)</a></li><li><a href="#tabset-14-2">Minipupper (cycloneDDS)</a></li><li><a href="#tabset-14-3">AWS*</a></li></ul>
 <div class="tab-content">
-<div id="tabset-13-1">
+<div id="tabset-14-1">
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
 <span id="cb24-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>/home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -1285,7 +1304,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
 <span id="cb25-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-13-2">
+<div id="tabset-14-2">
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_cyclonedds_cpp</span>
 <span id="cb26-2"><a href=""></a><span class="bu">export</span> <span class="va">CYCLONEDDS_URI</span><span class="op">=</span>file:///home/ubuntu/cyclonedds.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -1294,7 +1313,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp talker</span>
 <span id="cb27-2"><a href=""></a><span class="ex">ros2</span> run demo_nodes_cpp listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-13-3">
+<div id="tabset-14-3">
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="bu">export</span> <span class="va">RMW_IMPLEMENTATION</span><span class="op">=</span>rmw_fastrtps_cpp</span>
 <span id="cb28-2"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>file:///home/ubuntu/fastdds-simple.xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -1325,22 +1344,22 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>ensure your minipupper and WSL on the husarnet network</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">minipupper</a></li><li><a href="#tabset-15-2">PC (WSL)</a></li></ul>
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">minipupper</a></li><li><a href="#tabset-16-2">PC (WSL)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-15-1">
+<div id="tabset-16-1">
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="co"># export ROS_LOCALHOST_ONLY=0 # may need it</span></span>
 <span id="cb32-2"><a href=""></a><span class="co"># export ROS_DOMAIN_ID=0 # may need it</span></span>
 <span id="cb32-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb32-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-15-2">
+<div id="tabset-16-2">
 <div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="co"># export ROS_LOCALHOST_ONLY=0   # may need it</span></span>
 <span id="cb33-2"><a href=""></a><span class="co"># export ROS_DOMAIN_ID=0 # may need it</span></span>
 <span id="cb33-3"><a href=""></a><span class="ex">ros2</span> topic list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="panel-tabset">
-<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">for /cmd_vel</a></li><li><a href="#tabset-14-2">for /image_raw</a></li></ul>
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">for /cmd_vel</a></li><li><a href="#tabset-15-2">for /image_raw</a></li></ul>
 <div class="tab-content">
-<div id="tabset-14-1">
+<div id="tabset-15-1">
 <div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="st">"linear:</span></span>
 <span id="cb34-2"><a href=""></a><span class="st">  x: 1.0</span></span>
 <span id="cb34-3"><a href=""></a><span class="st">  y: 0.0</span></span>
@@ -1350,7 +1369,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb34-7"><a href=""></a><span class="st">  y: 0.0</span></span>
 <span id="cb34-8"><a href=""></a><span class="st">  z: 0.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-14-2">
+<div id="tabset-15-2">
 <div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -1394,9 +1413,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>ensure your minipupper and WSL on the husarnet network</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">minipupper</a></li><li><a href="#tabset-16-2">PC (WSL)</a></li></ul>
+<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">minipupper</a></li><li><a href="#tabset-17-2">PC (WSL)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-16-1">
+<div id="tabset-17-1">
 <ul>
 <li>install dependcies</li>
 </ul>
@@ -1411,7 +1430,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb37-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb37-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-16-2">
+<div id="tabset-17-2">
 <div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0</span>
 <span id="cb38-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
 <span id="cb38-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
@@ -1464,9 +1483,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>make sure you launch bring and music service on minipupper</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">minipupper</a></li><li><a href="#tabset-17-2">pupper(music)</a></li><li><a href="#tabset-17-3">pupper(dance)</a></li><li><a href="#tabset-17-4">PC (WSL)</a></li></ul>
+<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">minipupper</a></li><li><a href="#tabset-18-2">pupper(music)</a></li><li><a href="#tabset-18-3">pupper(dance)</a></li><li><a href="#tabset-18-4">PC (WSL)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-17-1">
+<div id="tabset-18-1">
 <ul>
 <li>start bring up</li>
 </ul>
@@ -1476,7 +1495,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb41-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb41-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-17-2">
+<div id="tabset-18-2">
 <ul>
 <li>music service</li>
 </ul>
@@ -1486,7 +1505,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb42-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb42-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-17-3">
+<div id="tabset-18-3">
 <ul>
 <li>dance service</li>
 </ul>
@@ -1496,7 +1515,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb43-4"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb43-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_dance dance.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-17-4">
+<div id="tabset-18-4">
 <ul>
 <li>check what service avaiable</li>
 </ul>
@@ -1544,9 +1563,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <li>make sure your camera works</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">minipupper</a></li><li><a href="#tabset-18-2">check camera (WSL)</a></li><li><a href="#tabset-18-3">PC (WSL)</a></li></ul>
+<ul id="tabset-19" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-19-1">minipupper</a></li><li><a href="#tabset-19-2">check camera (WSL)</a></li><li><a href="#tabset-19-3">PC (WSL)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-18-1">
+<div id="tabset-19-1">
 <ul>
 <li>start bring up</li>
 </ul>
@@ -1555,7 +1574,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb45-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb45-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-18-2">
+<div id="tabset-19-2">
 <ul>
 <li>check image_raw toic</li>
 </ul>
@@ -1572,7 +1591,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </ul>
 <div class="sourceCode" id="cb47"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-18-3">
+<div id="tabset-19-3">
 <ul>
 <li>recognition node to recognize line, pid:=true</li>
 </ul>
@@ -1600,9 +1619,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="mirror" class="slide level2">
 <h2>WSL Mirror Mode</h2>
 <div class="panel-tabset">
-<ul id="tabset-19" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-19-1">WSL</a></li><li><a href="#tabset-19-2">config</a></li><li><a href="#tabset-19-3">content</a></li><li><a href="#tabset-19-4">reset</a></li><li><a href="#tabset-19-5">verify</a></li></ul>
+<ul id="tabset-20" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-20-1">WSL</a></li><li><a href="#tabset-20-2">config</a></li><li><a href="#tabset-20-3">content</a></li><li><a href="#tabset-20-4">reset</a></li><li><a href="#tabset-20-5">verify</a></li></ul>
 <div class="tab-content">
-<div id="tabset-19-1">
+<div id="tabset-20-1">
 <ul>
 <li>how to use WSL commands in window terminal (admin mode)</li>
 </ul>
@@ -1612,14 +1631,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb49-4"><a href=""></a><span class="ex">wsl</span> <span class="at">--export</span> distro filename.tar</span>
 <span id="cb49-5"><a href=""></a><span class="ex">wsl</span> <span class="at">--import</span> distro folder filename.tar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-19-2">
+<div id="tabset-20-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/wslconfig.png" class="quarto-figure quarto-figure-center" height="200"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-19-3">
+<div id="tabset-20-3">
 <div class="sourceCode" id="cb50"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb50-1"><a href=""></a>[wsl2]</span>
 <span id="cb50-2"><a href=""></a>networkingMode=mirrored</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
@@ -1628,7 +1647,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-19-4">
+<div id="tabset-20-4">
 <div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--shutdown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1636,7 +1655,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-19-5">
+<div id="tabset-20-5">
 <ul>
 <li>once inside wsl mode</li>
 </ul>
@@ -1658,9 +1677,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="rpi-camera-setup" class="slide level2">
 <h2>RPi camera Setup</h2>
 <div class="panel-tabset">
-<ul id="tabset-20" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-20-1">camera</a></li><li><a href="#tabset-20-2">cable</a></li><li><a href="#tabset-20-3">board open</a></li><li><a href="#tabset-20-4">board close</a></li><li><a href="#tabset-20-5">complete</a></li></ul>
+<ul id="tabset-21" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-21-1">camera</a></li><li><a href="#tabset-21-2">cable</a></li><li><a href="#tabset-21-3">board open</a></li><li><a href="#tabset-21-4">board close</a></li><li><a href="#tabset-21-5">complete</a></li></ul>
 <div class="tab-content">
-<div id="tabset-20-1">
+<div id="tabset-21-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/raw/main/imgs/camera_cable_and_camera.jpg" height="500"></p>
@@ -1668,7 +1687,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-20-2">
+<div id="tabset-21-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/blob/main/imgs/camera_cable.jpg?raw=true" height="500"></p>
@@ -1676,7 +1695,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-20-3">
+<div id="tabset-21-3">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/blob/main/imgs/camera_board_open.jpg?raw=true" height="500"></p>
@@ -1684,7 +1703,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-20-4">
+<div id="tabset-21-4">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/blob/main/imgs/camera_board_plugin.jpg?raw=true" height="500"></p>
@@ -1692,7 +1711,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-20-5">
+<div id="tabset-21-5">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/raw/main/imgs/camera_all.jpg" height="500"></p>
@@ -1706,65 +1725,65 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="firewall" class="slide level2">
 <h2>Firewall enable port (multicast)</h2>
 <div class="panel-tabset">
-<ul id="tabset-21" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-21-1">1</a></li><li><a href="#tabset-21-2">2</a></li><li><a href="#tabset-21-3">3</a></li><li><a href="#tabset-21-4">4</a></li><li><a href="#tabset-21-5">5</a></li><li><a href="#tabset-21-6">6</a></li><li><a href="#tabset-21-7">7</a></li><li><a href="#tabset-21-8">8</a></li><li><a href="#tabset-21-9">9</a></li></ul>
+<ul id="tabset-22" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-22-1">1</a></li><li><a href="#tabset-22-2">2</a></li><li><a href="#tabset-22-3">3</a></li><li><a href="#tabset-22-4">4</a></li><li><a href="#tabset-22-5">5</a></li><li><a href="#tabset-22-6">6</a></li><li><a href="#tabset-22-7">7</a></li><li><a href="#tabset-22-8">8</a></li><li><a href="#tabset-22-9">9</a></li></ul>
 <div class="tab-content">
-<div id="tabset-21-1">
+<div id="tabset-22-1">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_1.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-2">
+<div id="tabset-22-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_2.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-3">
+<div id="tabset-22-3">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_3.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-4">
+<div id="tabset-22-4">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_4.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-5">
+<div id="tabset-22-5">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_5.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-6">
+<div id="tabset-22-6">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_6.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-7">
+<div id="tabset-22-7">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_7.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-8">
+<div id="tabset-22-8">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_8.png" class="quarto-figure quarto-figure-center" height="500"></p>
 </figure>
 </div>
 </div>
-<div id="tabset-21-9">
+<div id="tabset-22-9">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/window_defender_9.png" class="quarto-figure quarto-figure-center" height="500"></p>
