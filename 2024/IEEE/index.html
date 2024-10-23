@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2024-10-06">
+  <meta name="dcterms.date" content="2024-10-26">
   <title>Robot Controls</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -95,7 +95,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -415,7 +435,35 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">October 6, 2024</p>
+  <p class="date">October 26, 2024</p>
+</section>
+<section id="sec-mangdang" class="slide level2">
+<h2>Mangdang</h2>
+<h3 id="a-quadruped-robot-dog-originated-from-a-stanford-project-click-here">A quadruped robot dog originated from a stanford project <a href="https://news.stanford.edu/2019/05/20/dog-like-robot-jumps-flips-trots/" class="button">click here</a></h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ul>
+<li class="fragment">A <span class="alert">Mangdang v2</span> and a <span class="alert">Raspberry Pi Compute Module 4</span> 2GB<br></li>
+</ul>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mangdang.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ul>
+<li class="fragment">software development is done using Windows 10/11 WSL
+<ul>
+<li class="fragment">Linux, Python 3</li>
+<li class="fragment">Robot Operating System (ROS) and Gazebo</li>
+</ul></li>
+<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/udp" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
+</ul>
+</div>
+</div></div>
 </section>
 <section id="system-requirements" class="slide level2">
 <h2>System Requirements</h2>
@@ -467,7 +515,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
   click C "#hardware" "Go to Hardware slide"
   click D "#gemini" "Go to Google Gemini slide"
   click E "#ros2" "Go to ROS slide"
-  click F "#dance" "Go to ROS slide"
+  click F "#music" "Go to ROS slide"
   click G "#linefollowing" "Go to ROS line following slide"
   click H "#multicast" "Go to ROS line following slide"
   %%click H "#multicast" "Go to Multicast setup slide"  
@@ -1378,7 +1426,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="music-logic" class="slide level2">
+<section id="music" class="slide level2">
 <h2>Music logic</h2>
 <div style="text-align: center;">
 <div style="width: 60%; height: 60%; margin: auto;">
@@ -1810,7 +1858,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb54-3"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml </span>
 <span id="cb54-4"><a href=""></a><span class="fu">nano</span> ~/.ros/camera_info/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="udp" class="slide level2">
+<section id="udp" class="slide level2 smaller scrollable">
 <h2>ROS2 UDP port Access</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1823,6 +1871,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <div class="reveal has-logo">
 <p><a href="#process-slide"> <img src="images/temple.png" alt="Temple Logo" style="width: 20px; height: auto;"> <span style="font-size: 14px;">Li Bai</span> </a></p>
 </div>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-DanceRobot" class="csl-entry" role="listitem">
+Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots.”</span> 2022. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US</a>.
 </div>
 </div>
 </section></section>
