@@ -659,7 +659,7 @@ timeline
 <li>To save time, I put a docker image on my S3 so you can download it directly on your WSL</li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="bu">cd</span> ~</span>
-<span id="cb13-2"><a href=""></a><span class="ex">aws</span> s3 cp s3://ece34322024lb/music.tar music.tar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href=""></a><span class="ex">aws</span> s3 cp s3://ece34322024lb/music.tar music.tar <span class="at">--no-sign-request</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>load the tar image as a docker image</li>
 </ul>
