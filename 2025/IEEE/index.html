@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <meta name="author" content="Li Bai">
+  <meta name="dcterms.date" content="2025-03-01">
+  <title>Robot Controls</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Robot Controls</h1>
+  <p class="subtitle">Workshop - A minimal introduction to Minipupper V2</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:lbai@temple.edu">lbai@temple.edu</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Temple University
+          </p>
+    </div>
+</div>
+
+  <p class="date">March 1, 2025</p>
+</section>
+<section id="sec-mangdang" class="slide level2">
+<h2>Mangdang</h2>
+<h3 id="a-quadruped-robot-dog-originated-from-a-stanford-project-click-here">A quadruped robot dog originated from a stanford project <a href="https://news.stanford.edu/2019/05/20/dog-like-robot-jumps-flips-trots/" class="button" target="_blank">click here</a></h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ul>
+<li class="fragment">A <span class="alert">Mangdang v2</span> and a <span class="alert">Raspberry Pi Compute Module 4</span> 2GB<br></li>
+</ul>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mangdang.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ul>
+<li class="fragment">software development is done using Windows 10/11 WSL
+<ul>
+<li class="fragment">Linux, Python 3</li>
+<li class="fragment">Robot Operating System (ROS) and Gazebo</li>
+</ul></li>
+<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/ros2_pupper" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="system-requirements" class="slide level2">
+<h2>System Requirements</h2>
+<ul>
+<li><p>One PC Windows 11 (Home edition or Professional edition)</p>
+<ul>
+<li>windows subsystem linux on windows feature enabled</li>
+<li>virtual machine on windows feature enabled</li>
+</ul></li>
+<li><p>32GB Micro-SD Card (preflashed)</p></li>
+<li><p>Minipupper V2</p></li>
+</ul>
+<div>
+<div class="fragment" style="text-align: center; font-size: 2em; margin-top: 2em;">
+<p><a href="https://bit.ly/phillypupper25"><strong>https://bit.ly/phillypupper25</strong></a></p>
+</div>
+</div>
+</section>
+<section id="process-slide" class="slide level2">
+<h2>Process of the Day</h2>
+<ul>
+<li><a href="#/start">starting page</a></li>
+</ul>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(("Software setup")) --&gt; B(("Network setup"))
+  B --&gt; C(("Hardware check: network, camera and audio"))
+  C --&gt; D(("Google Gemini"))
+  C --&gt; H(("StanfordQuadruped Dance"))
+  E --&gt; F(("ROS2 Service"))
+  E --&gt; G(("Line following"))
+  C --&gt; E((" Linux ROS2 "))
+  
+  %% Define custom styles for each node
+  classDef nodeStyle width:150px, text-align:center, white-space:pre-wrap;
+  classDef coloredNode fill:#1f96,stroke:#333,stroke-width:2px,width:150px,white-space:pre-wrap,text-align:center;
+  classDef funNode fill:#ef96,stroke:#333,stroke-width:2px,width:150px,white-space:pre-wrap,text-align:center;
+
+  %% Apply the custom style to the nodes
+  class A,C,E,H nodeStyle;
+  class B,H coloredNode;
+  class D,F,G funNode;
+  
+  %% Add slide references to each block (adjust according to your presentation setup)
+  click A "#software" "Go to Software setup slide"
+  click B "#network" "Go to Network setup slide"
+  click C "#hardware" "Go to Hardware slide"
+  click D "#gemini" "Go to Google Gemini slide"
+  click E "#ros2" "Go to ROS slide"
+  click F "#music" "Go to ROS slide"
+  click G "#linefollowing" "Go to ROS line following slide"
+  click H "#dance" "Go to ROS line following slide"
+  %%click H "#multicast" "Go to Multicast setup slide"  
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="software" class="slide level2">
+<h2>Install VScode</h2>
+<ul>
+<li>edit a file in text mode</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://code.visualstudio.com/download"><img data-src="images/vscode.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</section>
+<section id="install-window-terminal" class="slide level2">
+<h2>Install Window Terminal</h2>
+<ul>
+<li>seems to be better than power shell on windows 11</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Microsoft Store</a></li><li><a href="#tabset-1-2">Configuration</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/window_terminal.png" class="quarto-figure quarto-figure-center" height="360"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/cool_terminal.png" class="quarto-figure quarto-figure-center" height="360"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="install-wsl-ubuntu-22.04" class="slide level2">
+<h2>Install WSL (ubuntu-22.04)</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">WSL cmds</a></li><li><a href="#tabset-2-2">WSL (problem)</a></li><li><a href="#tabset-2-3">Distro</a></li><li><a href="#tabset-2-4">Folders on Windows</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<ul>
+<li>how to use WSL commands in window terminal (admin mode)</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">wsl</span> <span class="at">-l</span> </span>
+<span id="cb1-2"><a href=""></a><span class="ex">wsl</span> <span class="at">--install</span> distro</span>
+<span id="cb1-3"><a href=""></a><span class="ex">wsl</span> <span class="at">-s</span> distro</span>
+<span id="cb1-4"><a href=""></a><span class="ex">wsl</span> <span class="at">-d</span> distro</span>
+<span id="cb1-5"><a href=""></a><span class="ex">wsl</span> <span class="at">--terminate</span> distro</span>
+<span id="cb1-6"><a href=""></a><span class="ex">wsl</span> <span class="at">--unregister</span> distro</span>
+<span id="cb1-7"><a href=""></a><span class="ex">wsl</span> <span class="at">--export</span> distro filename.tar</span>
+<span id="cb1-8"><a href=""></a><span class="ex">wsl</span> <span class="at">--import</span> distro folder filename.tar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_update.png" class="quarto-figure quarto-figure-center" height="60"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2">
+<ul>
+<li><p>enable virtual machine platform and windows subsystem linux</p></li>
+<li><p>if not working, disable VMP and WSL (not restart)</p></li>
+<li><p><a href="https://github.com/microsoft/WSL/releases" target="_blank">install WSL distro</a></p></li>
+<li><p>enable VMP and WSL, restart the machine</p></li>
+</ul>
+</div>
+<div id="tabset-2-3">
+<ul>
+<li>run power shell cmd in administrative mode</li>
+<li>setup username (ubuntu) and password (mangdang)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_install.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-4">
+<ul>
+<li>should see a user name exist in Linux mount</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_home_folder.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="setup-raspberry-pi---balena-etcher-preflashed" class="slide level2">
+<h2>Setup Raspberry Pi - Balena Etcher (preflashed)</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">1</a></li><li><a href="#tabset-3-2">2</a></li><li><a href="#tabset-3-3">3</a></li><li><a href="#tabset-3-4">4</a></li><li><a href="#tabset-3-5">5</a></li><li><a href="#tabset-3-6">6</a></li><li><a href="#tabset-3-7">7</a></li><li><a href="#tabset-3-8">8</a></li><li><a href="#tabset-3-9">9</a></li><li><a href="#tabset-3-10">10</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<ul>
+<li><p>Download <a href="https://tuprd-my.sharepoint.com/:u:/g/personal/lbai_temple_edu/EVZZ84LESe1Jk-YB0qJXFJsB5boR7DkpQKu7PnwQ-Ua0dw?e=1bYIMT" target="_blank">Mangdang image with ROS2</a></p></li>
+<li><p>Download Balena Etcher <a href="https://etcher.balena.io/" class="uri">https://etcher.balena.io/</a> to copy the new image to your Micro-SD card</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_1.png" class="quarto-figure quarto-figure-center" width="514"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_2.png" class="quarto-figure quarto-figure-center" width="625"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_3.png" class="quarto-figure quarto-figure-center" width="591"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_4.png" class="quarto-figure quarto-figure-center" width="650"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-5">
+<ul>
+<li>Check to ensure your SD card is selected to flash to SDHC, NOT your computer!</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_5.png" class="quarto-figure quarto-figure-center" width="588"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-6">
+<p>NOTE: the following step will not apply to you if you own a computer using Windows</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_7.png" class="quarto-figure quarto-figure-center" width="536"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-7">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_8.png" class="quarto-figure quarto-figure-center" width="528"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-8">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_9.png" class="quarto-figure quarto-figure-center" width="584"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-9">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_11.png" class="quarto-figure quarto-figure-center" width="587"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-10">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/etcher_12.png" class="quarto-figure quarto-figure-center" width="582"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="network" class="slide level2">
+<h2>Connection Methods</h2>
+<ul>
+<li><p><a href="#/method_1">method 1: Mobile hotspot on Windows 11/10 or phone hotspot</a></p>
+<ul>
+<li>easy, but not always reliable</li>
+</ul></li>
+<li><p><a href="#/method_2">method 2: Wireless router / PSK + MAC registration</a></p>
+<ul>
+<li>easy, ROS works on WSL &amp; robot with multicast</li>
+</ul></li>
+<li><p><a href="#/method_3">method 3: eduroam (need to generate a hash in ubuntu 18.04)</a></p>
+<ul>
+<li>hard setup, universal if school enables hash authentication</li>
+<li>ROS works on WSL &amp; robot with multicast</li>
+</ul></li>
+</ul>
+</section>
+<section id="method_1" class="slide level2">
+<h2>Mobile Hostpot on Windows 11 - method 1</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Lookup</a></li><li><a href="#tabset-4-2">Setup</a></li><li><a href="#tabset-4-3">Wireless.txt</a></li><li><a href="#tabset-4-4">file</a></li><li><a href="#tabset-4-5">insert</a></li><li><a href="#tabset-4-6">test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mobilehotspot.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/hotspot_ip_address.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-3">
+<ul>
+<li>open power shell and</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="bu">cd</span> ~/Downloads</span>
+<span id="cb2-2"><a href=""></a><span class="fu">wget</span> https://raw.githubusercontent.com/lbaitemple/mini-pupper-aws/refs/heads/fall2024/wifipasswd/wireless.txt <span class="at">-O</span> wireless.txt</span>
+<span id="cb2-3"><a href=""></a><span class="ex">code</span> wireless.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/revisewirelesstxt_2.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-4">
+<ul>
+<li>make sure you see a new driver system-boot</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-5">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-6">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontroller_ip.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="method_2" class="slide level2">
+<h2>Wireless router - method 2</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Setup</a></li><li><a href="#tabset-5-2">wireless.txt</a></li><li><a href="#tabset-5-3">file</a></li><li><a href="#tabset-5-4">insert card</a></li><li><a href="#tabset-5-5">test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/tp_link.jpg" class="quarto-figure quarto-figure-center" width="629"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-5-2">
+<ul>
+<li>open window terminal (wireless.txt downloaded already)</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="bu">cd</span> ~/Downloads</span>
+<span id="cb3-2"><a href=""></a><span class="ex">code</span> wireless.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>get TU wireless credential in class</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/revisewirelesstxt_1.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-5-3">
+<ul>
+<li>make sure you see a new driver system-boot</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-5-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-5-5">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontroller_ip.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="method_3" class="slide level2">
+<h2>eduroam - method 3</h2>
+<ul>
+<li><p>Generating a Password Hash (case sensitive, space sensitive)</p></li>
+<li><p>password Hash: one-way cryptographic representation of a password</p></li>
+</ul>
+
+<img data-src="images/password-hashing-01.png" class="quarto-figure quarto-figure-center r-stretch" width="500"></section>
+<section id="generate-your-password-hash" class="slide level2 aws-background">
+<h2>Generate your Password Hash</h2>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">wsl</a></li><li><a href="#tabset-6-2">hash</a></li><li><a href="#tabset-6-3">credential</a></li><li><a href="#tabset-6-4">mv file</a></li><li><a href="#tabset-6-5">insert card</a></li><li><a href="#tabset-6-6">IP</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<ul>
+<li>Now we open a new terminal shell to setup 18.04 distro</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--install</span> ubuntu-18.04</span>
+<span id="cb4-2"><a href=""></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-18.04</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_18.04.png" class="quarto-figure quarto-figure-center" width="815"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-6-2">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="bu">echo</span> <span class="at">-n</span> password <span class="kw">|</span> <span class="fu">iconv</span> <span class="at">-t</span> UTF-16LE <span class="kw">|</span> <span class="ex">openssl</span> md4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>replace “password” in command line with your password used to log in to school organization email</li>
+<li>enter to regenerate unique hash <img data-src="images/wsl_password_hash.png" class="quarto-figure quarto-figure-center"></li>
+<li>save value for your WiFi access (in Google doc or notebook)!</li>
+</ul>
+</div>
+<div id="tabset-6-3">
+<ul>
+<li>Line 1: use your school email address</li>
+<li>Line 2: use the hash passcode that you previously saved in a document or notebook</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/revisewirelesstxt.png" class="quarto-figure quarto-figure-center" width="675"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-6-4">
+<ul>
+<li>make sure you see a new driver system-boot</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-center" width="315"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-6-5">
+<ul>
+<li>IP address does not show up on first time boot up, wait for power on sound, then disconnect power and reconnect</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center" height="320"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-6-6">
+<ul>
+<li>reboot second time, you can see the IP address</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ip_adress.jpg" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="start" class="slide level2">
+<h2>Web Control - Activate the robot</h2>
+<ul>
+<li>If you see the IP address on the screen in the second time power on, type <code>http://[ipaddress]:8080</code> for a web remote control</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">1 (web)</a></li><li><a href="#tabset-7-2">2 (activate)</a></li><li><a href="#tabset-7-3">3 (dance)</a></li><li><a href="#tabset-7-4">4 (walk)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontrol.png" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-7-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontrol_2.png" class="quarto-figure quarto-figure-center" width="459"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-7-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontrol_3.png" class="quarto-figure quarto-figure-center" width="459"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-7-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/webcontrol_5.png" class="quarto-figure quarto-figure-center" width="459"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="revise-the-wifi-in-jupyter-lab" class="slide level2">
+<h2>Revise the WiFi in Jupyter Lab</h2>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Jupyter Lab</a></li><li><a href="#tabset-8-2">WiFi Configuration</a></li><li><a href="#tabset-8-3">Caution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<ul>
+<li>Open a browser, type <code>http://[ipaddress]:8888</code></li>
+<li>password <code>mangdang</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ip_window.png" class="quarto-figure quarto-figure-center" width="591" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-8-2">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="fu">sudo</span> nano /etc/netplan/50-cloud-init.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wireless_config.png" class="quarto-figure quarto-figure-center" width="639" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-8-3">
+<ul>
+<li><p>at least keep one connection working</p></li>
+<li><p><code>50-cloud-init.yaml</code> is indentation sensitive, any mistake will have no IP address shown</p></li>
+<li><p>If file changed, try the following commands to ensure if you have any errors before reboot</p></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="fu">sudo</span> netplan apply</span>
+<span id="cb7-2"><a href=""></a><span class="fu">sudo</span> netplan generate <span class="at">--debug</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>may need to use an HDMI monitor and a USB keyboard to troubleshoot the YAML file</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="current-setup" class="slide level2">
+<h2>Current Setup</h2>
+
+<img data-src="images/wificred.png" class="quarto-figure quarto-figure-center r-stretch" width="450"></section>
+<section id="wireless-connection-orders" class="slide level2">
+<h2>Wireless Connection Orders</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="text-align: center;">
+<div style="width: 100%; height: 100%; margin: auto;">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+  participant IEEER2 (router)
+  participant pupper_temple
+  Note right of eduroam: connection eduroam first
+  loop Healthcheck
+    eduroam-&gt;&gt;eduroam: Let me check&lt;br&gt; hash match with id
+  end
+  Note right of eduroam: failed credential!
+  eduroam-&gt;&gt;IEEER2 (router): let me connect you first 
+  IEEER2 (router)-&gt;&gt;pupper_temple: help me check if pupper_temple is available
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div>
+<ul>
+<li class="fragment">turn on your hotspot</li>
+<li class="fragment">try the pupper connect to the hotspot</li>
+<li class="fragment">turn off hotspot, back to TU WiFi.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="how-to-network-minipupper" class="slide level2">
+<h2>How to Network Minipupper</h2>
+<ul>
+<li><p>which method is better?</p>
+<ul>
+<li>best method 2 (need multicast enabled),</li>
+<li>easy method 1 (not always reliable)</li>
+<li>good method 3 (need multicast enabled)</li>
+</ul></li>
+<li><p>Common problem with WSL not seeing the robot in the LAN</p>
+<ul>
+<li>WSL &amp; robot operation - Data Discovery Service (DDS)</li>
+<li>nat, <a href="#/mirror">mirror</a> and bridge mode in WSL2</li>
+</ul></li>
+</ul>
+</section>
+<section id="hardware" class="slide level2">
+<h2>Hardware Check</h2>
+<ul>
+<li>download the mangdang using the following command</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">setup</a></li><li><a href="#tabset-9-2">camera check</a></li><li><a href="#tabset-9-3">audio check</a></li><li><a href="#tabset-9-4">BSP Abstraction</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<ul>
+<li>run ieee2025.ipynb</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/hardwaresetup.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-2">
+<ul>
+<li>run camera_test.ipynb</li>
+<li>you check camera by running each cell in jupyter notebook</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/cameraview.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-3">
+<ul>
+<li>record 5 second audio and play back</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">cd</span> ~/mini_pupper_bsp/demos/</span>
+<span id="cb9-2"><a href=""></a><span class="ex">python</span> audio_test.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/audiocheck.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/hla.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dance" class="slide level2">
+<h2>Stanford - Dance Move using Jupyter</h2>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">step 1</a></li><li><a href="#tabset-10-2">step 2</a></li><li><a href="#tabset-10-3">step 3</a></li><li><a href="#tabset-10-4">step 4</a></li><li><a href="#tabset-10-5">step 5</a></li><li><a href="#tabset-10-6">step 6</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<ul>
+<li><p>check StanfordQuadruped inside of mangdang folder</p></li>
+<li><p>If not,</p></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/mangdang</span>
+<span id="cb10-2"><a href=""></a><span class="bu">cd</span> ~/mangdang</span>
+<span id="cb10-3"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> mini_pupper https://github.com/lbaitemple/StanfordQuadruped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-10-2">
+<ul>
+<li>navigate into the folder `<code>Jupyter Client`</code> folder</li>
+<li>run jupyter client code `jupyter Client for Minipupper`</li>
+<li><img data-src="images/stanfordquad.png"></li>
+</ul>
+</div>
+<div id="tabset-10-3">
+<ul>
+<li>run server code</li>
+</ul>
+<p><img data-src="images/jupyter_server.png"></p>
+</div>
+<div id="tabset-10-4">
+<ul>
+<li>run client code <img data-src="images/move1.png"></li>
+</ul>
+</div>
+<div id="tabset-10-5">
+<ul>
+<li>run client code <img data-src="images/move2.png"></li>
+</ul>
+</div>
+<div id="tabset-10-6">
+<ul>
+<li>run client code <img data-src="images/move3.png"></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section>
+<section id="ros2" class="title-slide slide level1 center">
+<h1>ROS2</h1>
+<ul>
+<li>ROS2 can be installed on minipupper and WSL</li>
+<li>ensure multicast port open in your Wi-Fi network</li>
+</ul>
+</section>
+<section id="ros2-installation" class="slide level2">
+<h2>ROS2 Installation</h2>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">install on WSL</a></li><li><a href="#tabset-11-2">install on Minipupper</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
+<span id="cb11-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb11-3"><a href=""></a><span class="fu">bash</span> ./pc_install.sh</span>
+<span id="cb11-4"><a href=""></a><span class="fu">sudo</span> apt install <span class="at">-y</span> ros-humble-demo-nodes-cpp ros-humble-rmw-fastrtps-cpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pc_ros.png" class="quarto-figure quarto-figure-center" height="140"></p>
+</figure>
+</div>
+<ul>
+<li><code>ros2 topic list</code> not running, try</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">ros2</span> daemon start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-11-2">
+<ul>
+<li><p><a href="#/ros2_pupper">ROS2 preinstalled on MicroSD card</a></p></li>
+<li><p>ensure camera enabled in <code>~/ros2_ws/src/mini_pupper_bringup/config/config.yaml</code> as follows</p></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>sensors:</span>
+<span id="cb13-2"><a href=""></a>  lidar: false</span>
+<span id="cb13-3"><a href=""></a>  imu: true</span>
+<span id="cb13-4"><a href=""></a>  camera: true</span>
+<span id="cb13-5"><a href=""></a>ports: </span>
+<span id="cb13-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ros2-code-revised-and-recomplie" class="slide level2">
+<h2>ROS2 Code Revised and Recomplie</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws</span>
+<span id="cb14-2"><a href=""></a><span class="ex">colcon</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws</span>
+<span id="cb15-2"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span>  mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ros2_ws.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</section>
+<section id="demo-ros2-topics" class="slide level2">
+<h2>Demo (ros2 topics)</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="co"># export ROS_LOCALHOST_ONLY=0 # may need it</span></span>
+<span id="cb16-2"><a href=""></a><span class="co"># export ROS_DOMAIN_ID=0 # may need it</span></span>
+<span id="cb16-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb16-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="linefollowing" class="slide level2">
+<h2>Line following logic</h2>
+<div style="text-align: center;">
+<div style="width: 60%; height: 60%; margin: auto;">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+  participant Minipupper
+  participant Router
+  Minipupper-&gt;&gt;WSL/Minipupper: Hello WSL/Minipupper, I run the bringup!
+  loop Healthcheck
+    WSL/Minipupper-&gt;&gt;WSL/Minipupper: Let me check&lt;br&gt; cmd_vel (sub)&lt;br&gt; and image_raw (pub)
+  end
+  Note right of WSL/Minipupper: Find ROS &lt;br/&gt;topics!
+  WSL/Minipupper--&gt;&gt;Minipupper: Great! subscribe image_raw, publish cmd_vel 
+  WSL/Minipupper-&gt;&gt;Minipupper: base on line shown, here is your cmd_vel
+  Minipupper--&gt;&gt;WSL/Minipupper: help me check red dot so I can stop!
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="demo-line-following" class="slide level2">
+<h2>Demo (line following)</h2>
+<ul>
+<li>ensure your minipupper and WSL on the same network</li>
+<li>make sure your camera works</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">minipupper</a></li><li><a href="#tabset-12-2">search topic</a></li><li><a href="#tabset-12-3">display 1</a></li><li><a href="#tabset-12-4">display 2</a></li><li><a href="#tabset-12-5">run node</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<ul>
+<li>start bring up</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb17-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-12-2">
+<ul>
+<li>check image_raw topic</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="ex">ros2</span> topic list <span class="kw">|</span> <span class="fu">grep</span> image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-12-3">
+<ul>
+<li>if image_raw exists, run the following</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_ros.png" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-12-4">
+<ul>
+<li>if image_raw exists, run the following</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="co"># display on the screen</span></span>
+<span id="cb20-2"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--ros-args</span> <span class="at">-r</span> mini_pupper_lcd/image_raw:=/image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-12-5">
+<ul>
+<li>recognition node to recognize line, pid:=true</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb21-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="music" class="slide level2">
+<h2>Music logic</h2>
+<div style="text-align: center;">
+<div style="width: 60%; height: 60%; margin: auto;">
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+  participant Minipupper
+  participant Router
+  Minipupper-&gt;&gt;WSL/Minipupper: Hello WSL/Minipupper, I run the music server!
+  loop Healthcheck
+    WSL/Minipupper-&gt;&gt;WSL/Minipupper: Let me check&lt;br&gt; ros2 service list (sub) &lt;br&gt; /play_music  /stop_music exist
+  end
+  Note right of WSL/Minipupper: Find ROS &lt;br/&gt;services!
+  WSL/Minipupper--&gt;&gt;Minipupper: Great! call /play_music 
+  WSL/Minipupper-&gt;&gt;Minipupper: base on what I can hear, call /stop_music
+  Minipupper--&gt;&gt;WSL/Minipupper: help me check red dot so I can stop!
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="demo-music_service" class="slide level2">
+<h2>Demo (music_service)</h2>
+<ul>
+<li>ensure your minipupper and WSL on the same network</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">start service</a></li><li><a href="#tabset-13-2">run service</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1">
+<ul>
+<li>install dependencies</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="ex">pip</span> uninstall pycrypto</span>
+<span id="cb22-2"><a href=""></a><span class="fu">sudo</span> apt-get install ffmpeg portaudio19-dev <span class="at">-y</span></span>
+<span id="cb22-3"><a href=""></a><span class="ex">pip</span> install pydub pyaudio==0.2.12 pydub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>start music server</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb23-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-13-2">
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb24-2"><a href=""></a><span class="ex">ros2</span> service list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>if you see /music_servrice, run</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>stop music</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gemini" class="slide level2">
+<h2>Gemini</h2>
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">LLM</a></li><li><a href="#tabset-14-2">Installation</a></li><li><a href="#tabset-14-3">Demo</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://lbaitemple.github.io/ECE3432/2024/week5/class1#/link-service-account"><img data-src="images/llm_2.png" class="quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-2">
+<ul>
+<li>download the code to</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb27-2"><a href=""></a><span class="fu">git</span> clone https://github.com/lbaitemple/apps-md-robots</span>
+<span id="cb27-3"><a href=""></a><span class="bu">cd</span> apps-md-robots</span>
+<span id="cb27-4"><a href=""></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>add <a href="https://lbaitemple.github.io/ECE3432/2024/week5/class1#/link-service-account">credential file</a> in env.sample (<span style="color: red; ">Pregenerated</span>)</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.gemini</span>
+<span id="cb28-2"><a href=""></a><span class="fu">cp</span> ~/minipupper_creds.json ~/.gemini/creds.json</span>
+<span id="cb28-3"><a href=""></a><span class="fu">cp</span> env.sample .env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-14-3">
+<ul>
+<li>Run the app</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="co"># run AI app</span></span>
+<span id="cb29-2"><a href=""></a><span class="ex">python</span> ai_app/ai_app.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>need to reset the LCD screen</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="co"># get screen to show IP</span></span>
+<span id="cb30-2"><a href=""></a><span class="fu">sudo</span> systemctl restart robot  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+
+</section>
+<section id="install-balena-etcher" class="slide level2">
+<h2>Install Balena Etcher</h2>
+<ul>
+<li>Download Balena Etcher <a href="https://etcher.balena.io/" class="uri">https://etcher.balena.io/</a> to copy the new image to your Micros D card</li>
+</ul>
+
+<img data-src="images/etcher.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="mirror" class="slide level2">
+<h2>WSL Mirror Mode</h2>
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">WSL</a></li><li><a href="#tabset-15-2">config</a></li><li><a href="#tabset-15-3">content</a></li><li><a href="#tabset-15-4">reset</a></li><li><a href="#tabset-15-5">verify</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<ul>
+<li>how to use WSL commands in window terminal (admin mode)</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="ex">wsl</span> <span class="at">-l</span> </span>
+<span id="cb31-2"><a href=""></a><span class="ex">wsl</span> <span class="at">-s</span> distro</span>
+<span id="cb31-3"><a href=""></a><span class="ex">wsl</span> <span class="at">-d</span> distro</span>
+<span id="cb31-4"><a href=""></a><span class="ex">wsl</span> <span class="at">--export</span> distro filename.tar</span>
+<span id="cb31-5"><a href=""></a><span class="ex">wsl</span> <span class="at">--import</span> distro folder filename.tar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-15-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wslconfig.png" class="quarto-figure quarto-figure-center" height="200"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-3">
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb32-1"><a href=""></a>[wsl2]</span>
+<span id="cb32-2"><a href=""></a>networkingMode=mirrored</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wslcontent.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-4">
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--shutdown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_shutdown.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-5">
+<ul>
+<li>once inside wsl mode</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href=""></a><span class="ex">wslinfo</span> <span class="at">--networking-mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wslmode.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_net.png" class="quarto-figure quarto-figure-center" width="900"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="rpi-camera-setup" class="slide level2">
+<h2>RPi camera Setup</h2>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">camera</a></li><li><a href="#tabset-16-2">cable</a></li><li><a href="#tabset-16-3">board open</a></li><li><a href="#tabset-16-4">board close</a></li><li><a href="#tabset-16-5">complete</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/raw/main/imgs/camera_cable_and_camera.jpg" height="500"></p>
+<figcaption>camera</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-16-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/blob/main/imgs/camera_cable.jpg?raw=true" height="500"></p>
+<figcaption>cable</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-16-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/blob/main/imgs/camera_board_open.jpg?raw=true" height="500"></p>
+<figcaption>open board connector</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-16-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/blob/main/imgs/camera_board_plugin.jpg?raw=true" height="500"></p>
+<figcaption>close board connector</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-16-5">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://github.com/mangdangroboticsclub/mini_pupper_2_bsp/raw/main/imgs/camera_all.jpg" height="500"></p>
+<figcaption>complete setup</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ros2_pupper" class="slide level2 smaller scrollable">
+<h2>ROS2 on Minipupper</h2>
+<ul>
+<li>install ROS2 (if ros2_ws folder gets corrupted)</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href=""></a><span class="fu">rm</span> <span class="at">-rf</span> ~/ros2_ws</span>
+<span id="cb35-2"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros.git <span class="at">-b</span> ros2-dev mini_pupper_ros</span>
+<span id="cb35-3"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb35-4"><a href=""></a><span class="fu">bash</span> ./pupper_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Revise camera ymal file and copy it to .ros</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
+<span id="cb36-2"><a href=""></a><span class="fu">nano</span> ~/mini_pupper_ros/mmal_service_16.1.yaml</span>
+<span id="cb36-3"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml </span>
+<span id="cb36-4"><a href=""></a><span class="fu">nano</span> ~/.ros/camera_info/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-auto-generated-content">
+<p><img src="images/HKN3.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
+<div class="reveal has-logo">
+<p><a href="#process-slide"> <img src="images/temple.png" alt="Temple Logo" style="width: 20px; height: auto;"> <span style="font-size: 14px;">Li Bai</span> </a></p>
+</div>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-DanceRobot" class="csl-entry" role="listitem">
+Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots.”</span> 2022. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US</a>.
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'pointer': {"key":"q","color":"#e7298a","pointerSize":24,"alwaysVisible":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, RevealPointer, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
