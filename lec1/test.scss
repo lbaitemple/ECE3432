@@ -1,0 +1,29 @@
+/*-- scss:rules --*/
+
+#title-slide {
+  text-align: center;
+}
+
+.slide-number, .reveal.has-logo .slide-number {
+  bottom: 14px !important;
+  left: 50px !important;
+  top: unset !important;
+  color: #777777 !important;
+}
+/*--
+#title-slide .title {
+  color: #FF0000;
+}
+
+#title-slide .subtitle {
+  color: #00FFFF;
+}
+
+#title-slide .quarto-title-author-name {
+  color: #00FF00;
+}
+
+#title-slide .quarto-title-affiliation {
+  color: #FFA500;
+}
+--*/
