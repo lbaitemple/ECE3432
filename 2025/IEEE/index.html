@@ -745,7 +745,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div id="tabset-4-3">
 <ul>
-<li>open power shell and make sure <strong>password &gt; 8 letters</strong></li>
+<li>open power shell and make sure <strong><em>password &gt; 8 letters</em></strong></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="bu">cd</span> ~/Downloads</span>
 <span id="cb2-2"><a href=""></a><span class="fu">wget</span> https://raw.githubusercontent.com/lbaitemple/mini-pupper-aws/refs/heads/fall2024/wifipasswd/wireless.txt <span class="at">-O</span> wireless.txt</span>
@@ -994,6 +994,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </section>
 <section id="current-setup" class="slide level2">
 <h2>Current Setup</h2>
+<ul>
+<li>IEEER2_5G</li>
+<li>passwd: ieeer25g</li>
+</ul>
 
 <img data-src="images/wificred.png" class="quarto-figure quarto-figure-center r-stretch" width="450"></section>
 <section id="wireless-connection-orders" class="slide level2">
@@ -1008,15 +1012,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
-  participant IEEER2 (router)
+  participant IEEER2_5G (router)
   participant pupper_temple
   Note right of eduroam: connection eduroam first
   loop Healthcheck
     eduroam-&gt;&gt;eduroam: Let me check&lt;br&gt; hash match with id
   end
   Note right of eduroam: failed credential!
-  eduroam-&gt;&gt;IEEER2 (router): let me connect you first 
-  IEEER2 (router)-&gt;&gt;pupper_temple: help me check if pupper_temple is available
+  eduroam-&gt;&gt;IEEER2_5G (router): let me connect you first 
+  IEEER2_5G (router)-&gt;&gt;pupper_temple: help me check if pupper_temple is available
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -1254,20 +1258,25 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul>
 <li>start bring up</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb17-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="co"># export ROS_LOCALHOST_ONLY=0 # may need it</span></span>
+<span id="cb17-2"><a href=""></a><span class="co"># export ROS_DOMAIN_ID=x # x=0, 1, 2...may need it</span></span>
+<span id="cb17-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb17-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-12-2">
 <ul>
 <li>check image_raw topic</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="ex">ros2</span> topic list <span class="kw">|</span> <span class="fu">grep</span> image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="co"># export ROS_LOCALHOST_ONLY=0 # may need it</span></span>
+<span id="cb18-2"><a href=""></a><span class="co"># export ROS_DOMAIN_ID=0 # may need it</span></span>
+<span id="cb18-3"><a href=""></a><span class="ex">ros2</span> topic list <span class="kw">|</span> <span class="fu">grep</span> image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-12-3">
 <ul>
 <li>if image_raw exists, run the following</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="co"># export ROS_DOMAIN_ID=x # x=0, 1, 2...may need it</span></span>
+<span id="cb19-2"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/wsl_ros.png" class="quarto-figure quarto-figure-center" height="300"></p>
