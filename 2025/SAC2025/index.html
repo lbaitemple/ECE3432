@@ -578,22 +578,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <p><img data-src="images/eduroam.png" width="100"></p>
 </div>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Install</a></li><li><a href="#tabset-2-2">WSL cmds</a></li><li><a href="#tabset-2-3">WSL (problem)</a></li><li><a href="#tabset-2-4">Folders on Windows</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">WSL cmds</a></li><li><a href="#tabset-2-2">Install ROS</a></li><li><a href="#tabset-2-3">Folders on Windows</a></li><li><a href="#tabset-2-4">FAQ</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<ul>
-<li>run power shell cmd in administrative mode</li>
-<li>run <code>wsl --install ubuntu-22.04</code> in a terminal window</li>
-<li>setup username (ubuntu) and password (mangdang)</li>
-<li><a href="#/ros2_wsl"><span class="alert">Install ros2 on Ubuntu-22.04 first</span>, ~20 mins</a></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/wsl_install.png" class="quarto-figure quarto-figure-center" height="300"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-2">
 <ul>
 <li>how to use WSL commands in window terminal (admin mode)</li>
 </ul>
@@ -611,16 +598,20 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </figure>
 </div>
 </div>
-<div id="tabset-2-3">
+<div id="tabset-2-2">
 <ul>
-<li><p>enable virtual machine platform and windows subsystem linux</p></li>
-<li><p>if not working, disable VMP and WSL (not restart)</p></li>
-<li><p><a href="https://github.com/microsoft/WSL/releases" target="_blank">install WSL distro</a></p></li>
-<li><p>enable VMP and WSL, restart the machine</p></li>
-<li><p>run <code>wsl --update</code> if you cannot install a distro</p></li>
+<li>run power shell cmd in administrative mode</li>
+<li>run <code>wsl --install ubuntu-22.04</code> in a terminal window</li>
+<li>setup username (ubuntu) and password (mangdang)</li>
+<li><a href="#/ros2_wsl"><span class="alert">Install ros2 on Ubuntu-22.04 first</span>, ~20 mins</a></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_install.png" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
 </div>
-<div id="tabset-2-4">
+</div>
+<div id="tabset-2-3">
 <ul>
 <li>should see a user name exist in Linux mount</li>
 </ul>
@@ -629,6 +620,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <p><img data-src="images/wsl_home_folder.png" class="quarto-figure quarto-figure-center" height="350"></p>
 </figure>
 </div>
+</div>
+<div id="tabset-2-4">
+<ul>
+<li><p>enable virtual machine platform and windows subsystem linux</p></li>
+<li><p>if not working, disable VMP and WSL (not restart)</p></li>
+<li><p><a href="https://github.com/microsoft/WSL/releases" target="_blank">install WSL distro</a></p></li>
+<li><p>enable VMP and WSL, restart the machine</p></li>
+<li><p>run <code>wsl --update</code> if you cannot install a distro</p></li>
+</ul>
 </div>
 </div>
 </div>
