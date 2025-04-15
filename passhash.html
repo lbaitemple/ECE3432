@@ -17,18 +17,33 @@
       font-weight: bold;
       color: #006400;
     }
+    #toggleBtn {
+      margin-left: 10px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <h2>MD4 Hash of Password (UTF-16LE Encoding)</h2>
 
-  <label for="password">Enter Password:</label>
-  <input type="text" id="password" placeholder="Type your password" />
+  <label for="password">Enter Password:   <button id="toggleBtn">Show</button></label>
+  <!--input type="text" id="password" placeholder="Type your password" /-->
+  <input type="password" id="password" placeholder="Type your password" />
 
   <label>MD4 Hash:</label>
   <div id="hashResult">(hash will appear here)</div>
 
   <script>
+
+    const passwordField = document.getElementById("password");
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    toggleBtn.addEventListener("click", () => {
+      const isPassword = passwordField.type === "password";
+      passwordField.type = isPassword ? "text" : "password";
+      toggleBtn.textContent = isPassword ? "Hide" : "Show";
+    });
+
     // Wait until the script is fully loaded
     window.addEventListener('load', () => {
       const inputField = document.getElementById("password");
