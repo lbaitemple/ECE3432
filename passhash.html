@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password MD4 Hash (UTF-16LE)</title>
+  <script src="https://unpkg.com/hash-wasm@4.10.0/dist/md4.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    label, input {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    #hashResult {
+      font-weight: bold;
+      color: #006400;
+    }
+  </style>
+</head>
+<body>
+  <h2>MD4 Hash of Password (UTF-16LE Encoding)</h2>
+
+  <label for="password">Enter Password:</label>
+  <input type="text" id="password" placeholder="Type your password" />
+
+  <label>MD4 Hash:</label>
+  <div id="hashResult">(hash will appear here)</div>
+
+  <script>
+    // Wait until the script is fully loaded
+    window.addEventListener('load', () => {
+      const inputField = document.getElementById("password");
+      const resultLabel = document.getElementById("hashResult");
+
+      inputField.addEventListener("input", async () => {
+        const password = inputField.value;
+
+        // Encode to UTF-16LE
+        const utf16leBytes = new Uint8Array(password.length * 2);
+        for (let i = 0; i < password.length; i++) {
+          const code = password.charCodeAt(i);
+          utf16leBytes[i * 2] = code & 0xff;
+          utf16leBytes[i * 2 + 1] = code >> 8;
+        }
+
+        // Ensure hashwasm is loaded
+        if (typeof hashwasm !== "undefined" && typeof hashwasm.md4 === "function") {
+          const hash = await hashwasm.md4(utf16leBytes);
+          resultLabel.textContent = hash;
+        } else {
+          resultLabel.textContent = "Error: MD4 function not loaded.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
