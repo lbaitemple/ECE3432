@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DE10-Lite JTAG Programmer</title>
+    <title>DE10-Lite JTAG Programmer via USB Blaster</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +11,7 @@
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
+            color: #333;
         }
         h1 {
             color: #2c3e50;
@@ -83,6 +84,7 @@
             border-radius: 4px;
             max-height: 200px;
             overflow-y: auto;
+            font-size: 13px;
         }
         .two-column {
             display: flex;
@@ -95,6 +97,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            font-size: 14px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -107,6 +110,13 @@
         }
         tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        #connectionStatus, #jtagResult, #fileInfo {
+            margin-top: 10px;
+            font-family: monospace;
         }
     </style>
 </head>
@@ -158,29 +168,37 @@
                     <tr>
                         <td>IDCODE</td>
                         <td>Read device identification code</td>
-                        <td>SIR 32 TDI (0x0E); SDR 32 TDI (0x00000000);</td>
+                        <td>SIR 8 TDI (0xE); SDR 32 TDI (0x00000000);</td>
                     </tr>
                     <tr>
                         <td>SAMPLE/PRELOAD</td>
                         <td>Sample I/O or preload data</td>
-                        <td>SDR &lt;length&gt; TDI (&lt;data&gt;);</td>
+                        <td>SIR 8 TDI (0x2); SDR &lt;length&gt; TDI (&lt;data&gt;);</td>
                     </tr>
                     <tr>
                         <td>EXTEST</td>
                         <td>Boundary scan external test</td>
-                        <td>SIR &lt;length&gt; TDI (0x00);</td>
+                        <td>SIR 8 TDI (0x0); SDR &lt;length&gt; TDI (&lt;data&gt;);</td>
                     </tr>
                     <tr>
                         <td>BYPASS</td>
                         <td>Bypass the device</td>
-                        <td>SIR 1 TDI (0xFF);</td>
-                    </tr>
-                    <tr>
-                        <td>USERCODE</td>
-                        <td>Read user identification code</td>
-                        <td>SIR 32 TDI (0x0C); SDR 32 TDI (0x00000000);</td>
+                        <td>SIR 8 TDI (0xF); SDR 1 TDI (0x0);</td>
                     </tr>
                 </table>
+            </div>
+
+            <div class="container">
+                <h2>USB Blaster Info</h2>
+                <p><strong>Vendor ID:</strong> 0x09FB (Altera/Intel)</p>
+                <p><strong>Product ID:</strong> 0x6001</p>
+                <p><strong>Browser Support:</strong> Chrome/Edge only</p>
+                <p><strong>Requirements:</strong></p>
+                <ul>
+                    <li>Close Quartus Prime software</li>
+                    <li>Disconnect other USB Blaster tools</li>
+                    <li>HTTPS or localhost connection</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -195,8 +213,10 @@
         // USB Blaster constants
         const USB_BLASTER_VID = 0x09FB; // Altera/Intel
         const USB_BLASTER_PID = 0x6001;
-        const EP_OUT = 1; // Endpoint for sending commands
-        
+        const INTERFACE_NUMBER = 0;
+        const ENDPOINT_OUT = 1; // Bulk OUT endpoint
+        const PACKET_SIZE = 64; // USB Blaster packet size
+
         // JTAG TAP states
         const JTAG_STATES = {
             TEST_LOGIC_RESET: 0,
@@ -216,16 +236,16 @@
             EXIT2_IR: 14,
             UPDATE_IR: 15
         };
-        
+
         // Common JTAG instructions
         const JTAG_INSTRUCTIONS = {
-            BYPASS: 0xFF,
-            IDCODE: 0x0E,
-            SAMPLE_PRELOAD: 0x02,
-            EXTEST: 0x00,
-            USERCODE: 0x0C
+            BYPASS: 0xF,
+            IDCODE: 0xE,
+            SAMPLE_PRELOAD: 0x2,
+            EXTEST: 0x0,
+            USERCODE: 0xC
         };
-        
+
         // DOM elements
         const connectButton = document.getElementById('connectButton');
         const disconnectButton = document.getElementById('disconnectButton');
@@ -234,19 +254,18 @@
         const bypassButton = document.getElementById('bypassButton');
         const programButton = document.getElementById('programButton');
         const svfFileInput = document.getElementById('svfFile');
-        
         const connectionStatus = document.getElementById('connectionStatus');
         const jtagResult = document.getElementById('jtagResult');
         const fileInfo = document.getElementById('fileInfo');
         const statusDiv = document.getElementById('status');
         const commandLog = document.getElementById('commandLog');
         const progressBarFill = document.getElementById('progressBarFill');
-        
+
         // Global variables
         let usbDevice = null;
         let svfFileContent = null;
         let currentJtagState = JTAG_STATES.TEST_LOGIC_RESET;
-        
+
         // Log messages to console and UI
         function logMessage(message, type = 'info') {
             const timestamp = new Date().toISOString().substr(11, 12);
@@ -260,49 +279,62 @@
                 console.log(message);
             }
         }
-        
+
         // Update status display
         function updateStatus(message, type = 'info') {
             statusDiv.textContent = message;
             statusDiv.className = `status-${type}`;
             logMessage(message, type);
         }
-        
+
         // Convert hex string to byte array
         function hexToBytes(hex) {
             const bytes = [];
-            for (let i = 0; i < hex.length; i += 2) {
-                bytes.push(parseInt(hex.substr(i, 2), 16));
+            // Remove 0x prefix if present
+            const cleanHex = hex.startsWith('0x') ? hex.substring(2) : hex;
+            // Pad with zero if odd length
+            const paddedHex = cleanHex.length % 2 ? '0' + cleanHex : cleanHex;
+            
+            for (let i = 0; i < paddedHex.length; i += 2) {
+                bytes.push(parseInt(paddedHex.substr(i, 2), 16));
             }
             return bytes;
         }
-        
+
         // Convert byte array to hex string
         function bytesToHex(bytes) {
             return Array.from(bytes, byte => 
-                byte.toString(16).padStart(2, '0')
+                byte.toString(16).padStart(2, '0').toUpperCase()
             ).join(' ');
         }
-        
+
         // Send command to USB Blaster
         async function sendUsbBlasterCommand(data) {
             if (!usbDevice) {
                 throw new Error('USB device not connected');
             }
-            
-            // USB Blaster expects 4-byte packets
-            const packet = new Uint8Array(4);
-            packet.set(data.slice(0, 4));
-            
+
+            // Ensure interface is claimed
+            if (!usbDevice.configuration.interfaces[INTERFACE_NUMBER].claimed) {
+                await usbDevice.claimInterface(INTERFACE_NUMBER);
+            }
+
+            // Create 64-byte packet (USB Blaster expects fixed size)
+            const packet = new Uint8Array(PACKET_SIZE);
+            // Copy data into packet (truncate if too long)
+            const length = Math.min(data.length, PACKET_SIZE);
+            packet.set(new Uint8Array(data).slice(0, length));
+
             try {
-                await usbDevice.transferOut(EP_OUT, packet);
-                logMessage(`Sent: ${bytesToHex(packet)}`);
+                const result = await usbDevice.transferOut(ENDPOINT_OUT, packet);
+                logMessage(`Sent ${result.bytesWritten} bytes: ${bytesToHex(packet.slice(0, length))}`);
+                return result;
             } catch (error) {
-                logMessage(`Failed to send command: ${error.message}`, 'error');
+                logMessage(`Transfer failed: ${error.message}`, 'error');
                 throw error;
             }
         }
-        
+
         // JTAG TAP state transitions
         async function jtagGotoState(targetState) {
             const stateTransitions = {
@@ -336,13 +368,22 @@
             currentJtagState = targetState;
             logMessage(`JTAG state: ${Object.keys(JTAG_STATES).find(k => JTAG_STATES[k] === currentJtagState)}`);
         }
-        
-        // Single JTAG clock cycle
-        async function jtagClock(tms, tdi) {
-            const cmd = new Uint8Array([(tms ? 0x01 : 0x00) | (tdi ? 0x02 : 0x00)]);
-            await sendUsbBlasterCommand(cmd);
+
+        // Single JTAG clock cycle with USB Blaster protocol
+        async function jtagClock(tms, tdi, tdoCapture = false) {
+            // USB Blaster JTAG command format:
+            // Byte 0: Command (0x01 for JTAG_IO)
+            // Byte 1: TMS (bit 0) | TDI (bit 1) | READ (bit 5)
+            const cmd = [
+                0x01, // JTAG_IO command
+                (tms ? 0x01 : 0x00) | (tdi ? 0x02 : 0x00) | (tdoCapture ? 0x20 : 0x00),
+                0x00, // Dummy byte
+                0x00  // Dummy byte
+            ];
+            
+            return await sendUsbBlasterCommand(cmd);
         }
-        
+
         // Shift data through JTAG
         async function jtagShift(data, numBits, isIr = false) {
             const startState = isIr ? JTAG_STATES.SHIFT_IR : JTAG_STATES.SHIFT_DR;
@@ -365,15 +406,28 @@
             await jtagClock(1, bits[numBits] || 0); // TMS=1 to exit
             await jtagGotoState(JTAG_STATES.RUN_TEST_IDLE);
         }
-        
+
         // Reset JTAG TAP controller
         async function jtagReset() {
-            logMessage('Resetting JTAG TAP controller...');
-            await jtagGotoState(JTAG_STATES.TEST_LOGIC_RESET);
-            await jtagGotoState(JTAG_STATES.RUN_TEST_IDLE);
-            updateStatus('JTAG TAP controller reset', 'success');
+            try {
+                logMessage('Initializing JTAG chain...');
+                
+                // 1. Initialize USB Blaster
+                await sendUsbBlasterCommand([0x00, 0x01]); // INIT command
+                
+                // 2. Reset JTAG TAP controller
+                await jtagGotoState(JTAG_STATES.TEST_LOGIC_RESET);
+                
+                // 3. Set default state
+                await jtagGotoState(JTAG_STATES.RUN_TEST_IDLE);
+                
+                updateStatus('JTAG chain initialized', 'success');
+            } catch (error) {
+                updateStatus(`JTAG initialization failed: ${error.message}`, 'error');
+                throw error;
+            }
         }
-        
+
         // Read IDCODE from device
         async function jtagReadIdcode() {
             try {
@@ -398,7 +452,7 @@
                 updateStatus(`IDCODE read failed: ${error.message}`, 'error');
             }
         }
-        
+
         // Test BYPASS instruction
         async function jtagTestBypass() {
             try {
@@ -420,33 +474,41 @@
                 updateStatus(`BYPASS test failed: ${error.message}`, 'error');
             }
         }
-        
+
         // Connect to USB Blaster
         async function connectUsbBlaster() {
             try {
                 updateStatus('Requesting USB device...');
                 
                 usbDevice = await navigator.usb.requestDevice({
-                    filters: [{ vendorId: USB_BLASTER_VID, productId: USB_BLASTER_PID }]
+                    filters: [{
+                        vendorId: USB_BLASTER_VID,
+                        productId: USB_BLASTER_PID,
+                        interfaceClass: 0xFF // Vendor-specific class
+                    }]
                 });
-                
+
                 updateStatus('Opening device...');
                 await usbDevice.open();
-                
+
+                // Select configuration (USB Blaster typically uses config 1)
                 if (usbDevice.configuration === null) {
                     await usbDevice.selectConfiguration(1);
                 }
-                
-                // Try to claim interface
+
+                // Claim the interface (required before any transfers)
                 try {
-                    await usbDevice.claimInterface(0);
+                    await usbDevice.claimInterface(INTERFACE_NUMBER);
                 } catch (error) {
                     updateStatus('Interface busy, resetting device...');
                     await usbDevice.reset();
                     await new Promise(resolve => setTimeout(resolve, 1000));
-                    await usbDevice.claimInterface(0);
+                    await usbDevice.claimInterface(INTERFACE_NUMBER);
                 }
-                
+
+                // Initialize USB Blaster
+                await sendUsbBlasterCommand([0x00, 0x01]); // INIT command
+
                 connectionStatus.textContent = `Connected to: ${usbDevice.productName || 'USB Blaster'}`;
                 connectButton.disabled = true;
                 disconnectButton.disabled = false;
@@ -454,20 +516,25 @@
                 idcodeButton.disabled = false;
                 bypassButton.disabled = false;
                 svfFileInput.disabled = false;
-                
+
                 updateStatus('USB Blaster connected. Initialize JTAG chain...', 'success');
                 await jtagReset();
             } catch (error) {
                 updateStatus(`Connection failed: ${error.message}`, 'error');
-                usbDevice = null;
+                if (usbDevice) {
+                    try {
+                        await usbDevice.close();
+                    } catch (e) {}
+                    usbDevice = null;
+                }
             }
         }
-        
+
         // Disconnect USB Blaster
         async function disconnectUsbBlaster() {
             try {
                 if (usbDevice) {
-                    await usbDevice.releaseInterface(0);
+                    await usbDevice.releaseInterface(INTERFACE_NUMBER);
                     await usbDevice.close();
                     usbDevice = null;
                 }
@@ -486,7 +553,7 @@
                 updateStatus(`Disconnect failed: ${error.message}`, 'error');
             }
         }
-        
+
         // Handle SVF file selection
         svfFileInput.addEventListener('change', async (event) => {
             const file = event.target.files[0];
@@ -505,7 +572,7 @@
             };
             reader.readAsText(file);
         });
-        
+
         // Program device with SVF
         programButton.addEventListener('click', async () => {
             if (!usbDevice || !svfFileContent) {
@@ -536,6 +603,8 @@
                         await handleSvfSdrCommand(cmd);
                     } else if (cmd.includes('STATE')) {
                         await handleSvfStateCommand(cmd);
+                    } else if (cmd.includes('RUNTEST')) {
+                        await handleSvfRuntestCommand(cmd);
                     }
                     
                     updateStatus(`Processing SVF: ${progress}% complete`, 'info');
@@ -549,28 +618,28 @@
                 programButton.disabled = false;
             }
         });
-        
+
         // Simplified SVF command handlers
         async function handleSvfSirCommand(cmd) {
             const match = cmd.match(/SIR\s+(\d+)\s+TDI\s*\(([0-9A-Fa-fxX]+)\)/);
             if (match) {
                 const length = parseInt(match[1]);
-                const tdi = hexToBytes(match[2].replace(/^0x/, ''));
+                const tdi = hexToBytes(match[2]);
                 await jtagShift(tdi, length, true);
                 logMessage(`Executed SIR: ${cmd}`);
             }
         }
-        
+
         async function handleSvfSdrCommand(cmd) {
             const match = cmd.match(/SDR\s+(\d+)\s+TDI\s*\(([0-9A-Fa-fxX]+)\)/);
             if (match) {
                 const length = parseInt(match[1]);
-                const tdi = hexToBytes(match[2].replace(/^0x/, ''));
+                const tdi = hexToBytes(match[2]);
                 await jtagShift(tdi, length, false);
                 logMessage(`Executed SDR: ${cmd}`);
             }
         }
-        
+
         async function handleSvfStateCommand(cmd) {
             const state = cmd.match(/STATE\s+([A-Z_]+)/)[1];
             const jtagState = Object.keys(JTAG_STATES).find(
@@ -582,7 +651,20 @@
                 logMessage(`Executed STATE: ${state}`);
             }
         }
-        
+
+        async function handleSvfRuntestCommand(cmd) {
+            const match = cmd.match(/RUNTEST\s+(\d+)/);
+            if (match) {
+                const cycles = parseInt(match[1]);
+                if (cycles > 0) {
+                    await jtagGotoState(JTAG_STATES.RUN_TEST_IDLE);
+                    // Simple delay - would need proper timing in real implementation
+                    await new Promise(resolve => setTimeout(resolve, cycles * 10));
+                    logMessage(`Executed RUNTEST: ${cycles} cycles`);
+                }
+            }
+        }
+
         // Event listeners
         connectButton.addEventListener('click', connectUsbBlaster);
         disconnectButton.addEventListener('click', disconnectUsbBlaster);
