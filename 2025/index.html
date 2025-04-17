@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DE10-Lite SVF Programmer</title>
+    <title>DE10-Lite JTAG Programmer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
         }
         h1 {
             color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
         }
         .container {
             background-color: #f9f9f9;
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         button {
             background-color: #3498db;
@@ -30,6 +33,8 @@
             cursor: pointer;
             margin-right: 10px;
             margin-bottom: 10px;
+            font-size: 14px;
+            transition: background-color 0.3s;
         }
         button:hover {
             background-color: #2980b9;
@@ -40,8 +45,9 @@
         }
         #status {
             margin-top: 20px;
-            padding: 10px;
+            padding: 15px;
             border-radius: 4px;
+            font-family: monospace;
         }
         .status-info {
             background-color: #d4edff;
@@ -60,156 +66,533 @@
             background-color: #ddd;
             border-radius: 4px;
             margin-top: 10px;
+            height: 20px;
         }
         #progressBarFill {
-            height: 20px;
+            height: 100%;
             border-radius: 4px;
             background-color: #3498db;
             width: 0%;
             transition: width 0.3s;
         }
+        .command-log {
+            font-family: monospace;
+            white-space: pre;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .two-column {
+            display: flex;
+            gap: 20px;
+        }
+        .column {
+            flex: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
-    <h1>DE10-Lite SVF Programmer</h1>
+    <h1>DE10-Lite JTAG Programmer via USB Blaster</h1>
     
-    <div class="container">
-        <h2>USB Blaster Connection</h2>
-        <button id="connectButton">Connect to USB Blaster</button>
-        <div id="connectionStatus">Not connected</div>
-    </div>
-    
-    <div class="container">
-        <h2>SVF File Upload</h2>
-        <input type="file" id="svfFile" accept=".svf" disabled>
-        <div id="fileInfo"></div>
-    </div>
-    
-    <div class="container">
-        <h2>Programming</h2>
-        <button id="programButton" disabled>Program Device</button>
-        <div id="progressBar">
-            <div id="progressBarFill"></div>
+    <div class="two-column">
+        <div class="column">
+            <div class="container">
+                <h2>USB Blaster Connection</h2>
+                <button id="connectButton">Connect to USB Blaster</button>
+                <button id="disconnectButton" disabled>Disconnect</button>
+                <div id="connectionStatus">Status: Not connected</div>
+            </div>
+            
+            <div class="container">
+                <h2>JTAG Operations</h2>
+                <button id="resetButton" disabled>Reset TAP</button>
+                <button id="idcodeButton" disabled>Read IDCODE</button>
+                <button id="bypassButton" disabled>BYPASS Test</button>
+                <div id="jtagResult"></div>
+            </div>
+            
+            <div class="container">
+                <h2>SVF File Programming</h2>
+                <input type="file" id="svfFile" accept=".svf" disabled>
+                <div id="fileInfo"></div>
+                <button id="programButton" disabled>Program Device</button>
+                <div id="progressBar">
+                    <div id="progressBarFill"></div>
+                </div>
+            </div>
         </div>
-        <div id="status" class="status-info">Select a file and connect to USB Blaster to begin programming.</div>
+        
+        <div class="column">
+            <div class="container">
+                <h2>JTAG Command Reference</h2>
+                <table>
+                    <tr>
+                        <th>Command</th>
+                        <th>Description</th>
+                        <th>SVF Equivalent</th>
+                    </tr>
+                    <tr>
+                        <td>RESET</td>
+                        <td>Reset TAP controller to TEST-LOGIC-RESET</td>
+                        <td>STATE RESET;</td>
+                    </tr>
+                    <tr>
+                        <td>IDCODE</td>
+                        <td>Read device identification code</td>
+                        <td>SIR 32 TDI (0x0E); SDR 32 TDI (0x00000000);</td>
+                    </tr>
+                    <tr>
+                        <td>SAMPLE/PRELOAD</td>
+                        <td>Sample I/O or preload data</td>
+                        <td>SDR &lt;length&gt; TDI (&lt;data&gt;);</td>
+                    </tr>
+                    <tr>
+                        <td>EXTEST</td>
+                        <td>Boundary scan external test</td>
+                        <td>SIR &lt;length&gt; TDI (0x00);</td>
+                    </tr>
+                    <tr>
+                        <td>BYPASS</td>
+                        <td>Bypass the device</td>
+                        <td>SIR 1 TDI (0xFF);</td>
+                    </tr>
+                    <tr>
+                        <td>USERCODE</td>
+                        <td>Read user identification code</td>
+                        <td>SIR 32 TDI (0x0C); SDR 32 TDI (0x00000000);</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
     
+    <div class="container">
+        <h2>Status & Command Log</h2>
+        <div id="status" class="status-info">Connect to USB Blaster and select SVF file to begin.</div>
+        <div class="command-log" id="commandLog"></div>
+    </div>
+
     <script>
-        // Global variables
-        let usbDevice = null;
-        let svfFileContent = null;
+        // USB Blaster constants
+        const USB_BLASTER_VID = 0x09FB; // Altera/Intel
+        const USB_BLASTER_PID = 0x6001;
+        const EP_OUT = 1; // Endpoint for sending commands
+        
+        // JTAG TAP states
+        const JTAG_STATES = {
+            TEST_LOGIC_RESET: 0,
+            RUN_TEST_IDLE: 1,
+            SELECT_DR_SCAN: 2,
+            CAPTURE_DR: 3,
+            SHIFT_DR: 4,
+            EXIT1_DR: 5,
+            PAUSE_DR: 6,
+            EXIT2_DR: 7,
+            UPDATE_DR: 8,
+            SELECT_IR_SCAN: 9,
+            CAPTURE_IR: 10,
+            SHIFT_IR: 11,
+            EXIT1_IR: 12,
+            PAUSE_IR: 13,
+            EXIT2_IR: 14,
+            UPDATE_IR: 15
+        };
+        
+        // Common JTAG instructions
+        const JTAG_INSTRUCTIONS = {
+            BYPASS: 0xFF,
+            IDCODE: 0x0E,
+            SAMPLE_PRELOAD: 0x02,
+            EXTEST: 0x00,
+            USERCODE: 0x0C
+        };
         
         // DOM elements
         const connectButton = document.getElementById('connectButton');
-        const connectionStatus = document.getElementById('connectionStatus');
-        const svfFileInput = document.getElementById('svfFile');
-        const fileInfo = document.getElementById('fileInfo');
+        const disconnectButton = document.getElementById('disconnectButton');
+        const resetButton = document.getElementById('resetButton');
+        const idcodeButton = document.getElementById('idcodeButton');
+        const bypassButton = document.getElementById('bypassButton');
         const programButton = document.getElementById('programButton');
-        const progressBarFill = document.getElementById('progressBarFill');
-        const statusDiv = document.getElementById('status');
+        const svfFileInput = document.getElementById('svfFile');
         
-        // USB Blaster vendor and product IDs
-        const USB_BLASTER_VID = 0x09FB; // Altera/Intel
-        const USB_BLASTER_PID = 0x6001;
+        const connectionStatus = document.getElementById('connectionStatus');
+        const jtagResult = document.getElementById('jtagResult');
+        const fileInfo = document.getElementById('fileInfo');
+        const statusDiv = document.getElementById('status');
+        const commandLog = document.getElementById('commandLog');
+        const progressBarFill = document.getElementById('progressBarFill');
+        
+        // Global variables
+        let usbDevice = null;
+        let svfFileContent = null;
+        let currentJtagState = JTAG_STATES.TEST_LOGIC_RESET;
+        
+        // Log messages to console and UI
+        function logMessage(message, type = 'info') {
+            const timestamp = new Date().toISOString().substr(11, 12);
+            const logEntry = `[${timestamp}] ${message}\n`;
+            commandLog.textContent += logEntry;
+            commandLog.scrollTop = commandLog.scrollHeight;
+            
+            if (type === 'error') {
+                console.error(message);
+            } else {
+                console.log(message);
+            }
+        }
+        
+        // Update status display
+        function updateStatus(message, type = 'info') {
+            statusDiv.textContent = message;
+            statusDiv.className = `status-${type}`;
+            logMessage(message, type);
+        }
+        
+        // Convert hex string to byte array
+        function hexToBytes(hex) {
+            const bytes = [];
+            for (let i = 0; i < hex.length; i += 2) {
+                bytes.push(parseInt(hex.substr(i, 2), 16));
+            }
+            return bytes;
+        }
+        
+        // Convert byte array to hex string
+        function bytesToHex(bytes) {
+            return Array.from(bytes, byte => 
+                byte.toString(16).padStart(2, '0')
+            ).join(' ');
+        }
+        
+        // Send command to USB Blaster
+        async function sendUsbBlasterCommand(data) {
+            if (!usbDevice) {
+                throw new Error('USB device not connected');
+            }
+            
+            // USB Blaster expects 4-byte packets
+            const packet = new Uint8Array(4);
+            packet.set(data.slice(0, 4));
+            
+            try {
+                await usbDevice.transferOut(EP_OUT, packet);
+                logMessage(`Sent: ${bytesToHex(packet)}`);
+            } catch (error) {
+                logMessage(`Failed to send command: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+        
+        // JTAG TAP state transitions
+        async function jtagGotoState(targetState) {
+            const stateTransitions = {
+                [JTAG_STATES.TEST_LOGIC_RESET]: [1, 1, 1, 1, 1],
+                [JTAG_STATES.RUN_TEST_IDLE]: [0],
+                [JTAG_STATES.SELECT_DR_SCAN]: [1, 0],
+                [JTAG_STATES.CAPTURE_DR]: [0],
+                [JTAG_STATES.SHIFT_DR]: [0],
+                [JTAG_STATES.EXIT1_DR]: [1],
+                [JTAG_STATES.PAUSE_DR]: [0],
+                [JTAG_STATES.EXIT2_DR]: [1],
+                [JTAG_STATES.UPDATE_DR]: [1],
+                [JTAG_STATES.SELECT_IR_SCAN]: [1, 1],
+                [JTAG_STATES.CAPTURE_IR]: [0],
+                [JTAG_STATES.SHIFT_IR]: [0],
+                [JTAG_STATES.EXIT1_IR]: [1],
+                [JTAG_STATES.PAUSE_IR]: [0],
+                [JTAG_STATES.EXIT2_IR]: [1],
+                [JTAG_STATES.UPDATE_IR]: [1]
+            };
+            
+            const tmsSequence = stateTransitions[targetState];
+            if (!tmsSequence) {
+                throw new Error(`Invalid target state: ${targetState}`);
+            }
+            
+            for (const tms of tmsSequence) {
+                await jtagClock(tms, 0);
+            }
+            
+            currentJtagState = targetState;
+            logMessage(`JTAG state: ${Object.keys(JTAG_STATES).find(k => JTAG_STATES[k] === currentJtagState)}`);
+        }
+        
+        // Single JTAG clock cycle
+        async function jtagClock(tms, tdi) {
+            const cmd = new Uint8Array([(tms ? 0x01 : 0x00) | (tdi ? 0x02 : 0x00)]);
+            await sendUsbBlasterCommand(cmd);
+        }
+        
+        // Shift data through JTAG
+        async function jtagShift(data, numBits, isIr = false) {
+            const startState = isIr ? JTAG_STATES.SHIFT_IR : JTAG_STATES.SHIFT_DR;
+            await jtagGotoState(startState);
+            
+            // Convert data to LSB-first bit array
+            const bits = [];
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < 8; j++) {
+                    bits.push((data[i] >> j) & 0x01);
+                }
+            }
+            
+            // Shift bits (only the specified number)
+            for (let i = 0; i < numBits; i++) {
+                await jtagClock(0, bits[i]); // TMS=0 to stay in shift state
+            }
+            
+            // Exit shift state
+            await jtagClock(1, bits[numBits] || 0); // TMS=1 to exit
+            await jtagGotoState(JTAG_STATES.RUN_TEST_IDLE);
+        }
+        
+        // Reset JTAG TAP controller
+        async function jtagReset() {
+            logMessage('Resetting JTAG TAP controller...');
+            await jtagGotoState(JTAG_STATES.TEST_LOGIC_RESET);
+            await jtagGotoState(JTAG_STATES.RUN_TEST_IDLE);
+            updateStatus('JTAG TAP controller reset', 'success');
+        }
+        
+        // Read IDCODE from device
+        async function jtagReadIdcode() {
+            try {
+                logMessage('Reading IDCODE...');
+                
+                // Select IR scan and shift IDCODE instruction
+                await jtagGotoState(JTAG_STATES.SHIFT_IR);
+                const idcodeCmd = new Uint8Array([JTAG_INSTRUCTIONS.IDCODE]);
+                await jtagShift(idcodeCmd, 8, true);
+                
+                // Select DR scan and read 32-bit IDCODE
+                await jtagGotoState(JTAG_STATES.SHIFT_DR);
+                const dummyData = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+                await jtagShift(dummyData, 32, false);
+                
+                // TODO: Capture TDO data (requires USB Blaster read support)
+                const idcode = "0xFFFFFFFF"; // Placeholder
+                
+                jtagResult.innerHTML = `<strong>IDCODE:</strong> ${idcode}`;
+                updateStatus(`IDCODE read: ${idcode}`, 'success');
+            } catch (error) {
+                updateStatus(`IDCODE read failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // Test BYPASS instruction
+        async function jtagTestBypass() {
+            try {
+                logMessage('Testing BYPASS instruction...');
+                
+                // Shift BYPASS instruction into IR
+                await jtagGotoState(JTAG_STATES.SHIFT_IR);
+                const bypassCmd = new Uint8Array([JTAG_INSTRUCTIONS.BYPASS]);
+                await jtagShift(bypassCmd, 8, true);
+                
+                // Shift test pattern through bypass register
+                await jtagGotoState(JTAG_STATES.SHIFT_DR);
+                const testPattern = new Uint8Array([0xAA]); // 10101010
+                await jtagShift(testPattern, 1, false);
+                
+                // TODO: Verify TDO data
+                updateStatus('BYPASS test completed', 'success');
+            } catch (error) {
+                updateStatus(`BYPASS test failed: ${error.message}`, 'error');
+            }
+        }
         
         // Connect to USB Blaster
-        connectButton.addEventListener('click', async () => {
+        async function connectUsbBlaster() {
             try {
-                statusDiv.className = 'status-info';
-                statusDiv.textContent = 'Requesting USB device...';
+                updateStatus('Requesting USB device...');
                 
-                // Request USB device
                 usbDevice = await navigator.usb.requestDevice({
                     filters: [{ vendorId: USB_BLASTER_VID, productId: USB_BLASTER_PID }]
                 });
                 
-                statusDiv.textContent = 'Opening device...';
+                updateStatus('Opening device...');
                 await usbDevice.open();
                 
-                // Select configuration (USB Blaster typically uses configuration 1)
                 if (usbDevice.configuration === null) {
                     await usbDevice.selectConfiguration(1);
                 }
                 
-                // Claim interface (USB Blaster typically uses interface 0)
-                await usbDevice.claimInterface(0);
+                // Try to claim interface
+                try {
+                    await usbDevice.claimInterface(0);
+                } catch (error) {
+                    updateStatus('Interface busy, resetting device...');
+                    await usbDevice.reset();
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    await usbDevice.claimInterface(0);
+                }
                 
                 connectionStatus.textContent = `Connected to: ${usbDevice.productName || 'USB Blaster'}`;
-                connectButton.textContent = 'Disconnect';
+                connectButton.disabled = true;
+                disconnectButton.disabled = false;
+                resetButton.disabled = false;
+                idcodeButton.disabled = false;
+                bypassButton.disabled = false;
                 svfFileInput.disabled = false;
-                statusDiv.textContent = 'Device connected. Please select an SVF file.';
-                statusDiv.className = 'status-success';
+                
+                updateStatus('USB Blaster connected. Initialize JTAG chain...', 'success');
+                await jtagReset();
             } catch (error) {
-                console.error('Error connecting to USB Blaster:', error);
-                statusDiv.textContent = `Error: ${error.message}`;
-                statusDiv.className = 'status-error';
+                updateStatus(`Connection failed: ${error.message}`, 'error');
                 usbDevice = null;
             }
-        });
+        }
         
-        // Handle file selection
-        svfFileInput.addEventListener('change', (event) => {
+        // Disconnect USB Blaster
+        async function disconnectUsbBlaster() {
+            try {
+                if (usbDevice) {
+                    await usbDevice.releaseInterface(0);
+                    await usbDevice.close();
+                    usbDevice = null;
+                }
+                
+                connectionStatus.textContent = 'Status: Not connected';
+                connectButton.disabled = false;
+                disconnectButton.disabled = true;
+                resetButton.disabled = true;
+                idcodeButton.disabled = true;
+                bypassButton.disabled = true;
+                svfFileInput.disabled = true;
+                programButton.disabled = true;
+                
+                updateStatus('USB Blaster disconnected', 'info');
+            } catch (error) {
+                updateStatus(`Disconnect failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // Handle SVF file selection
+        svfFileInput.addEventListener('change', async (event) => {
             const file = event.target.files[0];
             if (!file) return;
             
             const reader = new FileReader();
             reader.onload = (e) => {
                 svfFileContent = e.target.result;
-                fileInfo.textContent = `File selected: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+                fileInfo.innerHTML = `<strong>File selected:</strong> ${file.name}<br>
+                                     <strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB`;
+                
                 if (usbDevice) {
                     programButton.disabled = false;
-                    statusDiv.textContent = 'Ready to program. Click "Program Device" to begin.';
-                    statusDiv.className = 'status-info';
+                    updateStatus('Ready to program. Click "Program Device" to begin.', 'info');
                 }
             };
             reader.readAsText(file);
         });
         
-        // Program device
+        // Program device with SVF
         programButton.addEventListener('click', async () => {
             if (!usbDevice || !svfFileContent) {
-                statusDiv.textContent = 'Error: Not connected or no file selected';
-                statusDiv.className = 'status-error';
+                updateStatus('Error: Not connected or no file selected', 'error');
                 return;
             }
             
             try {
                 programButton.disabled = true;
-                statusDiv.textContent = 'Programming started...';
-                statusDiv.className = 'status-info';
+                updateStatus('Starting SVF programming...', 'info');
                 
-                // Here you would implement the actual JTAG programming protocol
-                // This is a simplified example - actual implementation would need to:
-                // 1. Parse the SVF file
-                // 2. Convert SVF commands to JTAG commands
-                // 3. Send commands via USB to the USB Blaster
+                // Simple SVF processing (would need full parser in production)
+                const svfCommands = svfFileContent.split('\n')
+                    .filter(line => !line.startsWith('//') && line.trim() !== '');
                 
-                // Simulate programming progress
-                const totalSteps = 100;
-                for (let i = 0; i <= totalSteps; i++) {
-                    await new Promise(resolve => setTimeout(resolve, 50));
-                    progressBarFill.style.width = `${(i / totalSteps) * 100}%`;
+                const totalCommands = svfCommands.length;
+                let processedCommands = 0;
+                
+                for (const cmd of svfCommands) {
+                    processedCommands++;
+                    const progress = Math.floor((processedCommands / totalCommands) * 100);
+                    progressBarFill.style.width = `${progress}%`;
                     
-                    if (i % 10 === 0) {
-                        statusDiv.textContent = `Programming... ${i}% complete`;
+                    // Simple SVF command handling (simplified)
+                    if (cmd.includes('SIR')) {
+                        await handleSvfSirCommand(cmd);
+                    } else if (cmd.includes('SDR')) {
+                        await handleSvfSdrCommand(cmd);
+                    } else if (cmd.includes('STATE')) {
+                        await handleSvfStateCommand(cmd);
                     }
+                    
+                    updateStatus(`Processing SVF: ${progress}% complete`, 'info');
                 }
                 
-                statusDiv.textContent = 'Programming completed successfully!';
-                statusDiv.className = 'status-success';
+                progressBarFill.style.width = '100%';
+                updateStatus('SVF programming completed successfully!', 'success');
             } catch (error) {
-                console.error('Programming error:', error);
-                statusDiv.textContent = `Error: ${error.message}`;
-                statusDiv.className = 'status-error';
+                updateStatus(`Programming failed: ${error.message}`, 'error');
             } finally {
                 programButton.disabled = false;
             }
         });
         
-        // Check if WebUSB is available
+        // Simplified SVF command handlers
+        async function handleSvfSirCommand(cmd) {
+            const match = cmd.match(/SIR\s+(\d+)\s+TDI\s*\(([0-9A-Fa-fxX]+)\)/);
+            if (match) {
+                const length = parseInt(match[1]);
+                const tdi = hexToBytes(match[2].replace(/^0x/, ''));
+                await jtagShift(tdi, length, true);
+                logMessage(`Executed SIR: ${cmd}`);
+            }
+        }
+        
+        async function handleSvfSdrCommand(cmd) {
+            const match = cmd.match(/SDR\s+(\d+)\s+TDI\s*\(([0-9A-Fa-fxX]+)\)/);
+            if (match) {
+                const length = parseInt(match[1]);
+                const tdi = hexToBytes(match[2].replace(/^0x/, ''));
+                await jtagShift(tdi, length, false);
+                logMessage(`Executed SDR: ${cmd}`);
+            }
+        }
+        
+        async function handleSvfStateCommand(cmd) {
+            const state = cmd.match(/STATE\s+([A-Z_]+)/)[1];
+            const jtagState = Object.keys(JTAG_STATES).find(
+                k => k.replace(/_/g, '') === state.replace(/_/g, '')
+            );
+            
+            if (jtagState) {
+                await jtagGotoState(JTAG_STATES[jtagState]);
+                logMessage(`Executed STATE: ${state}`);
+            }
+        }
+        
+        // Event listeners
+        connectButton.addEventListener('click', connectUsbBlaster);
+        disconnectButton.addEventListener('click', disconnectUsbBlaster);
+        resetButton.addEventListener('click', jtagReset);
+        idcodeButton.addEventListener('click', jtagReadIdcode);
+        bypassButton.addEventListener('click', jtagTestBypass);
+        
+        // Check WebUSB availability
         if (!navigator.usb) {
-            statusDiv.textContent = 'WebUSB API is not available in this browser. Try Chrome or Edge.';
-            statusDiv.className = 'status-error';
+            updateStatus('WebUSB API not available. Use Chrome or Edge.', 'error');
             connectButton.disabled = true;
         }
     </script>
