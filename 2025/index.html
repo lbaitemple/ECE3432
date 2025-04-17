@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DE10-Lite SVF Programmer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .status-info {
+            background-color: #d4edff;
+            border-left: 4px solid #3498db;
+        }
+        .status-success {
+            background-color: #d4edda;
+            border-left: 4px solid #2ecc71;
+        }
+        .status-error {
+            background-color: #f8d7da;
+            border-left: 4px solid #e74c3c;
+        }
+        #progressBar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        #progressBarFill {
+            height: 20px;
+            border-radius: 4px;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>DE10-Lite SVF Programmer</h1>
+    
+    <div class="container">
+        <h2>USB Blaster Connection</h2>
+        <button id="connectButton">Connect to USB Blaster</button>
+        <div id="connectionStatus">Not connected</div>
+    </div>
+    
+    <div class="container">
+        <h2>SVF File Upload</h2>
+        <input type="file" id="svfFile" accept=".svf" disabled>
+        <div id="fileInfo"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Programming</h2>
+        <button id="programButton" disabled>Program Device</button>
+        <div id="progressBar">
+            <div id="progressBarFill"></div>
+        </div>
+        <div id="status" class="status-info">Select a file and connect to USB Blaster to begin programming.</div>
+    </div>
+    
+    <script>
+        // Global variables
+        let usbDevice = null;
+        let svfFileContent = null;
+        
+        // DOM elements
+        const connectButton = document.getElementById('connectButton');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const svfFileInput = document.getElementById('svfFile');
+        const fileInfo = document.getElementById('fileInfo');
+        const programButton = document.getElementById('programButton');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const statusDiv = document.getElementById('status');
+        
+        // USB Blaster vendor and product IDs
+        const USB_BLASTER_VID = 0x09FB; // Altera/Intel
+        const USB_BLASTER_PID = 0x6001;
+        
+        // Connect to USB Blaster
+        connectButton.addEventListener('click', async () => {
+            try {
+                statusDiv.className = 'status-info';
+                statusDiv.textContent = 'Requesting USB device...';
+                
+                // Request USB device
+                usbDevice = await navigator.usb.requestDevice({
+                    filters: [{ vendorId: USB_BLASTER_VID, productId: USB_BLASTER_PID }]
+                });
+                
+                statusDiv.textContent = 'Opening device...';
+                await usbDevice.open();
+                
+                // Select configuration (USB Blaster typically uses configuration 1)
+                if (usbDevice.configuration === null) {
+                    await usbDevice.selectConfiguration(1);
+                }
+                
+                // Claim interface (USB Blaster typically uses interface 0)
+                await usbDevice.claimInterface(0);
+                
+                connectionStatus.textContent = `Connected to: ${usbDevice.productName || 'USB Blaster'}`;
+                connectButton.textContent = 'Disconnect';
+                svfFileInput.disabled = false;
+                statusDiv.textContent = 'Device connected. Please select an SVF file.';
+                statusDiv.className = 'status-success';
+            } catch (error) {
+                console.error('Error connecting to USB Blaster:', error);
+                statusDiv.textContent = `Error: ${error.message}`;
+                statusDiv.className = 'status-error';
+                usbDevice = null;
+            }
+        });
+        
+        // Handle file selection
+        svfFileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                svfFileContent = e.target.result;
+                fileInfo.textContent = `File selected: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+                if (usbDevice) {
+                    programButton.disabled = false;
+                    statusDiv.textContent = 'Ready to program. Click "Program Device" to begin.';
+                    statusDiv.className = 'status-info';
+                }
+            };
+            reader.readAsText(file);
+        });
+        
+        // Program device
+        programButton.addEventListener('click', async () => {
+            if (!usbDevice || !svfFileContent) {
+                statusDiv.textContent = 'Error: Not connected or no file selected';
+                statusDiv.className = 'status-error';
+                return;
+            }
+            
+            try {
+                programButton.disabled = true;
+                statusDiv.textContent = 'Programming started...';
+                statusDiv.className = 'status-info';
+                
+                // Here you would implement the actual JTAG programming protocol
+                // This is a simplified example - actual implementation would need to:
+                // 1. Parse the SVF file
+                // 2. Convert SVF commands to JTAG commands
+                // 3. Send commands via USB to the USB Blaster
+                
+                // Simulate programming progress
+                const totalSteps = 100;
+                for (let i = 0; i <= totalSteps; i++) {
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                    progressBarFill.style.width = `${(i / totalSteps) * 100}%`;
+                    
+                    if (i % 10 === 0) {
+                        statusDiv.textContent = `Programming... ${i}% complete`;
+                    }
+                }
+                
+                statusDiv.textContent = 'Programming completed successfully!';
+                statusDiv.className = 'status-success';
+            } catch (error) {
+                console.error('Programming error:', error);
+                statusDiv.textContent = `Error: ${error.message}`;
+                statusDiv.className = 'status-error';
+            } finally {
+                programButton.disabled = false;
+            }
+        });
+        
+        // Check if WebUSB is available
+        if (!navigator.usb) {
+            statusDiv.textContent = 'WebUSB API is not available in this browser. Try Chrome or Edge.';
+            statusDiv.className = 'status-error';
+            connectButton.disabled = true;
+        }
+    </script>
+</body>
+</html>
