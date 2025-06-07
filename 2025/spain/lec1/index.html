@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Li Bai">
-  <meta name="dcterms.date" content="2025-05-27">
+  <meta name="dcterms.date" content="2025-06-03">
   <title>Robot Control using Raspberry Pi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -419,7 +419,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Robot Control using Raspberry Pi</h1>
-  <p class="subtitle">Week 1 - Course Set Up Essentials</p>
+  <p class="subtitle">(Spain) Week 3 - Docker and Cloud Services</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -435,9 +435,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
     </div>
 </div>
 
-  <p class="date">May 27, 2025</p>
+  <p class="date">June 3, 2025</p>
 </section>
-<section id="sec-outline" class="slide level2">
+<section id="course-outline" class="slide level2">
 <h2>Course Outline</h2>
 <div class="cell" data-file="course_diagram.dot" data-layout-align="default">
 <div class="cell-output-display">
@@ -449,16 +449,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
-<g id="clust1" class="cluster">
-<title>cluster_system</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
-<text text-anchor="middle" x="142" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 1</text>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_ros</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
-<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_docker</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
@@ -469,10 +459,20 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
 <text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
 </g>
+<g id="clust1" class="cluster">
+<title>cluster_system</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
+<text text-anchor="middle" x="142" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 1</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_ros</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
+<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
+</g>
 <!-- kb1 -->
 <g id="node1" class="node">
 <title>kb1</title>
-<g id="a_node1"><a href="index.html#/sec-mangdang" title="Knowledge Block 1">
+<g id="a_node1"><a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/System" title="Knowledge Block 1">
 <path fill="#e27dd6" stroke="black" d="M256,-562C256,-562 28,-562 28,-562 22,-562 16,-556 16,-550 16,-550 16,-488 16,-488 16,-482 22,-476 28,-476 28,-476 256,-476 256,-476 262,-476 268,-482 268,-488 268,-488 268,-550 268,-550 268,-556 262,-562 256,-562"></path>
 <text text-anchor="middle" x="142" y="-511.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Knowledge Block 1</text>
 </a>
@@ -481,7 +481,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <!-- kb1m1 -->
 <g id="node2" class="node">
 <title>kb1m1</title>
-<g id="a_node2"><a href="index.html#/sec-flash" title="Minipupper Setup\nBoard Software Package\n Linux Basics">
+<g id="a_node2"><a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/System" title="Minipupper Setup\nBoard Software Package\n Linux Basics">
 <path fill="#61c2c5" stroke="black" d="M256,-447C256,-447 28,-447 28,-447 22,-447 16,-441 16,-435 16,-435 16,-373 16,-373 16,-367 22,-361 28,-361 28,-361 256,-361 256,-361 262,-361 268,-367 268,-373 268,-373 268,-435 268,-435 268,-441 262,-447 256,-447"></path>
 <text text-anchor="middle" x="142" y="-425.6" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Minipupper Setup</text>
 <text text-anchor="middle" x="142" y="-396.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Board Software Package</text>
@@ -498,12 +498,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <!-- kb1m2 -->
 <g id="node3" class="node">
 <title>kb1m2</title>
-<g id="a_node3"><a href="index.html#/sec_python" title="Python program\nModule &amp; Package">
 <ellipse fill="#d9e7ee" stroke="black" cx="142" cy="-289" rx="126" ry="43"></ellipse>
 <text text-anchor="middle" x="142" y="-296.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Python program</text>
 <text text-anchor="middle" x="142" y="-267.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Module &amp; Package</text>
-</a>
-</g>
 </g>
 <!-- kb1m1&#45;&gt;kb1m2 -->
 <g id="edge2" class="edge">
@@ -514,12 +511,9 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <!-- kb1m3 -->
 <g id="node4" class="node">
 <title>kb1m3</title>
-<g id="a_node4"><a href="index.html#/sec_jupy" title="Jupyter Lab \nStanford controller">
 <path fill="#b2d3e4" stroke="black" d="M256,-217C256,-217 28,-217 28,-217 22,-217 16,-211 16,-205 16,-205 16,-143 16,-143 16,-137 22,-131 28,-131 28,-131 256,-131 256,-131 262,-131 268,-137 268,-143 268,-143 268,-205 268,-205 268,-211 262,-217 256,-217"></path>
 <text text-anchor="middle" x="142" y="-181.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Jupyter Lab </text>
 <text text-anchor="middle" x="142" y="-152.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Stanford controller</text>
-</a>
-</g>
 </g>
 <!-- kb1m2&#45;&gt;kb1m3 -->
 <g id="edge3" class="edge">
@@ -530,11 +524,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <!-- kb1m4 -->
 <g id="node5" class="node">
 <title>kb1m4</title>
-<g id="a_node5"><a href="index.html#/sec_dance" title="Stanford Dance Routines">
 <path fill="#91b5c9" stroke="black" d="M268,-53.06C268,-53.06 268,-64.94 268,-64.94 268,-70.87 262.38,-78.73 256.76,-80.65 256.76,-80.65 205.43,-98.16 205.43,-98.16 199.81,-100.08 188.25,-102 182.32,-102 182.32,-102 101.68,-102 101.68,-102 95.75,-102 84.19,-100.08 78.57,-98.16 78.57,-98.16 27.24,-80.65 27.24,-80.65 21.62,-78.73 16,-70.87 16,-64.94 16,-64.94 16,-53.06 16,-53.06 16,-47.13 21.62,-39.27 27.24,-37.35 27.24,-37.35 78.57,-19.84 78.57,-19.84 84.19,-17.92 95.75,-16 101.68,-16 101.68,-16 182.32,-16 182.32,-16 188.25,-16 199.81,-17.92 205.43,-19.84 205.43,-19.84 256.76,-37.35 256.76,-37.35 262.38,-39.27 268,-47.13 268,-53.06"></path>
-<text text-anchor="middle" x="142" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Stanford Dance Routines</text>
-</a>
-</g>
+<text text-anchor="middle" x="142" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Dance Competitions</text>
 </g>
 <!-- kb1m3&#45;&gt;kb1m4 -->
 <g id="edge4" class="edge">
@@ -572,7 +563,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="node8" class="node">
 <title>kb2m2</title>
 <ellipse fill="#d9e7ee" stroke="black" cx="430" cy="-289" rx="126" ry="43"></ellipse>
-<text text-anchor="middle" x="430" y="-296.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">ROS2 pub/sub</text>
+<text text-anchor="middle" x="430" y="-296.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">ROS pub/sub</text>
 <text text-anchor="middle" x="430" y="-267.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00">ROS service/client</text>
 </g>
 <!-- kb2m1&#45;&gt;kb2m2 -->
@@ -585,9 +576,8 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="node9" class="node">
 <title>kb2m3</title>
 <path fill="#b2d3e4" stroke="black" d="M544,-217C544,-217 316,-217 316,-217 310,-217 304,-211 304,-205 304,-205 304,-143 304,-143 304,-137 310,-131 316,-131 316,-131 544,-131 544,-131 550,-131 556,-137 556,-143 556,-143 556,-205 556,-205 556,-211 550,-217 544,-217"></path>
-<text text-anchor="middle" x="430" y="-195.6" font-family="Helvetica,Arial,sans-serif" font-size="24.00">ROS2 Gazebo</text>
-<text text-anchor="middle" x="430" y="-166.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00"> Minipupper </text>
-<text text-anchor="middle" x="430" y="-138" font-family="Helvetica,Arial,sans-serif" font-size="24.00">ROS packages</text>
+<text text-anchor="middle" x="430" y="-181.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Minipupper </text>
+<text text-anchor="middle" x="430" y="-152.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00">ROS packages</text>
 </g>
 <!-- kb2m2&#45;&gt;kb2m3 -->
 <g id="edge7" class="edge">
@@ -598,7 +588,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <!-- kb2m4 -->
 <g id="node10" class="node">
 <title>kb2m4</title>
-<path fill="#91b5c9" stroke="black" d="M556,-53.06C556,-53.06 556,-64.94 556,-64.94 556,-70.87 550.38,-78.73 544.76,-80.65 544.76,-80.65 493.43,-98.16 493.43,-98.16 487.81,-100.08 476.25,-102 470.32,-102 470.32,-102 389.68,-102 389.68,-102 383.75,-102 372.19,-100.08 366.57,-98.16 366.57,-98.16 315.24,-80.65 315.24,-80.65 309.62,-78.73 304,-70.87 304,-64.94 304,-64.94 304,-53.06 304,-53.06 304,-47.13 309.62,-39.27 315.24,-37.35 315.24,-37.35 366.57,-19.84 366.57,-19.84 372.19,-17.92 383.75,-16 389.68,-16 389.68,-16 470.32,-16 470.32,-16 476.25,-16 487.81,-17.92 493.43,-19.84 493.43,-19.84 544.76,-37.35 544.76,-37.35 550.38,-39.27 556,-47.13 556,-53.06"></path>
+<path fill="#6a9ab1" stroke="black" d="M556,-53.06C556,-53.06 556,-64.94 556,-64.94 556,-70.87 550.38,-78.73 544.76,-80.65 544.76,-80.65 493.43,-98.16 493.43,-98.16 487.81,-100.08 476.25,-102 470.32,-102 470.32,-102 389.68,-102 389.68,-102 383.75,-102 372.19,-100.08 366.57,-98.16 366.57,-98.16 315.24,-80.65 315.24,-80.65 309.62,-78.73 304,-70.87 304,-64.94 304,-64.94 304,-53.06 304,-53.06 304,-47.13 309.62,-39.27 315.24,-37.35 315.24,-37.35 366.57,-19.84 366.57,-19.84 372.19,-17.92 383.75,-16 389.68,-16 389.68,-16 470.32,-16 470.32,-16 476.25,-16 487.81,-17.92 493.43,-19.84 493.43,-19.84 544.76,-37.35 544.76,-37.35 550.38,-39.27 556,-47.13 556,-53.06"></path>
 <text text-anchor="middle" x="430" y="-66.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Camera package</text>
 <text text-anchor="middle" x="430" y="-37.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00"> Line following package</text>
 </g>
@@ -649,7 +639,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="node14" class="node">
 <title>kb3m3</title>
 <path fill="#b2d3e4" stroke="black" d="M832,-217C832,-217 604,-217 604,-217 598,-217 592,-211 592,-205 592,-205 592,-143 592,-143 592,-137 598,-131 604,-131 604,-131 832,-131 832,-131 838,-131 844,-137 844,-143 844,-143 844,-205 844,-205 844,-211 838,-217 832,-217"></path>
-<text text-anchor="middle" x="718" y="-181.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">AWS IoT</text>
+<text text-anchor="middle" x="718" y="-181.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">AWS</text>
 <text text-anchor="middle" x="718" y="-152.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Greengrass</text>
 </g>
 <!-- kb3m2&#45;&gt;kb3m3 -->
@@ -661,7 +651,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <!-- kb3m4 -->
 <g id="node15" class="node">
 <title>kb3m4</title>
-<path fill="#91b5c9" stroke="black" d="M844,-53.06C844,-53.06 844,-64.94 844,-64.94 844,-70.87 838.38,-78.73 832.76,-80.65 832.76,-80.65 781.43,-98.16 781.43,-98.16 775.81,-100.08 764.25,-102 758.32,-102 758.32,-102 677.68,-102 677.68,-102 671.75,-102 660.19,-100.08 654.57,-98.16 654.57,-98.16 603.24,-80.65 603.24,-80.65 597.62,-78.73 592,-70.87 592,-64.94 592,-64.94 592,-53.06 592,-53.06 592,-47.13 597.62,-39.27 603.24,-37.35 603.24,-37.35 654.57,-19.84 654.57,-19.84 660.19,-17.92 671.75,-16 677.68,-16 677.68,-16 758.32,-16 758.32,-16 764.25,-16 775.81,-17.92 781.43,-19.84 781.43,-19.84 832.76,-37.35 832.76,-37.35 838.38,-39.27 844,-47.13 844,-53.06"></path>
+<path fill="#6a9ab1" stroke="black" d="M844,-53.06C844,-53.06 844,-64.94 844,-64.94 844,-70.87 838.38,-78.73 832.76,-80.65 832.76,-80.65 781.43,-98.16 781.43,-98.16 775.81,-100.08 764.25,-102 758.32,-102 758.32,-102 677.68,-102 677.68,-102 671.75,-102 660.19,-100.08 654.57,-98.16 654.57,-98.16 603.24,-80.65 603.24,-80.65 597.62,-78.73 592,-70.87 592,-64.94 592,-64.94 592,-53.06 592,-53.06 592,-47.13 597.62,-39.27 603.24,-37.35 603.24,-37.35 654.57,-19.84 654.57,-19.84 660.19,-17.92 671.75,-16 677.68,-16 677.68,-16 758.32,-16 758.32,-16 764.25,-16 775.81,-17.92 781.43,-19.84 781.43,-19.84 832.76,-37.35 832.76,-37.35 838.38,-39.27 844,-47.13 844,-53.06"></path>
 <text text-anchor="middle" x="718" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Greengrass Deploy</text>
 </g>
 <!-- kb3m3&#45;&gt;kb3m4 -->
@@ -698,8 +688,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="node18" class="node">
 <title>kb4m2</title>
 <ellipse fill="#d9e7ee" stroke="black" cx="1006" cy="-289" rx="126" ry="43"></ellipse>
-<text text-anchor="middle" x="1006" y="-296.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Google Gemini Setup</text>
-<text text-anchor="middle" x="1006" y="-267.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00">LangChain</text>
+<text text-anchor="middle" x="1006" y="-281.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Google Gemini Setup</text>
 </g>
 <!-- kb4m1&#45;&gt;kb4m2 -->
 <g id="edge14" class="edge">
@@ -723,7 +712,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <!-- kb4m4 -->
 <g id="node20" class="node">
 <title>kb4m4</title>
-<path fill="#91b5c9" stroke="black" d="M1132,-53.06C1132,-53.06 1132,-64.94 1132,-64.94 1132,-70.87 1126.38,-78.73 1120.76,-80.65 1120.76,-80.65 1069.43,-98.16 1069.43,-98.16 1063.81,-100.08 1052.25,-102 1046.32,-102 1046.32,-102 965.68,-102 965.68,-102 959.75,-102 948.19,-100.08 942.57,-98.16 942.57,-98.16 891.24,-80.65 891.24,-80.65 885.62,-78.73 880,-70.87 880,-64.94 880,-64.94 880,-53.06 880,-53.06 880,-47.13 885.62,-39.27 891.24,-37.35 891.24,-37.35 942.57,-19.84 942.57,-19.84 948.19,-17.92 959.75,-16 965.68,-16 965.68,-16 1046.32,-16 1046.32,-16 1052.25,-16 1063.81,-17.92 1069.43,-19.84 1069.43,-19.84 1120.76,-37.35 1120.76,-37.35 1126.38,-39.27 1132,-47.13 1132,-53.06"></path>
+<path fill="#6a9ab1" stroke="black" d="M1120,-102C1120,-102 892,-102 892,-102 886,-102 880,-96 880,-90 880,-90 880,-28 880,-28 880,-22 886,-16 892,-16 892,-16 1120,-16 1120,-16 1126,-16 1132,-22 1132,-28 1132,-28 1132,-90 1132,-90 1132,-96 1126,-102 1120,-102"></path>
 <text text-anchor="middle" x="1006" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Final Competition</text>
 </g>
 <!-- kb4m3&#45;&gt;kb4m4 -->
@@ -744,830 +733,334 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 </div>
 </section>
-<section id="sec-mangdang" class="slide level2">
-<h2>Mangdang</h2>
-<h3 id="a-quadruped-robot-dog-originated-from-a-stanford-project-click-here">A quadruped robot dog originated from a stanford project <a href="https://news.stanford.edu/2019/05/20/dog-like-robot-jumps-flips-trots/" class="button">click here</a></h3>
+<section id="sec-aws" class="slide level2">
+<h2>Module 1. AWS Setup and Docker Basics</h2>
+<ul>
+<li>Set up Cloud9</li>
+<li>Install AWS CLI</li>
+<li>Docker container running on AWS</li>
+</ul>
+</section>
+<section id="sec-awsconsole" class="slide level2">
+<h2>AWS Console Management</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div>
-<ul>
-<li class="fragment">A <span class="alert">Mangdang v2</span> and a <span class="alert">raspberry pi 4</span> 2GB<br></li>
-<li class="fragment">Better own two <a href="https://www.amazon.com/Sandisk-Micro-Class-Memory-Packaged/dp/B00FZV964A/ref=asc_df_B00FZV964A/?tag=hyprod-20&amp;linkCode=df0&amp;hvadid=309833041189&amp;hvpos=&amp;hvnetw=g&amp;hvrand=2861064339265814291&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9007206&amp;hvtargid=pla-406164573113&amp;psc=1" class="bg" style="--col: #e64173">32GB micro SD cards</a></li>
-</ul>
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/mangdang.png" class="quarto-figure quarto-figure-center" width="400"></p>
+<p><img data-src="images/aws_man_console.png" class="quarto-figure quarto-figure-center" width="600"></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div>
 <ul>
-<li class="fragment">software development is done using AWS Robomaker and AWS Cloud 9
-<ul>
-<li class="fragment"><span class="alert">Virtualization</span>, Docker, Linux, Python 3</li>
-<li class="fragment">Robot Operating System (ROS) and Gazebo</li>
-</ul></li>
-<li class="fragment"><span class="alert">ReInvent Workshop 2022</span> for Dance Robot <span class="citation" data-cites="DanceRobot">(<a href="#/references" role="doc-biblioref" onclick="">Gan and Hansen 2022</a>)</span></li>
+<li class="fragment">search for services</li>
+<li class="fragment">recent services</li>
+<li class="fragment">account or role information</li>
 </ul>
 </div>
 </div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The remote desktop using NICE DCV can be fragile in Firefox, Safari and Edge - please use Google Chrome.</p>
+<pre><code>1.  Cloud 9 - virtual instance, 
+2.  IAM - user management, role, policy
+3.  Simple Storage Service (S3)
+4.  robomaker, etc.</code></pre>
+</div>
+</div>
+</div>
 </section>
-<section id="sec-flash" class="slide level2">
-<h2>Setup Raspberry Pi - Balena Etcher</h2>
+<section id="aws-academy" class="slide level2">
+<h2>AWS Academy</h2>
+<h3 id="sec-academy">AWS Academy Account Setup</h3>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1</a></li><li><a href="#tabset-1-2">2</a></li><li><a href="#tabset-1-3">3</a></li><li><a href="#tabset-1-4">4</a></li><li><a href="#tabset-1-5">5</a></li><li><a href="#tabset-1-6">6</a></li><li><a href="#tabset-1-7">7</a></li><li><a href="#tabset-1-8">8</a></li><li><a href="#tabset-1-9">9</a></li><li><a href="#tabset-1-10">10</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">No account</a></li><li><a href="#tabset-1-2">With an account</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<ul>
-<li><p>Download <a href="https://tuprd-my.sharepoint.com/:u:/g/personal/lbai_temple_edu/EVZZ84LESe1Jk-YB0qJXFJsB5boR7DkpQKu7PnwQ-Ua0dw?e=1bYIMT" target="_blank">Mangdang image with ROS2</a></p></li>
-<li><p>Download Balena Etcher <a href="https://etcher.balena.io/" class="uri">https://etcher.balena.io/</a> to copy the new image to your Micro-SD card</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_1.png" class="quarto-figure quarto-figure-center" width="514"></p>
-</figure>
-</div>
+<ol type="1">
+<li>Check an email from AWS Academy<br> <img data-src="images/awsemail.png" class="quarto-figure quarto-figure-center" width="400"></li>
+<li>Follow <a href="files/AWS.pdf">the instruction</a> at to setup an account which is different than your University’s account</li>
+</ol>
 </div>
 <div id="tabset-1-2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_2.png" class="quarto-figure quarto-figure-center" width="625"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_3.png" class="quarto-figure quarto-figure-center" width="591"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-4">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_4.png" class="quarto-figure quarto-figure-center" width="650"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-5">
 <ul>
-<li>Check to ensure your SD card is selected to flash to SDHC, NOT your computer!</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_5.png" class="quarto-figure quarto-figure-center" width="588"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-6">
-<p>NOTE: the following step will not apply to you if you own a computer using Windows</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_7.png" class="quarto-figure quarto-figure-center" width="536"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-7">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_8.png" class="quarto-figure quarto-figure-center" width="528"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-8">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_9.png" class="quarto-figure quarto-figure-center" width="584"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-9">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_11.png" class="quarto-figure quarto-figure-center" width="587"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-1-10">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/etcher_12.png" class="quarto-figure quarto-figure-center" width="582"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="generate-your-password-hash" class="slide level2 aws-background">
-<h2>Generate your Password Hash</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">hash</a></li><li><a href="#tabset-2-2">credential</a></li><li><a href="#tabset-2-3">mv file</a></li><li><a href="#tabset-2-4">insert card</a></li><li><a href="#tabset-2-5">IP</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<ul>
-<li><p>click on <a href="http://bit.ly/pihash">http://bit.ly/pihash</a> <img data-src="images/pihash1.png" class="quarto-figure quarto-figure-center" width="675"></p></li>
-<li><p>replace “password” in text field with your password used to log in to school organization email</p></li>
-<li><p>click on show button to reveal what password you entered</p></li>
-<li><p>a unique hash is generated</p></li>
-<li><p>save value for your WiFi access (in Google doc or notebook)!</p></li>
-</ul>
-</div>
-<div id="tabset-2-2">
-<ul>
-<li>Line 1: use your school email address</li>
-<li>Line 2: use the hash passcode generated</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/revisewifi.png" class="quarto-figure quarto-figure-center" width="675"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-3">
-<ul>
-<li>make sure you see a new driver system-boot</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/wirelesstextdragdrop-04.png" class="quarto-figure quarto-figure-center" width="315"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-4">
-<ul>
-<li>IP address does not show up on first time boot up, wait for power on sound, then disconnect power and reconnect</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/robodogsdcard.jpg" class="quarto-figure quarto-figure-center" height="320"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-2-5">
-<ul>
-<li>reboot second time, you can see the IP address</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ip_adress.jpg" class="quarto-figure quarto-figure-center" height="400"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="start" class="slide level2">
-<h2>Web Control - Activate the robot</h2>
-<div class="absolute" style="top: -10%; right: 5%; ">
-<p><img data-src="images/router.png" width="100"></p>
-</div>
-<ul>
-<li>If you see the IP address on the screen in the second time power on, type <code>http://[ipaddress]:8080</code> for a web remote control</li>
-</ul>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">1 (web)</a></li><li><a href="#tabset-3-2">2 (activate)</a></li><li><a href="#tabset-3-3">3 (dance)</a></li><li><a href="#tabset-3-4">4 (walk)</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/webcontrol.png" class="quarto-figure quarto-figure-center" height="300"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-3-2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/webcontrol_2.png" class="quarto-figure quarto-figure-center" width="459"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-3-3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/webcontrol_3.png" class="quarto-figure quarto-figure-center" width="459"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-3-4">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/webcontrol_5.png" class="quarto-figure quarto-figure-center" width="459"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="sec_jupy" class="slide level2">
-<h2>Revise the WiFi in Jupyter Lab</h2>
-<div class="absolute" style="top: -10%; right: 5%; ">
-<p><img data-src="images/router.png" width="100"></p>
-</div>
-<div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Jupyter Lab</a></li><li><a href="#tabset-4-2">WiFi Configuration</a></li><li><a href="#tabset-4-3">Caution</a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1">
-<ul>
-<li>Open a browser, type <code>http://[ipaddress]:8888</code></li>
-<li>password <code>mangdang</code></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ip_window.png" class="quarto-figure quarto-figure-center" width="591" height="350"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-2">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="fu">sudo</span> nano /etc/netplan/50-cloud-init.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/wireless_config.png" class="quarto-figure quarto-figure-center" width="639" height="400"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-4-3">
-<ul>
-<li><p>at least keep one connection working</p></li>
-<li><p><code>50-cloud-init.yaml</code> is indentation sensitive, any mistake will have no IP address shown</p></li>
-<li><p>If file changed, try the following commands to ensure if you have any errors before reboot</p></li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="fu">sudo</span> netplan apply</span>
-<span id="cb2-2"><a href=""></a><span class="fu">sudo</span> netplan generate <span class="at">--debug</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>may need to use an HDMI monitor and a USB keyboard to troubleshoot the YAML file</li>
+<li><p>You should have access to <a href="https://awsacademy.instructure.com/">AWS Canvas Console</a>. <img data-src="images/awscanvas.png" class="quarto-figure quarto-figure-center" width="500"></p></li>
+<li><p>Better rename a nickname by clicking on ⋮ of the course tile</p></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="current-setup" class="slide level2">
-<h2>Current Setup</h2>
+<section id="setup-aws-cloud-9" class="slide level2">
+<h2>Setup AWS Cloud 9 …</h2>
+<h3 id="requirements-for-instance-setup">Requirements for instance setup</h3>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Need create an EC2 instance</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>IEEER2_5G</li>
-<li>passwd: ieeer25g</li>
+<li>create a new environment <img data-src="images/create_cloud.png" class="quarto-figure quarto-figure-center" width="100"></li>
+<li>New EC2 instance</li>
+<li>c4.xlarge, ubuntu 22.04, Secure Shell (SSH)</li>
 </ul>
-
-<img data-src="images/wificred.png" class="quarto-figure quarto-figure-center r-stretch" width="450"></section>
-<section id="wireless-connection-orders-power-strength" class="slide level2">
-<h2>Wireless Connection Orders (power strength)</h2>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-cloud9" class="slide level2">
+<h2>Cloud 9</h2>
+<h3 id="select-ec2-instance">Select EC2 Instance</h3>
 <div class="columns">
-<div class="column" style="width:70%;">
-<div style="text-align: center;">
-<div style="width: 100%; height: 100%; margin: auto;">
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">sequenceDiagram
-  participant IEEER2 (router)
-  participant pupper_temple
-  Note right of eduroam: connection eduroam first
-  loop Healthcheck
-    eduroam-&gt;&gt;eduroam: Let me check&lt;br&gt; hash match with id
-  end
-  Note right of eduroam: failed credential!
-  eduroam-&gt;&gt;IEEER2 (router): let me connect you first 
-  IEEER2 (router)-&gt;&gt;pupper_temple: help me check if pupper_temple is available
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:30%;">
-<div>
+<div class="column" style="width:60%;">
+<p><img data-src="images/cloud9_instance.png" width="606"></p>
+</div><div class="column" style="width:40%;">
 <ul>
-<li class="fragment">turn on your hotspot</li>
-<li class="fragment">try the pupper connect to the hotspot</li>
-<li class="fragment">turn off hotspot, back to TU WiFi.</li>
+<li>c4.xlarge (7.5GB and 4 vCPU)</li>
 </ul>
-</div>
 </div></div>
 </section>
-<section id="hardware" class="slide level2">
-<h2>Hardware Check</h2>
-<div class="absolute" style="top: -10%; right: 5%; ">
-<p><img data-src="images/router.png" width="100"></p>
-</div>
+<section id="cloud-9" class="slide level2">
+<h2>Cloud 9</h2>
+<h3 id="select-ec2-os">Select EC2 OS</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/cloud9_os.png"></p>
+</div><div class="column" style="width:40%;">
 <ul>
-<li>download the mangdang using the following command</li>
+<li>Ubuntu 22.04 (Jammy)</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">setup</a></li><li><a href="#tabset-5-2">Camera</a></li><li><a href="#tabset-5-3">LCD</a></li><li><a href="#tabset-5-4">Audio</a></li><li><a href="#tabset-5-5">Touch</a></li><li><a href="#tabset-5-6">BSP Abstraction</a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1">
+</div></div>
+</section>
+<section id="cloud-9-1" class="slide level2">
+<h2>Cloud 9</h2>
+<h3 id="create-os">Create OS</h3>
+
+<img data-src="images/cloud9_create.png" class="r-stretch"></section>
+<section id="cloud-9-2" class="slide level2">
+<h2>Cloud 9</h2>
+<h3 id="opencreate-cloud-9">Open/Create Cloud 9</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/open_create_cloud9.png"></p>
+</div><div class="column" style="width:40%;">
 <ul>
-<li>run ieee2025.ipynb</li>
+<li>click open to access cloud 9</li>
+<li>add other cloud 9 instance by clicking on create environment</li>
+<li>make sure you do not have a lot instances becasue they run when you start the lab</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hardwaresetup.png" class="quarto-figure quarto-figure-center" height="200"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-5-2">
+</div></div>
+</section>
+<section id="cloud-9-ide" class="slide level2">
+<h2>Cloud 9 IDE</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="images/cloud9_ide.png" width="475"></p>
 <ul>
-<li>run camera_test.ipynb</li>
-<li>you check camera by running each cell in jupyter notebook</li>
+<li>good linux commands to know</li>
+<li>find out what they are (chatGPT)</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/cameraview.png" class="quarto-figure quarto-figure-center" height="200"></p>
-</figure>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">lsb_release</span> <span class="at">-a</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">uname</span> <span class="at">-m</span></span>
+<span id="cb2-3"><a href=""></a><span class="fu">df</span> <span class="at">-lh</span></span>
+<span id="cb2-4"><a href=""></a><span class="ex">lsblk</span></span>
+<span id="cb2-5"><a href=""></a><span class="ex">findmnt</span> <span class="at">-n</span> <span class="at">-o</span> SOURCE /</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:40%;">
+<ol type="1">
+<li>user setting (large fonts, background colors, etc)</li>
+<li>open a new terminal window</li>
+<li>open a new file editor window</li>
+<li>open other new table window</li>
+</ol>
+</div></div>
+</section>
+<section id="cloud-9-ide-1" class="slide level2">
+<h2>Cloud 9 IDE</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<p><strong>Install DCV, ROS, Docker and Gazebo</strong></p>
 </div>
-<div id="tabset-5-3">
+<div class="callout-content">
 <ul>
-<li>run lcd_test.ipynb</li>
-<li>add different pictures</li>
+<li>Run the following command in a terminal window</li>
 </ul>
-</div>
-<div id="tabset-5-4">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> <span class="st">"https://bit.ly/robomaker2204"</span> <span class="kw">|</span> <span class="fu">sudo</span> <span class="at">-E</span> bash <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>record 5 second audio and play back</li>
+<li>Wait for 10 minutes</li>
+<li>Run the following command to reboot the system</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="bu">cd</span> ~/mini_pupper_bsp/demos/</span>
-<span id="cb4-2"><a href=""></a><span class="ex">python</span> audio_test.py </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/audiocheck.png" class="quarto-figure quarto-figure-center" height="200"></p>
-</figure>
-</div>
-</div>
-<div id="tabset-5-5">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="bu">cd</span> ~/mini_pupper_bsp/demos/</span>
-<span id="cb5-2"><a href=""></a><span class="ex">python</span> touch_test.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="fu">sudo</span> reboot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>can you display the touch on the LCD screen</li>
+<li>Try</li>
 </ul>
-</div>
-<div id="tabset-5-6">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/hla.png" class="quarto-figure quarto-figure-center" height="350"></p>
-</figure>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">uname</span> <span class="at">-m</span></span>
+<span id="cb5-2"><a href=""></a><span class="fu">df</span> <span class="at">-lh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="sec_dance" class="slide level2">
-<h2>Stanford - Dance Move using Jupyter</h2>
-<div class="absolute" style="top: -10%; right: 5%; ">
-<p><img data-src="images/router.png" width="100"></p>
-</div>
+<section id="sec-dcv" class="slide level2">
+<h2>Access DCV from cloud 9</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/dcv_access.png"></p>
+<ul>
+<li>check the menu bar</li>
+<li>click on preview application</li>
+<li>click on preview running application</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/preview_icon.png"> - click on the expansion icon to open a new tab</p>
+</div></div>
+</section>
+<section id="xwindow-on-dcv" class="slide level2">
+<h2>XWindow on DCV</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">step 1</a></li><li><a href="#tabset-6-2">step 2</a></li><li><a href="#tabset-6-3">step 3</a></li><li><a href="#tabset-6-4">step 4</a></li><li><a href="#tabset-6-5">step 5</a></li><li><a href="#tabset-6-6">step 6</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">starup</a></li><li><a href="#tabset-2-2">permission</a></li><li><a href="#tabset-2-3">cloud 9</a></li><li><a href="#tabset-2-4">Xeyes</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
-<ul>
-<li><p>check StanfordQuadruped inside of mangdang folder</p></li>
-<li><p>If not,</p></li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/mangdang</span>
-<span id="cb6-2"><a href=""></a><span class="bu">cd</span> ~/mangdang</span>
-<span id="cb6-3"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> mini_pupper https://github.com/lbaitemple/StanfordQuadruped</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-2-1">
+<p><img data-src="images/desktop.png"></p>
 </div>
-<div id="tabset-6-2">
-<ul>
-<li>navigate into the folder `<code>Jupyter Client`</code> folder</li>
-<li>run jupyter client code `jupyter Client for Minipupper`</li>
-<li><img data-src="images/stanfordquad.png"></li>
-</ul>
+<div id="tabset-2-2">
+<p><img data-src="images/desktop_allow.png"></p>
 </div>
-<div id="tabset-6-3">
+<div id="tabset-2-3">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/check_cmd.png"></p>
+</div><div class="column" style="width:50%;">
 <ul>
-<li>run server code</li>
+<li>make sure you setup DISPLAY variable</li>
 </ul>
-<p><img data-src="images/jupyter_server.png"></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">export</span> <span class="va">DISPLAY</span><span class="op">=</span>:0</span>
+<span id="cb6-2"><a href=""></a><span class="ex">xeyes</span> <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </div>
-<div id="tabset-6-4">
+<div id="tabset-2-4">
+<p><img data-src="images/xeyes.png"></p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<section id="sec-docker" class="title-slide slide level1 center">
+<h1>2. Docker Essentials</h1>
 <ul>
-<li>run client code <img data-src="images/move1.png"></li>
+<li>Dockerfile</li>
+<li>Docker compose</li>
+<li>Docker on x86 and aarch systems</li>
 </ul>
-</div>
-<div id="tabset-6-5">
-<ul>
-<li>run client code <img data-src="images/move2.png"></li>
+</section>
+<section id="docker" class="slide level2">
+<h2>Docker</h2>
+
+<img data-src="images/docker.png" class="r-stretch"><ul>
+<li>Install Docker (macOS/Linux/Windows)</li>
+<li>Key Docker commands:</li>
 </ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="ex">docker</span> build <span class="at">-t</span> my-image .</span>
+<span id="cb7-2"><a href=""></a><span class="ex">docker</span> run <span class="at">-it</span> my-image</span>
+<span id="cb7-3"><a href=""></a><span class="ex">docker</span> ps</span>
+<span id="cb7-4"><a href=""></a><span class="ex">docker</span> stop <span class="op">&lt;</span>container<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p>Docker is an open-source platform that enables developers to build, package, and deploy applications in a lightweight, portable manner. It utilizes containerization technology, allowing for easy isolation and scalability of software components. Docker simplifies the development and deployment process, promoting consistency and efficiency across different computing environments.</p>
 </div>
-<div id="tabset-6-6">
+</section>
+<section id="docker-installation" class="slide level2">
+<h2>Docker Installation</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Ubuntu</a></li><li><a href="#tabset-3-2">Mac OS</a></li><li><a href="#tabset-3-3">Windows</a></li><li><a href="#tabset-3-4">WSL</a></li><li><a href="#tabset-3-5">WSL2</a></li><li><a href="#tabset-3-6">Cloud 9</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
 <ul>
-<li>run client code <img data-src="images/move3.png"></li>
+<li><a href="https://phoenixnap.com/kb/install-docker-on-ubuntu-20-04">click here</a></li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">sudo</span> apt update</span>
+<span id="cb8-2"><a href=""></a><span class="fu">sudo</span> apt install <span class="at">-y</span> apt-transport-https ca-certificates curl software-properties-common</span>
+<span id="cb8-3"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg <span class="kw">|</span> <span class="fu">sudo</span> apt-key add <span class="at">-</span></span>
+<span id="cb8-4"><a href=""></a><span class="fu">sudo</span> add-apt-repository <span class="st">"deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"</span></span>
+<span id="cb8-5"><a href=""></a><span class="fu">sudo</span> apt install docker.io <span class="at">-y</span></span>
+<span id="cb8-6"><a href=""></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span>
+<span id="cb8-7"><a href=""></a><span class="fu">sudo</span> reboot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/dockerdesktop.png"> <a href="https://www.docker.com/products/docker-desktop/">Download here</a></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/dockerresource.png"></p>
+</div></div>
+</div>
+<div id="tabset-3-3">
+<ul>
+<li><p><a href="https://www.docker.com/products/docker-desktop/">Download here</a> - download based on your processor</p></li>
+<li><p>If you need to update your kernel, try to type the following command in your command window</p></li>
+<li><p>run docker insider your WSL</p></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--update</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-4">
+<ul>
+<li><p><a href="https://therdnotes.com/install-docker-in-wsl-without-docker-desktop">Installation link</a></p></li>
+<li><iframe data-external="1" src="https://www.youtube.com/embed/qThgKx_j8Ok" width="824" height="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a></span>
+<span id="cb10-2"><a href=""></a><span class="fu">sudo</span> curl <span class="at">-L</span> https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-s</span><span class="va">)</span>-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span> <span class="at">-o</span> /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-5">
+<ul>
+<li><iframe data-external="1" src="https://www.youtube.com/embed/D46VybHqe0M" width="824" height="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a></span>
+<span id="cb11-2"><a href=""></a><span class="fu">sudo</span> curl <span class="at">-L</span> https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-s</span><span class="va">)</span>-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span> <span class="at">-o</span> /usr/local/bin/docker-compose</span>
+<span id="cb11-3"><a href=""></a><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-6">
+<ul>
+<li><p>preinstalled but run very slow (7.5GB and 4 vCPU)</p></li>
+<li><p>x86 processor (if need docker conainer for arm, will need to run qmad for cross compiler)</p></li>
+<li><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">docker</span> ps <span class="at">-a</span></span>
+<span id="cb12-2"><a href=""></a><span class="fu">sudo</span> systemctl status docker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="linux-outline" class="slide level2">
-<h2>Linux Outline</h2>
-<div class="cell" data-file="linux_diagram.dot" data-layout-align="default">
-<div class="cell-output-display">
-<div id="fig-linux-kernel" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-linux-kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<section id="docker-ros2-example-on-minipupper" class="slide level2">
+<h2>Docker: ROS2 example on minipupper</h2>
 <div>
-<svg width="960" height="480" viewbox="0.00 0.00 1156.00 610.80" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
-<title>course_diagram</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
-<g id="clust1" class="cluster">
-<title>cluster_system</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
-<text text-anchor="middle" x="142" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 1</text>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_ros</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
-<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_docker</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
-<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_final</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
-<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
-</g>
-<!-- kb1 -->
-<g id="node1" class="node">
-<title>kb1</title>
-<g id="a_node1"><a href="index.html#/sec-nav" title="File Navigation">
-<path fill="#e27dd6" stroke="black" d="M256,-562C256,-562 28,-562 28,-562 22,-562 16,-556 16,-550 16,-550 16,-488 16,-488 16,-482 22,-476 28,-476 28,-476 256,-476 256,-476 262,-476 268,-482 268,-488 268,-488 268,-550 268,-550 268,-556 262,-562 256,-562"></path>
-<text text-anchor="middle" x="142" y="-511.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">File Navigation</text>
-</a>
-</g>
-</g>
-<!-- kb1m1 -->
-<g id="node2" class="node">
-<title>kb1m1</title>
-<g id="a_node2"><a href="index.html#/sec-access" title="change directory">
-<path fill="#61c2c5" stroke="black" d="M256,-447C256,-447 28,-447 28,-447 22,-447 16,-441 16,-435 16,-435 16,-373 16,-373 16,-367 22,-361 28,-361 28,-361 256,-361 256,-361 262,-361 268,-367 268,-373 268,-373 268,-435 268,-435 268,-441 262,-447 256,-447"></path>
-<text text-anchor="middle" x="142" y="-396.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">change directory</text>
-</a>
-</g>
-</g>
-<!-- kb1&#45;&gt;kb1m1 -->
-<g id="edge1" class="edge">
-<title>kb1-&gt;kb1m1</title>
-<path fill="none" stroke="black" stroke-width="3" d="M142,-475.92C142,-470.48 142,-464.85 142,-459.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="146.2,-459.11 142,-447.11 137.8,-459.11 146.2,-459.11"></polygon>
-</g>
-<!-- kb1m2 -->
-<g id="node3" class="node">
-<title>kb1m2</title>
-<ellipse fill="#d9e7ee" stroke="black" cx="142" cy="-289" rx="126" ry="43"></ellipse>
-<text text-anchor="middle" x="142" y="-281.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">file manipulation</text>
-</g>
-<!-- kb1m1&#45;&gt;kb1m2 -->
-<g id="edge2" class="edge">
-<title>kb1m1-&gt;kb1m2</title>
-<path fill="none" stroke="black" stroke-width="3" d="M142,-360.92C142,-355.48 142,-349.85 142,-344.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="146.2,-344.11 142,-332.11 137.8,-344.11 146.2,-344.11"></polygon>
-</g>
-<!-- kb1m3 -->
-<g id="node4" class="node">
-<title>kb1m3</title>
-<path fill="#b2d3e4" stroke="black" d="M256,-217C256,-217 28,-217 28,-217 22,-217 16,-211 16,-205 16,-205 16,-143 16,-143 16,-137 22,-131 28,-131 28,-131 256,-131 256,-131 262,-131 268,-137 268,-143 268,-143 268,-205 268,-205 268,-211 262,-217 256,-217"></path>
-<text text-anchor="middle" x="142" y="-166.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">read/edit files </text>
-</g>
-<!-- kb1m2&#45;&gt;kb1m3 -->
-<g id="edge3" class="edge">
-<title>kb1m2-&gt;kb1m3</title>
-<path fill="none" stroke="black" stroke-width="3" d="M142,-245.92C142,-240.48 142,-234.85 142,-229.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="146.2,-229.11 142,-217.11 137.8,-229.11 146.2,-229.11"></polygon>
-</g>
-<!-- kb1m4 -->
-<g id="node5" class="node">
-<title>kb1m4</title>
-<path fill="#91b5c9" stroke="black" d="M268,-53.06C268,-53.06 268,-64.94 268,-64.94 268,-70.87 262.38,-78.73 256.76,-80.65 256.76,-80.65 205.43,-98.16 205.43,-98.16 199.81,-100.08 188.25,-102 182.32,-102 182.32,-102 101.68,-102 101.68,-102 95.75,-102 84.19,-100.08 78.57,-98.16 78.57,-98.16 27.24,-80.65 27.24,-80.65 21.62,-78.73 16,-70.87 16,-64.94 16,-64.94 16,-53.06 16,-53.06 16,-47.13 21.62,-39.27 27.24,-37.35 27.24,-37.35 78.57,-19.84 78.57,-19.84 84.19,-17.92 95.75,-16 101.68,-16 101.68,-16 182.32,-16 182.32,-16 188.25,-16 199.81,-17.92 205.43,-19.84 205.43,-19.84 256.76,-37.35 256.76,-37.35 262.38,-39.27 268,-47.13 268,-53.06"></path>
-<text text-anchor="middle" x="142" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">editing tools</text>
-</g>
-<!-- kb1m3&#45;&gt;kb1m4 -->
-<g id="edge4" class="edge">
-<title>kb1m3-&gt;kb1m4</title>
-<path fill="none" stroke="black" stroke-width="3" d="M142,-130.92C142,-125.48 142,-119.85 142,-114.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="146.2,-114.11 142,-102.11 137.8,-114.11 146.2,-114.11"></polygon>
-</g>
-<!-- kb2 -->
-<g id="node6" class="node">
-<title>kb2</title>
-<g id="a_node6"><a href="index.html#/sec-access" title="User Access">
-<path fill="#e27dd6" stroke="black" d="M544,-562C544,-562 316,-562 316,-562 310,-562 304,-556 304,-550 304,-550 304,-488 304,-488 304,-482 310,-476 316,-476 316,-476 544,-476 544,-476 550,-476 556,-482 556,-488 556,-488 556,-550 556,-550 556,-556 550,-562 544,-562"></path>
-<text text-anchor="middle" x="430" y="-511.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">User Access</text>
-</a>
-</g>
-</g>
-<!-- kb2m1 -->
-<g id="node7" class="node">
-<title>kb2m1</title>
-<g id="a_node7"><a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux" title="file and user\n permissions">
-<path fill="#61c2c5" stroke="black" d="M544,-447C544,-447 316,-447 316,-447 310,-447 304,-441 304,-435 304,-435 304,-373 304,-373 304,-367 310,-361 316,-361 316,-361 544,-361 544,-361 550,-361 556,-367 556,-373 556,-373 556,-435 556,-435 556,-441 550,-447 544,-447"></path>
-<text text-anchor="middle" x="430" y="-411.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">file and user</text>
-<text text-anchor="middle" x="430" y="-382.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00"> permissions</text>
-</a>
-</g>
-</g>
-<!-- kb2&#45;&gt;kb2m1 -->
-<g id="edge5" class="edge">
-<title>kb2-&gt;kb2m1</title>
-<path fill="none" stroke="black" stroke-width="3" d="M430,-475.92C430,-470.48 430,-464.85 430,-459.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="434.2,-459.11 430,-447.11 425.8,-459.11 434.2,-459.11"></polygon>
-</g>
-<!-- kb2m2 -->
-<g id="node8" class="node">
-<title>kb2m2</title>
-<ellipse fill="#d9e7ee" stroke="black" cx="430" cy="-289" rx="126" ry="43"></ellipse>
-<text text-anchor="middle" x="430" y="-296.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">user group</text>
-<text text-anchor="middle" x="430" y="-267.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00"> password management</text>
-</g>
-<!-- kb2m1&#45;&gt;kb2m2 -->
-<g id="edge6" class="edge">
-<title>kb2m1-&gt;kb2m2</title>
-<path fill="none" stroke="black" stroke-width="3" d="M430,-360.92C430,-355.48 430,-349.85 430,-344.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="434.2,-344.11 430,-332.11 425.8,-344.11 434.2,-344.11"></polygon>
-</g>
-<!-- kb2m3 -->
-<g id="node9" class="node">
-<title>kb2m3</title>
-<path fill="#b2d3e4" stroke="black" d="M544,-217C544,-217 316,-217 316,-217 310,-217 304,-211 304,-205 304,-205 304,-143 304,-143 304,-137 310,-131 316,-131 316,-131 544,-131 544,-131 550,-131 556,-137 556,-143 556,-143 556,-205 556,-205 556,-211 550,-217 544,-217"></path>
-<text text-anchor="middle" x="430" y="-166.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">group managements</text>
-</g>
-<!-- kb2m2&#45;&gt;kb2m3 -->
-<g id="edge7" class="edge">
-<title>kb2m2-&gt;kb2m3</title>
-<path fill="none" stroke="black" stroke-width="3" d="M430,-245.92C430,-240.48 430,-234.85 430,-229.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="434.2,-229.11 430,-217.11 425.8,-229.11 434.2,-229.11"></polygon>
-</g>
-<!-- kb2m4 -->
-<g id="node10" class="node">
-<title>kb2m4</title>
-<path fill="#6a9ab1" stroke="black" d="M556,-53.06C556,-53.06 556,-64.94 556,-64.94 556,-70.87 550.38,-78.73 544.76,-80.65 544.76,-80.65 493.43,-98.16 493.43,-98.16 487.81,-100.08 476.25,-102 470.32,-102 470.32,-102 389.68,-102 389.68,-102 383.75,-102 372.19,-100.08 366.57,-98.16 366.57,-98.16 315.24,-80.65 315.24,-80.65 309.62,-78.73 304,-70.87 304,-64.94 304,-64.94 304,-53.06 304,-53.06 304,-47.13 309.62,-39.27 315.24,-37.35 315.24,-37.35 366.57,-19.84 366.57,-19.84 372.19,-17.92 383.75,-16 389.68,-16 389.68,-16 470.32,-16 470.32,-16 476.25,-16 487.81,-17.92 493.43,-19.84 493.43,-19.84 544.76,-37.35 544.76,-37.35 550.38,-39.27 556,-47.13 556,-53.06"></path>
-<text text-anchor="middle" x="430" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">change permission</text>
-</g>
-<!-- kb2m3&#45;&gt;kb2m4 -->
-<g id="edge8" class="edge">
-<title>kb2m3-&gt;kb2m4</title>
-<path fill="none" stroke="black" stroke-width="3" d="M430,-130.92C430,-125.48 430,-119.85 430,-114.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="434.2,-114.11 430,-102.11 425.8,-114.11 434.2,-114.11"></polygon>
-</g>
-<!-- kb3 -->
-<g id="node11" class="node">
-<title>kb3</title>
-<g id="a_node11"><a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/System" title="System Control">
-<path fill="#e27dd6" stroke="black" d="M832,-562C832,-562 604,-562 604,-562 598,-562 592,-556 592,-550 592,-550 592,-488 592,-488 592,-482 598,-476 604,-476 604,-476 832,-476 832,-476 838,-476 844,-482 844,-488 844,-488 844,-550 844,-550 844,-556 838,-562 832,-562"></path>
-<text text-anchor="middle" x="718" y="-511.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">System Control</text>
-</a>
-</g>
-</g>
-<!-- kb3m1 -->
-<g id="node12" class="node">
-<title>kb3m1</title>
-<g id="a_node12"><a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/Networking" title="process utilization">
-<path fill="#61c2c5" stroke="black" d="M832,-447C832,-447 604,-447 604,-447 598,-447 592,-441 592,-435 592,-435 592,-373 592,-373 592,-367 598,-361 604,-361 604,-361 832,-361 832,-361 838,-361 844,-367 844,-373 844,-373 844,-435 844,-435 844,-441 838,-447 832,-447"></path>
-<text text-anchor="middle" x="718" y="-396.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">process utilization</text>
-</a>
-</g>
-</g>
-<!-- kb3&#45;&gt;kb3m1 -->
-<g id="edge9" class="edge">
-<title>kb3-&gt;kb3m1</title>
-<path fill="none" stroke="black" stroke-width="3" d="M718,-475.92C718,-470.48 718,-464.85 718,-459.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="722.2,-459.11 718,-447.11 713.8,-459.11 722.2,-459.11"></polygon>
-</g>
-<!-- kb3m2 -->
-<g id="node13" class="node">
-<title>kb3m2</title>
-<ellipse fill="#d9e7ee" stroke="black" cx="718" cy="-289" rx="126" ry="43"></ellipse>
-<text text-anchor="middle" x="718" y="-281.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Software Installation</text>
-</g>
-<!-- kb3m1&#45;&gt;kb3m2 -->
-<g id="edge10" class="edge">
-<title>kb3m1-&gt;kb3m2</title>
-<path fill="none" stroke="black" stroke-width="3" d="M718,-360.92C718,-355.48 718,-349.85 718,-344.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="722.2,-344.11 718,-332.11 713.8,-344.11 722.2,-344.11"></polygon>
-</g>
-<!-- kb3m3 -->
-<g id="node14" class="node">
-<title>kb3m3</title>
-<path fill="#b2d3e4" stroke="black" d="M832,-217C832,-217 604,-217 604,-217 598,-217 592,-211 592,-205 592,-205 592,-143 592,-143 592,-137 598,-131 604,-131 604,-131 832,-131 832,-131 838,-131 844,-137 844,-143 844,-143 844,-205 844,-205 844,-211 838,-217 832,-217"></path>
-<text text-anchor="middle" x="718" y="-166.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Multiprocess control</text>
-</g>
-<!-- kb3m2&#45;&gt;kb3m3 -->
-<g id="edge11" class="edge">
-<title>kb3m2-&gt;kb3m3</title>
-<path fill="none" stroke="black" stroke-width="3" d="M718,-245.92C718,-240.48 718,-234.85 718,-229.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="722.2,-229.11 718,-217.11 713.8,-229.11 722.2,-229.11"></polygon>
-</g>
-<!-- kb3m4 -->
-<g id="node15" class="node">
-<title>kb3m4</title>
-<path fill="#6a9ab1" stroke="black" d="M844,-53.06C844,-53.06 844,-64.94 844,-64.94 844,-70.87 838.38,-78.73 832.76,-80.65 832.76,-80.65 781.43,-98.16 781.43,-98.16 775.81,-100.08 764.25,-102 758.32,-102 758.32,-102 677.68,-102 677.68,-102 671.75,-102 660.19,-100.08 654.57,-98.16 654.57,-98.16 603.24,-80.65 603.24,-80.65 597.62,-78.73 592,-70.87 592,-64.94 592,-64.94 592,-53.06 592,-53.06 592,-47.13 597.62,-39.27 603.24,-37.35 603.24,-37.35 654.57,-19.84 654.57,-19.84 660.19,-17.92 671.75,-16 677.68,-16 677.68,-16 758.32,-16 758.32,-16 764.25,-16 775.81,-17.92 781.43,-19.84 781.43,-19.84 832.76,-37.35 832.76,-37.35 838.38,-39.27 844,-47.13 844,-53.06"></path>
-<text text-anchor="middle" x="718" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Git repo</text>
-</g>
-<!-- kb3m3&#45;&gt;kb3m4 -->
-<g id="edge12" class="edge">
-<title>kb3m3-&gt;kb3m4</title>
-<path fill="none" stroke="black" stroke-width="3" d="M718,-130.92C718,-125.48 718,-119.85 718,-114.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="722.2,-114.11 718,-102.11 713.8,-114.11 722.2,-114.11"></polygon>
-</g>
-<!-- kb4 -->
-<g id="node16" class="node">
-<title>kb4</title>
-<g id="a_node16"><a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/System" title="Task Automation">
-<path fill="#e27dd6" stroke="black" d="M1120,-562C1120,-562 892,-562 892,-562 886,-562 880,-556 880,-550 880,-550 880,-488 880,-488 880,-482 886,-476 892,-476 892,-476 1120,-476 1120,-476 1126,-476 1132,-482 1132,-488 1132,-488 1132,-550 1132,-550 1132,-556 1126,-562 1120,-562"></path>
-<text text-anchor="middle" x="1006" y="-511.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">Task Automation</text>
-</a>
-</g>
-</g>
-<!-- kb4m1 -->
-<g id="node17" class="node">
-<title>kb4m1</title>
-<g id="a_node17"><a href="https://en.wikibooks.org/wiki/The_Linux_Kernel/Networking" title="bash scripting">
-<path fill="#61c2c5" stroke="black" d="M1120,-447C1120,-447 892,-447 892,-447 886,-447 880,-441 880,-435 880,-435 880,-373 880,-373 880,-367 886,-361 892,-361 892,-361 1120,-361 1120,-361 1126,-361 1132,-367 1132,-373 1132,-373 1132,-435 1132,-435 1132,-441 1126,-447 1120,-447"></path>
-<text text-anchor="middle" x="1006" y="-396.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">bash scripting</text>
-</a>
-</g>
-</g>
-<!-- kb4&#45;&gt;kb4m1 -->
-<g id="edge13" class="edge">
-<title>kb4-&gt;kb4m1</title>
-<path fill="none" stroke="black" stroke-width="3" d="M1006,-475.92C1006,-470.48 1006,-464.85 1006,-459.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="1010.2,-459.11 1006,-447.11 1001.8,-459.11 1010.2,-459.11"></polygon>
-</g>
-<!-- kb4m2 -->
-<g id="node18" class="node">
-<title>kb4m2</title>
-<ellipse fill="#d9e7ee" stroke="black" cx="1006" cy="-289" rx="126" ry="43"></ellipse>
-<text text-anchor="middle" x="1006" y="-296.2" font-family="Helvetica,Arial,sans-serif" font-size="24.00">sed, aw, wc</text>
-<text text-anchor="middle" x="1006" y="-267.4" font-family="Helvetica,Arial,sans-serif" font-size="24.00">file processing</text>
-</g>
-<!-- kb4m1&#45;&gt;kb4m2 -->
-<g id="edge14" class="edge">
-<title>kb4m1-&gt;kb4m2</title>
-<path fill="none" stroke="black" stroke-width="3" d="M1006,-360.92C1006,-355.48 1006,-349.85 1006,-344.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="1010.2,-344.11 1006,-332.11 1001.8,-344.11 1010.2,-344.11"></polygon>
-</g>
-<!-- kb4m3 -->
-<g id="node19" class="node">
-<title>kb4m3</title>
-<path fill="#b2d3e4" stroke="black" d="M1120,-217C1120,-217 892,-217 892,-217 886,-217 880,-211 880,-205 880,-205 880,-143 880,-143 880,-137 886,-131 892,-131 892,-131 1120,-131 1120,-131 1126,-131 1132,-137 1132,-143 1132,-143 1132,-205 1132,-205 1132,-211 1126,-217 1120,-217"></path>
-<text text-anchor="middle" x="1006" y="-166.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">network diagnoistics</text>
-</g>
-<!-- kb4m2&#45;&gt;kb4m3 -->
-<g id="edge15" class="edge">
-<title>kb4m2-&gt;kb4m3</title>
-<path fill="none" stroke="black" stroke-width="3" d="M1006,-245.92C1006,-240.48 1006,-234.85 1006,-229.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="1010.2,-229.11 1006,-217.11 1001.8,-229.11 1010.2,-229.11"></polygon>
-</g>
-<!-- kb4m4 -->
-<g id="node20" class="node">
-<title>kb4m4</title>
-<path fill="#6a9ab1" stroke="black" d="M1132,-53.06C1132,-53.06 1132,-64.94 1132,-64.94 1132,-70.87 1126.38,-78.73 1120.76,-80.65 1120.76,-80.65 1069.43,-98.16 1069.43,-98.16 1063.81,-100.08 1052.25,-102 1046.32,-102 1046.32,-102 965.68,-102 965.68,-102 959.75,-102 948.19,-100.08 942.57,-98.16 942.57,-98.16 891.24,-80.65 891.24,-80.65 885.62,-78.73 880,-70.87 880,-64.94 880,-64.94 880,-53.06 880,-53.06 880,-47.13 885.62,-39.27 891.24,-37.35 891.24,-37.35 942.57,-19.84 942.57,-19.84 948.19,-17.92 959.75,-16 965.68,-16 965.68,-16 1046.32,-16 1046.32,-16 1052.25,-16 1063.81,-17.92 1069.43,-19.84 1069.43,-19.84 1120.76,-37.35 1120.76,-37.35 1126.38,-39.27 1132,-47.13 1132,-53.06"></path>
-<text text-anchor="middle" x="1006" y="-51.8" font-family="Helvetica,Arial,sans-serif" font-size="24.00">system diagonstics</text>
-</g>
-<!-- kb4m3&#45;&gt;kb4m4 -->
-<g id="edge16" class="edge">
-<title>kb4m3-&gt;kb4m4</title>
-<path fill="none" stroke="black" stroke-width="3" d="M1006,-130.92C1006,-125.48 1006,-119.85 1006,-114.25"></path>
-<polygon fill="black" stroke="black" stroke-width="3" points="1010.2,-114.11 1006,-102.11 1001.8,-114.11 1010.2,-114.11"></polygon>
-</g>
-</g>
-</svg>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linux-kernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: A diagram of course mapping.
-</figcaption>
-</figure>
-</div>
-</div>
+<ul>
+<li class="fragment"><p>run docker_run.ipynb in mangdang folder</p></li>
+<li class="fragment"><p><code>docker-compose up</code> to bring up container running</p></li>
+<li class="fragment"><p>ROS2 code running in a container running on Raspbbery Pi</p></li>
+<li class="fragment"><p><code>docker image list</code> to show image OS installed on the system</p></li>
+<li class="fragment"><p><code>docker ps -a</code> to find what process is runnning</p></li>
+<li class="fragment"><p><code>docker run</code> to start a new container process</p></li>
+<li class="fragment"><p><code>docker exec</code> to get into the process</p></li>
+</ul>
 </div>
 </section>
-<section id="introduction-to-linux-commands" class="slide level2">
-<h2>Introduction to Linux Commands</h2>
-<ul>
-<li>Linux commands are used to interact with the operating system through the terminal.</li>
-<li>Commands are typically composed of a command name, options, and arguments.</li>
-<li>Understanding basic Linux commands is essential for navigating and managing a Linux system.</li>
-</ul>
-</section>
-<section id="sec_nav" class="slide level2">
-<h2>Navigation</h2>
-<p><strong>Definition:</strong><br>
-Moving through the system and managing files from the command line.</p>
-<p><strong>Examples:</strong><br>
-- <code>cd</code>, <code>ls</code>, <code>pwd</code><br>
-- <code>cp</code>, <code>mv</code>, <code>rm</code><br>
-- <code>cat</code>, <code>nano</code>, <code>vim</code></p>
-</section>
-<section id="sec_access" class="slide level2">
-<h2>Access</h2>
-<p><strong>Definition:</strong><br>
-Managing who can read, write, or execute files and administer the system.</p>
-<p><strong>Examples:</strong><br>
-- <code>chmod</code>, <code>chown</code>, <code>chgrp</code><br>
-- <code>adduser</code>, <code>usermod</code>, <code>passwd</code><br>
-- <code>groups</code>, <code>whoami</code></p>
-</section>
-<section id="control" class="slide level2">
-<h2>Control</h2>
-<p><strong>Definition:</strong><br>
-Monitoring and managing system processes and installing software.</p>
-<p><strong>Examples:</strong><br>
-- <code>ps</code>, <code>top</code>, <code>kill</code>, <code>jobs</code><br>
-- <code>apt</code>, <code>yum</code>, <code>dpkg</code>, <code>rpm</code><br>
-- <code>fg</code>, <code>bg</code></p>
-</section>
-<section id="automation" class="slide level2">
-<h2>Automation</h2>
-<p><strong>Definition:</strong><br>
-Using scripts and network tools to automate tasks and monitor system health.</p>
-<p><strong>Examples:</strong><br>
-- <code>bash script.sh</code>, <code>for</code>, <code>if</code><br>
-- <code>ssh</code>, <code>scp</code>, <code>ping</code><br>
-- <code>df</code>, <code>free</code>, <code>journalctl</code>, <code>/var/log/</code></p>
-</section>
-<section id="system-commands" class="slide level2">
-<h2>System commands</h2>
-<ul>
-<li>sysetm updates and software installation (using admin priviledges)</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="fu">sudo</span> apt update</span>
-<span id="cb7-2"><a href=""></a><span class="fu">sudo</span> apt upgrade <span class="at">-y</span></span>
-<span id="cb7-3"><a href=""></a><span class="co"># example install python3</span></span>
-<span id="cb7-4"><a href=""></a><span class="fu">sudo</span> apt install python3-dev python3-pip python3-venv</span>
-<span id="cb7-5"><a href=""></a><span class="co"># search for software</span></span>
-<span id="cb7-6"><a href=""></a><span class="ex">apt-cache</span> search python</span>
-<span id="cb7-7"><a href=""></a><span class="co"># remove software</span></span>
-<span id="cb7-8"><a href=""></a><span class="fu">sudo</span> apt remove  python3-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>specialized software install (e.g.&nbsp;python package installation)</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="ex">pip</span> install panda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="linux-file-systems" class="slide level2">
-<h2>Linux File Systems</h2>
-<ul>
-<li><strong>Command</strong>: <code>pwd</code></li>
-<li><strong>Explanation</strong>: Displays the current directory you are working in.</li>
-<li><strong>Example</strong>: ```bash pwd</li>
-</ul>
-</section>
-<section id="ls---list-directory-contents" class="slide level2">
-<h2><code>ls</code> - List Directory Contents</h2>
-<ul>
-<li><strong>Command</strong>: <code>ls</code></li>
-<li><strong>Explanation</strong>: Lists files and directories in the current directory.</li>
-<li><strong>Options</strong>:
-<ul>
-<li><code>-l</code>: Detailed list with permissions, owner, size, etc.</li>
-<li><code>-a</code>: Includes hidden files.</li>
-<li><code>-t</code>: sort files by time.</li>
-<li><code>-h</code>: human readable.</li>
-</ul></li>
-<li><strong>Example</strong>:</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a>  <span class="fu">ls</span> <span class="at">-la</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="cd---change-directory" class="slide level2">
-<h2><code>cd</code> - Change Directory</h2>
-<ul>
-<li><p><strong>Command</strong>: <code>cd</code></p></li>
-<li><p><strong>Explanation</strong>: Changes the current directory to a specified directory.</p></li>
-<li><p><strong>Usage</strong>:</p>
-<ul>
-<li><code>cd /path/to/directory</code>: Move to a specific directory.</li>
-<li><code>cd ..</code>: Move up one directory level.</li>
-<li><code>cd ~</code>: Move to the home directory.</li>
-</ul></li>
-<li><p><strong>Example</strong>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="bu">cd</span> /home/user/Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-</section>
-<section id="mkdir-and-rmdir---create-and-remove-directories" class="slide level2">
-<h2><code>mkdir</code> and <code>rmdir</code> - Create and Remove Directories</h2>
-<ul>
-<li><p><strong>Commands</strong>:</p>
-<ul>
-<li><code>mkdir</code>: Creates a new directory.</li>
-<li><code>rmdir</code>: Removes an empty directory.</li>
-</ul></li>
-<li><p><strong>Example</strong>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="fu">mkdir</span> new_folder</span>
-<span id="cb11-2"><a href=""></a><span class="fu">rmdir</span> new_folder </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-</section>
-<section id="sec_python" class="slide level2">
-<h2>Python</h2>
-<h3 id="why-python">Why Python</h3>
+<section id="docker-how-use" class="slide level2">
+<h2>Docker: How use</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">1</a></li><li><a href="#tabset-4-2">2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1578,336 +1071,1246 @@ Using scripts and network tools to automate tasks and monitor system health.</p>
 </div>
 <div class="callout-content">
 <ul>
-<li>Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).</li>
-<li>Python has a simple syntax similar to the English language.</li>
-<li>Python has syntax that allows developers to write programs with fewer lines than some other programming languages.</li>
-<li>Python runs on an interpreter system, meaning that code can be executed as soon as it is written. This means that prototyping can be very quick.</li>
-<li>Python can be treated in a procedural way, an object-oriented way or a functional way.</li>
+<li>pull image, you can find more at <a href="https://hub.docker.com/">here</a></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="ex">docker</span> pull ubuntu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>check avaiable docker image</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check avaiable docker process</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>[start a new process] vs [attach to a process]</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span> /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span> /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>remove image</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="pp">[</span><span class="ss">containerid</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>remove all images</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">docker</span> rmi <span class="at">-f</span> <span class="va">$(</span><span class="ex">docker</span> images <span class="at">-aq</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>prune image/network/volume/system</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="ex">docker</span> image prune <span class="at">-a</span></span>
+<span id="cb20-2"><a href=""></a><span class="ex">docker</span> network prune <span class="at">-a</span></span>
+<span id="cb20-3"><a href=""></a><span class="ex">docker</span> volume prune <span class="at">-a</span></span>
+<span id="cb20-4"><a href=""></a><span class="ex">docker</span> system prune <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="docker-cross-platform-build" class="slide level2">
+<h2>Docker Cross-platform Build</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">WSL (x86)</a></li><li><a href="#tabset-5-2">x86 commands</a></li><li><a href="#tabset-5-3">Mac (Apple Silicon)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p>To build Docker images for ARM64 platforms (e.g., Raspberry Pi) on an x86 system using WSL, follow these steps:</p>
+<h3 id="install-required-tools">✅ Install Required Tools</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
+<span id="cb21-2"><a href=""></a>    qemu-user-static binfmt-support docker-compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="enable-qemu-emulation">✅ Enable QEMU Emulation</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--enable</span> qemu-arm</span>
+<span id="cb22-2"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--display</span> qemu-arm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="register-qemu-handlers-for-all-architectures">✅ Register QEMU Handlers for All Architectures</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--privileged</span> multiarch/qemu-user-static <span class="at">--reset</span> <span class="at">-p</span> yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This ensures your system can run containers built for multiple architectures using QEMU emulation.</p>
+</div>
+<div id="tabset-5-2">
+<ul>
+<li>run combined commands as</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> <span class="at">--no-install-recommends</span> qemu-user-static binfmt-support  docker-compose </span>
+<span id="cb24-2"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--enable</span> qemu-arm</span>
+<span id="cb24-3"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--display</span> qemu-arm</span>
+<span id="cb24-4"><a href=""></a></span>
+<span id="cb24-5"><a href=""></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> qemu-user-static binfmt-support</span>
+<span id="cb24-6"><a href=""></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--privileged</span> multiarch/qemu-user-static <span class="at">--reset</span> <span class="at">-p</span> yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-3">
+<p>No emulation is needed when building for ARM64 (same architecture as Raspberry Pi). Just use native Docker on Raspberry Pi.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="docker-advanced-options" class="slide level2">
+<h2>Docker Advanced Options</h2>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Export</a></li><li><a href="#tabset-6-2">Import</a></li><li><a href="#tabset-6-3">Volume</a></li><li><a href="#tabset-6-4">Image List</a></li><li><a href="#tabset-6-5">Process List</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p>You can transport Docker images between systems using tar files.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="ex">docker</span> save <span class="at">-o</span> image_name.tar image_name:tag</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-2">
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">docker</span> load <span class="at">-i</span> image_name.tar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-3">
+<p>Mount host files or directories inside a Docker container using the <code>-v</code> option.</p>
+<h3 id="example-mount-a-script">📁 Example: Mount a Script</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>/myscript.py:/app/myscript.py python:3.10 python /app/myscript.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>$(pwd)/myscript.py</code>: host file</li>
+<li><code>/app/myscript.py</code>: file path in the container</li>
+</ul>
+</div>
+<div id="tabset-6-4">
+<p>See available images on your system:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-5">
+<p>See available images on your system:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><code>docker run</code> to start a new container process</p></li>
+<li><p><code>docker exec</code> to get into the process</p></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="python-general-concepts" class="slide level2">
-<h2>Python General Concepts</h2>
+<section id="dockerfile-basics" class="slide level2">
+<h2>Dockerfile Basics</h2>
+<p>A <code>Dockerfile</code> lets you define an image from code.</p>
+<h3 id="example-python-app-dockerfile">📝 Example: Python App Dockerfile</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb30-1"><a href=""></a><span class="kw">FROM</span> python:3.10-slim</span>
+<span id="cb30-2"><a href=""></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb30-3"><a href=""></a><span class="kw">COPY</span> requirements.txt .</span>
+<span id="cb30-4"><a href=""></a><span class="kw">RUN</span> <span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
+<span id="cb30-5"><a href=""></a><span class="kw">COPY</span> . .</span>
+<span id="cb30-6"><a href=""></a><span class="kw">CMD</span> [<span class="st">"python"</span>, <span class="st">"app.py"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="build-the-image">🔧 Build the Image</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="ex">docker</span> build <span class="at">-t</span> my-python-app .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="docker-compose-basic-advanced" class="slide level2">
+<h2>Docker Compose: Basic &amp; Advanced</h2>
+<p>Docker Compose lets you manage multi-container applications using a <code>docker-compose.yml</code> file.</p>
+<h3 id="basic-example">🧰 Basic Example</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href=""></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">"3.9"</span></span>
+<span id="cb32-2"><a href=""></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb32-3"><a href=""></a><span class="at">  </span><span class="fu">web</span><span class="kw">:</span></span>
+<span id="cb32-4"><a href=""></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> nginx</span></span>
+<span id="cb32-5"><a href=""></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb32-6"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8080:80"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run it:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="ex">docker-compose</span> up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="advanced-options" class="slide level2">
+<h2>🛠️ Advanced Options</h2>
+<h4 id="auto-restart-containers">🔁 Auto-Restart Containers</h4>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb34-1"><a href=""></a><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 id="limit-resources">🔒 Limit Resources</h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb35-1"><a href=""></a><span class="fu">deploy</span><span class="kw">:</span></span>
+<span id="cb35-2"><a href=""></a><span class="at">  </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb35-3"><a href=""></a><span class="at">    </span><span class="fu">limits</span><span class="kw">:</span></span>
+<span id="cb35-4"><a href=""></a><span class="at">      </span><span class="fu">cpus</span><span class="kw">:</span><span class="at"> </span><span class="st">"0.5"</span></span>
+<span id="cb35-5"><a href=""></a><span class="at">      </span><span class="fu">memory</span><span class="kw">:</span><span class="at"> 256M</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 id="mount-volumes">📂 Mount Volumes</h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb36-1"><a href=""></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb36-2"><a href=""></a><span class="at">  </span><span class="kw">-</span><span class="at"> ./data:/data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 id="build-from-dockerfile">📦 Build from Dockerfile</h4>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb37-1"><a href=""></a><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb37-2"><a href=""></a><span class="at">  </span><span class="fu">context</span><span class="kw">:</span><span class="at"> .</span></span>
+<span id="cb37-3"><a href=""></a><span class="at">  </span><span class="fu">dockerfile</span><span class="kw">:</span><span class="at"> Dockerfile</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="full-example" class="slide level2">
+<h2>📋 Full Example</h2>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb38-1"><a href=""></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">"3.9"</span></span>
+<span id="cb38-2"><a href=""></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb38-3"><a href=""></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span></span>
+<span id="cb38-4"><a href=""></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb38-5"><a href=""></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> .</span></span>
+<span id="cb38-6"><a href=""></a><span class="at">      </span><span class="fu">dockerfile</span><span class="kw">:</span><span class="at"> Dockerfile</span></span>
+<span id="cb38-7"><a href=""></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb38-8"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"5000:5000"</span></span>
+<span id="cb38-9"><a href=""></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb38-10"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> .:/app</span></span>
+<span id="cb38-11"><a href=""></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb38-12"><a href=""></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb38-13"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> ENV=production</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="build-and-run">🧪 Build and Run</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href=""></a><span class="ex">docker-compose</span> build</span>
+<span id="cb39-2"><a href=""></a><span class="ex">docker-compose</span> up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="clean-up">🧼 Clean Up</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href=""></a><span class="ex">docker-compose</span> down <span class="at">--volumes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sec-rosdocker" class="slide level2">
+<h2>3. ROS2 in Docker</h2>
+<h3 id="ros2-in-docker-instance">ROS2 in docker instance</h3>
+<ul>
+<li>docker instance is an OS instance</li>
+<li>install ROS2 on the docker instance</li>
+<li>mount host files in docker instance, then run ROS2 node from docker instance</li>
+</ul>
+<h3 id="advantage">Advantage</h3>
+<ul>
+<li>no need to worry about software update</li>
+<li>ensure the dependcies are consistent in the docker instance</li>
+</ul>
+<h3 id="disadvantage">Disadvantage</h3>
+<ul>
+<li>need to compile the image</li>
+<li>docker instance could be a large file</li>
+</ul>
+</section>
+<section id="music-docker-example" class="slide level2">
+<h2>Music Docker Example</h2>
+<ul>
+<li>try this on your AWS cloud 9 instance</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> ros2-dev-music https://github.com/lbaitemple/mini_pupper_ros_aws/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="docker-process" class="slide level2">
+<h2>Docker Process</h2>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Version</a></li><li><a href="#tabset-7-2">Varilables</a></li><li><a href="#tabset-7-3">List</a></li><li><a href="#tabset-7-4">Tuple</a></li><li><a href="#tabset-7-5">Sets</a></li><li><a href="#tabset-7-6">Dictionaries</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">x86</a></li><li><a href="#tabset-7-2">build</a></li><li><a href="#tabset-7-3">minipupper</a></li><li><a href="#tabset-7-4">load image</a></li><li><a href="#tabset-7-5">docker exec</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1">
 <ul>
-<li>python v2.7</li>
+<li>ensure we can setup for arm process</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="bu">print</span> <span class="st">"Hello, World!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>python v3</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href=""></a></span>
+<span id="cb42-2"><a href=""></a><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> <span class="at">--no-install-recommends</span> qemu-user-static binfmt-support  docker-compose </span>
+<span id="cb42-3"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--enable</span> qemu-arm</span>
+<span id="cb42-4"><a href=""></a><span class="fu">sudo</span> update-binfmts <span class="at">--display</span> qemu-arm</span>
+<span id="cb42-5"><a href=""></a></span>
+<span id="cb42-6"><a href=""></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> qemu-user-static binfmt-support</span>
+<span id="cb42-7"><a href=""></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--privileged</span> multiarch/qemu-user-static <span class="at">--reset</span> <span class="at">-p</span> yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-7-2">
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a>x <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb14-2"><a href=""></a>y <span class="op">=</span> <span class="st">"John"</span></span>
-<span id="cb14-3"><a href=""></a><span class="bu">print</span>(x)</span>
-<span id="cb14-4"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
-<span id="cb14-5"><a href=""></a><span class="bu">print</span>(y)</span>
-<span id="cb14-6"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>see what you will need to do with Dockerfile</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href=""></a><span class="bu">cd</span> mini_pupper_ros_aws/</span>
+<span id="cb43-2"><a href=""></a><span class="ex">docker-compose</span> build </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>find the docker image and export it as an image.tar</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href=""></a><span class="ex">docker</span> save <span class="at">-o</span> image_name.tar ros-humble-greengrass-music-minipupper:latest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-7-3">
 <ul>
-<li>define a list</li>
+<li><p>create an audio folder on minipupper <code>mkdir ~/minipupper/playlist</code></p></li>
+<li><p>move imag_name.tar and docker-compose.yaml to the minipupper</p></li>
+<li><p>load the image</p></li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>mylist <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
-<span id="cb15-2"><a href=""></a><span class="bu">print</span>(mylist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Access Items</li>
-</ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a>thislist <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
-<span id="cb16-2"><a href=""></a><span class="bu">print</span>(thislist[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Change Item Value</li>
-</ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>thislist <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
-<span id="cb17-2"><a href=""></a>thislist[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"blackcurrant"</span></span>
-<span id="cb17-3"><a href=""></a><span class="bu">print</span>(thislist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href=""></a><span class="ex">docker</span> load <span class="at">-i</span> image_name.tar </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/docker_save_image.png" class="quarto-figure quarto-figure-center" width="509"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-7-4">
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href=""></a><span class="fu">mkdir</span> ~/tmp <span class="kw">&amp;</span> <span class="bu">cd</span> ~/tmp</span>
+<span id="cb46-2"><a href=""></a><span class="fu">wget</span> https://raw.githubusercontent.com/lbaitemple/mini_pupper_ros_aws/refs/heads/ros2-dev-music/greengrass/docker-compose.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>define a tuple</li>
+<li>check the docker-compose.yml</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a>thistuple <span class="op">=</span> (<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>)</span>
-<span id="cb18-2"><a href=""></a><span class="bu">print</span>(thistuple)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb47-1"><a href=""></a><span class="at">  </span><span class="fu">pupper-robot</span><span class="kw">:</span></span>
+<span id="cb47-2"><a href=""></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> ros-humble-greengrass-music-minipupper:latest</span></span>
+<span id="cb47-3"><a href=""></a><span class="at">    </span><span class="fu">devices</span><span class="kw">:</span></span>
+<span id="cb47-4"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"/dev/snd:/dev/snd"</span><span class="co">   # Pass the sound device from the host to the container</span></span>
+<span id="cb47-5"><a href=""></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb47-6"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /tmp/esp32-proxy.socket:/tmp/esp32-proxy.socket</span></span>
+<span id="cb47-7"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /home/ubuntu/minipupper/playlist:/app/audio </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Access Tuple</li>
+<li>docker compose up with docker-compose.yaml file</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a>thistuple <span class="op">=</span> (<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>)</span>
-<span id="cb19-2"><a href=""></a><span class="bu">print</span>(thistuple[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Change Tuple Value</li>
-</ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a>x <span class="op">=</span> (<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>)</span>
-<span id="cb20-2"><a href=""></a>y <span class="op">=</span> <span class="bu">list</span>(x)</span>
-<span id="cb20-3"><a href=""></a>y[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"kiwi"</span></span>
-<span id="cb20-4"><a href=""></a>x <span class="op">=</span> <span class="bu">tuple</span>(y)</span>
-<span id="cb20-5"><a href=""></a></span>
-<span id="cb20-6"><a href=""></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href=""></a><span class="bu">cd</span> ~/tmp</span>
+<span id="cb48-2"><a href=""></a><span class="ex">docker-compose</span>  <span class="at">--profile</span> pupper-robot  up <span class="at">-d</span></span>
+<span id="cb48-3"><a href=""></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="pp">[</span><span class="ss">continer_id</span><span class="pp">]</span> /robot-entrypoint.sh /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-7-5">
 <ul>
-<li>define a set</li>
+<li>check the service in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a>thisset <span class="op">=</span> {<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>}</span>
-<span id="cb21-2"><a href=""></a><span class="bu">print</span>(thisset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href=""></a><span class="bu">source</span> /opt/ros_demos/setup.bash </span>
+<span id="cb49-2"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot0.mp3', start_second: 3}"</span></span>
+<span id="cb49-3"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Access Items</li>
+<li>send music file to the topic in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a>thisset <span class="op">=</span> {<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>}</span>
-<span id="cb22-2"><a href=""></a></span>
-<span id="cb22-3"><a href=""></a><span class="cf">for</span> x <span class="kw">in</span> thisset:</span>
-<span id="cb22-4"><a href=""></a>  <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>robot0.mp3<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Add Items</li>
+<li>stop the music using the topic in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a>thisset <span class="op">=</span> {<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>}</span>
-<span id="cb23-2"><a href=""></a>thisset.add(<span class="st">"orange"</span>)</span>
-<span id="cb23-3"><a href=""></a><span class="bu">print</span>(thisset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-7-6">
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>stop<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>define a Dictionary</li>
+<li>check log of docker container</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a>thisdict <span class="op">=</span> {</span>
-<span id="cb24-2"><a href=""></a>  <span class="st">"brand"</span>: <span class="st">"Ford"</span>,</span>
-<span id="cb24-3"><a href=""></a>  <span class="st">"model"</span>: <span class="st">"Mustang"</span>,</span>
-<span id="cb24-4"><a href=""></a>  <span class="st">"year"</span>: <span class="dv">1964</span></span>
-<span id="cb24-5"><a href=""></a>}</span>
-<span id="cb24-6"><a href=""></a><span class="bu">print</span>(thisdict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Accessing Items</li>
-</ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href=""></a>thisdict <span class="op">=</span> {</span>
-<span id="cb25-2"><a href=""></a>  <span class="st">"brand"</span>: <span class="st">"Ford"</span>,</span>
-<span id="cb25-3"><a href=""></a>  <span class="st">"model"</span>: <span class="st">"Mustang"</span>,</span>
-<span id="cb25-4"><a href=""></a>  <span class="st">"year"</span>: <span class="dv">1964</span></span>
-<span id="cb25-5"><a href=""></a>}</span>
-<span id="cb25-6"><a href=""></a>x <span class="op">=</span> thisdict[<span class="st">"model"</span>]</span>
-<span id="cb25-7"><a href=""></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href=""></a><span class="ex">docker-compose</span> logs pupper-robot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
+</section></section>
+<section>
+<section id="sec-workflow" class="title-slide slide level1 center">
+<h1>4. Deploy ROS2 MiniPupper in Docker + Greengrass</h1>
+<ul>
+<li>can we put docker instance as a cloud image</li>
+<li>send ROS topics using IOT (pub/sub)</li>
+</ul>
+</section>
+<section id="docker-deployed-by-greengrass-v2" class="slide level2">
+<h2>Docker Deployed by Greengrass v2</h2>
+
+<img data-src="images/introduction-01-dev-cycle.png" class="quarto-figure quarto-figure-center r-stretch"><div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<div>
+<ul>
+<li class="fragment">Deployment using IoT Greengrass 2.0 (use docker image)</li>
+<li class="fragment">Docker container registry (ECR - store image )</li>
+<li class="fragment">Cloud storage (S3 - Simple Storage Services)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Credit from Building Cloud Connected Robots <span class="citation" data-cites="BuildCloudRobot">(<a href="#/mqtt-am" role="doc-biblioref" onclick="">Robots 2021</a>)</span></p>
 </div>
 </section>
-<section id="python-function" class="slide level2">
-<h2>Python Function</h2>
-<ul>
-<li>control logic similar like other programs</li>
-</ul>
+<section id="iot-with-ros" class="slide level2">
+<h2>IoT with ROS</h2>
+
+<img data-src="images/art_greengrass.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="greengrass-terminologies-used" class="slide level2">
+<h2>Greengrass terminologies used</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">module.py</a></li><li><a href="#tabset-8-2">import</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Minipupper v2</a></li><li><a href="#tabset-8-2">WSL (Cloud9)</a></li><li><a href="#tabset-8-3">ECR</a></li><li><a href="#tabset-8-4">S3</a></li><li><a href="#tabset-8-5">IoT</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a><span class="co">## save this content in a file named module.py</span></span>
-<span id="cb26-2"><a href=""></a><span class="kw">def</span> my_function():</span>
-<span id="cb26-3"><a href=""></a>  <span class="bu">print</span>(<span class="st">"Hello from a function"</span>)</span>
-<span id="cb26-4"><a href=""></a>  </span>
-<span id="cb26-5"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb26-6"><a href=""></a>  my_function()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>physical devices (thing in a thing group)</li>
+<li>less powerful processor</li>
+<li>use jupyter lab</li>
+<li>minipupper.ipynb <a href="https://github.com/lbaitemple/mangdang/blob/main/minipupper.ipynb">download here</a></li>
+</ul>
 </div>
 <div id="tabset-8-2">
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a><span class="im">from</span> module <span class="im">import</span> my_function</span>
-<span id="cb27-2"><a href=""></a></span>
-<span id="cb27-3"><a href=""></a>myfunction()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="python-lamba-function" class="slide level2">
-<h2>Python Lamba Function</h2>
 <ul>
-<li>control logic similar like other function call</li>
+<li>need to setup docker-compose</li>
+<li>more powerful processor</li>
+<li>need to cross compile for arm64 process</li>
+<li>setup script to develop component (ROS code, how to get it launched)</li>
+<li>use a receipt to create a greengrass component for launch</li>
+<li>we create a docker image already in last week’s class</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb28-2"><a href=""></a>  add <span class="op">=</span> <span class="kw">lambda</span> a, b : a <span class="op">*</span> b</span>
-<span id="cb28-3"><a href=""></a>  <span class="bu">print</span>(add(<span class="dv">5</span>, <span class="dv">6</span>))</span>
-<span id="cb28-4"><a href=""></a>  </span>
-<span id="cb28-5"><a href=""></a>  sub <span class="op">=</span> <span class="kw">lambda</span> a, b : a<span class="op">-</span>b</span>
-<span id="cb28-6"><a href=""></a>  <span class="bu">print</span>(sub(<span class="dv">6</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-3">
+<ul>
+<li>store the docker instance so mini pupper will receive it</li>
+<li>need to login, tag the docker instance</li>
+</ul>
+</div>
+<div id="tabset-8-4">
+<ul>
+<li>store configuration file</li>
+<li>static location for data transfer</li>
+<li>lower cost storage service</li>
+</ul>
+</div>
+<div id="tabset-8-5">
+<ul>
+<li>MQTT protocol</li>
+<li>publisher/subscriber topics - dance_config</li>
+<li>need a greengrass bridge</li>
+<li>IoT and greengrass</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-<section id="python-class" class="slide level2">
-<h2>Python Class</h2>
+<section id="aws-greengrass-process" class="slide level2">
+<h2>AWS Greengrass Process</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">mindmap
+  root((AWS IoT Core))
+    MQTT
+      publish music/dance topic
+    WSL
+      Docker Install
+      ::icon(fa fa-ship)
+      Docker Image
+        AWS Credential
+          Push Image to ECR
+          Push dockercompose to S3
+          Push Receipt on IoT
+    Minipupper ipynb
+      Install Greengrass Core
+      ::icon(fa fa-tree)
+      AWS Credential
+        IoT
+            Thing
+            Thing Group
+            Greengrass Thing
+               Development
+               Component
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="aws-greengrass-process-1" class="slide level2">
+<h2>AWS Greengrass Process</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: { 'logLevel': 'debug', 'theme': 'default' } }%%
+timeline
+    title AWS Greengrass Process
+    section WSL
+        Software needed : Install Docker Docker compose
+        Docker Image : ECR &lt;br&gt; AWS credential
+        aws_greengrass.sh: push files to S3 : receipt : docker compose.yaml:  create a component to IoT
+    section Minipupper
+        Software needed : Green Grass Core
+        IoT &lt;br&gt; minipupper.ipynb : Thing : Thing Group :
+        Greengrass : Deployment
+    section AWS IoT Core
+        Deployment : read receipt : push image back to minipupper : run docker using docker-compose from s3 : greengrass bridge : wait for a topic
+        MQTT : send IoT topic : read by the bridge : see pupper music/dance
+
+   
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="docker_slide" class="slide level2">
+<h2>Docker Image in WSL (W)</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">person.py</a></li><li><a href="#tabset-9-2">import</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">step 0</a></li><li><a href="#tabset-9-2">step 1</a></li><li><a href="#tabset-9-3">step 2</a></li><li><a href="#tabset-9-4">step 3</a></li><li><a href="#tabset-9-5">step 4</a></li><li><a href="#tabset-9-6">step 5</a></li><li><a href="#tabset-9-7"><span style="color: red;">step 6</span></a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1">
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a><span class="co">## save the following content into a file named person.py</span></span>
-<span id="cb29-2"><a href=""></a><span class="kw">class</span> Person:</span>
-<span id="cb29-3"><a href=""></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
-<span id="cb29-4"><a href=""></a>    <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb29-5"><a href=""></a>    <span class="va">self</span>.age <span class="op">=</span> age</span>
-<span id="cb29-6"><a href=""></a>  </span>
-<span id="cb29-7"><a href=""></a>  <span class="kw">def</span> setName(<span class="va">self</span>, n<span class="op">=</span><span class="st">"Joe"</span>):</span>
-<span id="cb29-8"><a href=""></a>     <span class="va">self</span>.name <span class="op">=</span> n</span>
-<span id="cb29-9"><a href=""></a></span>
-<span id="cb29-10"><a href=""></a>  <span class="kw">def</span> <span class="bu">print</span>(<span class="va">self</span>):</span>
-<span id="cb29-11"><a href=""></a>     <span class="bu">print</span>(<span class="ss">f"Person </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> years old"</span>)</span>
-<span id="cb29-12"><a href=""></a>     </span>
-<span id="cb29-13"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb29-14"><a href=""></a>  p1 <span class="op">=</span> Person(<span class="st">"John"</span>, <span class="dv">36</span>)</span>
-<span id="cb29-15"><a href=""></a>  p2 <span class="op">=</span> Person(age<span class="op">=</span><span class="dv">18</span>, name<span class="op">=</span><span class="st">"Max"</span>)</span>
-<span id="cb29-16"><a href=""></a>  <span class="bu">print</span>(p1.name)</span>
-<span id="cb29-17"><a href=""></a>  <span class="bu">print</span>(p1.age)</span>
-<span id="cb29-18"><a href=""></a>  <span class="bu">print</span>(p2.name)</span>
-<span id="cb29-19"><a href=""></a>  <span class="bu">print</span>(p2.age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>install mangdang folder in WSL home folder</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb53-2"><a href=""></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>If you had a mangdang folder, please update the folder</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href=""></a><span class="bu">cd</span> ~/mangdang</span>
+<span id="cb54-2"><a href=""></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-9-2">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a><span class="im">from</span> person <span class="im">import</span> Person</span>
-<span id="cb30-2"><a href=""></a></span>
-<span id="cb30-3"><a href=""></a>a <span class="op">=</span> Person(<span class="st">"John"</span>, <span class="dv">36</span>)</span>
-<span id="cb30-4"><a href=""></a>a.setName(n<span class="op">=</span><span class="st">"Li"</span>)</span>
-<span id="cb30-5"><a href=""></a>a.<span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>install <a href="https://www.youtube.com/watch?app=desktop&amp;v=SDk3pqFXgs8" target="_blank">docker without docker-hub app</a></li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href=""></a><span class="bu">cd</span> ~/mangdang</span>
+<span id="cb55-2"><a href=""></a><span class="fu">bash</span> ./docker_wsl.sh</span>
+<span id="cb55-3"><a href=""></a><span class="bu">exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>restart ubuntu WSL</li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--terminate</span> ubuntu-22.04</span>
+<span id="cb56-2"><a href=""></a><span class="ex">wsl</span> <span class="at">--shutdown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>If docker not working properly with <code>docker ps -a</code></li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href=""></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span>
+<span id="cb57-2"><a href=""></a><span class="ex">newgrp</span> docker</span>
+<span id="cb57-3"><a href=""></a><span class="fu">ls</span> <span class="at">-l</span> /var/run/docker.sock</span>
+<span id="cb57-4"><a href=""></a><span class="fu">sudo</span> chmod 666 /var/run/docker.sock</span>
+<span id="cb57-5"><a href=""></a><span class="fu">sudo</span> systemctl restart docker</span>
+<span id="cb57-6"><a href=""></a><span class="fu">sudo</span> systemctl status docker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-9-3">
+<ul>
+<li>login wsl</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href=""></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-22.04</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>make sure you add arm cross compile</li>
+<li>copy one line at a time</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href=""></a><span class="fu">sudo</span> apt-get install <span class="at">-y</span> qemu-user-static binfmt-support</span>
+<span id="cb59-2"><a href=""></a><span class="fu">sudo</span> apt  install docker-compose  <span class="at">-y</span></span>
+<span id="cb59-3"><a href=""></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--privileged</span> multiarch/qemu-user-static <span class="at">--reset</span> <span class="at">-p</span> yes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-9-4">
+<ul>
+<li>create a docker image for raspberry pi on WSL</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb60-1"><a href=""></a><span class="bu">cd</span> ~/</span>
+<span id="cb60-2"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> ros2-dev-music  https://github.com/lbaitemple/mini_pupper_ros_aws/ mini_pupper_ros_music</span>
+<span id="cb60-3"><a href=""></a><span class="bu">cd</span> mini_pupper_ros_music/</span>
+<span id="cb60-4"><a href=""></a><span class="ex">docker-compose</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_docker_build.png" class="quarto-figure quarto-figure-center" width="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-5">
+<ul>
+<li>you should have an image <code>ros-humble-greengrass-minipupper:latest</code></li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb61-1"><a href=""></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/wsl_docker_image.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-9-6">
+<ul>
+<li>install AWS shell</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href=""></a><span class="fu">sudo</span> apt install zip <span class="at">-y</span></span>
+<span id="cb62-2"><a href=""></a><span class="ex">curl</span> <span class="st">"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"</span> <span class="at">-o</span> <span class="st">"awscliv2.zip"</span> </span>
+<span id="cb62-3"><a href=""></a><span class="fu">unzip</span> awscliv2.zip </span>
+<span id="cb62-4"><a href=""></a><span class="fu">sudo</span> ./aws/install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>verify</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb63-1"><a href=""></a><span class="ex">aws</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>if you have an SSL error</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href=""></a><span class="ex">pip</span> install urllib3==1.26.5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-9-7">
+<ul>
+<li>To save time, I put a docker image on my S3 so you can download it directly on your WSL</li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href=""></a><span class="bu">cd</span> ~</span>
+<span id="cb65-2"><a href=""></a><span class="ex">aws</span> s3 cp s3://ece34322024lb/music.tar music.tar <span class="at">--no-sign-request</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>load the tar image as a docker image</li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href=""></a><span class="ex">docker</span> load <span class="at">-i</span> music.tar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check the image</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb67-1"><a href=""></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="python-package" class="slide level2">
-<h2>Python package</h2>
-<ul>
-<li>A <strong>Python package</strong> is a collection of modules organized in directories with an <code>__init__.py</code> file.</li>
-<li>Useful for organizing code for reuse and distribution.</li>
-</ul>
+<section id="setup-aws-credential-for-wsl-and-minipupper" class="slide level2">
+<h2>Setup AWS Credential for WSL and Minipupper</h2>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">standard package</a></li><li><a href="#tabset-10-2">customized package</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">step 1</a></li><li><a href="#tabset-10-2">step 2</a></li><li><a href="#tabset-10-3">step 3</a></li><li><a href="#tabset-10-4">step 4 (WSL)</a></li><li><a href="#tabset-10-5">step 5 (Pupper)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
 <ul>
-<li>find packages at <a href="https://pypi.org/" class="uri">https://pypi.org/</a></li>
+<li>Log into AWS Academy</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="ex">pip</span> install package</span>
-<span id="cb31-2"><a href=""></a><span class="ex">pip</span> show package</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/aws_academy_1.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-10-2">
-<ol type="1">
-<li>Create a folder for your package.</li>
-<li>Add your Python module files.</li>
-<li>Add <code>__init__.py</code> to mark it as a package.</li>
-<li>Create <code>setup.py</code> or use <code>pyproject.toml</code>.</li>
-<li>Add a <code>README.md</code> and optionally a license file.</li>
-<li>Install locally with <code>pip install -e .</code>.</li>
-</ol>
+<ul>
+<li>Check AWS Details</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/aws_academy_2.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-10-3">
+<ul>
+<li>Find the login credential</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/aws_academy_3.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-10-4">
+<ul>
+<li>create a credential file on WSL</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb68-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.aws</span>
+<span id="cb68-2"><a href=""></a><span class="fu">touch</span> ~/.aws/credentials</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>copy from login credential in VS code</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/aws_config.png" class="quarto-figure quarto-figure-center" width="1041"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-10-5">
+<ul>
+<li><p>Go back to the jupyter lab on minipupper</p></li>
+<li><p>add the credential from AWS academy credential</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab7.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="step-by-step-guide" class="slide level2">
-<h2>✍️ Step-by-Step Guide</h2>
+<section id="minipupper---greengrass-setup-m" class="slide level2">
+<h2>Minipupper - Greengrass Setup (M)</h2>
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">📁 Folder Structure</a></li><li><a href="#tabset-11-2">1</a></li><li><a href="#tabset-11-3">2</a></li><li><a href="#tabset-11-4">3</a></li><li><a href="#tabset-11-5">4</a></li><li><a href="#tabset-11-6">5</a></li><li><a href="#tabset-11-7">6</a></li></ul>
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">step 1</a></li><li><a href="#tabset-11-2">step 2</a></li><li><a href="#tabset-11-3">step 3</a></li><li><a href="#tabset-11-4">step 4</a></li><li><a href="#tabset-11-5">step 5</a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1">
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb32-1"><a href=""></a>my_package/</span>
-<span id="cb32-2"><a href=""></a>├── my_package/</span>
-<span id="cb32-3"><a href=""></a>│   ├── __init__.py</span>
-<span id="cb32-4"><a href=""></a>│   ├── core.py</span>
-<span id="cb32-5"><a href=""></a>│   └── utils.py</span>
-<span id="cb32-6"><a href=""></a>├── tests/</span>
-<span id="cb32-7"><a href=""></a>│   └── test_core.py</span>
-<span id="cb32-8"><a href=""></a>├── README.md</span>
-<span id="cb32-9"><a href=""></a>├── setup.py</span>
-<span id="cb32-10"><a href=""></a>└── pyproject.toml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Download Mangdang</li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb69-1"><a href=""></a><span class="fu">git</span> clone http://github.com/lbaitemple/mangdang</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab2.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-11-2">
-<hr>
-<h3 id="step-1-create-a-directory">Step 1: Create a Directory</h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="fu">mkdir</span> my_package</span>
-<span id="cb33-2"><a href=""></a><span class="bu">cd</span> my_package</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
+<ul>
+<li><p>Open mangdang folder</p></li>
+<li><p>refresh the folder window</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab3.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-11-3">
-<h3 id="step-2-create-module-code">Step 2: Create Module Code</h3>
-<p>Create a subfolder with your logic:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href=""></a><span class="fu">mkdir</span> my_package</span>
-<span id="cb34-2"><a href=""></a><span class="fu">touch</span> my_package/__init__.py</span>
-<span id="cb34-3"><a href=""></a><span class="fu">touch</span> my_package/core.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Example: <code>core.py</code></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a><span class="kw">def</span> greet(name):</span>
-<span id="cb35-2"><a href=""></a>    <span class="cf">return</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
+<ul>
+<li>Find minipupper.ipynb in the mangdang folder</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab4.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-11-4">
-<h3 id="step-3-add-setup.py-or-pyproject.toml">Step 3: Add <code>setup.py</code> or <code>pyproject.toml</code></h3>
-<p>Example <code>setup.py</code>:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="im">from</span> setuptools <span class="im">import</span> setup, find_packages</span>
-<span id="cb36-2"><a href=""></a></span>
-<span id="cb36-3"><a href=""></a>setup(</span>
-<span id="cb36-4"><a href=""></a>    name<span class="op">=</span><span class="st">'my_package'</span>,</span>
-<span id="cb36-5"><a href=""></a>    version<span class="op">=</span><span class="st">'0.1'</span>,</span>
-<span id="cb36-6"><a href=""></a>    packages<span class="op">=</span>find_packages(),</span>
-<span id="cb36-7"><a href=""></a>    install_requires<span class="op">=</span>[],</span>
-<span id="cb36-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
+<ul>
+<li>Open minipupper.ipynb notebook</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab5.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
 </div>
 <div id="tabset-11-5">
-<h3 id="step-4-add-a-readme.md">Step 4: Add a <code>README.md</code></h3>
-<p>Include a brief description and usage instructions.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href=""></a><span class="fu"># My Package</span></span>
-<span id="cb37-2"><a href=""></a></span>
-<span id="cb37-3"><a href=""></a>A simple example Python package.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</div>
-<div id="tabset-11-6">
-<h3 id="step-5-optional---add-tests">Step 5: Optional - Add Tests</h3>
-<p>Create a <code>tests/</code> directory:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="fu">mkdir</span> tests</span>
-<span id="cb38-2"><a href=""></a><span class="fu">touch</span> tests/test_core.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Example test file:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a><span class="im">from</span> my_package.core <span class="im">import</span> greet</span>
-<span id="cb39-2"><a href=""></a></span>
-<span id="cb39-3"><a href=""></a><span class="kw">def</span> test_greet():</span>
-<span id="cb39-4"><a href=""></a>    <span class="cf">assert</span> greet(<span class="st">"Alice"</span>) <span class="op">==</span> <span class="st">"Hello, Alice!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</div>
-<div id="tabset-11-7">
-<h3 id="build-install-locally">📦 Build &amp; Install Locally</h3>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href=""></a><span class="ex">pip</span> install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href=""></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<p>(Use <code>-e</code> for “editable” install)</p>
-</section>
-<section id="summary" class="slide level2">
-<h2>✅ Summary</h2>
 <ul>
-<li>Organize code in directories.</li>
-<li>Include <code>__init__.py</code>.</li>
-<li>Add <code>setup.py</code> or <code>pyproject.toml</code>.</li>
-<li>(Optional) Add tests.</li>
-<li>Install with <code>pip install .</code>.</li>
+<li>Run the second block to install greengrass</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab6.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="next-steps" class="slide level2">
-<h2>🎯 Next Steps</h2>
+<section id="aws-iot-core-m" class="slide level2">
+<h2>AWS IoT Core (M)</h2>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">step 1</a></li><li><a href="#tabset-12-2">step 2</a></li><li><a href="#tabset-12-3">step 3</a></li><li><a href="#tabset-12-4">step 4</a></li><li><a href="#tabset-12-5">step 5</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
 <ul>
-<li>Publish your package to <a href="https://pypi.org">PyPI</a></li>
-<li>Add a license (e.g.&nbsp;MIT).</li>
-<li>Use <code>pytest</code> for better test automation.</li>
-<li>Include versioning and documentation.</li>
+<li>revise thing name and thing group in minipupper.ipynb</li>
+<li>run the block</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab8.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-12-2">
+<ul>
+<li>Thing is created on AWS IoT</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab9.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-12-3">
+<ul>
+<li>Things are added on IoT Core</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab10.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-12-4">
+<ul>
+<li>Add greengrass user</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab11.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-12-5">
+<p>greengrass user is added</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jupyter_lab12.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-DanceRobot" class="csl-entry" role="listitem">
-Gan, Afreez, and Matt Hansen. 2022. <span>“Dance of the Cloud Connected Robots.”</span> 2022. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/511d7599-73bd-4142-bd6b-fa83dbe3d8ce/en-US</a>.
+<section id="aws-iot-core-a" class="slide level2">
+<h2>AWS IoT Core (A)</h2>
+<div class="panel-tabset">
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">check 1</a></li><li><a href="#tabset-13-2">check 2</a></li><li><a href="#tabset-13-3">check 3</a></li><li><a href="#tabset-13-4">check 4</a></li><li><a href="#tabset-13-5">check 5</a></li><li><a href="#tabset-13-6">check 6</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1">
+<ul>
+<li>IoT Core</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iot_1.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-13-2">
+<ul>
+<li>Find Things on IoT</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iot_2.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-13-3">
+<ul>
+<li>Find Things on IoT</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iot_3.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-13-4">
+<ul>
+<li>Find Thing Group on IoT</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iot_4.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-13-5">
+<ul>
+<li>Find thing on Greengrass</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iot_6.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-13-6">
+<ul>
+<li>Find the deployment on IoT</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/iot_5.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="s3-setup-a" class="slide level2">
+<h2>S3 setup (A)</h2>
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">step 1</a></li><li><a href="#tabset-14-2">step 2</a></li><li><a href="#tabset-14-3">step 3</a></li><li><a href="#tabset-14-4">step 4</a></li><li><a href="#tabset-14-5">step 5</a></li><li><a href="#tabset-14-6">step 6</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<ul>
+<li>Find S3 on AWS Console</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_1.png" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-2">
+<ul>
+<li>Setup a S3</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_2.png" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-3">
+<ul>
+<li><p>select a name for s3 repo</p></li>
+<li><p>try to use your name initials and date (must be unique)</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_3.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-4">
+<ul>
+<li>setup permision</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_4.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-5">
+<ul>
+<li>unlock permission</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_5.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-14-6">
+<ul>
+<li>Create the s3 Repo</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/s3_6.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ecr-setup-a" class="slide level2">
+<h2>ECR setup (A)</h2>
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">step 1</a></li><li><a href="#tabset-15-2">step 2</a></li><li><a href="#tabset-15-3">step 3</a></li><li><a href="#tabset-15-4">step 4</a></li><li><a href="#tabset-15-5">step 5</a></li><li><a href="#tabset-15-6">step 6</a></li><li><a href="#tabset-15-7">step 7</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<ul>
+<li>Create a ECR</li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb70-1"><a href=""></a><span class="ex">ros-humble-greengrass-music-minipupper</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ecr1.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-2">
+<ul>
+<li>try to configure the credential</li>
+</ul>
+<div class="sourceCode" id="cb71"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb71-1"><a href=""></a><span class="ex">aws</span> configure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/aws_configure_1.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-3">
+<ul>
+<li>get all ECR cmds (1, 3 and 4)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/push_cmds.png" class="quarto-figure quarto-figure-center" width="417"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-4">
+<ul>
+<li><p>upload docker image on ECR</p></li>
+<li><p>Use ECR commands</p></li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb72-1"><a href=""></a><span class="ex">ros-humble-greengrass-music-minipupper</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/aws_login.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-5">
+<ul>
+<li><p>tag the image <img data-src="images/ecr_targ2.png" class="quarto-figure quarto-figure-center"></p></li>
+<li><p>copy it into wsl <img data-src="images/ecr_tag2.png" class="quarto-figure quarto-figure-center"></p></li>
+</ul>
+</div>
+<div id="tabset-15-6">
+<ul>
+<li>tag the image <img data-src="images/ecr_push1.png" class="quarto-figure quarto-figure-center"></li>
+<li>copy it into wsl</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ecr_push2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-15-7">
+<ul>
+<li>verify image is uploaded to ECR</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ecr_image1.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="wsl---iot-core-w" class="slide level2">
+<h2>WSL -&gt; IoT Core (W)</h2>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">step 1</a></li><li><a href="#tabset-16-2">step 2</a></li><li><a href="#tabset-16-3">step 3</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<ul>
+<li>open awsgreengrass.sh</li>
+<li>revise line 4 with your s3 repository name</li>
+<li>revise line 6 with your ECR name (if it is needed)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/was_iot_receipt1.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-16-2">
+<ul>
+<li>check <code>docker image list</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/docker-compose-time.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-16-3">
+<ul>
+<li>Run a bash script in Cloud 9</li>
+<li>push receipt and docker-compose to s3 and create a IoT component</li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb73-1"><a href=""></a><span class="fu">bash</span> ./awsgreengrass.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/aws_gressgrass_3.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="greengrass-deloyment-setup-on-aws-a" class="slide level2">
+<h2>Greengrass Deloyment Setup on AWS (A)</h2>
+<div class="panel-tabset">
+<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">step 1</a></li><li><a href="#tabset-17-2">step 2</a></li><li><a href="#tabset-17-3">step 3</a></li><li><a href="#tabset-17-4">step 4</a></li><li><a href="#tabset-17-5">step 5</a></li><li><a href="#tabset-17-6">step 6</a></li></ul>
+<div class="tab-content">
+<div id="tabset-17-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_1.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-17-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-17-3">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_3.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-17-4">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_4.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-17-5">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_6.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-17-6">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_5.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="greengrass-deloyment-am" class="slide level2">
+<h2>Greengrass Deloyment (AM)</h2>
+<div class="panel-tabset">
+<ul id="tabset-21" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-21-1">check 1</a></li><li><a href="#tabset-21-2">check 2</a></li><li><a href="#tabset-21-3">check 3</a></li><li><a href="#tabset-21-4">check 4</a></li><li><a href="#tabset-21-5">check 5</a></li></ul>
+<div class="tab-content">
+<div id="tabset-21-1">
+<ul>
+<li>in queue</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">AWS</a></li><li><a href="#tabset-18-2">minipupper v2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-18-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_5.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-18-2">
+<ul>
+<li>you can run the commands in a command terminal</li>
+</ul>
+<div class="sourceCode" id="cb74"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb74-1"><a href=""></a><span class="fu">ps</span> <span class="at">-aux</span> <span class="kw">|</span> <span class="fu">grep</span> docker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rpi_green_1.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-21-2">
+<ul>
+<li>in process</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-19" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-19-1">AWS</a></li><li><a href="#tabset-19-2">minipupper v2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-19-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_8.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-19-2">
+<ul>
+<li>check what docker images are available</li>
+</ul>
+<div class="sourceCode" id="cb75"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb75-1"><a href=""></a><span class="ex">docker</span> image list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rpi_green_2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-21-3">
+<ul>
+<li>if successfully deployed</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-20" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-20-1">AWS</a></li><li><a href="#tabset-20-2">minipupper v2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-20-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/green_deploy_9.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-20-2">
+<ul>
+<li>check what docker process are available</li>
+</ul>
+<div class="sourceCode" id="cb76"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb76-1"><a href=""></a><span class="ex">docker</span> ps <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rpi_green_3.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-21-4">
+<ul>
+<li>check docker-compose log <img data-src="images/docker_match.png" class="quarto-figure quarto-figure-center"></li>
+</ul>
+</div>
+<div id="tabset-21-5">
+<ul>
+<li>run <code>docker exec</code> and check if ros2 is running</li>
+</ul>
+<div class="sourceCode" id="cb77"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb77-1"><a href=""></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="op">&lt;</span>container_name_or_id<span class="op">&gt;</span> /bin/bash <span class="at">-c</span> <span class="st">"/robot-entrypoint.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mqtt-am" class="slide level2 smaller scrollable">
+<h2>MQTT (AM)</h2>
+<div class="panel-tabset">
+<ul id="tabset-23" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-23-1">test client</a></li><li><a href="#tabset-23-2">File struture</a></li><li><a href="#tabset-23-3">set a message</a></li><li><a href="#tabset-23-4">minipupper</a></li></ul>
+<div class="tab-content">
+<div id="tabset-23-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mqtt_1.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-23-2">
+<div class="columns">
+<p><img data-src="images/mqtt_tree.png" class="quarto-figure quarto-figure-center" width="400"> <img data-src="images/demopy.png" class="quarto-figure quarto-figure-center" width="400"></p>
+</div>
+</div>
+<div id="tabset-23-3">
+<div class="panel-tabset">
+<ul id="tabset-22" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-22-1">Try music</a></li><li><a href="#tabset-22-2">Try dance</a></li><li><a href="#tabset-22-3">Music files</a></li></ul>
+<div class="tab-content">
+<div id="tabset-22-1">
+<ul>
+<li>Also, try <code>music_file</code> with a name or <code>stop</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mqtt_music_2.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-22-2">
+<ul>
+<li>Also, try <code>dance_config</code> with a name `</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mqtt_dance.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-22-3">
+<p><img data-src="images/mqtt_musicfiles.png" class="quarto-figure quarto-figure-center"> ## Demo Code</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/demopy.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-23-4">
+<ul>
+<li>check docker-compose log and see what message is passed</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mqtt_music.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<div class="reveal has-logo">
-<p><a href="#sec-outline"> <img src="images/temple.png" alt="Temple Logo" style="width: 20px; height: auto;"> <span style="font-size: 14px;">Li Bai</span> </a></p>
+<p>Li Bai</p>
 </div>
 </div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-BuildCloudRobot" class="csl-entry" role="listitem">
+Robots, Building Cloud Connected. 2021. <span>“Building Cloud Connected Robots.”</span> 2021. <a href="https://catalog.us-east-1.prod.workshops.aws/workshops/fa208b8e-83d6-4cc1-8356-bfa5b6184fae/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/fa208b8e-83d6-4cc1-8356-bfa5b6184fae/en-US</a>.
 </div>
-</section>
+</div>
+</section></section>
     </div>
   </div>
 
