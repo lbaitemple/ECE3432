@@ -95,7 +95,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="style.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -430,25 +450,25 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
+<g id="clust2" class="cluster">
+<title>cluster_ros</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
+<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_final</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
 <text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_docker</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
-<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
 </g>
 <g id="clust1" class="cluster">
 <title>cluster_system</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
 <text text-anchor="middle" x="142" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 1</text>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_ros</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
-<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
+<g id="clust3" class="cluster">
+<title>cluster_docker</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
+<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
 </g>
 <!-- kb1 -->
 <g id="node1" class="node">
@@ -753,7 +773,7 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 <div id="tabset-1-2">
 <ul>
-<li>using terminal windows to find disk numer</li>
+<li>using terminal windows to find disk number</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">diskutil</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -770,7 +790,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <li>you can save the file smalelr usign pishrink</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Ubuntu</a></li><li><a href="#tabset-2-2">Mac</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Ubuntu</a></li><li><a href="#tabset-2-2">Mac</a></li><li><a href="#tabset-2-3">WSL</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <ul>
@@ -783,6 +803,19 @@ Figure&nbsp;1: A diagram of course mapping.
 <li>use link <a href="https://github.com/lbaitemple/PiShrink-macOS">here</a></li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a> <span class="ex">pishrink</span> imagefile.img <span class="pp">[</span><span class="ss">newimagefile.img</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-3">
+<ul>
+<li>Install WSL 2<span class="citation" data-cites="wslshrink">(<a href="#/references" role="doc-biblioref" onclick="">Dostal 2021</a>)</span></li>
+<li>Install and start Debian. You will need to define a user and password</li>
+<li>Run sudo apt update &amp;&amp; sudo apt -y dist-upgrade</li>
+<li>Run sudo apt install -y git parted</li>
+<li>Run git clone https://github.com/Drewsif/PiShrink.git</li>
+<li>Run sudo chmod +x PiShrink/pishrink.sh</li>
+<li>Run sudo cp PiShrink/pishrink.sh /usr/local/bin</li>
+<li>Run sudo ln -s /proc/mounts /etc/mtab</li>
+</ul>
+<p>Now you can shrink your image, e.g.&nbsp;sudo pishrink.sh bigFile.img smallFile.img</p>
 </div>
 </div>
 </div>
@@ -877,8 +910,8 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 </div>
 </section>
-<section id="red-dot-finish-40-of-grade" class="slide level2">
-<h2>Red Dot Finish (40% of grade)</h2>
+<section id="red-dot-finish-20-of-grade" class="slide level2">
+<h2>Red Dot Finish (20% of grade)</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
@@ -901,6 +934,12 @@ Figure&nbsp;1: A diagram of course mapping.
 <p><img data-src="images/red_dot.png"></p>
 </div></div>
 </section>
+<section id="lcd-screen-20" class="slide level2">
+<h2>LCD Screen (20%)</h2>
+<ul>
+<li>add artistic display matching with movement</li>
+</ul>
+</section>
 <section id="sec-strategy" class="slide level2">
 <h2>Competition Strategy</h2>
 <div class="cell">
@@ -916,7 +955,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Dance 1</td>
-<td style="text-align: left;">55%</td>
+<td style="text-align: left;">45%</td>
 <td style="text-align: left;">Max spins = Max points</td>
 </tr>
 <tr class="even">
@@ -931,8 +970,13 @@ Figure&nbsp;1: A diagram of course mapping.
 </tr>
 <tr class="even">
 <td style="text-align: left;">Red Dot</td>
-<td style="text-align: left;">40%</td>
+<td style="text-align: left;">20%</td>
 <td style="text-align: left;">Perfect stop critical</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LCD screen</td>
+<td style="text-align: left;">20%</td>
+<td style="text-align: left;">Screen Arts</td>
 </tr>
 </tbody>
 </table>
@@ -946,32 +990,22 @@ Figure&nbsp;1: A diagram of course mapping.
 </li>
 <li>🔁 <strong>Compensate weaknesses</strong>:
 <ul>
-<li>Weak line following? → Max spins (5 rotations = 60%)</li>
+<li>Weak line following? → Max spins (5 rotations = 45%)</li>
 </ul></li>
 <li>👥 <strong>Team division</strong>:
 <ul>
 <li>Only one pupper needs to finish<br>
 </li>
-<li>Split dance/line/red dot responsibilities</li>
+<li>Split dance/line/lcd/red dot responsibilities</li>
 </ul></li>
 </ol>
 </section>
 <section id="scoring-notes" class="slide level2">
 <h2>Scoring Notes</h2>
 <ul>
-<li>Max possible: 120% (with multiplier)<br>
+<li>Max possible: 115% (with multiplier)<br>
 </li>
 <li>Min passing: 60% total</li>
-</ul>
-<h3 id="key-features">Key Features:</h3>
-<ul>
-<li>Dynamic scoring table that auto-calculates spin multipliers</li>
-<li>Responsive column layouts for visual balance</li>
-<li>Warning callouts for critical rules</li>
-<li>Strategy table in right margin</li>
-<li>RevealJS features: slide numbers, footer, dark theme</li>
-<li>Emoji visualization for key concepts</li>
-<li>Automatic dependency handling for revealjs</li>
 </ul>
 </section>
 <section id="sec-code" class="slide level2">
@@ -1012,6 +1046,57 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 <p></p></figure><p></p>
 </div>
+</div>
+</div>
+</section>
+<section id="shape-detection" class="slide level2">
+<h2>Shape Detection</h2>
+<ul>
+<li>Consider the use of AI-based methods (e.g., deep learning models for object detection) versus classical computer vision approaches (e.g., using <code>scikit-image</code> or OpenCV).</li>
+<li>Discuss trade-offs: AI can generalize better, but scikit/OpenCV is faster and easier to implement for simple shapes.</li>
+<li>Although not currently implemented in the project, think about how to reuse code from previous Python assignments.
+<ul>
+<li>For example, contour detection, edge filtering, and shape classification logic might already exist.</li>
+<li>You could adapt <code>cv2.findContours()</code> and <code>cv2.approxPolyDP()</code> logic to detect circles, rectangles, etc.</li>
+</ul></li>
+<li>Potential for integrating Google Gemini to describe detected shapes in natural language.</li>
+</ul>
+</section>
+<section id="project-rules" class="slide level2">
+<h2>Project Rules</h2>
+<ul>
+<li>Each team may only use <strong>two terminals</strong>:<br>
+one for robot bring-up and one for executing ROS control code.</li>
+<li><strong>Verify the MAC address</strong> of each Mini Pupper before the official run to ensure correct identification.</li>
+<li>The robot must <strong>stay aligned with the line</strong>—the line should remain between the robot’s legs throughout the run.</li>
+<li>At the start of each routine, the <strong>LCD screen must display the assigned dance routine number</strong>.</li>
+<li>The robot must <strong>automatically stop at the red marker</strong> using detection logic.</li>
+<li>If the robot veers <strong>off the line for more than 5 seconds</strong>, the run is disqualified.</li>
+<li>Each participant/team will have <strong>three runs</strong>. Only the <strong>best score</strong> will be counted.</li>
+</ul>
+</section>
+<section id="final-project" class="slide level2">
+<h2>Final Project</h2>
+<h3 id="objectives">Objectives:</h3>
+<ul>
+<li>Combine ROS, line-following, and red marker detection.</li>
+<li>Group implementation with Gemini-based command input.</li>
+</ul>
+</section>
+<section id="lets-do-it" class="slide level2">
+<h2>Let’s Do it</h2>
+<ul>
+<li>Can you complete the tasks and earn the highest score?</li>
+<li>Enjoy the process and have fun!</li>
+</ul>
+<h3 id="questions">Questions?</h3>
+<p>Feel free to ask or reach out via email at <strong>lbai@temple.edu</strong>.</p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-wslshrink" class="csl-entry" role="listitem">
+Dostal, Gregor. 2021. <span>“PIShrink on WSL (Debian GNU/Linux).”</span> 2021. <a href="https://github.com/Drewsif/PiShrink/issues/78">https://github.com/Drewsif/PiShrink/issues/78</a>.
 </div>
 </div>
 <div class="quarto-auto-generated-content">
