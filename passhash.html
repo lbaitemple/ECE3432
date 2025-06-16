@@ -16,10 +16,33 @@
     #hashResult {
       font-weight: bold;
       color: #006400;
+      margin-bottom: 1rem;
     }
     #toggleBtn {
       margin-left: 10px;
       cursor: pointer;
+    }
+    #templateTextarea {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 1rem;
+      font-family: monospace;
+    }
+    #downloadBtn {
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #downloadBtn:hover {
+      background-color: #45a049;
+    }
+    .section {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ccc;
     }
   </style>
 </head>
@@ -29,22 +52,69 @@
   <h3>sample <a href="https://raw.githubusercontent.com/lbaitemple/mini-pupper-aws/refs/heads/fall2024/wifipasswd/wireless.txt">wireless.txt file</a></h3>
 
   <label for="password">Enter Password:   <button id="toggleBtn">Show</button></label>
-  <!--input type="text" id="password" placeholder="Type your password" /-->
   <input type="password" id="password" placeholder="Type your password" />
 
   <label>MD4 Hash:</label>
   <div id="hashResult">(hash will appear here)</div>
 
-  <script>
+  <div class="section">
+    <label for="templateTextarea">Configuration Template:</label>
+    <textarea id="templateTextarea" readonly>
+export ID=lbai@temple.edu
+export HASH=1drwer3e2a1d6aace8451df53e5c8c429
+export USEROAM=1
+export AP=tusecurewireless
+export WIFI_AP1=HOTPSOTAP
+export WIFI_AP1_PWD=password
+export WIFI_AP2=HOMEWIFI
+export WIFI_AP2_PWD=password</textarea>
+    
+    <button id="downloadBtn">Download wireless.txt</button>
+  </div>
 
+  <script>
     const passwordField = document.getElementById("password");
     const toggleBtn = document.getElementById("toggleBtn");
+    const templateTextarea = document.getElementById("templateTextarea");
+    const downloadBtn = document.getElementById("downloadBtn");
 
     toggleBtn.addEventListener("click", () => {
       const isPassword = passwordField.type === "password";
       passwordField.type = isPassword ? "text" : "password";
       toggleBtn.textContent = isPassword ? "Hide" : "Show";
     });
+
+    // Function to update template with new hash
+    function updateTemplate(hash) {
+      const template = templateTextarea.value;
+      const updatedTemplate = template.replace(
+        /(export HASH=).*?(\n)/, 
+        `$1${hash}$2`
+      );
+      templateTextarea.value = updatedTemplate;
+    }
+
+    // Function to download file
+    function downloadFile() {
+      const content = templateTextarea.value;
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'wireless.txt';
+      document.body.appendChild(a);
+      a.click();
+      
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }
+
+    // Setup download button
+    downloadBtn.addEventListener('click', downloadFile);
 
     // Wait until the script is fully loaded
     window.addEventListener('load', () => {
@@ -66,6 +136,7 @@
         if (typeof hashwasm !== "undefined" && typeof hashwasm.md4 === "function") {
           const hash = await hashwasm.md4(utf16leBytes);
           resultLabel.textContent = hash;
+          updateTemplate(hash);
         } else {
           resultLabel.textContent = "Error: MD4 function not loaded.";
         }
