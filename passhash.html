@@ -316,6 +316,19 @@
       font-size: 0.9rem;
     }
     
+    .status-icon {
+      min-width: 20px;
+      min-height: 20px;
+      margin-right: 8px;
+    }
+    
+    .config-highlight {
+      background-color: #fff9c4;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+    
     @media (max-width: 768px) {
       .content-wrapper {
         flex-direction: column;
@@ -330,7 +343,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>Password Hash Generator with Validation</h1>
+      <h1>Eduroam Configuration Generator</h1>
       <p class="subtitle">Generate MD4 hashes and validate wireless configuration templates</p>
     </header>
     
@@ -346,7 +359,7 @@
         </h2>
         
         <div class="input-group">
-          <label for="password">Enter Password:</label>
+          <label for="password">Enter Eduroam Password:</label>
           <div class="password-container">
             <input type="password" id="password" placeholder="Type your password" />
             <button id="toggleBtn">Show</button>
@@ -376,7 +389,7 @@
             <line x1="16" y1="17" x2="8" y2="17"></line>
             <polyline points="10 9 9 9 8 9"></polyline>
           </svg>
-          Configuration Template
+          Eduroam Configuration
         </h2>
         
         <div class="input-group">
@@ -385,7 +398,7 @@
 export ID=lbai@temple.edu
 export HASH=1drwer3e2a1d6aace8451df53e5c8c429
 export USEROAM=1
-export AP=tusecurewireless
+export AP=eduroam
 export WIFI_AP1=HOTPSOTAP
 export WIFI_AP1_PWD=password
 export WIFI_AP2=HOMEWIFI
@@ -394,17 +407,24 @@ export WIFI_AP2_PWD=password</textarea>
         
         <!-- Password Validation Section -->
         <div class="validation-section">
-          <h4>Password Requirements:</h4>
+          <h4>Configuration Validation:</h4>
           <div class="validation-result">
+            <div id="idValidation" class="validation-status">
+              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              ID: Must be a valid email address
+            </div>
             <div id="ap1Validation" class="validation-status">
-              <svg width="20" height="20" viewBox="0 0 24 24">
+              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
                 <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
               </svg>
               WIFI_AP1_PWD: Must be at least 8 characters
             </div>
             <div id="ap2Validation" class="validation-status">
-              <svg width="20" height="20" viewBox="0 0 24 24">
+              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
                 <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
               </svg>
@@ -433,19 +453,19 @@ export WIFI_AP2_PWD=password</textarea>
     </div>
     
     <div class="instructions">
-      <h3>How to Use This Tool</h3>
+      <h3>How to Configure Your Eduroam Connection</h3>
       <div class="steps">
         <div class="step">
           <span class="step-number">1</span>
-          Enter your password in the input field. The MD4 hash will be generated automatically.
+          Enter your <span class="config-highlight">Eduroam password</span> in the input field. The MD4 hash will be generated automatically.
         </div>
         <div class="step">
           <span class="step-number">2</span>
-          The generated hash will automatically replace the HASH value in the configuration template.
+          The generated hash will automatically replace the <span class="config-highlight">HASH value</span> in the configuration template.
         </div>
         <div class="step">
           <span class="step-number">3</span>
-          Edit any other values in the template as needed (AP names, passwords, etc.). Ensure WIFI_AP1_PWD and WIFI_AP2_PWD are at least 8 characters.
+          Ensure your <span class="config-highlight">ID is a valid email address</span> and that both WiFi passwords are at least 8 characters.
         </div>
         <div class="step">
           <span class="step-number">4</span>
@@ -454,8 +474,19 @@ export WIFI_AP2_PWD=password</textarea>
       </div>
     </div>
     
+    <div class="instructions">
+      <h3>About Eduroam Configuration</h3>
+      <p>Eduroam (education roaming) is a secure, worldwide roaming access service developed for the international research and education community.</p>
+      <p>Your configuration requires:</p>
+      <ul style="list-style-type: none; padding-left: 20px; margin-top: 10px;">
+        <li>• <strong>ID</strong>: Your institutional email address</li>
+        <li>• <strong>HASH</strong>: MD4 hash of your password in UTF-16LE format</li>
+        <li>• <strong>AP</strong>: Set to "eduroam" for Eduroam networks</li>
+      </ul>
+    </div>
+    
     <footer>
-      <p>Password Hash Generator with Template Editor | MD4 Hash (UTF-16LE) | For educational purposes</p>
+      <p>Eduroam Configuration Generator | MD4 Hash (UTF-16LE) | For educational purposes</p>
     </footer>
   </div>
 
@@ -467,11 +498,22 @@ export WIFI_AP2_PWD=password</textarea>
     const downloadBtn = document.getElementById("downloadBtn");
     const resetBtn = document.getElementById("resetBtn");
     const resultLabel = document.getElementById("hashResult");
+    const idValidation = document.getElementById("idValidation");
     const ap1Validation = document.getElementById("ap1Validation");
     const ap2Validation = document.getElementById("ap2Validation");
     
     // Original template for reset functionality
-    const originalTemplate = templateTextarea.value;
+    const originalTemplate = `export ID=lbai@temple.edu
+export HASH=1drwer3e2a1d6aace8451df53e5c8c429
+export USEROAM=1
+export AP=eduroam
+export WIFI_AP1=HOTPSOTAP
+export WIFI_AP1_PWD=password
+export WIFI_AP2=HOMEWIFI
+export WIFI_AP2_PWD=password`;
+    
+    // Initialize template
+    templateTextarea.value = originalTemplate;
     
     // Toggle password visibility
     toggleBtn.addEventListener("click", () => {
@@ -488,14 +530,23 @@ export WIFI_AP2_PWD=password</textarea>
         `$1${hash}$2`
       );
       templateTextarea.value = updatedTemplate;
-      validatePasswords(); // Validate after updating
+      validateConfiguration(); // Validate after updating
     }
     
-    // Validate WIFI_AP1_PWD and WIFI_AP2_PWD
-    function validatePasswords() {
+    // Validate configuration
+    function validateConfiguration() {
       const template = templateTextarea.value;
+      let idValid = false;
       let ap1Valid = false;
       let ap2Valid = false;
+      
+      // Extract ID
+      const idMatch = template.match(/export ID=(.*)/);
+      if (idMatch) {
+        const idValue = idMatch[1].trim();
+        // Simple email validation
+        idValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(idValue);
+      }
       
       // Extract WIFI_AP1_PWD
       const ap1PwdMatch = template.match(/export WIFI_AP1_PWD=(.*)/);
@@ -512,40 +563,41 @@ export WIFI_AP2_PWD=password</textarea>
       }
       
       // Update validation UI
-      updateValidationUI(ap1Validation, ap1Valid, "WIFI_AP1_PWD");
-      updateValidationUI(ap2Validation, ap2Valid, "WIFI_AP2_PWD");
+      updateValidationUI(idValidation, idValid, "ID", "Valid email address", "Must be a valid email address");
+      updateValidationUI(ap1Validation, ap1Valid, "WIFI_AP1_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
+      updateValidationUI(ap2Validation, ap2Valid, "WIFI_AP2_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
       
-      return ap1Valid && ap2Valid;
+      return idValid && ap1Valid && ap2Valid;
     }
     
     // Update validation UI
-    function updateValidationUI(element, isValid, fieldName) {
+    function updateValidationUI(element, isValid, fieldName, validText, invalidText) {
       if (isValid) {
         element.className = "validation-status valid";
         element.innerHTML = `
-          <svg width="20" height="20" viewBox="0 0 24 24">
+          <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" fill="#4caf50"/>
             <path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          ${fieldName}: Valid (8+ characters)
+          ${fieldName}: ${validText}
         `;
       } else {
         element.className = "validation-status invalid";
         element.innerHTML = `
-          <svg width="20" height="20" viewBox="0 0 24 24">
+          <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" fill="#f44336"/>
             <path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          ${fieldName}: Must be at least 8 characters
+          ${fieldName}: ${invalidText}
         `;
       }
     }
     
     // Download file
     function downloadFile() {
-      // Validate passwords before download
-      if (!validatePasswords()) {
-        alert("Error: Both WIFI_AP1_PWD and WIFI_AP2_PWD must be at least 8 characters long!");
+      // Validate configuration before download
+      if (!validateConfiguration()) {
+        alert("Error: Please fix all validation issues before downloading!");
         return;
       }
       
@@ -570,19 +622,19 @@ export WIFI_AP2_PWD=password</textarea>
     function resetTemplate() {
       if (confirm("Are you sure you want to reset the template to its original state?")) {
         templateTextarea.value = originalTemplate;
-        validatePasswords();
+        validateConfiguration();
       }
     }
     
     // Setup event listeners
     downloadBtn.addEventListener('click', downloadFile);
     resetBtn.addEventListener('click', resetTemplate);
-    templateTextarea.addEventListener('input', validatePasswords);
+    templateTextarea.addEventListener('input', validateConfiguration);
     
     // Initialize when page loads
     window.addEventListener('load', () => {
       // Initial validation
-      validatePasswords();
+      validateConfiguration();
       
       passwordField.addEventListener("input", async () => {
         const password = passwordField.value;
