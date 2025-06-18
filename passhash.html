@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password Hash Generator with Validation</title>
+  <title>Eduroam Configuration Generator</title>
   <script src="https://unpkg.com/hash-wasm@4.10.0/dist/md4.umd.min.js"></script>
   <style>
     * {
@@ -44,6 +44,18 @@
     .subtitle {
       font-size: 1.1rem;
       color: #555;
+      margin-bottom: 15px;
+    }
+    
+    .security-badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 10px;
     }
     
     .content-wrapper {
@@ -180,6 +192,11 @@
       color: #c62828;
     }
     
+    .validation-status.info {
+      background-color: #e3f2fd;
+      color: #1565c0;
+    }
+    
     .validation-status svg {
       margin-right: 8px;
     }
@@ -193,7 +210,6 @@
     
     .btn {
       padding: 12px 25px;
-      background: #1a2a6c;
       color: white;
       border: none;
       border-radius: 5px;
@@ -207,7 +223,6 @@
     }
     
     .btn:hover {
-      background: #0f1c4d;
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -225,11 +240,11 @@
     }
     
     .btn-reset {
-      background: #e74c3c;
+      background: #1a2a6c;
     }
     
     .btn-reset:hover {
-      background: #c0392b;
+      background: #0f1c4d;
     }
     
     .sample-link {
@@ -329,6 +344,15 @@
       font-weight: bold;
     }
     
+    .network-warning {
+      background: #fff8e1;
+      border-left: 4px solid #ffc107;
+      padding: 10px 15px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    
     @media (max-width: 768px) {
       .content-wrapper {
         flex-direction: column;
@@ -337,18 +361,6 @@
       h1 {
         font-size: 1.8rem;
       }
-    }
-    
-    /* Security badge */
-    .security-badge {
-      display: inline-block;
-      background: #e8f5e9;
-      color: #2e7d32;
-      padding: 8px 15px;
-      border-radius: 20px;
-      margin-top: 15px;
-      font-weight: 600;
-      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -407,7 +419,7 @@
             <line x1="16" y1="17" x2="8" y2="17"></line>
             <polyline points="10 9 9 9 8 9"></polyline>
           </svg>
-          Eduroam Configuration
+          Network Configuration
         </h2>
         
         <div class="input-group">
@@ -417,22 +429,29 @@ export ID=lbai@temple.edu
 export HASH=1drwer3e2a1d6aace8451df53e5c8c429
 export USEROAM=1
 export AP=eduroam
-export WIFI_AP1=HOTPSOTAP
+export WIFI_AP1=HOTSPOTAP
 export WIFI_AP1_PWD=password
 export WIFI_AP2=HOMEWIFI
 export WIFI_AP2_PWD=password</textarea>
         </div>
         
-        <!-- Password Validation Section -->
+        <!-- Validation Section -->
         <div class="validation-section">
           <h4>Configuration Validation:</h4>
           <div class="validation-result">
+            <div id="apValidation" class="validation-status info">
+              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" fill="#1a2a6c" />
+                <path d="M12 8v4M12 16h0" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              AP: Set to "eduroam" for Eduroam networks
+            </div>
             <div id="idValidation" class="validation-status">
               <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
                 <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
               </svg>
-              ID: Must be a valid .edu email address
+              ID: Must be a valid email when AP is "eduroam"
             </div>
             <div id="ap1Validation" class="validation-status">
               <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
@@ -471,11 +490,11 @@ export WIFI_AP2_PWD=password</textarea>
     </div>
     
     <div class="instructions">
-      <h3>How to Configure Your Eduroam Connection</h3>
+      <h3>How to Configure Your Network Connection</h3>
       <div class="steps">
         <div class="step">
           <span class="step-number">1</span>
-          Enter your <span class="config-highlight">Eduroam password</span> in the input field. The MD4 hash will be generated automatically.
+          Enter your <span class="config-highlight">Eduroam password</span> to generate the MD4 hash. For other networks, enter your password directly in the configuration.
         </div>
         <div class="step">
           <span class="step-number">2</span>
@@ -483,7 +502,7 @@ export WIFI_AP2_PWD=password</textarea>
         </div>
         <div class="step">
           <span class="step-number">3</span>
-          Ensure your <span class="config-highlight">ID is a valid .edu email address</span> and that both WiFi passwords are at least 8 characters.
+          When using <span class="config-highlight">AP=eduroam</span>, your ID must be a valid email address. For other networks, any ID is acceptable.
         </div>
         <div class="step">
           <span class="step-number">4</span>
@@ -493,13 +512,13 @@ export WIFI_AP2_PWD=password</textarea>
     </div>
     
     <div class="instructions">
-      <h3>About Eduroam Configuration</h3>
+      <h3>About Network Configuration</h3>
       <p>Eduroam (education roaming) is a secure, worldwide roaming access service developed for the international research and education community.</p>
       <p>Your configuration requires:</p>
       <ul style="list-style-type: none; padding-left: 20px; margin-top: 10px;">
-        <li>• <strong>ID</strong>: Your institutional .edu email address</li>
-        <li>• <strong>HASH</strong>: MD4 hash of your password in UTF-16LE format</li>
-        <li>• <strong>AP</strong>: Set to "eduroam" for Eduroam networks</li>
+        <li>• <strong>ID</strong>: For Eduroam, use your institutional email. For other networks, any identifier.</li>
+        <li>• <strong>HASH</strong>: MD4 hash of your password in UTF-16LE format (Eduroam only)</li>
+        <li>• <strong>AP</strong>: Set to "eduroam" for Eduroam networks, or your network name for others</li>
       </ul>
     </div>
     
@@ -520,7 +539,7 @@ export WIFI_AP2_PWD=password</textarea>
     </div>
     
     <footer>
-      <p>Eduroam Configuration Generator | MD4 Hash (UTF-16LE) | For educational purposes</p>
+      <p>Network Configuration Generator | MD4 Hash (UTF-16LE) | For educational purposes</p>
     </footer>
   </div>
 
@@ -533,6 +552,7 @@ export WIFI_AP2_PWD=password</textarea>
     const resetBtn = document.getElementById("resetBtn");
     const resultLabel = document.getElementById("hashResult");
     const idValidation = document.getElementById("idValidation");
+    const apValidation = document.getElementById("apValidation");
     const ap1Validation = document.getElementById("ap1Validation");
     const ap2Validation = document.getElementById("ap2Validation");
     
@@ -541,7 +561,7 @@ export WIFI_AP2_PWD=password</textarea>
 export HASH=1drwer3e2a1d6aace8451df53e5c8c429
 export USEROAM=1
 export AP=eduroam
-export WIFI_AP1=HOTPSOTAP
+export WIFI_AP1=HOTSPOTAP
 export WIFI_AP1_PWD=password
 export WIFI_AP2=HOMEWIFI
 export WIFI_AP2_PWD=password`;
@@ -567,19 +587,35 @@ export WIFI_AP2_PWD=password`;
       validateConfiguration(); // Validate after updating
     }
     
-    // Validate configuration with .edu email requirement
+    // Validate configuration with .edu email requirement only for eduroam
     function validateConfiguration() {
       const template = templateTextarea.value;
-      let idValid = false;
+      let idValid = true; // Default to valid
+      let apValid = true;
       let ap1Valid = false;
       let ap2Valid = false;
+      
+      // Extract AP
+      const apMatch = template.match(/export AP=(.*)/);
+      let apValue = "";
+      if (apMatch) {
+        apValue = apMatch[1].trim().toLowerCase();
+        apValid = apValue.length > 0;
+      }
       
       // Extract ID
       const idMatch = template.match(/export ID=(.*)/);
       if (idMatch) {
         const idValue = idMatch[1].trim();
-        // Validate as .edu email
-        idValid = /^[^\s@]+@[^\s@]+\.edu$/i.test(idValue);
+        
+        // Only validate as email if AP is "eduroam"
+        if (apValue === "eduroam") {
+          // Validate as email
+          idValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(idValue);
+        } else {
+          // For non-eduroam, just require non-empty
+          idValid = idValue.length > 0;
+        }
       }
       
       // Extract WIFI_AP1_PWD
@@ -597,11 +633,18 @@ export WIFI_AP2_PWD=password`;
       }
       
       // Update validation UI
-      updateValidationUI(idValidation, idValid, "ID", "Valid .edu email", "Must be a valid .edu email address");
+      updateValidationUI(apValidation, apValid, "AP", `Set to "${apValue}"`, "Must be set to a network name");
+      
+      if (apValue === "eduroam") {
+        updateValidationUI(idValidation, idValid, "ID", "Valid email", "Must be a valid email address");
+      } else {
+        updateValidationUI(idValidation, idValid, "ID", "Valid identifier", "Must not be empty");
+      }
+      
       updateValidationUI(ap1Validation, ap1Valid, "WIFI_AP1_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
       updateValidationUI(ap2Validation, ap2Valid, "WIFI_AP2_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
       
-      return idValid && ap1Valid && ap2Valid;
+      return idValid && apValid && ap1Valid && ap2Valid;
     }
     
     // Update validation UI
