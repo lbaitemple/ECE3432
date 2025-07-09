@@ -487,6 +487,10 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <span id="cb13-3"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="dt">\</span></span>
 <span id="cb13-4"><a href=""></a>  <span class="st">"{linear: {x: 1.0, y: 0.0, z: 0.0}, </span><span class="dt">\</span></span>
 <span id="cb13-5"><a href=""></a><span class="st">    angular: {x: 0.0, y: 0.0, z: 0.0}}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="to-prevent-talk-with-other-robots" class="slide level2">
+<h2>To prevent talk with other robots</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
