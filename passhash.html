@@ -74,7 +74,6 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
-    /* Adjusting panel widths */
     .panel-hash {
         flex: 0 0 45%; /* Fixed width for hash panel */
         max-width: 45%;
@@ -165,9 +164,9 @@
       font-weight: bold;
     }
     
-    #templateTextarea {
+    textarea { /* Increased textarea size */
       width: 100%;
-      height: 250px;
+      height: 300px; /* Increased height */
       padding: 15px;
       border: 2px solid #ddd;
       border-radius: 5px;
@@ -178,7 +177,7 @@
       line-height: 1.5;
     }
     
-    #templateTextarea:focus {
+    textarea:focus {
       border-color: #1a2a6c;
       outline: none;
       box-shadow: 0 0 0 2px rgba(26, 42, 108, 0.2);
@@ -364,6 +363,48 @@
       font-size: 0.9rem;
     }
     
+    /* Tabbed Interface Styles */
+    .tab-container {
+      margin-bottom: 20px;
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #1a2a6c;
+      margin-bottom: 15px;
+    }
+    
+    .tab-button {
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      background: #ddd;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      margin-right: 5px;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+      color: #555;
+    }
+    
+    .tab-button.active {
+      background: #fff;
+      color: #1a2a6c;
+      border-bottom: 2px solid #fff; /* Remove bottom border to look like it's active */
+    }
+    
+    .tab-content {
+      display: none; /* Hidden by default */
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .tab-content.active {
+      display: block; /* Show the active tab */
+    }
+
     @media (max-width: 768px) {
       .content-wrapper {
         flex-direction: column;
@@ -374,6 +415,13 @@
       }
       h1 {
         font-size: 1.8rem;
+      }
+      .tabs {
+          flex-wrap: wrap;
+      }
+      .tab-button {
+          flex-grow: 1;
+          text-align: center;
       }
     }
   </style>
@@ -423,7 +471,7 @@
         </a>
       </div>
       
-      <!-- Right Panel: Template Editor -->
+      <!-- Right Panel: Configuration Tabs -->
       <div class="panel panel-config">
         <h2 class="panel-title">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -436,71 +484,124 @@
           Network Configuration
         </h2>
         
-        <div class="input-group">
-          <label for="templateTextarea">Edit wireless configuration:</label>
-          <textarea id="templateTextarea">
-export ID=lbai@temple.edu
-export HASH=1drwer3e2a1d6aace8451df53e5c8c429
-export USEROAM=1
-export AP=eduroam
-export WIFI_AP1=HOTSPOTAP
-export WIFI_AP1_PWD=password
-export WIFI_AP2=HOMEWIFI
-export WIFI_AP2_PWD=password
-export COUNTRY_CODE=US
-          </textarea>
-        </div>
-        
-        <!-- Validation Section -->
-        <div class="validation-section">
-          <h4>Configuration Validation:</h4>
-          <div class="validation-result">
-            <div id="apValidation" class="validation-status info">
-              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" fill="#1a2a6c" />
-                <path d="M12 8v4M12 16h0" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              AP: Set to "eduroam" for Eduroam networks
+        <div class="tab-container">
+          <div class="tabs">
+            <button class="tab-button active" data-tab="tab-wireless">wireless.txt</button>
+            <button class="tab-button" data-tab="tab-cloud-init">50-cloud-init.yaml</button>
+          </div>
+          
+          <!-- wireless.txt Tab Content -->
+          <div id="tab-wireless" class="tab-content active">
+            <div class="input-group">
+              <label for="templateTextareaWireless">Edit wireless.txt:</label>
+              <textarea id="templateTextareaWireless"></textarea>
             </div>
-            <div id="idValidation" class="validation-status">
-              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
-                <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              ID: Must be a valid email when AP is "eduroam"
+            
+            <!-- Validation Section for wireless.txt -->
+            <div class="validation-section">
+              <h4>Configuration Validation (wireless.txt):</h4>
+              <div class="validation-result">
+                <div id="apValidation" class="validation-status info">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#1a2a6c" />
+                    <path d="M12 8v4M12 16h0" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  AP: Set to "eduroam" for Eduroam networks
+                </div>
+                <div id="idValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  ID: Must be a valid email when AP is "eduroam"
+                </div>
+                <div id="ap1Validation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  WIFI_AP1_PWD: Must be at least 8 characters
+                </div>
+                <div id="ap2Validation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  WIFI_AP2_PWD: Must be at least 8 characters
+                </div>
+              </div>
             </div>
-            <div id="ap1Validation" class="validation-status">
-              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
-                <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              WIFI_AP1_PWD: Must be at least 8 characters
-            </div>
-            <div id="ap2Validation" class="validation-status">
-              <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
-                <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              WIFI_AP2_PWD: Must be at least 8 characters
+            
+            <div class="actions">
+              <button id="downloadBtnWireless" class="btn btn-download">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                Download wireless.txt
+              </button>
+              <button id="resetBtnWireless" class="btn btn-reset">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                </svg>
+                Reset Template
+              </button>
             </div>
           </div>
-        </div>
-        
-        <div class="actions">
-          <button id="downloadBtn" class="btn btn-download">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-            </svg>
-            Download wireless.txt
-          </button>
-          <button id="resetBtn" class="btn btn-reset">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-              <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-            </svg>
-            Reset Template
-          </button>
+          
+          <!-- 50-cloud-init.yaml Tab Content -->
+          <div id="tab-cloud-init" class="tab-content">
+            <div class="input-group">
+              <label for="templateTextareaCloudInit">Edit 50-cloud-init.yaml:</label>
+              <textarea id="templateTextareaCloudInit"></textarea>
+            </div>
+            
+            <!-- Validation Section for 50-cloud-init.yaml -->
+            <div class="validation-section">
+              <h4>Configuration Validation (50-cloud-init.yaml):</h4>
+              <div class="validation-result">
+                <div id="cloudInitApValidation" class="validation-status info">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#1a2a6c" />
+                    <path d="M12 8v4M12 16h0" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Access Point "tusecurewireless": Set for Eduroam
+                </div>
+                <div id="cloudInitPasswordValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Password for "tusecurewireless": Must be a valid hash
+                </div>
+                <div id="cloudInitIdentityValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Identity for "tusecurewireless": Must be a valid identifier
+                </div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button id="downloadBtnCloudInit" class="btn btn-download">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                Download 50-cloud-init.yaml
+              </button>
+              <button id="resetBtnCloudInit" class="btn btn-reset">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                </svg>
+                Reset Template
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -522,7 +623,7 @@ export COUNTRY_CODE=US
         </div>
         <div class="step">
           <span class="step-number">4</span>
-          Click "Download wireless.txt" to save your configuration file after validation passes.
+          Click "Download wireless.txt" or "Download 50-cloud-init.yaml" to save your configuration file after validation passes.
         </div>
       </div>
     </div>
@@ -563,17 +664,31 @@ export COUNTRY_CODE=US
     // DOM Elements
     const passwordField = document.getElementById("password");
     const toggleBtn = document.getElementById("toggleBtn");
-    const templateTextarea = document.getElementById("templateTextarea");
-    const downloadBtn = document.getElementById("downloadBtn");
-    const resetBtn = document.getElementById("resetBtn");
+    const templateTextareaWireless = document.getElementById("templateTextareaWireless");
+    const templateTextareaCloudInit = document.getElementById("templateTextareaCloudInit");
+    const downloadBtnWireless = document.getElementById("downloadBtnWireless");
+    const resetBtnWireless = document.getElementById("resetBtnWireless");
+    const downloadBtnCloudInit = document.getElementById("downloadBtnCloudInit");
+    const resetBtnCloudInit = document.getElementById("resetBtnCloudInit");
     const resultLabel = document.getElementById("hashResult");
-    const idValidation = document.getElementById("idValidation");
+
+    // Wireless validation elements
     const apValidation = document.getElementById("apValidation");
+    const idValidation = document.getElementById("idValidation");
     const ap1Validation = document.getElementById("ap1Validation");
     const ap2Validation = document.getElementById("ap2Validation");
+
+    // Cloud-init validation elements
+    const cloudInitApValidation = document.getElementById("cloudInitApValidation");
+    const cloudInitPasswordValidation = document.getElementById("cloudInitPasswordValidation");
+    const cloudInitIdentityValidation = document.getElementById("cloudInitIdentityValidation");
     
-    // Original template for reset functionality
-    const originalTemplate = `export ID=lbai@temple.edu
+    // Tab elements
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Original templates
+    const originalTemplateWireless = `export ID=lbai@temple.edu
 export HASH=1drwer3e2a1d6aace8451df53e5c8c429
 export USEROAM=1
 export AP=eduroam
@@ -582,9 +697,39 @@ export WIFI_AP1_PWD=password
 export WIFI_AP2=HOMEWIFI
 export WIFI_AP2_PWD=password
 export COUNTRY_CODE=US`;
-    
-    // Initialize template
-    templateTextarea.value = originalTemplate;
+
+    const originalTemplateCloudInit = `network:
+    version: 2
+    renderer: networkd
+    ethernets:
+        eth0:
+            optional: true
+            dhcp4: true
+        usb0:
+            dhcp4: false
+            optional: true
+            addresses: [10.55.0.1/29]
+    wifis:
+        wlan0:
+            optional: true
+            dhcp4: true
+            access-points:
+                "WIFI_AP1":
+                    password: "password_ap1"
+                "WIFI_AP2":
+                    password: "password_ap2"
+                "tusecurewireless":
+                    auth:
+                        key-management: eap
+                        password: hash:ad3251b85818582b6c2dbdf9c9f9f75d
+                        method: peap
+                        identity: lbai
+            regulatory-domain: "US"
+            `;
+
+    // Initialize templates
+    templateTextareaWireless.value = originalTemplateWireless;
+    templateTextareaCloudInit.value = originalTemplateCloudInit;
     
     // Toggle password visibility
     toggleBtn.addEventListener("click", () => {
@@ -593,79 +738,26 @@ export COUNTRY_CODE=US`;
       toggleBtn.textContent = isPassword ? "Hide" : "Show";
     });
     
-    // Update template with new hash
-    function updateTemplate(hash) {
-      const template = templateTextarea.value;
-      const updatedTemplate = template.replace(
-        /(export HASH=).*?(\n)/, 
-        `$1${hash}$2`
-      );
-      templateTextarea.value = updatedTemplate;
-      validateConfiguration(); // Validate after updating
-    }
-    
-    // Validate configuration with .edu email requirement only for eduroam
-    function validateConfiguration() {
-      const template = templateTextarea.value;
-      let idValid = true; // Default to valid
-      let apValid = true;
-      let ap1Valid = false;
-      let ap2Valid = false;
-      
-      // Extract AP
-      const apMatch = template.match(/export AP=(.*)/);
-      let apValue = "";
-      if (apMatch) {
-        apValue = apMatch[1].trim().toLowerCase();
-        apValid = apValue.length > 0;
-      }
-      
-      // Extract ID
-      const idMatch = template.match(/export ID=(.*)/);
-      if (idMatch) {
-        const idValue = idMatch[1].trim();
+    // --- Tab Functionality ---
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Deactivate all buttons and content
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Activate clicked button and its corresponding content
+        button.classList.add('active');
+        document.getElementById(button.dataset.tab).classList.add('active');
         
-        // Only validate as email if AP is "eduroam"
-        if (apValue === "eduroam") {
-          // Validate as email
-          idValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(idValue);
-        } else {
-          // For non-eduroam, just require non-empty
-          idValid = idValue.length > 0;
-        }
-      }
-      
-      // Extract WIFI_AP1_PWD
-      const ap1PwdMatch = template.match(/export WIFI_AP1_PWD=(.*)/);
-      if (ap1PwdMatch) {
-        const ap1Pwd = ap1PwdMatch[1].trim();
-        ap1Valid = ap1Pwd.length >= 8;
-      }
-      
-      // Extract WIFI_AP2_PWD
-      const ap2PwdMatch = template.match(/export WIFI_AP2_PWD=(.*)/);
-      if (ap2PwdMatch) {
-        const ap2Pwd = ap2PwdMatch[1].trim();
-        ap2Valid = ap2Pwd.length >= 8;
-      }
-      
-      // Update validation UI
-      updateValidationUI(apValidation, apValid, "AP", `Set to "${apValue}"`, "Must be set to a network name");
-      
-      if (apValue === "eduroam") {
-        updateValidationUI(idValidation, idValid, "ID", "Valid email", "Must be a valid email address");
-      } else {
-        updateValidationUI(idValidation, idValid, "ID", "Valid identifier", "Must not be empty");
-      }
-      
-      updateValidationUI(ap1Validation, ap1Valid, "WIFI_AP1_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
-      updateValidationUI(ap2Validation, ap2Valid, "WIFI_AP2_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
-      
-      return idValid && apValid && ap1Valid && ap2Valid;
-    }
-    
-    // Update validation UI
-    function updateValidationUI(element, isValid, fieldName, validText, invalidText) {
+        // Re-validate based on the newly active tab
+        validateAndHighlight();
+      });
+    });
+
+    // --- Helper functions for validation and UI updates ---
+
+    // Update validation UI for wireless.txt
+    function updateValidationUIWireless(element, isValid, fieldName, validText, invalidText) {
       if (isValid) {
         element.className = "validation-status valid";
         element.innerHTML = `
@@ -687,25 +779,154 @@ export COUNTRY_CODE=US`;
       }
     }
     
-    // Download file
-    function downloadFile() {
-      // Validate configuration before download
-      if (!validateConfiguration()) {
-        alert("Error: Please fix all validation issues before downloading!");
-        return;
+    // Update validation UI for 50-cloud-init.yaml
+    function updateValidationUICloudInit(element, isValid, fieldName, validText, invalidText) {
+      if (isValid) {
+        element.className = "validation-status valid";
+        element.innerHTML = `
+          <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="#4caf50"/>
+            <path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          ${fieldName}: ${validText}
+        `;
+      } else {
+        element.className = "validation-status invalid";
+        element.innerHTML = `
+          <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="#f44336"/>
+            <path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          ${fieldName}: ${invalidText}
+        `;
+      }
+    }
+
+    // Update template with new hash and ID
+    function updateTemplate(hash, id, textarea, hashRegex, idRegex) {
+      let updatedTemplate = textarea.value;
+      
+      if (hashRegex) {
+        updatedTemplate = updatedTemplate.replace(hashRegex, `$1${hash}$2`);
+      }
+      if (idRegex) {
+        updatedTemplate = updatedTemplate.replace(idRegex, `$1${id}$2`);
+      }
+      textarea.value = updatedTemplate;
+    }
+    
+    // Validate configuration for wireless.txt
+    function validateWirelessConfiguration() {
+      const template = templateTextareaWireless.value;
+      let idValid = true;
+      let apValid = true;
+      let ap1Valid = false;
+      let ap2Valid = false;
+      
+      const apMatch = template.match(/export AP=(.*)/);
+      let apValue = "";
+      if (apMatch) {
+        apValue = apMatch[1].trim().toLowerCase();
+        apValid = apValue.length > 0;
       }
       
-      const content = templateTextarea.value;
+      const idMatch = template.match(/export ID=(.*)/);
+      if (idMatch) {
+        const idValue = idMatch[1].trim();
+        if (apValue === "eduroam") {
+          idValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(idValue);
+        } else {
+          idValid = idValue.length > 0;
+        }
+      }
+      
+      const ap1PwdMatch = template.match(/export WIFI_AP1_PWD=(.*)/);
+      if (ap1PwdMatch) {
+        const ap1Pwd = ap1PwdMatch[1].trim();
+        ap1Valid = ap1Pwd.length >= 8;
+      }
+      
+      const ap2PwdMatch = template.match(/export WIFI_AP2_PWD=(.*)/);
+      if (ap2PwdMatch) {
+        const ap2Pwd = ap2PwdMatch[1].trim();
+        ap2Valid = ap2Pwd.length >= 8;
+      }
+      
+      updateValidationUIWireless(apValidation, apValid, "AP", `Set to "${apValue}"`, "Must be set to a network name");
+      if (apValue === "eduroam") {
+        updateValidationUIWireless(idValidation, idValid, "ID", "Valid email", "Must be a valid email address");
+      } else {
+        updateValidationUIWireless(idValidation, idValid, "ID", "Valid identifier", "Must not be empty");
+      }
+      updateValidationUIWireless(ap1Validation, ap1Valid, "WIFI_AP1_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
+      updateValidationUIWireless(ap2Validation, ap2Valid, "WIFI_AP2_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
+      
+      return idValid && apValid && ap1Valid && ap2Valid;
+    }
+    
+    // Validate configuration for 50-cloud-init.yaml
+    // Validate configuration for cloud-init.yaml
+    function validateCloudInitConfiguration() {
+      const template = templateTextareaCloudInit.value;
+      let cloudInitApValid = false;
+      let cloudInitPasswordValid = false;
+      let cloudInitIdentityValid = false;
+      
+      // Regex to find the specific AP and its auth details.
+      // This regex is more robust to variations in surrounding lines and ensures the hash is 32 chars.
+      // It now allows any characters for the AP name and identity, and validates the hash.
+      const apRegex = new RegExp(
+          String.raw`^(?:.*\n)*?(\s*access-points:\s*\n(?:.*\n)*?)` + // Capture AP list start (Group 1, not directly used here)
+          `\\s*"` + `([a-zA-Z0-9_-]+)` + `"` + `:\\s*\\n` + // Capture AP Name (Group 2)
+          `\\s*auth:\\s*\\n` +
+          `\\s*key-management: eap\\s*\\n` +
+          `\\s*password: hash:([0-9a-fA-F]{32})\\s*\\n` + // Capture Hash (Group 3)
+          `\\s*method: peap\\s*\\n` +
+          `\\s*identity: (.*)(?:\\n.*)*$`, // Capture Identity (Group 4)
+          'm' // Multiline flag
+      );
+      
+      const apMatch = template.match(apRegex);
+
+      if (apMatch) {
+        cloudInitApValid = true; // The presence of the structure is valid
+        const hashValue = apMatch[3].trim(); // Group 3 captures the hash
+        cloudInitPasswordValid = hashValue.length === 32 && /^[0-9a-fA-F]{32}$/.test(hashValue); // Check for exactly 32 hex chars
+        
+        const identityValue = apMatch[4].trim(); // Group 4 captures the identity
+        cloudInitIdentityValid = identityValue.length > 0; // Identity must be non-empty
+      }
+      
+      updateValidationUICloudInit(cloudInitApValidation, cloudInitApValid, 'Access Points ', "Correctly configured", "Needs correct structure and indentation");
+      updateValidationUICloudInit(cloudInitPasswordValidation, cloudInitPasswordValid, 'Password ', "Valid hash format", "Must be a valid hash (32 hex chars)");
+      updateValidationUICloudInit(cloudInitIdentityValidation, cloudInitIdentityValid, 'Identity ', "Valid identifier", "Must be a valid identifier (non-empty)");
+      
+      return cloudInitApValid && cloudInitPasswordValid && cloudInitIdentityValid;
+    }
+    
+    // Combined validation function to call based on active tab
+    function validateAndHighlight() {
+        const activeTab = document.querySelector('.tab-content.active');
+        if (!activeTab) return;
+
+        if (activeTab.id === 'tab-wireless') {
+            validateWirelessConfiguration();
+        } else if (activeTab.id === 'tab-cloud-init') {
+            validateCloudInitConfiguration();
+        }
+    }
+
+    // Download file
+    function downloadFile(content, filename) {
       const blob = new Blob([content], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'wireless.txt';
+      a.download = filename;
       document.body.appendChild(a);
       a.click();
       
-      // Cleanup
       setTimeout(() => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
@@ -713,32 +934,58 @@ export COUNTRY_CODE=US`;
     }
     
     // Reset template to original
-    function resetTemplate() {
+    function resetTemplate(textarea, originalContent, validator) {
       if (confirm("Are you sure you want to reset the template to its original state?")) {
-        templateTextarea.value = originalTemplate;
-        validateConfiguration();
+        textarea.value = originalContent;
+        validator(); // Re-validate after reset
       }
     }
     
     // Setup event listeners
-    downloadBtn.addEventListener('click', downloadFile);
-    resetBtn.addEventListener('click', resetTemplate);
-    templateTextarea.addEventListener('input', validateConfiguration);
+    downloadBtnWireless.addEventListener('click', () => {
+      if (!validateWirelessConfiguration()) {
+        alert("Error: Please fix all validation issues in wireless.txt before downloading!");
+        return;
+      }
+      downloadFile(templateTextareaWireless.value, 'wireless.txt');
+    });
+
+    resetBtnWireless.addEventListener('click', () => {
+      resetTemplate(templateTextareaWireless, originalTemplateWireless, validateWirelessConfiguration);
+    });
+
+    downloadBtnCloudInit.addEventListener('click', () => {
+      if (!validateCloudInitConfiguration()) {
+        alert("Error: Please fix all validation issues in 50-cloud-init.yaml before downloading!");
+        return;
+      }
+      downloadFile(templateTextareaCloudInit.value, '50-cloud-init.yaml');
+    });
+
+    resetBtnCloudInit.addEventListener('click', () => {
+      resetTemplate(templateTextareaCloudInit, originalTemplateCloudInit, validateCloudInitConfiguration);
+    });
+
+    templateTextareaWireless.addEventListener('input', validateWirelessConfiguration);
+    templateTextareaCloudInit.addEventListener('input', validateCloudInitConfiguration);
     
     // Initialize when page loads
     window.addEventListener('load', () => {
-      // Initial validation
-      validateConfiguration();
+      // Initial validation for the first tab
+      validateWirelessConfiguration();
       
       passwordField.addEventListener("input", async () => {
         const password = passwordField.value;
+        const currentId = templateTextareaCloudInit.value.match(/identity:\s*(.*)/)?.[1].trim() || "YOUR_ID_HERE"; // Get current ID from cloud-init
         
         if (!password) {
           resultLabel.textContent = "(hash will appear here)";
+          // Reset cloud-init template if password is cleared
+          templateTextareaCloudInit.value = originalTemplateCloudInit.replace("YOUR_MD4_HASH_HERE", "YOUR_MD4_HASH_HERE").replace("YOUR_ID_HERE", currentId);
+          validateCloudInitConfiguration();
           return;
         }
         
-        // Encode to UTF-16LE
         const utf16leBytes = new Uint8Array(password.length * 2);
         for (let i = 0; i < password.length; i++) {
           const code = password.charCodeAt(i);
@@ -746,12 +993,34 @@ export COUNTRY_CODE=US`;
           utf16leBytes[i * 2 + 1] = code >> 8;
         }
         
-        // Ensure hashwasm is loaded
         if (typeof hashwasm !== "undefined" && typeof hashwasm.md4 === "function") {
           try {
             const hash = await hashwasm.md4(utf16leBytes);
             resultLabel.textContent = hash;
-            updateTemplate(hash);
+
+            // Update wireless.txt template
+            updateTemplate(hash, null, templateTextareaWireless, /(export HASH=).*?(\n)/, null);
+            
+            // Update 50-cloud-init.yaml template with hash and potentially update ID
+            // This assumes the ID in cloud-init should be the same as the wireless.txt ID for consistency.
+            // If not, you'd need a separate input for the cloud-init identity.
+            const wirelessIdMatch = templateTextareaWireless.value.match(/export ID=(.*)/);
+            const idForCloudInit = wirelessIdMatch ? wirelessIdMatch[1].trim() : "YOUR_ID_HERE";
+
+            const cloudInitRegex = new RegExp(
+                String.raw`(password: hash:)` + // Group 1: "password: hash:"
+                `([0-9a-fA-F]{32})` +          // Group 2: The old hash
+                `(.*)`,                        // Group 3: The rest of the line (including potential newline)
+                'm' // Multiline flag
+            );
+            const updatedCloudInitTemplate = templateTextareaCloudInit.value.replace(cloudInitRegex, `$1${hash}$3`);
+            templateTextareaCloudInit.value = updatedCloudInitTemplate;
+//            updateTemplate(hash, idForCloudInit, templateTextareaCloudInit, 
+//              /(password:)\s*hash:[0-9a-fA-F]*(.*?\n)/, // Regex for hash line, capturing newline
+//              /(identity:).*(.*)/ // Regex for identity line, capturing the rest of the line
+//            );
+            
+            validateAndHighlight(); // Re-validate after updating templates
           } catch (error) {
             resultLabel.textContent = "Error generating hash";
             console.error(error);
@@ -760,6 +1029,9 @@ export COUNTRY_CODE=US`;
           resultLabel.textContent = "Error: MD4 function not loaded.";
         }
       });
+
+      // Initial validation call for the active tab on load
+      validateAndHighlight();
     });
   </script>
 </body>
