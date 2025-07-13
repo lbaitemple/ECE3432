@@ -1025,8 +1025,8 @@ const eapMatch = template.match(
     const identity = eapMatch[3].trim();
 
     eapHashValid = /^[0-9a-fA-F]{32}$/.test(hash);
-    console.log(hash);
-    console.log(eapHashValid);
+    //console.log(hash);
+    //console.log(eapHashValid);
 
     eapIdentityValid = identity.includes('@') ? 
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity) : 
@@ -1056,7 +1056,7 @@ const eapMatch = template.match(
       //eapHashValid = /^[0-9a-fA-F]{32}$/.test(hash);
       eapHashValid = hash && hash.length === 32 && /^[0-9a-fA-F]+$/.test(hash);
 
-      console.log(hash);
+      //console.log(hash);
   
       // Identity validation (email only for eduroam)
       eapIdentityValid = apName === 'eduroam' 
@@ -1065,17 +1065,58 @@ const eapMatch = template.match(
 
       eapValid = eapHashValid && eapIdentityValid;
 
-  // Update UI messages based on AP type
-  const identityMessage = apName === 'eduroam'
-    ? ["Valid email", "Must be valid email address"]
-    : ["Valid identity", "Must not be empty"];
-  const hashMessage = eapHashValid ? ["hash correct", "valid"] : ["hash incorrect", "incorrect"];
-  updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eapIdentityValid, 
-    `${eapMatch[1]} Identity`, ...identityMessage);
-  updateValidationUICloudInit(cloudInitEduroamHashValidation, eapHashValid, 
-    `${eapMatch[1]} Hash`, ...hashMessage);
-  updateValidationUICloudInit(cloudInitEduroamValidation, eapValid, 
-  `${eapMatch[1]} Overall`, ...identityMessage);
+  // Identity validation messages
+  const identityMessages = {
+    label: `${apName} Identity`,
+    valid: apName.toLowerCase() === 'eduroam' 
+      ? "Valid institutional email" 
+      : "Valid network identity",
+    invalid: apName.toLowerCase() === 'eduroam'
+      ? "Must be a valid email (user@domain.edu)"
+      : "Must not be empty"
+  };
+
+  // Hash validation messages
+  const hashMessages = {
+    label: `${apName} Authentication`,
+    valid: "Valid credentials format",
+    invalid: eapMatch[2].startsWith('hash:')
+      ? "Must be 32 hexadecimal characters"
+      : "Password must be 8+ characters"
+  };
+
+  // Overall validation messages
+  const overallMessages = {
+    label: `${apName} Configuration`,
+    valid: "All settings correct",
+    invalid: "Configuration issues detected"
+  };
+
+  // Update all UI validation elements
+  updateValidationUICloudInit(
+    cloudInitEduroamIdentityValidation,
+    eapIdentityValid,
+    identityMessages.label,
+    eapIdentityValid ? identityMessages.valid : identityMessages.invalid,
+    eapIdentityValid ? "" : identityMessages.invalid
+  );
+
+  updateValidationUICloudInit(
+    cloudInitEduroamHashValidation,
+    eapHashValid,
+    hashMessages.label,
+    eapHashValid ? hashMessages.valid : hashMessages.invalid,
+    eapHashValid ? "" : hashMessages.invalid
+  );
+
+  updateValidationUICloudInit(
+    cloudInitEduroamValidation,
+    eapValid,
+    overallMessages.label,
+    eapValid ? overallMessages.valid : overallMessages.invalid,
+    eapValid ? "" : "Check highlighted issues"
+  );
+
 
  }
 
