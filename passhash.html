@@ -75,12 +75,12 @@
     }
 
     .panel-hash {
-        flex: 0 0 45%; /* Fixed width for hash panel */
+        flex: 0 0 45%;
         max-width: 45%;
     }
 
     .panel-config {
-        flex: 0 0 50%; /* Fixed width for config panel */
+        flex: 0 0 50%;
         max-width: 50%;
     }
     
@@ -164,9 +164,9 @@
       font-weight: bold;
     }
     
-    textarea { /* Increased textarea size */
+    textarea {
       width: 100%;
-      height: 300px; /* Increased height */
+      height: 300px;
       padding: 15px;
       border: 2px solid #ddd;
       border-radius: 5px;
@@ -363,7 +363,6 @@
       font-size: 0.9rem;
     }
     
-    /* Tabbed Interface Styles */
     .tab-container {
       margin-bottom: 20px;
     }
@@ -390,11 +389,11 @@
     .tab-button.active {
       background: #fff;
       color: #1a2a6c;
-      border-bottom: 2px solid #fff; /* Remove bottom border to look like it's active */
+      border-bottom: 2px solid #fff;
     }
     
     .tab-content {
-      display: none; /* Hidden by default */
+      display: none;
       padding: 15px;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
@@ -402,7 +401,7 @@
     }
     
     .tab-content.active {
-      display: block; /* Show the active tab */
+      display: block;
     }
 
     @media (max-width: 768px) {
@@ -410,8 +409,8 @@
         flex-direction: column;
       }
       .panel-hash, .panel-config {
-          flex: none; /* Reset flex properties for smaller screens */
-          max-width: 100%; /* Allow panels to take full width */
+          flex: none;
+          max-width: 100%;
       }
       h1 {
         font-size: 1.8rem;
@@ -520,14 +519,14 @@
                     <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
                     <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
                   </svg>
-                  WIFI_AP1_PWD: Must be at least 8 characters
+                  AP1_PWD: Must be at least 8 characters
                 </div>
                 <div id="ap2Validation" class="validation-status">
                   <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
                     <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
                   </svg>
-                  WIFI_AP2_PWD: Must be at least 8 characters
+                  AP2_PWD: Must be at least 8 characters
                 </div>
               </div>
             </div>
@@ -566,21 +565,42 @@
                     <circle cx="12" cy="12" r="10" fill="#1a2a6c" />
                     <path d="M12 8v4M12 16h0" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
                   </svg>
-                  Access Point "tusecurewireless": Set for Eduroam
+                  Access Points: Must have wifis section with access-points
                 </div>
-                <div id="cloudInitPasswordValidation" class="validation-status">
+                <div id="cloudInitAp1Validation" class="validation-status">
                   <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
                     <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
                   </svg>
-                  Password for "tusecurewireless": Must be a valid hash
+                  AP1: Password must be ≥8 characters
                 </div>
-                <div id="cloudInitIdentityValidation" class="validation-status">
+                <div id="cloudInitAp2Validation" class="validation-status">
                   <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
                     <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
                   </svg>
-                  Identity for "tusecurewireless": Must be a valid identifier
+                  AP2: Password must be ≥8 characters
+                </div>
+                <div id="cloudInitEduroamValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Eduroam: Requires valid hash and email identity
+                </div>
+                <div id="cloudInitEduroamHashValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Eduroam Hash: Must be 32-character hex hash
+                </div>
+                <div id="cloudInitEduroamIdentityValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1"/>
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Eduroam Identity: Must be valid email address
                 </div>
               </div>
             </div>
@@ -680,8 +700,11 @@
 
     // Cloud-init validation elements
     const cloudInitApValidation = document.getElementById("cloudInitApValidation");
-    const cloudInitPasswordValidation = document.getElementById("cloudInitPasswordValidation");
-    const cloudInitIdentityValidation = document.getElementById("cloudInitIdentityValidation");
+    const cloudInitAp1Validation = document.getElementById("cloudInitAp1Validation");
+    const cloudInitAp2Validation = document.getElementById("cloudInitAp2Validation");
+    const cloudInitEduroamValidation = document.getElementById("cloudInitEduroamValidation");
+    const cloudInitEduroamHashValidation = document.getElementById("cloudInitEduroamHashValidation");
+    const cloudInitEduroamIdentityValidation = document.getElementById("cloudInitEduroamIdentityValidation");
     
     // Tab elements
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -724,8 +747,7 @@ export COUNTRY_CODE=US`;
                         password: hash:ad3251b85818582b6c2dbdf9c9f9f75d
                         method: peap
                         identity: lbai
-            regulatory-domain: "US"
-            `;
+            regulatory-domain: "US"`;
 
     // Initialize templates
     templateTextareaWireless.value = originalTemplateWireless;
@@ -840,14 +862,23 @@ export COUNTRY_CODE=US`;
         }
       }
       
-      const ap1PwdMatch = template.match(/export WIFI_AP1_PWD=(.*)/);
-      if (ap1PwdMatch) {
+      // Extract AP names and passwords
+      const ap1Match = template.match(/export WIFI_([^=]+)=([^\n]+)/);
+      const ap1PwdMatch = template.match(/export WIFI_\1_PWD=(.*)/);
+      const ap2Match = template.match(/export WIFI_([^=]+)=([^\n]+)(?:\n|$)(?!.*export WIFI_\1=)/);
+      const ap2PwdMatch = template.match(/export WIFI_\1_PWD=(.*)/);
+      
+      let ap1Name = "AP1";
+      let ap2Name = "AP2";
+      
+      if (ap1Match && ap1PwdMatch) {
+        ap1Name = ap1Match[1];
         const ap1Pwd = ap1PwdMatch[1].trim();
         ap1Valid = ap1Pwd.length >= 8;
       }
       
-      const ap2PwdMatch = template.match(/export WIFI_AP2_PWD=(.*)/);
-      if (ap2PwdMatch) {
+      if (ap2Match && ap2PwdMatch) {
+        ap2Name = ap2Match[1];
         const ap2Pwd = ap2PwdMatch[1].trim();
         ap2Valid = ap2Pwd.length >= 8;
       }
@@ -858,52 +889,80 @@ export COUNTRY_CODE=US`;
       } else {
         updateValidationUIWireless(idValidation, idValid, "ID", "Valid identifier", "Must not be empty");
       }
-      updateValidationUIWireless(ap1Validation, ap1Valid, "WIFI_AP1_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
-      updateValidationUIWireless(ap2Validation, ap2Valid, "WIFI_AP2_PWD", "Valid (8+ characters)", "Must be at least 8 characters");
+      updateValidationUIWireless(ap1Validation, ap1Valid, `${ap1Name}_PWD`, "Valid (8+ characters)", "Must be at least 8 characters");
+      updateValidationUIWireless(ap2Validation, ap2Valid, `${ap2Name}_PWD`, "Valid (8+ characters)", "Must be at least 8 characters");
       
       return idValid && apValid && ap1Valid && ap2Valid;
     }
     
     // Validate configuration for 50-cloud-init.yaml
-    // Validate configuration for cloud-init.yaml
     function validateCloudInitConfiguration() {
       const template = templateTextareaCloudInit.value;
-      let cloudInitApValid = false;
-      let cloudInitPasswordValid = false;
-      let cloudInitIdentityValid = false;
-      
-      // Regex to find the specific AP and its auth details.
-      // This regex is more robust to variations in surrounding lines and ensures the hash is 32 chars.
-      // It now allows any characters for the AP name and identity, and validates the hash.
-      const apRegex = new RegExp(
-          String.raw`^(?:.*\n)*?(\s*access-points:\s*\n(?:.*\n)*?)` + // Capture AP list start (Group 1, not directly used here)
-          `\\s*"` + `([a-zA-Z0-9_-]+)` + `"` + `:\\s*\\n` + // Capture AP Name (Group 2)
-          `\\s*auth:\\s*\\n` +
-          `\\s*key-management: eap\\s*\\n` +
-          `\\s*password: hash:([0-9a-fA-F]{32})\\s*\\n` + // Capture Hash (Group 3)
-          `\\s*method: peap\\s*\\n` +
-          `\\s*identity: (.*)(?:\\n.*)*$`, // Capture Identity (Group 4)
-          'm' // Multiline flag
-      );
-      
-      const apMatch = template.match(apRegex);
+      let apValid = true;
+      let ap1Valid = false;
+      let ap2Valid = false;
+      let eduroamValid = false;
+      let eduroamIdentityValid = false;
+      let eduroamHashValid = false;
 
-      if (apMatch) {
-        cloudInitApValid = true; // The presence of the structure is valid
-        const hashValue = apMatch[3].trim(); // Group 3 captures the hash
-        cloudInitPasswordValid = hashValue.length === 32 && /^[0-9a-fA-F]{32}$/.test(hashValue); // Check for exactly 32 hex chars
-        
-        const identityValue = apMatch[4].trim(); // Group 4 captures the identity
-        cloudInitIdentityValid = identityValue.length > 0; // Identity must be non-empty
+      // Check if we have a wifis section with access-points
+      const hasWifiSection = template.includes('wifis:') && template.includes('access-points:');
+      apValid = hasWifiSection;
+
+      // Extract all access point names
+      const apMatches = [...template.matchAll(/"([^"]+)":\s*\n\s*password:\s*"([^"]+)"/g)];
+      
+      let ap1Name = "AP1";
+      let ap2Name = "AP2";
+      
+      if (apMatches.length > 0) {
+        ap1Name = apMatches[0][1];
+        const ap1Password = apMatches[0][2];
+        ap1Valid = ap1Password.length >= 8;
       }
       
-      updateValidationUICloudInit(cloudInitApValidation, cloudInitApValid, 'Access Points ', "Correctly configured", "Needs correct structure and indentation");
-      updateValidationUICloudInit(cloudInitPasswordValidation, cloudInitPasswordValid, 'Password ', "Valid hash format", "Must be a valid hash (32 hex chars)");
-      updateValidationUICloudInit(cloudInitIdentityValidation, cloudInitIdentityValid, 'Identity ', "Valid identifier", "Must be a valid identifier (non-empty)");
+      if (apMatches.length > 1) {
+        ap2Name = apMatches[1][1];
+        const ap2Password = apMatches[1][2];
+        ap2Valid = ap2Password.length >= 8;
+      }
+
+      // Check for eduroam or tusecurewireless (EAP authentication)
+      const eapMatch = template.match(/"((?:eduroam|tusecurewireless))":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*hash:([0-9a-fA-F]{32})\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"([^"]+)"/i);
+      if (eapMatch) {
+          const apName = eapMatch[1].toLowerCase();
+          const hash = eapMatch[2];
+          const identity = eapMatch[3];
+
+          eduroamHashValid = /^[0-9a-fA-F]{32}$/.test(hash);
+          
+          if (apName === 'eduroam') {
+              eduroamIdentityValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity);
+          } else {
+              eduroamIdentityValid = identity.trim().length > 0;
+          }
+          
+          eduroamValid = eduroamHashValid && eduroamIdentityValid;
+      }
+
+      // Update UI validation states with dynamic AP names
+      updateValidationUICloudInit(cloudInitApValidation, apValid, 'Access Points', "Configured", "Must have wifis section with access-points");
+      updateValidationUICloudInit(cloudInitAp1Validation, ap1Valid, ap1Name, "Valid (8+ chars)", "Password must be ≥8 characters");
+      updateValidationUICloudInit(cloudInitAp2Validation, ap2Valid, ap2Name, "Valid (8+ chars)", "Password must be ≥8 characters");
       
-      return cloudInitApValid && cloudInitPasswordValid && cloudInitIdentityValid;
+      if (eapMatch && eapMatch[1].toLowerCase() === 'eduroam') {
+          updateValidationUICloudInit(cloudInitEduroamValidation, eduroamValid, 'Eduroam', "Valid config", "Requires valid hash and email identity");
+          updateValidationUICloudInit(cloudInitEduroamHashValidation, eduroamHashValid, 'Eduroam Hash', "Valid (32 hex chars)", "Must be 32-character hex hash");
+          updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eduroamIdentityValid, 'Eduroam Identity', "Valid email", "Must be valid email address");
+      } else if (eapMatch) {
+          updateValidationUICloudInit(cloudInitEduroamValidation, eduroamValid, 'EAP Network', "Valid config", "Requires valid hash and identity");
+          updateValidationUICloudInit(cloudInitEduroamHashValidation, eduroamHashValid, 'EAP Hash', "Valid (32 hex chars)", "Must be 32-character hex hash");
+          updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eduroamIdentityValid, 'EAP Identity', "Valid identity", "Must not be empty");
+      }
+
+      return apValid && ap1Valid && ap2Valid && (eapMatch ? eduroamValid : true);
     }
-    
+
     // Combined validation function to call based on active tab
     function validateAndHighlight() {
         const activeTab = document.querySelector('.tab-content.active');
@@ -976,11 +1035,10 @@ export COUNTRY_CODE=US`;
       
       passwordField.addEventListener("input", async () => {
         const password = passwordField.value;
-        const currentId = templateTextareaCloudInit.value.match(/identity:\s*(.*)/)?.[1].trim() || "YOUR_ID_HERE"; // Get current ID from cloud-init
+        const currentId = templateTextareaCloudInit.value.match(/identity:\s*(.*)/)?.[1].trim() || "YOUR_ID_HERE";
         
         if (!password) {
           resultLabel.textContent = "(hash will appear here)";
-          // Reset cloud-init template if password is cleared
           templateTextareaCloudInit.value = originalTemplateCloudInit.replace("YOUR_MD4_HASH_HERE", "YOUR_MD4_HASH_HERE").replace("YOUR_ID_HERE", currentId);
           validateCloudInitConfiguration();
           return;
@@ -1001,26 +1059,17 @@ export COUNTRY_CODE=US`;
             // Update wireless.txt template
             updateTemplate(hash, null, templateTextareaWireless, /(export HASH=).*?(\n)/, null);
             
-            // Update 50-cloud-init.yaml template with hash and potentially update ID
-            // This assumes the ID in cloud-init should be the same as the wireless.txt ID for consistency.
-            // If not, you'd need a separate input for the cloud-init identity.
-            const wirelessIdMatch = templateTextareaWireless.value.match(/export ID=(.*)/);
-            const idForCloudInit = wirelessIdMatch ? wirelessIdMatch[1].trim() : "YOUR_ID_HERE";
-
+            // Update 50-cloud-init.yaml template with hash
             const cloudInitRegex = new RegExp(
-                String.raw`(password: hash:)` + // Group 1: "password: hash:"
-                `([0-9a-fA-F]{32})` +          // Group 2: The old hash
-                `(.*)`,                        // Group 3: The rest of the line (including potential newline)
-                'm' // Multiline flag
+                String.raw`(password: hash:)` +
+                `([0-9a-fA-F]{32})` +
+                `(.*)`,
+                'm'
             );
             const updatedCloudInitTemplate = templateTextareaCloudInit.value.replace(cloudInitRegex, `$1${hash}$3`);
             templateTextareaCloudInit.value = updatedCloudInitTemplate;
-//            updateTemplate(hash, idForCloudInit, templateTextareaCloudInit, 
-//              /(password:)\s*hash:[0-9a-fA-F]*(.*?\n)/, // Regex for hash line, capturing newline
-//              /(identity:).*(.*)/ // Regex for identity line, capturing the rest of the line
-//            );
             
-            validateAndHighlight(); // Re-validate after updating templates
+            validateAndHighlight();
           } catch (error) {
             resultLabel.textContent = "Error generating hash";
             console.error(error);
