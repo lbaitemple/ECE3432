@@ -841,66 +841,7 @@ export COUNTRY_CODE=US`;
     }
     
     // Validate configuration for wireless.txt
-    /*
     function validateWirelessConfiguration() {
-      const template = templateTextareaWireless.value;
-      let idValid = true;
-      let apValid = true;
-      let ap1Valid = false;
-      let ap2Valid = false;
-      
-      const apMatch = template.match(/export AP=(.*)/);
-      let apValue = "";
-      if (apMatch) {
-        apValue = apMatch[1].trim().toLowerCase();
-        apValid = apValue.length > 0;
-      }
-      
-      const idMatch = template.match(/export ID=(.*)/);
-      if (idMatch) {
-        const idValue = idMatch[1].trim();
-        if (apValue === "eduroam") {
-          idValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(idValue);
-        } else {
-          idValid = idValue.length > 0;
-        }
-      }
-      
-      // Extract AP names and passwords
-      const ap1Match = template.match(/export WIFI_([^=]+)=([^\n]+)/);
-      const ap1PwdMatch = template.match(/export WIFI_\1_PWD=(.*)/);
-      const ap2Match = template.match(/export WIFI_([^=]+)=([^\n]+)(?:\n|$)(?!.*export WIFI_\1=)/);
-      const ap2PwdMatch = template.match(/export WIFI_\1_PWD=(.*)/);
-      
-      let ap1Name = "AP1";
-      let ap2Name = "AP2";
-      
-      if (ap1Match && ap1PwdMatch) {
-        ap1Name = ap1Match[1];
-        const ap1Pwd = ap1PwdMatch[1].trim();
-        ap1Valid = ap1Pwd.length >= 8;
-      }
-      
-      if (ap2Match && ap2PwdMatch) {
-        ap2Name = ap2Match[1];
-        const ap2Pwd = ap2PwdMatch[1].trim();
-        ap2Valid = ap2Pwd.length >= 8;
-      }
-      
-      updateValidationUIWireless(apValidation, apValid, "AP", `Set to "${apValue}"`, "Must be set to a network name");
-      if (apValue === "eduroam") {
-        updateValidationUIWireless(idValidation, idValid, "ID", "Valid email", "Must be a valid email address");
-      } else {
-        updateValidationUIWireless(idValidation, idValid, "ID", "Valid identifier", "Must not be empty");
-      }
-      updateValidationUIWireless(ap1Validation, ap1Valid, `${ap1Name}_PWD`, "Valid (8+ characters)", "Must be at least 8 characters");
-      updateValidationUIWireless(ap2Validation, ap2Valid, `${ap2Name}_PWD`, "Valid (8+ characters)", "Must be at least 8 characters");
-      
-      return idValid && apValid && ap1Valid && ap2Valid;
-    }
-    */
-
-        function validateWirelessConfiguration() {
       const template = templateTextareaWireless.value;
       let idValid = true;
       let apValid = true;
@@ -952,75 +893,6 @@ export COUNTRY_CODE=US`;
     // Validate configuration for 50-cloud-init.yaml
     /*
     function validateCloudInitConfiguration() {
-      const template = templateTextareaCloudInit.value;
-      let apValid = true;
-      let ap1Valid = false;
-      let ap2Valid = false;
-      let eduroamValid = false;
-      let eduroamIdentityValid = false;
-      let eduroamHashValid = false;
-
-      // Check if we have a wifis section with access-points
-      const hasWifiSection = template.includes('wifis:') && template.includes('access-points:');
-      apValid = hasWifiSection;
-
-      // Extract all access point names
-      const apMatches = [...template.matchAll(/"([^"]+)":\s*\n\s*password:\s*"([^"]+)"/g)];
-      
-      let ap1Name = "AP1";
-      let ap2Name = "AP2";
-      
-      if (apMatches.length > 0) {
-        ap1Name = apMatches[0][1];
-        const ap1Password = apMatches[0][2];
-        ap1Valid = ap1Password.length >= 8;
-      }
-      
-      if (apMatches.length > 1) {
-        ap2Name = apMatches[1][1];
-        const ap2Password = apMatches[1][2];
-        ap2Valid = ap2Password.length >= 8;
-      }
-
-      // Check for eduroam or tusecurewireless (EAP authentication)
-      const eapMatch = template.match(/"((?:eduroam|tusecurewireless))":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*hash:([0-9a-fA-F]{32})\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"([^"]+)"/i);
-      if (eapMatch) {
-          const apName = eapMatch[1].toLowerCase();
-          const hash = eapMatch[2];
-          const identity = eapMatch[3];
-
-          eduroamHashValid = /^[0-9a-fA-F]{32}$/.test(hash);
-          
-          if (apName === 'eduroam') {
-              eduroamIdentityValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity);
-          } else {
-              eduroamIdentityValid = identity.trim().length > 0;
-          }
-          
-          eduroamValid = eduroamHashValid && eduroamIdentityValid;
-      }
-
-      // Update UI validation states with dynamic AP names
-      updateValidationUICloudInit(cloudInitApValidation, apValid, 'Access Points', "Configured", "Must have wifis section with access-points");
-      updateValidationUICloudInit(cloudInitAp1Validation, ap1Valid, ap1Name, "Valid (8+ chars)", "Password must be ≥8 characters");
-      updateValidationUICloudInit(cloudInitAp2Validation, ap2Valid, ap2Name, "Valid (8+ chars)", "Password must be ≥8 characters");
-      
-      if (eapMatch && eapMatch[1].toLowerCase() === 'eduroam') {
-          updateValidationUICloudInit(cloudInitEduroamValidation, eduroamValid, 'Eduroam', "Valid config", "Requires valid hash and email identity");
-          updateValidationUICloudInit(cloudInitEduroamHashValidation, eduroamHashValid, 'Eduroam Hash', "Valid (32 hex chars)", "Must be 32-character hex hash");
-          updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eduroamIdentityValid, 'Eduroam Identity', "Valid email", "Must be valid email address");
-      } else if (eapMatch) {
-          updateValidationUICloudInit(cloudInitEduroamValidation, eduroamValid, 'EAP Network', "Valid config", "Requires valid hash and identity");
-          updateValidationUICloudInit(cloudInitEduroamHashValidation, eduroamHashValid, 'EAP Hash', "Valid (32 hex chars)", "Must be 32-character hex hash");
-          updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eduroamIdentityValid, 'EAP Identity', "Valid identity", "Must not be empty");
-      }
-
-      return apValid && ap1Valid && ap2Valid && (eapMatch ? eduroamValid : true);
-    }
-
-    */
-
-function validateCloudInitConfiguration() {
   const template = templateTextareaCloudInit.value;
   let apValid = true;
   let ap1Valid = false;
@@ -1060,17 +932,29 @@ function validateCloudInitConfiguration() {
   }
 
   // Check for EAP authentication (eduroam or tusecurewireless)
-  const eapMatch = template.match(/"([^"]+)":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*(?:hash:)?([0-9a-fA-F]{32})?\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"([^"]+)"/i);
+  //const eapMatch = template.match(/"([^"]+)":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*(?:hash:)?([0-9a-fA-F]{32})?\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"([^"]+)"/i);
+  //const eapMatch = template.match(/"([^"]+)":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*(?:hash:)?([0-9a-fA-F]{32})?\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"([^"]+)"/i);
+  const eapMatch = template.match(
+  /"([^"]+)":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*(?:hash:)?([0-9a-fA-F]{32})?\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"?(.+?)"?\s*(?:\n|$)/i
+);
+  console.log("eapMatch result:", eapMatch); // Debug: See if the regex matches
+
+
   if (eapMatch) {
       const apName = eapMatch[1].toLowerCase();
       const hash = eapMatch[2];
       const identity = eapMatch[3];
 
+      console.log(apName);
+      console.log(hash);
+      console.log(identity);
+
       // Validate hash is exactly 32 hex characters if present
       eduroamHashValid = !hash || /^[0-9a-fA-F]{32}$/.test(hash);
-      
+      eduroamValid = eduroamHashValid && eduroamIdentityValid;
+
       // Special validation for eduroam & tusecurewireless (both require email)
-      if (apName === 'eduroam' || apName === 'tusecurewireless') {
+      if (apName === 'eduroam') {
           eduroamIdentityValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity);
           updateValidationUICloudInit(cloudInitEduroamValidation, eduroamIdentityValid && eduroamHashValid, apName, "Valid config", "Requires valid hash and email identity");
           updateValidationUICloudInit(cloudInitEduroamHashValidation, eduroamHashValid, `${apName} Hash`, "Valid (32 hex chars)", "Must be 32-character hex hash");
@@ -1084,7 +968,7 @@ function validateCloudInitConfiguration() {
           updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eduroamIdentityValid, 'EAP Identity', "Valid identity", "Must not be empty");
       }
       
-      eduroamValid = eduroamHashValid && eduroamIdentityValid;
+      
   }
 
   // Update UI validation states
@@ -1094,87 +978,112 @@ function validateCloudInitConfiguration() {
 
   return apValid && ap1Valid && ap2Valid && (eapMatch ? eduroamValid : true);
 }
+   */ 
 
-
-/*
-function validateCloudInitConfiguration() {
+    function validateCloudInitConfiguration() {
   const template = templateTextareaCloudInit.value;
   let apValid = true;
   let ap1Valid = false;
   let ap2Valid = false;
-  let eduroamValid = false;
-  let eduroamIdentityValid = false;
-  let eduroamHashValid = false;
+  let eapValid = false;
+  let eapHashValid = false;
+  let eapIdentityValid = false;
 
-  // Check if we have a wifis section with access-points
-  const hasWifiSection = template.includes('wifis:') && template.includes('access-points:');
-  apValid = hasWifiSection;
-
-  // Extract all access point names
+  // Get all access points
   const apMatches = [...template.matchAll(/"([^"]+)":\s*\n\s*(password:\s*"([^"]+)"|auth:)/g)];
-  
-  let ap1Name = "AP1";
-  let ap2Name = "AP2";
-  
-  if (apMatches.length > 0) {
-    ap1Name = apMatches[0][1];
-    if (apMatches[0][2].startsWith('password:')) {
-      const ap1Password = apMatches[0][3];
-      ap1Valid = ap1Password.length >= 8;
-    } else {
-      // This is an auth section, we'll validate it separately
-      ap1Valid = true;
+  apValid = apMatches.length > 0;
+
+  // Validate regular WiFi passwords
+  apMatches.forEach((match, index) => {
+    const apName = match[1];
+    const isAuth = match[2].startsWith('auth:');
+    
+    if (!isAuth) {
+      const password = match[3];
+      if (index === 0) {
+        ap1Valid = password.length >= 8;
+        currentAp1Name = apName; // Store for UI
+      } else if (index === 1) {
+        ap2Valid = password.length >= 8;
+        currentAp2Name = apName; // Store for UI
+      }
     }
-  }
-  
-  if (apMatches.length > 1) {
-    ap2Name = apMatches[1][1];
-    if (apMatches[1][2].startsWith('password:')) {
-      const ap2Password = apMatches[1][3];
-      ap2Valid = ap2Password.length >= 8;
-    } else {
-      // This is an auth section, we'll validate it separately
-      ap2Valid = true;
-    }
+  });
+
+  // EAP Validation
+ // const eapMatch = template.match(
+ //   /"([^"]+)":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*(?:hash:)?([0-9a-fA-F]{32})\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"?(.+?)"?\s*(?:\n|$)/i
+ // );
+
+const eapMatch = template.match(
+  /"([^"]+)":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*hash:([^\s]+)\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"?(.+?)"?\s*(?:\n|$)/i
+);
+
+  if (eapMatch) {
+    currentEapName = eapMatch[1]; // Store for UI
+    const hash = eapMatch[2];
+    const identity = eapMatch[3].trim();
+
+    eapHashValid = /^[0-9a-fA-F]{32}$/.test(hash);
+    console.log(hash);
+    console.log(eapHashValid);
+
+    eapIdentityValid = identity.includes('@') ? 
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity) : 
+      identity.length > 0;
+    eapValid = eapHashValid && eapIdentityValid;
   }
 
-  // Check for EAP authentication (both eduroam and tusecurewireless)
-  const eapMatch = template.match(/"([^"]+)":\s*\n\s*auth:\s*\n\s*key-management:\s*eap\s*\n\s*password:\s*(?:hash:)?([0-9a-fA-F]{32})?\s*\n\s*method:\s*peap\s*\n\s*identity:\s*"([^"]+)"/i);
+  // Update UI with dynamic names
+  updateValidationUICloudInit(cloudInitApValidation, apValid, 'Access Points', 
+    `Found ${apMatches.length} AP(s)`, "No access points configured");
+
+  updateValidationUICloudInit(cloudInitAp1Validation, ap1Valid, 
+    currentAp1Name ? `${currentAp1Name} Password` : '${currentAp1Name} AP', 
+    "Valid (8+ chars)", "Must be ≥8 characters");
+
+  updateValidationUICloudInit(cloudInitAp2Validation, ap2Valid, 
+    currentAp2Name ? `${currentAp2Name} Password` : '${currentAp2Name} AP',
+    "Valid (8+ chars)", "Must be ≥8 characters");
+
   if (eapMatch) {
+
       const apName = eapMatch[1].toLowerCase();
       const hash = eapMatch[2];
-      const identity = eapMatch[3];
+      const identity = eapMatch[3].trim();
 
-      // Validate hash is exactly 32 hex characters if present
-      eduroamHashValid = !hash || /^[0-9a-fA-F]{32}$/.test(hash);
-      
-      // Special validation for eduroam
-      if (apName === 'eduroam') {
-          eduroamIdentityValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity);
-          updateValidationUICloudInit(cloudInitEduroamValidation, eduroamIdentityValid && eduroamHashValid, 'Eduroam', "Valid config", "Requires valid hash and email identity");
-          updateValidationUICloudInit(cloudInitEduroamHashValidation, eduroamHashValid, 'Eduroam Hash', "Valid (32 hex chars)", "Must be 32-character hex hash");
-          updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eduroamIdentityValid, 'Eduroam Identity', "Valid email", "Must be valid email address");
-      } 
-      // Validation for other EAP networks
-      else {
-          eduroamIdentityValid = identity.trim().length > 0;
-          updateValidationUICloudInit(cloudInitEduroamValidation, eduroamIdentityValid && eduroamHashValid, 'EAP Network', "Valid config", "Requires valid hash and identity");
-          updateValidationUICloudInit(cloudInitEduroamHashValidation, eduroamHashValid, 'EAP Hash', "Valid (32 hex chars)", "Must be 32-character hex hash");
-          updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eduroamIdentityValid, 'EAP Identity', "Valid identity", "Must not be empty");
-      }
-      
-      eduroamValid = eduroamHashValid && eduroamIdentityValid;
-  }
+      // Hash validation (always required for EAP)
+      //eapHashValid = /^[0-9a-fA-F]{32}$/.test(hash);
+      eapHashValid = hash && hash.length === 32 && /^[0-9a-fA-F]+$/.test(hash);
 
-  // Update UI validation states with dynamic AP names
-  updateValidationUICloudInit(cloudInitApValidation, apValid, 'Access Points', "Configured", "Must have wifis section with access-points");
-  updateValidationUICloudInit(cloudInitAp1Validation, ap1Valid, ap1Name, ap1Valid ? "Valid" : "Invalid", ap1Valid ? "" : "Password must be ≥8 characters");
-  updateValidationUICloudInit(cloudInitAp2Validation, ap2Valid, ap2Name, ap2Valid ? "Valid" : "Invalid", ap2Valid ? "" : "Password must be ≥8 characters");
-
-  return apValid && ap1Valid && ap2Valid && (eapMatch ? eduroamValid : true);
-}
-*/
+      console.log(hash);
   
+      // Identity validation (email only for eduroam)
+      eapIdentityValid = apName === 'eduroam' 
+        ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity) 
+        : identity.length > 0; // Just require non-empty for non-eduroam EAP
+
+      eapValid = eapHashValid && eapIdentityValid;
+
+  // Update UI messages based on AP type
+  const identityMessage = apName === 'eduroam'
+    ? ["Valid email", "Must be valid email address"]
+    : ["Valid identity", "Must not be empty"];
+  const hashMessage = eapHashValid ? ["hash correct", "valid"] : ["hash incorrect", "incorrect"];
+  updateValidationUICloudInit(cloudInitEduroamIdentityValidation, eapIdentityValid, 
+    `${eapMatch[1]} Identity`, ...identityMessage);
+  updateValidationUICloudInit(cloudInitEduroamHashValidation, eapHashValid, 
+    `${eapMatch[1]} Hash`, ...hashMessage);
+  updateValidationUICloudInit(cloudInitEduroamValidation, eapValid, 
+  `${eapMatch[1]} Overall`, ...identityMessage);
+
+ }
+
+  return apValid && (apMatches.length > 0 ? ap1Valid : true) && 
+         (apMatches.length > 1 ? ap2Valid : true) && 
+         (eapMatch ? eapValid : true);
+}
+
     // Combined validation function to call based on active tab
     function validateAndHighlight() {
         const activeTab = document.querySelector('.tab-content.active');
@@ -1239,7 +1148,9 @@ function validateCloudInitConfiguration() {
 
     templateTextareaWireless.addEventListener('input', validateWirelessConfiguration);
     templateTextareaCloudInit.addEventListener('input', validateCloudInitConfiguration);
-    
+
+
+let validationTimeout;
     // Initialize when page loads
     window.addEventListener('load', () => {
       // Initial validation for the first tab
