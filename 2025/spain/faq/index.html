@@ -589,7 +589,7 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="line-following" class="slide level2">
 <h2>Line following</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">bring up</a></li><li><a href="#tabset-5-2">recognization</a></li><li><a href="#tabset-5-3">cloud recognization</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">bring up</a></li><li><a href="#tabset-5-2">recognization</a></li><li><a href="#tabset-5-3">revision</a></li><li><a href="#tabset-5-4">cloud recognization</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="co"># terminal 1</span></span>
@@ -605,17 +605,28 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 <div id="tabset-5-3">
 <ul>
+<li>line 140 in <code>cloud_line_recognition_node.py</code></li>
+</ul>
+<pre><code>        #multi_model = ChatVertexAI(model="gemini-pro-vision")
+        multi_model = ChatVertexAI(
+            model_name='gemini-2.0-flash',
+            convert_system_message_to_human=True,
+        )bash
+</code></pre>
+</div>
+<div id="tabset-5-4">
+<ul>
 <li>maybe slow depends on the network (local server will be more prefered)</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="co"># terminal 2</span></span>
-<span id="cb26-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
-<span id="cb26-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb26-4"><a href=""></a></span>
-<span id="cb26-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition cloud_line_demo.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="co"># terminal 2</span></span>
+<span id="cb27-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
+<span id="cb27-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb27-4"><a href=""></a></span>
+<span id="cb27-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition cloud_line_demo.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>may want to setup an environment variable</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="bu">export</span> <span class="va">GOOGLE_APPLICATION_CREDENTIALS</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="bu">export</span> <span class="va">GOOGLE_APPLICATION_CREDENTIALS</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
