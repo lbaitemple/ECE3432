@@ -644,12 +644,14 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">minipupper</a></li><li><a href="#tabset-6-2">NUC</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="bu">source</span> ~/new_ws/install/setup.bash</span>
-<span id="cb30-2"><a href=""></a></span>
-<span id="cb30-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup_with_stanford_controller.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
+<span id="cb30-2"><a href=""></a><span class="bu">source</span> ~/new_ws/install/setup.bash</span>
+<span id="cb30-3"><a href=""></a></span>
+<span id="cb30-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup_with_stanford_controller.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-6-2">
-<pre><code>source ~/ros2_ws/install/setup.bash
+<pre><code>export ROS_DOMAIN_ID=1
+source ~/ros2_ws/install/setup.bash
 ros2 launch mini_pupper_tracking tracking.launch.py</code></pre>
 </div>
 </div>
