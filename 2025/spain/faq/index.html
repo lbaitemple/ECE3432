@@ -630,6 +630,30 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </div>
+</section>
+<section id="wsl---22.04" class="slide level2">
+<h2>WSL - 22.04</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>discovery_server_config.xml</span>
+<span id="cb29-2"><a href=""></a><span class="ex">fastdds</span> discovery <span class="at">--server-id</span> 0</span>
+<span id="cb29-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0 </span>
+<span id="cb29-4"><a href=""></a><span class="bu">export</span> <span class="va">ROS_IP</span><span class="op">=</span>192.168.1.86 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tracking" class="slide level2">
+<h2>Tracking</h2>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">minipupper</a></li><li><a href="#tabset-6-2">NUC</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="bu">source</span> ~/new_ws/install/setup.bash</span>
+<span id="cb30-2"><a href=""></a></span>
+<span id="cb30-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup_with_stanford_controller.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-2">
+<pre><code>source ~/ros2_ws/install/setup.bash
+ros2 launch mini_pupper_tracking tracking.launch.py</code></pre>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
