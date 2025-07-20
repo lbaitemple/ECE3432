@@ -589,21 +589,34 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <section id="line-following" class="slide level2">
 <h2>Line following</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">bring up</a></li><li><a href="#tabset-5-2">recognization</a></li><li><a href="#tabset-5-3">revision</a></li><li><a href="#tabset-5-4">cloud recognization</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">camera</a></li><li><a href="#tabset-5-2">bringup</a></li><li><a href="#tabset-5-3">recognization</a></li><li><a href="#tabset-5-4">cloud-based</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="co"># terminal 1</span></span>
-<span id="cb24-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
-<span id="cb24-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb24-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>change the size of the image in launch file</li>
+<li><code>mini_pupper_driver/launch/camera.launch.py</code> (line 39)</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a>            <span class="va">parameters</span><span class="op">=</span>[</span>
+<span id="cb24-2"><a href=""></a>                <span class="kw">{</span></span>
+<span id="cb24-3"><a href=""></a>                    <span class="st">'output_encoding'</span><span class="ex">:</span> output_encoding,</span>
+<span id="cb24-4"><a href=""></a>                    <span class="st">'image_size'</span><span class="ex">:</span> [320, 240],</span>
+<span id="cb24-5"><a href=""></a>                    <span class="st">'frame_rate'</span><span class="ex">:</span> 10,</span>
+<span id="cb24-6"><a href=""></a>                </span>
+<span id="cb24-7"><a href=""></a>                <span class="ex">}],</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-5-2">
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="co"># terminal 2</span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="co"># terminal 1</span></span>
 <span id="cb25-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
 <span id="cb25-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb25-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-5-3">
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="co"># terminal 2</span></span>
+<span id="cb26-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
+<span id="cb26-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb26-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-4">
 <ul>
 <li>line 140 in <code>cloud_line_recognition_node.py</code></li>
 </ul>
@@ -613,30 +626,22 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
             convert_system_message_to_human=True,
         )bash
 </code></pre>
-</div>
-<div id="tabset-5-4">
 <ul>
-<li>maybe slow depends on the network (local server will be more prefered)</li>
+<li><p>recognization</p></li>
+<li><p>maybe slow depends on the network (local server will be more prefered)</p></li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="co"># terminal 2</span></span>
-<span id="cb27-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
-<span id="cb27-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb27-4"><a href=""></a></span>
-<span id="cb27-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition cloud_line_demo.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="co"># terminal 2</span></span>
+<span id="cb28-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
+<span id="cb28-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb28-4"><a href=""></a></span>
+<span id="cb28-5"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition cloud_line_demo.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>may want to setup an environment variable</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="bu">export</span> <span class="va">GOOGLE_APPLICATION_CREDENTIALS</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="bu">export</span> <span class="va">GOOGLE_APPLICATION_CREDENTIALS</span><span class="op">=</span>/home/ubuntu/.gemini/creds.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="wsl---22.04" class="slide level2">
-<h2>WSL - 22.04</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>discovery_server_config.xml</span>
-<span id="cb29-2"><a href=""></a><span class="ex">fastdds</span> discovery <span class="at">--server-id</span> 0</span>
-<span id="cb29-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0 </span>
-<span id="cb29-4"><a href=""></a><span class="bu">export</span> <span class="va">ROS_IP</span><span class="op">=</span>192.168.1.86 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="tracking" class="slide level2">
 <h2>Tracking</h2>
@@ -656,6 +661,13 @@ ros2 launch mini_pupper_tracking tracking.launch.py</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="wsl---22.04" class="slide level2">
+<h2>WSL - 22.04</h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>discovery_server_config.xml</span>
+<span id="cb32-2"><a href=""></a><span class="ex">fastdds</span> discovery <span class="at">--server-id</span> 0</span>
+<span id="cb32-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0 </span>
+<span id="cb32-4"><a href=""></a><span class="bu">export</span> <span class="va">ROS_IP</span><span class="op">=</span>192.168.1.86 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
