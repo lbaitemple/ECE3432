@@ -734,15 +734,7 @@ export COUNTRY_CODE=US`;
         usb0:
             dhcp4: false
             optional: true
-            addresses: [10.55.0.1/29]
-    bridges:
-        br0:
-            addresses: [10.0.0.10/24]
-            parameters:
-                stp: true
-                forward-delay: 4
-            dhcp4: false
-            optional: true            
+            addresses: [10.55.0.1/29]           
     wifis:
         wlan0:
             optional: true
@@ -758,7 +750,15 @@ export COUNTRY_CODE=US`;
                         password: hash:ad3251b85818582b6c2dbdf9c9f9f75d
                         method: peap
                         identity: lbai@temple.edu
-            regulatory-domain: "US"`;
+            regulatory-domain: "US"
+    bridges:
+        br0:
+            addresses: [10.0.0.10/24]
+            parameters:
+                stp: true
+                forward-delay: 4
+            dhcp4: false
+            optional: true`;
 
     // Initialize templates
     templateTextareaWireless.value = originalTemplateWireless;
