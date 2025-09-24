@@ -746,7 +746,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <p>ROS2 codes are provided on PC (WSL x86) minipupper (raspberry pi arm64 or aarch64)</p>
 </blockquote>
 <blockquote>
-<p><a href="https://github.com/mangdangroboticsclub/mini_pupper_ros.git" class="uri">https://github.com/mangdangroboticsclub/mini_pupper_ros.git</a></p>
+<p><a href="https://github.com/mangdangroboticsclub/mini_pupper_ros.git">https://github.com/mangdangroboticsclub/mini_pupper_ros.git</a></p>
 </blockquote>
 </section>
 <section id="sec-wsl" class="slide level2">
@@ -840,81 +840,122 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 </div>
 </section>
-<section id="ros2-on-wsl" class="slide level2">
-<h2>ROS2 on WSL</h2>
+<section id="reset-ubuntu" class="slide level2">
+<h2>Reset Ubuntu</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Clean up</a></li><li><a href="#tabset-3-2">Reinstall</a></li><li><a href="#tabset-3-3">ROS2 Desktop</a></li><li><a href="#tabset-3-4">reset ros2_ws</a></li><li><a href="#tabset-3-5">easy way</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">wsl</span> <span class="at">-l</span></span>
+<span id="cb5-2"><a href=""></a><span class="ex">wsl</span> <span class="at">--unregister</span> ubuntu-22.04</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-2">
 <ul>
-<li>you can install <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/ros2-dev/pc_install.sh">ROS2 on WSL</a></li>
+<li>make your username is <code>ubuntu</code></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">git</span> clone https://github.com/Tiryoh/ros2_setup_scripts_ubuntu.git</span>
-<span id="cb5-2"><a href=""></a><span class="ex">~/ros2_setup_scripts_ubuntu/ros2-humble-ros-base-main.sh</span></span>
-<span id="cb5-3"><a href=""></a><span class="bu">source</span> /opt/ros/humble/setup.bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="open-firewall" class="slide level2">
-<h2>Open firewall</h2>
-<p>Run these in PowerShell as Administrator (assuming default domain ID 0):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="co"># Allow UDP discovery and communication</span></span>
-<span id="cb6-2"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 DDS UDP"</span> <span class="at">-Direction</span> Inbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 7400-7980 <span class="at">-Action</span> Allow</span>
-<span id="cb6-3"><a href=""></a></span>
-<span id="cb6-4"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 DDS UDP Out"</span> <span class="at">-Direction</span> Outbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 7400-7980 <span class="at">-Action</span> Allow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="run-ros-nodes" class="slide level2">
-<h2>Run ROS nodes</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--install</span> <span class="at">-d</span> ubuntu-22.04</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-3">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros</span>
+<span id="cb7-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
+<span id="cb7-3"><a href=""></a><span class="ex">code</span> pc_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>On minipupper, open a terminal</li>
+<li>revise the base to desktop ros2 install</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb7-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">bash</span> ./pc_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-4">
 <ul>
-<li>on WSL ubuntu instance, in a terminal</li>
+<li>check <a href="http://github.com/lbaitemple/mini_pupper_ros_aws">http://github.com/lbaitemple/mini_pupper_ros_aws</a></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="fu">rm</span> <span class="at">-rf</span> ~/ros2_ws/</span>
+<span id="cb9-2"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/ros2_ws/src</span>
+<span id="cb9-3"><a href=""></a><span class="bu">cd</span> ~/ros2_ws/src/</span>
+<span id="cb9-4"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> stanford_control https://github.com/lbaitemple/mini_pupper_ros_aws mini_pupper_ros</span>
+<span id="cb9-5"><a href=""></a><span class="ex">vcs</span> import <span class="op">&lt;</span> mini_pupper_ros/.minipupper.repos <span class="at">--recursive</span></span>
+<span id="cb9-6"><a href=""></a><span class="bu">cd</span> ~/ros2_ws</span>
+<span id="cb9-7"><a href=""></a><span class="ex">rosdep</span> install <span class="at">--from-paths</span> src <span class="at">--ignore-src</span> <span class="at">-r</span> <span class="at">-y</span></span>
+<span id="cb9-8"><a href=""></a><span class="fu">sudo</span> apt install <span class="at">-y</span> ros-humble-teleop-twist-keyboard ros-humble-teleop-twist-joy</span>
+<span id="cb9-9"><a href=""></a><span class="fu">sudo</span> apt install <span class="at">-y</span> ros-humble-v4l2-camera ros-humble-image-transport-plugins</span>
+<span id="cb9-10"><a href=""></a><span class="fu">sudo</span> apt install <span class="at">-y</span> ros-humble-rqt<span class="pp">*</span></span>
+<span id="cb9-11"><a href=""></a><span class="fu">sudo</span> apt install python3-pip <span class="at">-y</span></span>
+<span id="cb9-12"><a href=""></a><span class="ex">pip3</span> install simple_pid</span>
+<span id="cb9-13"><a href=""></a><span class="ex">colcon</span> build <span class="at">--symlink-install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-5">
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="fu">git</span> clone <span class="at">-b</span> stanford_control http://github.com/lbaitemple/mini_pupper_ros_aws </span>
+<span id="cb10-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros_aws</span>
+<span id="cb10-3"><a href=""></a><span class="fu">bash</span> ./pc_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="run-rviz" class="slide level2">
 <h2>Run RViz</h2>
 <ul>
 <li>launch minipupper robot model (hardware connected false)</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb9-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb11-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>launch rviz for sensor reading</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb10-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup rviz.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb12-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup rviz.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>on WSL ubuntu instance, in third terminal</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb11-2"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb13-2"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="run-gazebo" class="slide level2">
 <h2>Run Gazebo</h2>
 <ul>
 <li>launch minipupper robot model (hardware connected false)</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="co"># Terminal 1</span></span>
-<span id="cb12-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb12-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="co"># Terminal 1</span></span>
+<span id="cb14-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb14-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>launch gazebo window</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="co"># Terminal 2</span></span>
-<span id="cb13-2"><a href=""></a></span>
-<span id="cb13-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
-<span id="cb13-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_simulation main.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="co"># Terminal 2</span></span>
+<span id="cb15-2"><a href=""></a></span>
+<span id="cb15-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb15-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_simulation main.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>launch robot control</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="co"># Terminal 3</span></span>
-<span id="cb14-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb14-3"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="co"># Terminal 3</span></span>
+<span id="cb16-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb16-3"><a href=""></a><span class="ex">ros2</span> run teleop_twist_keyboard teleop_twist_keyboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="open-firewall" class="slide level2">
+<h2>Open firewall</h2>
+<p>Run these in PowerShell as Administrator (assuming default domain ID 0):</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="co"># Allow UDP discovery and communication</span></span>
+<span id="cb17-2"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 DDS UDP"</span> <span class="at">-Direction</span> Inbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 7400-7980 <span class="at">-Action</span> Allow</span>
+<span id="cb17-3"><a href=""></a></span>
+<span id="cb17-4"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 DDS UDP Out"</span> <span class="at">-Direction</span> Outbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 7400-7980 <span class="at">-Action</span> Allow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="run-ros-nodes" class="slide level2">
+<h2>Run ROS nodes</h2>
+<ul>
+<li>On minipupper, open a terminal</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
+<span id="cb18-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>on WSL ubuntu instance, in a terminal</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="windows-11" class="slide level2">
 <h2>Windows 11</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--update</span> <span class="at">--pre-release</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="ex">New-VMSwitch</span> <span class="at">-Name</span> <span class="st">"WSL-Hotspot"</span> <span class="at">-NetAdapterName</span> <span class="st">"Wi-Fi"</span> <span class="at">-AllowManagementOS</span> <span class="va">$true</span></span>
-<span id="cb16-2"><a href=""></a></span>
-<span id="cb16-3"><a href=""></a><span class="ex">wsl</span> <span class="at">--networkingMode</span> bridged <span class="at">--vmSwitch</span> <span class="st">"WSL-Hotspot"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--update</span> <span class="at">--pre-release</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="ex">New-VMSwitch</span> <span class="at">-Name</span> <span class="st">"WSL-Hotspot"</span> <span class="at">-NetAdapterName</span> <span class="st">"Wi-Fi"</span> <span class="at">-AllowManagementOS</span> <span class="va">$true</span></span>
+<span id="cb21-2"><a href=""></a></span>
+<span id="cb21-3"><a href=""></a><span class="ex">wsl</span> <span class="at">--networkingMode</span> bridged <span class="at">--vmSwitch</span> <span class="st">"WSL-Hotspot"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="network-vpn" class="slide level2">
 <h2>Network VPN</h2>
@@ -922,15 +963,15 @@ Figure&nbsp;1: A diagram of course mapping.
 <li>to enable multicast, we need to setup VPN</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Husarnet</a></li><li><a href="#tabset-3-2">ZeroTier</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Husarnet</a></li><li><a href="#tabset-4-2">ZeroTier</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-4-1">
 <ul>
 <li><p>Signup at <a href="https://app.husarnet.com/accounts/register/?next=/">https://app.husarnet.com/accounts/register/?next=/</a></p></li>
 <li><p>5 devices and 2 networks free version</p></li>
 </ul>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-4-2">
 <ul>
 <li><p>Sign up at <a href="https://www.zerotier.com/">https://www.zerotier.com/</a></p></li>
 <li><p>10 devices and 3 networks free version</p></li>
