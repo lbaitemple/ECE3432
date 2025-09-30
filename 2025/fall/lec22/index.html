@@ -427,25 +427,25 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
-<g id="clust2" class="cluster">
-<title>cluster_ros</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
-<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_docker</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
 <text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_final</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
+<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
 </g>
 <g id="clust1" class="cluster">
 <title>cluster_system</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
 <text text-anchor="middle" x="142" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 1</text>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_final</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
-<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
+<g id="clust2" class="cluster">
+<title>cluster_ros</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
+<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
 </g>
 <!-- kb1 -->
 <g id="node1" class="node">
@@ -746,7 +746,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <p>ROS2 codes are provided on PC (WSL x86) minipupper (raspberry pi arm64 or aarch64)</p>
 </blockquote>
 <blockquote>
-<p><a href="https://github.com/mangdangroboticsclub/mini_pupper_ros.git">https://github.com/mangdangroboticsclub/mini_pupper_ros.git</a></p>
+<p><a href="https://github.com/mangdangroboticsclub/mini_pupper_ros.git" class="uri">https://github.com/mangdangroboticsclub/mini_pupper_ros.git</a></p>
 </blockquote>
 </section>
 <section id="sec-ros2" class="slide level2">
@@ -912,12 +912,70 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="firewall-on-windows" class="slide level2">
+<h2>Firewall on Windows</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">1.</a></li><li><a href="#tabset-2-2">2.</a></li><li><a href="#tabset-2-3">3.</a></li><li><a href="#tabset-2-4">4.</a></li><li><a href="#tabset-2-5">5.</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<ul>
+<li>calculate UDP port based on ROS_DOMAIN_ID</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/firewall_0.png" class="quarto-figure quarto-figure-center" width="530"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2">
+<ul>
+<li>find Windows defender Firewall</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/firewall.png" class="quarto-figure quarto-figure-center" width="530"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-3">
+<ul>
+<li>setup discovery port</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/firewall_1.png" class="quarto-figure quarto-figure-center" width="555"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-4">
+<ul>
+<li><p>setup data port</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/firewall_2.png" class="quarto-figure quarto-figure-center" width="221"></p>
+</figure>
+</div></li>
+</ul>
+</div>
+<div id="tabset-2-5">
+<ul>
+<li>setup port numbers</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/firewall_3.png" class="quarto-figure quarto-figure-center" width="221"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="run-minipupper-ros2" class="slide level2">
 <h2>Run Minipupper ROS2</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">bringup</a></li><li><a href="#tabset-2-2">image_raw</a></li><li><a href="#tabset-2-3">cmd_vel</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">bringup</a></li><li><a href="#tabset-3-2">camera resize</a></li><li><a href="#tabset-3-3">image_raw</a></li><li><a href="#tabset-3-4">cmd_vel</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-3-1">
 <ul>
 <li>for robot, you need to find a bring up launch file</li>
 </ul>
@@ -926,38 +984,55 @@ Figure&nbsp;1: A diagram of course mapping.
 <span id="cb15-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash <span class="co"># setup.zsh if you use zsh instead of bash</span></span>
 <span id="cb15-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py hardware_connected:=True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-3-2">
+<ul>
+<li>change the size of the image in launch file</li>
+<li><code>mini_pupper_driver/launch/camera.launch.py</code> (line 39)</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a>            <span class="va">parameters</span><span class="op">=</span>[</span>
+<span id="cb16-2"><a href=""></a>                <span class="kw">{</span></span>
+<span id="cb16-3"><a href=""></a>                    <span class="st">'output_encoding'</span><span class="ex">:</span> output_encoding,</span>
+<span id="cb16-4"><a href=""></a>                    <span class="st">'image_size'</span><span class="ex">:</span> [320, 240],</span>
+<span id="cb16-5"><a href=""></a>                    <span class="st">'frame_rate'</span><span class="ex">:</span> 10,</span>
+<span id="cb16-6"><a href=""></a>                </span>
+<span id="cb16-7"><a href=""></a>                <span class="ex">}],</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>rebuild mini_pupper_driver in workspace folder</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-selected</span> mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-3">
 <ul>
 <li>display image on LCD</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a><span class="co"># Terminal 2</span></span>
-<span id="cb16-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3 <span class="co"># ensure a number so you control your own robot</span></span>
-<span id="cb16-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb16-4"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--ros-args</span> <span class="at">-r</span> mini_pupper_lcd/image_raw:=/image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="co"># Terminal 2</span></span>
+<span id="cb18-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3 <span class="co"># ensure a number so you control your own robot</span></span>
+<span id="cb18-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb18-4"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--ros-args</span> <span class="at">-r</span> mini_pupper_lcd/image_raw:=/image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>view on NUC (in same network, multicast enabled)</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3 <span class="co"># ensure a number so you control your own robot</span></span>
-<span id="cb17-2"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3 <span class="co"># ensure a number so you control your own robot</span></span>
+<span id="cb19-2"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-2-3">
+<div id="tabset-3-4">
 <ul>
 <li>Move robot forward</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="co"># Terminal 3</span></span>
-<span id="cb18-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3 <span class="co"># ensure a number so you control your own robot</span></span>
-<span id="cb18-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb18-4"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="dt">\</span></span>
-<span id="cb18-5"><a href=""></a>  <span class="st">"{linear: {x: 1.0, y: 0.0, z: 0.0}, </span><span class="dt">\</span></span>
-<span id="cb18-6"><a href=""></a><span class="st">    angular: {x: 0.0, y: 0.0, z: 0.0}}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="co"># Terminal 3</span></span>
+<span id="cb20-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3 <span class="co"># ensure a number so you control your own robot</span></span>
+<span id="cb20-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb20-4"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="dt">\</span></span>
+<span id="cb20-5"><a href=""></a>  <span class="st">"{linear: {x: 1.0, y: 0.0, z: 0.0}, </span><span class="dt">\</span></span>
+<span id="cb20-6"><a href=""></a><span class="st">    angular: {x: 0.0, y: 0.0, z: 0.0}}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>stop robot</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="co"># Terminal 3</span></span>
-<span id="cb19-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb19-3"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="dt">\</span></span>
-<span id="cb19-4"><a href=""></a>  <span class="st">"{linear: {x: 0.0, y: 0.0, z: 0.0}, </span><span class="dt">\</span></span>
-<span id="cb19-5"><a href=""></a><span class="st">    angular: {x: 0.0, y: 0.0, z: 0.0}}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="co"># Terminal 3</span></span>
+<span id="cb21-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb21-3"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /cmd_vel geometry_msgs/msg/Twist <span class="dt">\</span></span>
+<span id="cb21-4"><a href=""></a>  <span class="st">"{linear: {x: 0.0, y: 0.0, z: 0.0}, </span><span class="dt">\</span></span>
+<span id="cb21-5"><a href=""></a><span class="st">    angular: {x: 0.0, y: 0.0, z: 0.0}}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -965,16 +1040,16 @@ Figure&nbsp;1: A diagram of course mapping.
 <section id="ros-example-pubsub" class="slide level2">
 <h2>ROS Example (pub/sub)</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">1.</a></li><li><a href="#tabset-3-2">2</a></li><li><a href="#tabset-3-3">3</a></li><li><a href="#tabset-3-4">4</a></li><li><a href="#tabset-3-5">5</a></li><li><a href="#tabset-3-6">6.</a></li><li><a href="#tabset-3-7">7.</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">1.</a></li><li><a href="#tabset-4-2">2</a></li><li><a href="#tabset-4-3">3</a></li><li><a href="#tabset-4-4">4</a></li><li><a href="#tabset-4-5">5</a></li><li><a href="#tabset-4-6">6.</a></li><li><a href="#tabset-4-7">7.</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-4-1">
 <ul>
 <li>📦 Create a New ROS 2 Package</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws/src</span>
-<span id="cb20-2"><a href=""></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python my_robot_pkg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws/src</span>
+<span id="cb22-2"><a href=""></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python my_robot_pkg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-4-2">
 <ul>
 <li>📂 Directory Structure</li>
 </ul>
@@ -987,128 +1062,128 @@ Figure&nbsp;1: A diagram of course mapping.
 ├── package.xml
 └── setup.cfg</code></pre>
 </div>
-<div id="tabset-3-3">
+<div id="tabset-4-3">
 <ul>
 <li>✏️ Example: talker_listener.py</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a><span class="im">import</span> rclpy</span>
-<span id="cb22-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb22-3"><a href=""></a><span class="im">from</span> std_msgs.msg <span class="im">import</span> String</span>
-<span id="cb22-4"><a href=""></a></span>
-<span id="cb22-5"><a href=""></a><span class="kw">class</span> Talker(Node):</span>
-<span id="cb22-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb22-7"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'talker'</span>)</span>
-<span id="cb22-8"><a href=""></a>        <span class="va">self</span>.publisher_ <span class="op">=</span> <span class="va">self</span>.create_publisher(String, <span class="st">'chatter'</span>, <span class="dv">10</span>)</span>
-<span id="cb22-9"><a href=""></a>        timer_period <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb22-10"><a href=""></a>        <span class="va">self</span>.timer <span class="op">=</span> <span class="va">self</span>.create_timer(timer_period, <span class="va">self</span>.timer_callback)</span>
-<span id="cb22-11"><a href=""></a></span>
-<span id="cb22-12"><a href=""></a>    <span class="kw">def</span> timer_callback(<span class="va">self</span>):</span>
-<span id="cb22-13"><a href=""></a>        msg <span class="op">=</span> String()</span>
-<span id="cb22-14"><a href=""></a>        msg.data <span class="op">=</span> <span class="st">'Hello from ROS 2!'</span></span>
-<span id="cb22-15"><a href=""></a>        <span class="va">self</span>.publisher_.publish(msg)</span>
-<span id="cb22-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Publishing: </span><span class="sc">{</span>msg<span class="sc">.</span>data<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb22-17"><a href=""></a></span>
-<span id="cb22-18"><a href=""></a><span class="kw">class</span> Listener(Node):</span>
-<span id="cb22-19"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb22-20"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'listener'</span>)</span>
-<span id="cb22-21"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
-<span id="cb22-22"><a href=""></a>            String,</span>
-<span id="cb22-23"><a href=""></a>            <span class="st">'chatter'</span>,</span>
-<span id="cb22-24"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
-<span id="cb22-25"><a href=""></a>            <span class="dv">10</span>)</span>
-<span id="cb22-26"><a href=""></a></span>
-<span id="cb22-27"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
-<span id="cb22-28"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'I heard: </span><span class="sc">{</span>msg<span class="sc">.</span>data<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb22-29"><a href=""></a></span>
-<span id="cb22-30"><a href=""></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb22-31"><a href=""></a>    rclpy.init(args<span class="op">=</span>args)</span>
-<span id="cb22-32"><a href=""></a>    talker <span class="op">=</span> Talker()</span>
-<span id="cb22-33"><a href=""></a>    listener <span class="op">=</span> Listener()</span>
-<span id="cb22-34"><a href=""></a>    <span class="cf">try</span>:</span>
-<span id="cb22-35"><a href=""></a>        rclpy.spin(talker)</span>
-<span id="cb22-36"><a href=""></a>        rclpy.spin(listener)</span>
-<span id="cb22-37"><a href=""></a>    <span class="cf">except</span> <span class="pp">KeyboardInterrupt</span>:</span>
-<span id="cb22-38"><a href=""></a>        <span class="cf">pass</span></span>
-<span id="cb22-39"><a href=""></a>    <span class="cf">finally</span>:</span>
-<span id="cb22-40"><a href=""></a>        talker.destroy_node()</span>
-<span id="cb22-41"><a href=""></a>        listener.destroy_node()</span>
-<span id="cb22-42"><a href=""></a>        rclpy.shutdown()</span>
-<span id="cb22-43"><a href=""></a></span>
-<span id="cb22-44"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb22-45"><a href=""></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a><span class="im">import</span> rclpy</span>
+<span id="cb24-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb24-3"><a href=""></a><span class="im">from</span> std_msgs.msg <span class="im">import</span> String</span>
+<span id="cb24-4"><a href=""></a></span>
+<span id="cb24-5"><a href=""></a><span class="kw">class</span> Talker(Node):</span>
+<span id="cb24-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb24-7"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'talker'</span>)</span>
+<span id="cb24-8"><a href=""></a>        <span class="va">self</span>.publisher_ <span class="op">=</span> <span class="va">self</span>.create_publisher(String, <span class="st">'chatter'</span>, <span class="dv">10</span>)</span>
+<span id="cb24-9"><a href=""></a>        timer_period <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb24-10"><a href=""></a>        <span class="va">self</span>.timer <span class="op">=</span> <span class="va">self</span>.create_timer(timer_period, <span class="va">self</span>.timer_callback)</span>
+<span id="cb24-11"><a href=""></a></span>
+<span id="cb24-12"><a href=""></a>    <span class="kw">def</span> timer_callback(<span class="va">self</span>):</span>
+<span id="cb24-13"><a href=""></a>        msg <span class="op">=</span> String()</span>
+<span id="cb24-14"><a href=""></a>        msg.data <span class="op">=</span> <span class="st">'Hello from ROS 2!'</span></span>
+<span id="cb24-15"><a href=""></a>        <span class="va">self</span>.publisher_.publish(msg)</span>
+<span id="cb24-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Publishing: </span><span class="sc">{</span>msg<span class="sc">.</span>data<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb24-17"><a href=""></a></span>
+<span id="cb24-18"><a href=""></a><span class="kw">class</span> Listener(Node):</span>
+<span id="cb24-19"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb24-20"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'listener'</span>)</span>
+<span id="cb24-21"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
+<span id="cb24-22"><a href=""></a>            String,</span>
+<span id="cb24-23"><a href=""></a>            <span class="st">'chatter'</span>,</span>
+<span id="cb24-24"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
+<span id="cb24-25"><a href=""></a>            <span class="dv">10</span>)</span>
+<span id="cb24-26"><a href=""></a></span>
+<span id="cb24-27"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
+<span id="cb24-28"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'I heard: </span><span class="sc">{</span>msg<span class="sc">.</span>data<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb24-29"><a href=""></a></span>
+<span id="cb24-30"><a href=""></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb24-31"><a href=""></a>    rclpy.init(args<span class="op">=</span>args)</span>
+<span id="cb24-32"><a href=""></a>    talker <span class="op">=</span> Talker()</span>
+<span id="cb24-33"><a href=""></a>    listener <span class="op">=</span> Listener()</span>
+<span id="cb24-34"><a href=""></a>    <span class="cf">try</span>:</span>
+<span id="cb24-35"><a href=""></a>        rclpy.spin(talker)</span>
+<span id="cb24-36"><a href=""></a>        rclpy.spin(listener)</span>
+<span id="cb24-37"><a href=""></a>    <span class="cf">except</span> <span class="pp">KeyboardInterrupt</span>:</span>
+<span id="cb24-38"><a href=""></a>        <span class="cf">pass</span></span>
+<span id="cb24-39"><a href=""></a>    <span class="cf">finally</span>:</span>
+<span id="cb24-40"><a href=""></a>        talker.destroy_node()</span>
+<span id="cb24-41"><a href=""></a>        listener.destroy_node()</span>
+<span id="cb24-42"><a href=""></a>        rclpy.shutdown()</span>
+<span id="cb24-43"><a href=""></a></span>
+<span id="cb24-44"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb24-45"><a href=""></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-4">
+<div id="tabset-4-4">
 <ul>
 <li>⚙️ Add Entry Point in setup.py</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a>entry_points<span class="op">=</span>{</span>
-<span id="cb23-2"><a href=""></a>    <span class="st">'console_scripts'</span>: [</span>
-<span id="cb23-3"><a href=""></a>        <span class="st">'talker_listener = my_robot_pkg.talker_listener:main'</span>,</span>
-<span id="cb23-4"><a href=""></a>    ],</span>
-<span id="cb23-5"><a href=""></a>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href=""></a>entry_points<span class="op">=</span>{</span>
+<span id="cb25-2"><a href=""></a>    <span class="st">'console_scripts'</span>: [</span>
+<span id="cb25-3"><a href=""></a>        <span class="st">'talker_listener = my_robot_pkg.talker_listener:main'</span>,</span>
+<span id="cb25-4"><a href=""></a>    ],</span>
+<span id="cb25-5"><a href=""></a>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-5">
+<div id="tabset-4-5">
 <ul>
 <li>🧪 Build and Run</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws</span>
-<span id="cb24-2"><a href=""></a><span class="ex">colcon</span> build</span>
-<span id="cb24-3"><a href=""></a><span class="bu">source</span> install/setup.bash</span>
-<span id="cb24-4"><a href=""></a><span class="ex">ros2</span> run my_robot_pkg talker_listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws</span>
+<span id="cb26-2"><a href=""></a><span class="ex">colcon</span> build</span>
+<span id="cb26-3"><a href=""></a><span class="bu">source</span> install/setup.bash</span>
+<span id="cb26-4"><a href=""></a><span class="ex">ros2</span> run my_robot_pkg talker_listener</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-6">
+<div id="tabset-4-6">
 <ul>
 <li>🪄 Using rqt</li>
 </ul>
 <p>Install and run <code>rqt_graph</code> to visualize the pub/sub:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rqt-graph</span>
-<span id="cb25-2"><a href=""></a><span class="ex">rqt_graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rqt-graph</span>
+<span id="cb27-2"><a href=""></a><span class="ex">rqt_graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-7">
+<div id="tabset-4-7">
 <ul>
 <li>search other ROS2 packages</li>
 <li>better use the exisiting packages or find the sources</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href=""></a><span class="ex">apt-cache</span> search package_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="ex">apt-cache</span> search package_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="ros-2-launch-pubsub-nodes" class="slide level2">
 <h2>🚀 ROS 2 Launch (pub/sub nodes)</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href=""></a><span class="ex">ros2</span> launch service_example_pkg service_launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="ex">ros2</span> launch service_example_pkg service_launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Example <code>launch/pubsub_launch.py</code> for pub/sub:</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
-<span id="cb28-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
-<span id="cb28-3"><a href=""></a></span>
-<span id="cb28-4"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb28-5"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb28-6"><a href=""></a>        Node(</span>
-<span id="cb28-7"><a href=""></a>            package<span class="op">=</span><span class="st">'service_example_pkg'</span>,</span>
-<span id="cb28-8"><a href=""></a>            executable<span class="op">=</span><span class="st">'talker_listener'</span>,</span>
-<span id="cb28-9"><a href=""></a>            name<span class="op">=</span><span class="st">'talker_listener'</span></span>
-<span id="cb28-10"><a href=""></a>        )</span>
-<span id="cb28-11"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
+<span id="cb30-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
+<span id="cb30-3"><a href=""></a></span>
+<span id="cb30-4"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb30-5"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb30-6"><a href=""></a>        Node(</span>
+<span id="cb30-7"><a href=""></a>            package<span class="op">=</span><span class="st">'service_example_pkg'</span>,</span>
+<span id="cb30-8"><a href=""></a>            executable<span class="op">=</span><span class="st">'talker_listener'</span>,</span>
+<span id="cb30-9"><a href=""></a>            name<span class="op">=</span><span class="st">'talker_listener'</span></span>
+<span id="cb30-10"><a href=""></a>        )</span>
+<span id="cb30-11"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>To launch pub/sub example:</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="ex">ros2</span> aunch service_example_pkg pubsub_launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="ex">ros2</span> aunch service_example_pkg pubsub_launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ros-2-example-serviceclient-nodes" class="slide level2">
 <h2>ROS 2 Example (service/client nodes)</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">1.</a></li><li><a href="#tabset-4-2">2</a></li><li><a href="#tabset-4-3">3a</a></li><li><a href="#tabset-4-4">3b</a></li><li><a href="#tabset-4-5">4</a></li><li><a href="#tabset-4-6">5</a></li><li><a href="#tabset-4-7">6</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">1.</a></li><li><a href="#tabset-5-2">2</a></li><li><a href="#tabset-5-3">3a</a></li><li><a href="#tabset-5-4">3b</a></li><li><a href="#tabset-5-5">4</a></li><li><a href="#tabset-5-6">5</a></li><li><a href="#tabset-5-7">6</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-5-1">
 <ul>
 <li>📦 Create a New ROS 2 Package</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws/src</span>
-<span id="cb30-2"><a href=""></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python service_example_pkg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws/src</span>
+<span id="cb32-2"><a href=""></a><span class="ex">ros2</span> pkg create <span class="at">--build-type</span> ament_python service_example_pkg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-5-2">
 <ul>
 <li>📂 Directory Structure</li>
 </ul>
@@ -1122,106 +1197,106 @@ Figure&nbsp;1: A diagram of course mapping.
 ├── package.xml
 └── setup.cfg</code></pre>
 </div>
-<div id="tabset-4-3">
+<div id="tabset-5-3">
 <ul>
 <li>✏️ Example: add_two_ints_server.py</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="im">import</span> rclpy</span>
-<span id="cb32-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb32-3"><a href=""></a><span class="im">from</span> example_interfaces.srv <span class="im">import</span> AddTwoInts</span>
-<span id="cb32-4"><a href=""></a></span>
-<span id="cb32-5"><a href=""></a><span class="kw">class</span> AddTwoIntsServer(Node):</span>
-<span id="cb32-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb32-7"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'add_two_ints_server'</span>)</span>
-<span id="cb32-8"><a href=""></a>        <span class="va">self</span>.srv <span class="op">=</span> <span class="va">self</span>.create_service(AddTwoInts, <span class="st">'add_two_ints'</span>, <span class="va">self</span>.add_two_ints_callback)</span>
-<span id="cb32-9"><a href=""></a></span>
-<span id="cb32-10"><a href=""></a>    <span class="kw">def</span> add_two_ints_callback(<span class="va">self</span>, request, response):</span>
-<span id="cb32-11"><a href=""></a>        response.<span class="bu">sum</span> <span class="op">=</span> request.a <span class="op">+</span> request.b</span>
-<span id="cb32-12"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Received: a=</span><span class="sc">{</span>request<span class="sc">.</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>request<span class="sc">.</span>b<span class="sc">}</span><span class="ss">, sending back sum=</span><span class="sc">{</span>response<span class="sc">.</span><span class="bu">sum</span><span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb32-13"><a href=""></a>        <span class="cf">return</span> response</span>
-<span id="cb32-14"><a href=""></a></span>
-<span id="cb32-15"><a href=""></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb32-16"><a href=""></a>    rclpy.init(args<span class="op">=</span>args)</span>
-<span id="cb32-17"><a href=""></a>    node <span class="op">=</span> AddTwoIntsServer()</span>
-<span id="cb32-18"><a href=""></a>    rclpy.spin(node)</span>
-<span id="cb32-19"><a href=""></a>    rclpy.shutdown()</span>
-<span id="cb32-20"><a href=""></a></span>
-<span id="cb32-21"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb32-22"><a href=""></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a><span class="im">import</span> rclpy</span>
+<span id="cb34-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb34-3"><a href=""></a><span class="im">from</span> example_interfaces.srv <span class="im">import</span> AddTwoInts</span>
+<span id="cb34-4"><a href=""></a></span>
+<span id="cb34-5"><a href=""></a><span class="kw">class</span> AddTwoIntsServer(Node):</span>
+<span id="cb34-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb34-7"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'add_two_ints_server'</span>)</span>
+<span id="cb34-8"><a href=""></a>        <span class="va">self</span>.srv <span class="op">=</span> <span class="va">self</span>.create_service(AddTwoInts, <span class="st">'add_two_ints'</span>, <span class="va">self</span>.add_two_ints_callback)</span>
+<span id="cb34-9"><a href=""></a></span>
+<span id="cb34-10"><a href=""></a>    <span class="kw">def</span> add_two_ints_callback(<span class="va">self</span>, request, response):</span>
+<span id="cb34-11"><a href=""></a>        response.<span class="bu">sum</span> <span class="op">=</span> request.a <span class="op">+</span> request.b</span>
+<span id="cb34-12"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Received: a=</span><span class="sc">{</span>request<span class="sc">.</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>request<span class="sc">.</span>b<span class="sc">}</span><span class="ss">, sending back sum=</span><span class="sc">{</span>response<span class="sc">.</span><span class="bu">sum</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb34-13"><a href=""></a>        <span class="cf">return</span> response</span>
+<span id="cb34-14"><a href=""></a></span>
+<span id="cb34-15"><a href=""></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb34-16"><a href=""></a>    rclpy.init(args<span class="op">=</span>args)</span>
+<span id="cb34-17"><a href=""></a>    node <span class="op">=</span> AddTwoIntsServer()</span>
+<span id="cb34-18"><a href=""></a>    rclpy.spin(node)</span>
+<span id="cb34-19"><a href=""></a>    rclpy.shutdown()</span>
+<span id="cb34-20"><a href=""></a></span>
+<span id="cb34-21"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb34-22"><a href=""></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-4-4">
+<div id="tabset-5-4">
 <ul>
 <li>✏️ Example: add_two_ints_client.py</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a><span class="im">import</span> rclpy</span>
-<span id="cb33-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb33-3"><a href=""></a><span class="im">from</span> example_interfaces.srv <span class="im">import</span> AddTwoInts</span>
-<span id="cb33-4"><a href=""></a></span>
-<span id="cb33-5"><a href=""></a><span class="kw">class</span> AddTwoIntsClient(Node):</span>
-<span id="cb33-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb33-7"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'add_two_ints_client'</span>)</span>
-<span id="cb33-8"><a href=""></a>        <span class="va">self</span>.client <span class="op">=</span> <span class="va">self</span>.create_client(AddTwoInts, <span class="st">'add_two_ints'</span>)</span>
-<span id="cb33-9"><a href=""></a>        <span class="cf">while</span> <span class="kw">not</span> <span class="va">self</span>.client.wait_for_service(timeout_sec<span class="op">=</span><span class="fl">1.0</span>):</span>
-<span id="cb33-10"><a href=""></a>            <span class="va">self</span>.get_logger().info(<span class="st">'Waiting for service...'</span>)</span>
-<span id="cb33-11"><a href=""></a>        <span class="va">self</span>.request <span class="op">=</span> AddTwoInts.Request()</span>
-<span id="cb33-12"><a href=""></a></span>
-<span id="cb33-13"><a href=""></a>    <span class="kw">def</span> send_request(<span class="va">self</span>, a, b):</span>
-<span id="cb33-14"><a href=""></a>        <span class="va">self</span>.request.a <span class="op">=</span> a</span>
-<span id="cb33-15"><a href=""></a>        <span class="va">self</span>.request.b <span class="op">=</span> b</span>
-<span id="cb33-16"><a href=""></a>        <span class="va">self</span>.future <span class="op">=</span> <span class="va">self</span>.client.call_async(<span class="va">self</span>.request)</span>
-<span id="cb33-17"><a href=""></a></span>
-<span id="cb33-18"><a href=""></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb33-19"><a href=""></a>    rclpy.init(args<span class="op">=</span>args)</span>
-<span id="cb33-20"><a href=""></a>    client <span class="op">=</span> AddTwoIntsClient()</span>
-<span id="cb33-21"><a href=""></a>    client.send_request(<span class="dv">7</span>, <span class="dv">5</span>)</span>
-<span id="cb33-22"><a href=""></a></span>
-<span id="cb33-23"><a href=""></a>    <span class="cf">while</span> rclpy.ok():</span>
-<span id="cb33-24"><a href=""></a>        rclpy.spin_once(client)</span>
-<span id="cb33-25"><a href=""></a>        <span class="cf">if</span> client.future.done():</span>
-<span id="cb33-26"><a href=""></a>            <span class="cf">try</span>:</span>
-<span id="cb33-27"><a href=""></a>                response <span class="op">=</span> client.future.result()</span>
-<span id="cb33-28"><a href=""></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb33-29"><a href=""></a>                client.get_logger().error(<span class="ss">f'Service call failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb33-30"><a href=""></a>            <span class="cf">else</span>:</span>
-<span id="cb33-31"><a href=""></a>                client.get_logger().info(<span class="ss">f'Result: </span><span class="sc">{</span>response<span class="sc">.</span><span class="bu">sum</span><span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb33-32"><a href=""></a>            <span class="cf">break</span></span>
-<span id="cb33-33"><a href=""></a></span>
-<span id="cb33-34"><a href=""></a>    client.destroy_node()</span>
-<span id="cb33-35"><a href=""></a>    rclpy.shutdown()</span>
-<span id="cb33-36"><a href=""></a></span>
-<span id="cb33-37"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb33-38"><a href=""></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a><span class="im">import</span> rclpy</span>
+<span id="cb35-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb35-3"><a href=""></a><span class="im">from</span> example_interfaces.srv <span class="im">import</span> AddTwoInts</span>
+<span id="cb35-4"><a href=""></a></span>
+<span id="cb35-5"><a href=""></a><span class="kw">class</span> AddTwoIntsClient(Node):</span>
+<span id="cb35-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb35-7"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'add_two_ints_client'</span>)</span>
+<span id="cb35-8"><a href=""></a>        <span class="va">self</span>.client <span class="op">=</span> <span class="va">self</span>.create_client(AddTwoInts, <span class="st">'add_two_ints'</span>)</span>
+<span id="cb35-9"><a href=""></a>        <span class="cf">while</span> <span class="kw">not</span> <span class="va">self</span>.client.wait_for_service(timeout_sec<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb35-10"><a href=""></a>            <span class="va">self</span>.get_logger().info(<span class="st">'Waiting for service...'</span>)</span>
+<span id="cb35-11"><a href=""></a>        <span class="va">self</span>.request <span class="op">=</span> AddTwoInts.Request()</span>
+<span id="cb35-12"><a href=""></a></span>
+<span id="cb35-13"><a href=""></a>    <span class="kw">def</span> send_request(<span class="va">self</span>, a, b):</span>
+<span id="cb35-14"><a href=""></a>        <span class="va">self</span>.request.a <span class="op">=</span> a</span>
+<span id="cb35-15"><a href=""></a>        <span class="va">self</span>.request.b <span class="op">=</span> b</span>
+<span id="cb35-16"><a href=""></a>        <span class="va">self</span>.future <span class="op">=</span> <span class="va">self</span>.client.call_async(<span class="va">self</span>.request)</span>
+<span id="cb35-17"><a href=""></a></span>
+<span id="cb35-18"><a href=""></a><span class="kw">def</span> main(args<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb35-19"><a href=""></a>    rclpy.init(args<span class="op">=</span>args)</span>
+<span id="cb35-20"><a href=""></a>    client <span class="op">=</span> AddTwoIntsClient()</span>
+<span id="cb35-21"><a href=""></a>    client.send_request(<span class="dv">7</span>, <span class="dv">5</span>)</span>
+<span id="cb35-22"><a href=""></a></span>
+<span id="cb35-23"><a href=""></a>    <span class="cf">while</span> rclpy.ok():</span>
+<span id="cb35-24"><a href=""></a>        rclpy.spin_once(client)</span>
+<span id="cb35-25"><a href=""></a>        <span class="cf">if</span> client.future.done():</span>
+<span id="cb35-26"><a href=""></a>            <span class="cf">try</span>:</span>
+<span id="cb35-27"><a href=""></a>                response <span class="op">=</span> client.future.result()</span>
+<span id="cb35-28"><a href=""></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb35-29"><a href=""></a>                client.get_logger().error(<span class="ss">f'Service call failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb35-30"><a href=""></a>            <span class="cf">else</span>:</span>
+<span id="cb35-31"><a href=""></a>                client.get_logger().info(<span class="ss">f'Result: </span><span class="sc">{</span>response<span class="sc">.</span><span class="bu">sum</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb35-32"><a href=""></a>            <span class="cf">break</span></span>
+<span id="cb35-33"><a href=""></a></span>
+<span id="cb35-34"><a href=""></a>    client.destroy_node()</span>
+<span id="cb35-35"><a href=""></a>    rclpy.shutdown()</span>
+<span id="cb35-36"><a href=""></a></span>
+<span id="cb35-37"><a href=""></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb35-38"><a href=""></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-4-5">
+<div id="tabset-5-5">
 <ul>
 <li>⚙️ Add Entry Point in setup.py</li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>entry_points<span class="op">=</span>{</span>
-<span id="cb34-2"><a href=""></a>    <span class="st">'console_scripts'</span>: [</span>
-<span id="cb34-3"><a href=""></a>        <span class="st">'add_two_ints_server = service_example_pkg.add_two_ints_server:main'</span>,</span>
-<span id="cb34-4"><a href=""></a>        <span class="st">'add_two_ints_client = service_example_pkg.add_two_ints_client:main'</span>,</span>
-<span id="cb34-5"><a href=""></a>    ],</span>
-<span id="cb34-6"><a href=""></a>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a>entry_points<span class="op">=</span>{</span>
+<span id="cb36-2"><a href=""></a>    <span class="st">'console_scripts'</span>: [</span>
+<span id="cb36-3"><a href=""></a>        <span class="st">'add_two_ints_server = service_example_pkg.add_two_ints_server:main'</span>,</span>
+<span id="cb36-4"><a href=""></a>        <span class="st">'add_two_ints_client = service_example_pkg.add_two_ints_client:main'</span>,</span>
+<span id="cb36-5"><a href=""></a>    ],</span>
+<span id="cb36-6"><a href=""></a>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-4-6">
+<div id="tabset-5-6">
 <ul>
 <li>🧪 Build and Run</li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws</span>
-<span id="cb35-2"><a href=""></a><span class="ex">colcon</span> build</span>
-<span id="cb35-3"><a href=""></a><span class="bu">source</span> install/setup.bash</span>
-<span id="cb35-4"><a href=""></a></span>
-<span id="cb35-5"><a href=""></a><span class="ex">ros2</span> run service_example_pkg add_two_ints_server</span>
-<span id="cb35-6"><a href=""></a><span class="co"># In another terminal:</span></span>
-<span id="cb35-7"><a href=""></a><span class="ex">ros2</span> run service_example_pkg add_two_ints_client</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href=""></a><span class="bu">cd</span> ~/ros2_ws</span>
+<span id="cb37-2"><a href=""></a><span class="ex">colcon</span> build</span>
+<span id="cb37-3"><a href=""></a><span class="bu">source</span> install/setup.bash</span>
+<span id="cb37-4"><a href=""></a></span>
+<span id="cb37-5"><a href=""></a><span class="ex">ros2</span> run service_example_pkg add_two_ints_server</span>
+<span id="cb37-6"><a href=""></a><span class="co"># In another terminal:</span></span>
+<span id="cb37-7"><a href=""></a><span class="ex">ros2</span> run service_example_pkg add_two_ints_client</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-4-7">
+<div id="tabset-5-7">
 <ul>
 <li>🧰 Inspect with rqt</li>
 </ul>
 <p>You can visualize service calls and debug using <code>rqt</code>:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rqt</span>
-<span id="cb36-2"><a href=""></a><span class="ex">rqt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rqt</span>
+<span id="cb38-2"><a href=""></a><span class="ex">rqt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1231,99 +1306,99 @@ Figure&nbsp;1: A diagram of course mapping.
 <blockquote>
 <p>ROS 2 uses <code>launch</code> files (in Python) to start multiple nodes together. Example <code>launch/service_launch.py</code>:</p>
 </blockquote>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
-<span id="cb37-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
-<span id="cb37-3"><a href=""></a></span>
-<span id="cb37-4"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
-<span id="cb37-5"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
-<span id="cb37-6"><a href=""></a>        Node(</span>
-<span id="cb37-7"><a href=""></a>            package<span class="op">=</span><span class="st">'service_example_pkg'</span>,</span>
-<span id="cb37-8"><a href=""></a>            executable<span class="op">=</span><span class="st">'add_two_ints_server'</span>,</span>
-<span id="cb37-9"><a href=""></a>            name<span class="op">=</span><span class="st">'add_two_ints_server'</span></span>
-<span id="cb37-10"><a href=""></a>        ),</span>
-<span id="cb37-11"><a href=""></a>        Node(</span>
-<span id="cb37-12"><a href=""></a>            package<span class="op">=</span><span class="st">'service_example_pkg'</span>,</span>
-<span id="cb37-13"><a href=""></a>            executable<span class="op">=</span><span class="st">'add_two_ints_client'</span>,</span>
-<span id="cb37-14"><a href=""></a>            name<span class="op">=</span><span class="st">'add_two_ints_client'</span></span>
-<span id="cb37-15"><a href=""></a>        )</span>
-<span id="cb37-16"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a><span class="im">from</span> launch <span class="im">import</span> LaunchDescription</span>
+<span id="cb39-2"><a href=""></a><span class="im">from</span> launch_ros.actions <span class="im">import</span> Node</span>
+<span id="cb39-3"><a href=""></a></span>
+<span id="cb39-4"><a href=""></a><span class="kw">def</span> generate_launch_description():</span>
+<span id="cb39-5"><a href=""></a>    <span class="cf">return</span> LaunchDescription([</span>
+<span id="cb39-6"><a href=""></a>        Node(</span>
+<span id="cb39-7"><a href=""></a>            package<span class="op">=</span><span class="st">'service_example_pkg'</span>,</span>
+<span id="cb39-8"><a href=""></a>            executable<span class="op">=</span><span class="st">'add_two_ints_server'</span>,</span>
+<span id="cb39-9"><a href=""></a>            name<span class="op">=</span><span class="st">'add_two_ints_server'</span></span>
+<span id="cb39-10"><a href=""></a>        ),</span>
+<span id="cb39-11"><a href=""></a>        Node(</span>
+<span id="cb39-12"><a href=""></a>            package<span class="op">=</span><span class="st">'service_example_pkg'</span>,</span>
+<span id="cb39-13"><a href=""></a>            executable<span class="op">=</span><span class="st">'add_two_ints_client'</span>,</span>
+<span id="cb39-14"><a href=""></a>            name<span class="op">=</span><span class="st">'add_two_ints_client'</span></span>
+<span id="cb39-15"><a href=""></a>        )</span>
+<span id="cb39-16"><a href=""></a>    ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>To launch:</li>
 </ul>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href=""></a><span class="ex">ros2</span> launch service_example_pkg service_launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href=""></a><span class="ex">ros2</span> launch service_example_pkg service_launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="using-standard-ros-messages" class="slide level2">
 <h2>🚗 Using Standard ROS Messages</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Twist (M)</a></li><li><a href="#tabset-5-2">cmd_vel (T)</a></li><li><a href="#tabset-5-3">Image (M)</a></li><li><a href="#tabset-5-4">image_raw (T)</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Twist (M)</a></li><li><a href="#tabset-6-2">cmd_vel (T)</a></li><li><a href="#tabset-6-3">Image (M)</a></li><li><a href="#tabset-6-4">image_raw (T)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-6-1">
 <blockquote>
 <p>The <code>/cmd_vel</code> topic is a standard ROS topic used to command robot velocity. It expects messages of type <code>geometry_msgs/msg/Twist</code>.</p>
 </blockquote>
 <p>A <code>Twist</code> message represents velocity in free space, broken into linear and angular components:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb39-1"><a href=""></a>geometry_msgs/msg/Twist</span>
-<span id="cb39-2"><a href=""></a>  geometry_msgs/Vector3 linear</span>
-<span id="cb39-3"><a href=""></a>    float64 x</span>
-<span id="cb39-4"><a href=""></a>    float64 y</span>
-<span id="cb39-5"><a href=""></a>    float64 z</span>
-<span id="cb39-6"><a href=""></a>  geometry_msgs/Vector3 angular</span>
-<span id="cb39-7"><a href=""></a>    float64 x</span>
-<span id="cb39-8"><a href=""></a>    float64 y</span>
-<span id="cb39-9"><a href=""></a>    float64 z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb41-1"><a href=""></a>geometry_msgs/msg/Twist</span>
+<span id="cb41-2"><a href=""></a>  geometry_msgs/Vector3 linear</span>
+<span id="cb41-3"><a href=""></a>    float64 x</span>
+<span id="cb41-4"><a href=""></a>    float64 y</span>
+<span id="cb41-5"><a href=""></a>    float64 z</span>
+<span id="cb41-6"><a href=""></a>  geometry_msgs/Vector3 angular</span>
+<span id="cb41-7"><a href=""></a>    float64 x</span>
+<span id="cb41-8"><a href=""></a>    float64 y</span>
+<span id="cb41-9"><a href=""></a>    float64 z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-6-2">
 <blockquote>
 <p>In mobile robots, we often set <code>linear.x</code> for forward/backward motion, and <code>angular.z</code> for rotation.</p>
 </blockquote>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a><span class="im">from</span> geometry_msgs.msg <span class="im">import</span> Twist</span>
-<span id="cb40-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb40-3"><a href=""></a></span>
-<span id="cb40-4"><a href=""></a><span class="kw">class</span> VelocityPublisher(Node):</span>
-<span id="cb40-5"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb40-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'velocity_publisher'</span>)</span>
-<span id="cb40-7"><a href=""></a>        <span class="va">self</span>.publisher_ <span class="op">=</span> <span class="va">self</span>.create_publisher(Twist, <span class="st">'/cmd_vel'</span>, <span class="dv">10</span>)</span>
-<span id="cb40-8"><a href=""></a>        timer_period <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb40-9"><a href=""></a>        <span class="va">self</span>.timer <span class="op">=</span> <span class="va">self</span>.create_timer(timer_period, <span class="va">self</span>.timer_callback)</span>
-<span id="cb40-10"><a href=""></a></span>
-<span id="cb40-11"><a href=""></a>    <span class="kw">def</span> timer_callback(<span class="va">self</span>):</span>
-<span id="cb40-12"><a href=""></a>        msg <span class="op">=</span> Twist()</span>
-<span id="cb40-13"><a href=""></a>        msg.linear.x <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb40-14"><a href=""></a>        msg.angular.z <span class="op">=</span> <span class="fl">0.2</span></span>
-<span id="cb40-15"><a href=""></a>        <span class="va">self</span>.publisher_.publish(msg)</span>
-<span id="cb40-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Publishing: </span><span class="sc">{</span>msg<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a><span class="im">from</span> geometry_msgs.msg <span class="im">import</span> Twist</span>
+<span id="cb42-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb42-3"><a href=""></a></span>
+<span id="cb42-4"><a href=""></a><span class="kw">class</span> VelocityPublisher(Node):</span>
+<span id="cb42-5"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb42-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'velocity_publisher'</span>)</span>
+<span id="cb42-7"><a href=""></a>        <span class="va">self</span>.publisher_ <span class="op">=</span> <span class="va">self</span>.create_publisher(Twist, <span class="st">'/cmd_vel'</span>, <span class="dv">10</span>)</span>
+<span id="cb42-8"><a href=""></a>        timer_period <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb42-9"><a href=""></a>        <span class="va">self</span>.timer <span class="op">=</span> <span class="va">self</span>.create_timer(timer_period, <span class="va">self</span>.timer_callback)</span>
+<span id="cb42-10"><a href=""></a></span>
+<span id="cb42-11"><a href=""></a>    <span class="kw">def</span> timer_callback(<span class="va">self</span>):</span>
+<span id="cb42-12"><a href=""></a>        msg <span class="op">=</span> Twist()</span>
+<span id="cb42-13"><a href=""></a>        msg.linear.x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb42-14"><a href=""></a>        msg.angular.z <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb42-15"><a href=""></a>        <span class="va">self</span>.publisher_.publish(msg)</span>
+<span id="cb42-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Publishing: </span><span class="sc">{</span>msg<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-5-3">
+<div id="tabset-6-3">
 <blockquote>
 <p>The <code>/image_raw</code> topic is typically published by a camera driver and contains raw image data. It uses the message type <code>sensor_msgs/msg/Image</code>.</p>
 </blockquote>
 <p>The structure of <code>Image</code> includes metadata like width, height, encoding, and the image data array:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb41-1"><a href=""></a>std_msgs/Header header</span>
-<span id="cb41-2"><a href=""></a>uint32 height</span>
-<span id="cb41-3"><a href=""></a>uint32 width</span>
-<span id="cb41-4"><a href=""></a>string encoding</span>
-<span id="cb41-5"><a href=""></a>uint8 is_bigendian</span>
-<span id="cb41-6"><a href=""></a>uint32 step</span>
-<span id="cb41-7"><a href=""></a>uint8[] data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb43-1"><a href=""></a>std_msgs/Header header</span>
+<span id="cb43-2"><a href=""></a>uint32 height</span>
+<span id="cb43-3"><a href=""></a>uint32 width</span>
+<span id="cb43-4"><a href=""></a>string encoding</span>
+<span id="cb43-5"><a href=""></a>uint8 is_bigendian</span>
+<span id="cb43-6"><a href=""></a>uint32 step</span>
+<span id="cb43-7"><a href=""></a>uint8[] data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-5-4">
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> Image</span>
-<span id="cb42-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb42-3"><a href=""></a></span>
-<span id="cb42-4"><a href=""></a><span class="kw">class</span> ImageSubscriber(Node):</span>
-<span id="cb42-5"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb42-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'image_subscriber'</span>)</span>
-<span id="cb42-7"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
-<span id="cb42-8"><a href=""></a>            Image,</span>
-<span id="cb42-9"><a href=""></a>            <span class="st">'/image_raw'</span>,</span>
-<span id="cb42-10"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
-<span id="cb42-11"><a href=""></a>            <span class="dv">10</span>)</span>
-<span id="cb42-12"><a href=""></a></span>
-<span id="cb42-13"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
-<span id="cb42-14"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Received image of size </span><span class="sc">{</span>msg<span class="sc">.</span>width<span class="sc">}</span><span class="ss">x</span><span class="sc">{</span>msg<span class="sc">.</span>height<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-6-4">
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> Image</span>
+<span id="cb44-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb44-3"><a href=""></a></span>
+<span id="cb44-4"><a href=""></a><span class="kw">class</span> ImageSubscriber(Node):</span>
+<span id="cb44-5"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb44-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'image_subscriber'</span>)</span>
+<span id="cb44-7"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
+<span id="cb44-8"><a href=""></a>            Image,</span>
+<span id="cb44-9"><a href=""></a>            <span class="st">'/image_raw'</span>,</span>
+<span id="cb44-10"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
+<span id="cb44-11"><a href=""></a>            <span class="dv">10</span>)</span>
+<span id="cb44-12"><a href=""></a></span>
+<span id="cb44-13"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
+<span id="cb44-14"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Received image of size </span><span class="sc">{</span>msg<span class="sc">.</span>width<span class="sc">}</span><span class="ss">x</span><span class="sc">{</span>msg<span class="sc">.</span>height<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Use <code>rqt_image_view</code> to see the video stream:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rqt-image-view</span>
-<span id="cb43-2"><a href=""></a><span class="ex">rqt_image_view</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href=""></a><span class="fu">sudo</span> apt install ros-humble-rqt-image-view</span>
+<span id="cb45-2"><a href=""></a><span class="ex">rqt_image_view</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1331,69 +1406,69 @@ Figure&nbsp;1: A diagram of course mapping.
 <section id="using-standard-ros-messages-1" class="slide level2">
 <h2>🚗 Using Standard ROS Messages</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Odometry (M)</a></li><li><a href="#tabset-6-2">odom (T)</a></li><li><a href="#tabset-6-3">LaserScan (M)</a></li><li><a href="#tabset-6-4">scan (T)</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Odometry (M)</a></li><li><a href="#tabset-7-2">odom (T)</a></li><li><a href="#tabset-7-3">LaserScan (M)</a></li><li><a href="#tabset-7-4">scan (T)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
+<div id="tabset-7-1">
 <blockquote>
 <p>The <code>/odom</code> topic provides odometry data and is published by localization or wheel encoder nodes. It uses the message type <code>nav_msgs/msg/Odometry</code>.</p>
 </blockquote>
 <p>This message includes the robot’s estimated position and velocity in space:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb44-1"><a href=""></a>std_msgs/Header header</span>
-<span id="cb44-2"><a href=""></a>string child_frame_id</span>
-<span id="cb44-3"><a href=""></a>geometry_msgs/PoseWithCovariance pose</span>
-<span id="cb44-4"><a href=""></a>geometry_msgs/TwistWithCovariance twist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb46-1"><a href=""></a>std_msgs/Header header</span>
+<span id="cb46-2"><a href=""></a>string child_frame_id</span>
+<span id="cb46-3"><a href=""></a>geometry_msgs/PoseWithCovariance pose</span>
+<span id="cb46-4"><a href=""></a>geometry_msgs/TwistWithCovariance twist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-6-2">
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href=""></a><span class="im">from</span> nav_msgs.msg <span class="im">import</span> Odometry</span>
-<span id="cb45-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
-<span id="cb45-3"><a href=""></a></span>
-<span id="cb45-4"><a href=""></a><span class="kw">class</span> OdomSubscriber(Node):</span>
-<span id="cb45-5"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb45-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'odom_subscriber'</span>)</span>
-<span id="cb45-7"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
-<span id="cb45-8"><a href=""></a>            Odometry,</span>
-<span id="cb45-9"><a href=""></a>            <span class="st">'/odom'</span>,</span>
-<span id="cb45-10"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
-<span id="cb45-11"><a href=""></a>            <span class="dv">10</span>)</span>
-<span id="cb45-12"><a href=""></a></span>
-<span id="cb45-13"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
-<span id="cb45-14"><a href=""></a>        position <span class="op">=</span> msg.pose.pose.position</span>
-<span id="cb45-15"><a href=""></a>        velocity <span class="op">=</span> msg.twist.twist.linear</span>
-<span id="cb45-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Position: x=</span><span class="sc">{</span>position<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, y=</span><span class="sc">{</span>position<span class="sc">.</span>y<span class="sc">}</span><span class="ss">, vx=</span><span class="sc">{</span>velocity<span class="sc">.</span>x<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can visualize odometry in RViz or use it in SLAM/localization algorithms.</p>
-</div>
-<div id="tabset-6-3">
-<blockquote>
-<p>The <code>/scan</code> topic provides laser scan data from a LIDAR or similar range sensor. It uses the message type <code>sensor_msgs/msg/LaserScan</code>.</p>
-</blockquote>
-<p>This message contains an array of distance readings in the 2D plane:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb46-1"><a href=""></a>std_msgs/Header header  </span>
-<span id="cb46-2"><a href=""></a>float32 angle_min  </span>
-<span id="cb46-3"><a href=""></a>float32 angle_max  </span>
-<span id="cb46-4"><a href=""></a>float32 angle_increment  </span>
-<span id="cb46-5"><a href=""></a>float32 time_increment  </span>
-<span id="cb46-6"><a href=""></a>float32 scan_time  </span>
-<span id="cb46-7"><a href=""></a>float32 range_min  </span>
-<span id="cb46-8"><a href=""></a>float32 range_max  </span>
-<span id="cb46-9"><a href=""></a>float32[] ranges  </span>
-<span id="cb46-10"><a href=""></a>float32[] intensities  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-6-4">
-<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href=""></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> LaserScan</span>
+<div id="tabset-7-2">
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href=""></a><span class="im">from</span> nav_msgs.msg <span class="im">import</span> Odometry</span>
 <span id="cb47-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
 <span id="cb47-3"><a href=""></a></span>
-<span id="cb47-4"><a href=""></a><span class="kw">class</span> ScanSubscriber(Node):</span>
+<span id="cb47-4"><a href=""></a><span class="kw">class</span> OdomSubscriber(Node):</span>
 <span id="cb47-5"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb47-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'scan_subscriber'</span>)</span>
+<span id="cb47-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'odom_subscriber'</span>)</span>
 <span id="cb47-7"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
-<span id="cb47-8"><a href=""></a>            LaserScan,</span>
-<span id="cb47-9"><a href=""></a>            <span class="st">'/scan'</span>,</span>
+<span id="cb47-8"><a href=""></a>            Odometry,</span>
+<span id="cb47-9"><a href=""></a>            <span class="st">'/odom'</span>,</span>
 <span id="cb47-10"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
 <span id="cb47-11"><a href=""></a>            <span class="dv">10</span>)</span>
 <span id="cb47-12"><a href=""></a></span>
 <span id="cb47-13"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
-<span id="cb47-14"><a href=""></a>        front_distance <span class="op">=</span> msg.ranges[<span class="bu">len</span>(msg.ranges) <span class="op">//</span> <span class="dv">2</span>]</span>
-<span id="cb47-15"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Front distance: </span><span class="sc">{</span>front_distance<span class="sc">:.2f}</span><span class="ss"> meters'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-14"><a href=""></a>        position <span class="op">=</span> msg.pose.pose.position</span>
+<span id="cb47-15"><a href=""></a>        velocity <span class="op">=</span> msg.twist.twist.linear</span>
+<span id="cb47-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Position: x=</span><span class="sc">{</span>position<span class="sc">.</span>x<span class="sc">}</span><span class="ss">, y=</span><span class="sc">{</span>position<span class="sc">.</span>y<span class="sc">}</span><span class="ss">, vx=</span><span class="sc">{</span>velocity<span class="sc">.</span>x<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can visualize odometry in RViz or use it in SLAM/localization algorithms.</p>
+</div>
+<div id="tabset-7-3">
+<blockquote>
+<p>The <code>/scan</code> topic provides laser scan data from a LIDAR or similar range sensor. It uses the message type <code>sensor_msgs/msg/LaserScan</code>.</p>
+</blockquote>
+<p>This message contains an array of distance readings in the 2D plane:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb48-1"><a href=""></a>std_msgs/Header header  </span>
+<span id="cb48-2"><a href=""></a>float32 angle_min  </span>
+<span id="cb48-3"><a href=""></a>float32 angle_max  </span>
+<span id="cb48-4"><a href=""></a>float32 angle_increment  </span>
+<span id="cb48-5"><a href=""></a>float32 time_increment  </span>
+<span id="cb48-6"><a href=""></a>float32 scan_time  </span>
+<span id="cb48-7"><a href=""></a>float32 range_min  </span>
+<span id="cb48-8"><a href=""></a>float32 range_max  </span>
+<span id="cb48-9"><a href=""></a>float32[] ranges  </span>
+<span id="cb48-10"><a href=""></a>float32[] intensities  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-7-4">
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href=""></a><span class="im">from</span> sensor_msgs.msg <span class="im">import</span> LaserScan</span>
+<span id="cb49-2"><a href=""></a><span class="im">from</span> rclpy.node <span class="im">import</span> Node</span>
+<span id="cb49-3"><a href=""></a></span>
+<span id="cb49-4"><a href=""></a><span class="kw">class</span> ScanSubscriber(Node):</span>
+<span id="cb49-5"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb49-6"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'scan_subscriber'</span>)</span>
+<span id="cb49-7"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
+<span id="cb49-8"><a href=""></a>            LaserScan,</span>
+<span id="cb49-9"><a href=""></a>            <span class="st">'/scan'</span>,</span>
+<span id="cb49-10"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
+<span id="cb49-11"><a href=""></a>            <span class="dv">10</span>)</span>
+<span id="cb49-12"><a href=""></a></span>
+<span id="cb49-13"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
+<span id="cb49-14"><a href=""></a>        front_distance <span class="op">=</span> msg.ranges[<span class="bu">len</span>(msg.ranges) <span class="op">//</span> <span class="dv">2</span>]</span>
+<span id="cb49-15"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Front distance: </span><span class="sc">{</span>front_distance<span class="sc">:.2f}</span><span class="ss"> meters'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can use <code>/scan</code> for obstacle avoidance, mapping, or SLAM, and visualize it in RViz using the LaserScan display type.</p>
 </div>
 </div>
@@ -1405,9 +1480,9 @@ Figure&nbsp;1: A diagram of course mapping.
 <li>Creating a custom message allows you to define structured data specific to your application.</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">1.</a></li><li><a href="#tabset-7-2">2.</a></li><li><a href="#tabset-7-3">3.</a></li><li><a href="#tabset-7-4">4.</a></li><li><a href="#tabset-7-5">5.</a></li><li><a href="#tabset-7-6">6.</a></li><li><a href="#tabset-7-7">7.</a></li><li><a href="#tabset-7-8">8.</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">1.</a></li><li><a href="#tabset-8-2">2.</a></li><li><a href="#tabset-8-3">3.</a></li><li><a href="#tabset-8-4">4.</a></li><li><a href="#tabset-8-5">5.</a></li><li><a href="#tabset-8-6">6.</a></li><li><a href="#tabset-8-7">7.</a></li><li><a href="#tabset-8-8">8.</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-8-1">
 <ul>
 <li>📁 1. Directory Structure</li>
 </ul>
@@ -1420,100 +1495,100 @@ Figure&nbsp;1: A diagram of course mapping.
 └── ...</code></pre>
 <hr>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-8-2">
 <ul>
 <li>📄 2. Define <code>Person.msg</code></li>
 </ul>
 <p>Create <code>msg/Person.msg</code> with the following content:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb49-1"><a href=""></a>string name</span>
-<span id="cb49-2"><a href=""></a>int32 age</span>
-<span id="cb49-3"><a href=""></a>float32 height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource msg number-lines code-with-copy"><code class="sourceCode"><span id="cb51-1"><a href=""></a>string name</span>
+<span id="cb51-2"><a href=""></a>int32 age</span>
+<span id="cb51-3"><a href=""></a>float32 height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </div>
-<div id="tabset-7-3">
+<div id="tabset-8-3">
 <ul>
 <li>🛠️ 3. Modify <code>CMakeLists.txt</code></li>
 </ul>
 <p>Add the following:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource cmake number-lines code-with-copy"><code class="sourceCode cmake"><span id="cb50-1"><a href=""></a><span class="kw">find_package</span>(std_msgs <span class="ot">REQUIRED</span>)</span>
-<span id="cb50-2"><a href=""></a><span class="kw">find_package</span>(rosidl_default_generators <span class="ot">REQUIRED</span>)</span>
-<span id="cb50-3"><a href=""></a></span>
-<span id="cb50-4"><a href=""></a><span class="fu">rosidl_generate_interfaces</span>(<span class="dv">${PROJECT_NAME}</span></span>
-<span id="cb50-5"><a href=""></a>  <span class="st">"msg/Person.msg"</span></span>
-<span id="cb50-6"><a href=""></a>  DEPENDENCIES std_msgs</span>
-<span id="cb50-7"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource cmake number-lines code-with-copy"><code class="sourceCode cmake"><span id="cb52-1"><a href=""></a><span class="kw">find_package</span>(std_msgs <span class="ot">REQUIRED</span>)</span>
+<span id="cb52-2"><a href=""></a><span class="kw">find_package</span>(rosidl_default_generators <span class="ot">REQUIRED</span>)</span>
+<span id="cb52-3"><a href=""></a></span>
+<span id="cb52-4"><a href=""></a><span class="fu">rosidl_generate_interfaces</span>(<span class="dv">${PROJECT_NAME}</span></span>
+<span id="cb52-5"><a href=""></a>  <span class="st">"msg/Person.msg"</span></span>
+<span id="cb52-6"><a href=""></a>  DEPENDENCIES std_msgs</span>
+<span id="cb52-7"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ensure <code>ament_export_dependencies(rosidl_default_runtime)</code> is also included.</p>
 <hr>
 </div>
-<div id="tabset-7-4">
+<div id="tabset-8-4">
 <ul>
 <li>📝 4. Modify <code>package.xml</code></li>
 </ul>
 <p>Add:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb51-1"><a href=""></a>&lt;<span class="kw">buildtool_depend</span>&gt;rosidl_default_generators&lt;/<span class="kw">buildtool_depend</span>&gt;</span>
-<span id="cb51-2"><a href=""></a>&lt;<span class="kw">build_depend</span>&gt;rosidl_default_generators&lt;/<span class="kw">build_depend</span>&gt;</span>
-<span id="cb51-3"><a href=""></a>&lt;<span class="kw">exec_depend</span>&gt;rosidl_default_runtime&lt;/<span class="kw">exec_depend</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource xml number-lines code-with-copy"><code class="sourceCode xml"><span id="cb53-1"><a href=""></a>&lt;<span class="kw">buildtool_depend</span>&gt;rosidl_default_generators&lt;/<span class="kw">buildtool_depend</span>&gt;</span>
+<span id="cb53-2"><a href=""></a>&lt;<span class="kw">build_depend</span>&gt;rosidl_default_generators&lt;/<span class="kw">build_depend</span>&gt;</span>
+<span id="cb53-3"><a href=""></a>&lt;<span class="kw">exec_depend</span>&gt;rosidl_default_runtime&lt;/<span class="kw">exec_depend</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </div>
-<div id="tabset-7-5">
+<div id="tabset-8-5">
 <ul>
 <li>🔄 5. Rebuild Your Package</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> my_robot_pkg</span>
-<span id="cb52-2"><a href=""></a><span class="bu">source</span> install/setup.bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> my_robot_pkg</span>
+<span id="cb54-2"><a href=""></a><span class="bu">source</span> install/setup.bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </div>
-<div id="tabset-7-6">
+<div id="tabset-8-6">
 <ul>
 <li>🚀 6. Example Publisher</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href=""></a><span class="im">from</span> my_robot_pkg.msg <span class="im">import</span> Person</span>
-<span id="cb53-2"><a href=""></a></span>
-<span id="cb53-3"><a href=""></a><span class="kw">class</span> PersonPublisher(Node):</span>
-<span id="cb53-4"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb53-5"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'person_publisher'</span>)</span>
-<span id="cb53-6"><a href=""></a>        <span class="va">self</span>.publisher_ <span class="op">=</span> <span class="va">self</span>.create_publisher(Person, <span class="st">'person_info'</span>, <span class="dv">10</span>)</span>
-<span id="cb53-7"><a href=""></a>        timer_period <span class="op">=</span> <span class="fl">2.0</span></span>
-<span id="cb53-8"><a href=""></a>        <span class="va">self</span>.timer <span class="op">=</span> <span class="va">self</span>.create_timer(timer_period, <span class="va">self</span>.timer_callback)</span>
-<span id="cb53-9"><a href=""></a></span>
-<span id="cb53-10"><a href=""></a>    <span class="kw">def</span> timer_callback(<span class="va">self</span>):</span>
-<span id="cb53-11"><a href=""></a>        msg <span class="op">=</span> Person()</span>
-<span id="cb53-12"><a href=""></a>        msg.name <span class="op">=</span> <span class="st">"Alice"</span></span>
-<span id="cb53-13"><a href=""></a>        msg.age <span class="op">=</span> <span class="dv">28</span></span>
-<span id="cb53-14"><a href=""></a>        msg.height <span class="op">=</span> <span class="fl">1.65</span></span>
-<span id="cb53-15"><a href=""></a>        <span class="va">self</span>.publisher_.publish(msg)</span>
-<span id="cb53-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Publishing: </span><span class="sc">{</span>msg<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href=""></a><span class="im">from</span> my_robot_pkg.msg <span class="im">import</span> Person</span>
+<span id="cb55-2"><a href=""></a></span>
+<span id="cb55-3"><a href=""></a><span class="kw">class</span> PersonPublisher(Node):</span>
+<span id="cb55-4"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb55-5"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'person_publisher'</span>)</span>
+<span id="cb55-6"><a href=""></a>        <span class="va">self</span>.publisher_ <span class="op">=</span> <span class="va">self</span>.create_publisher(Person, <span class="st">'person_info'</span>, <span class="dv">10</span>)</span>
+<span id="cb55-7"><a href=""></a>        timer_period <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb55-8"><a href=""></a>        <span class="va">self</span>.timer <span class="op">=</span> <span class="va">self</span>.create_timer(timer_period, <span class="va">self</span>.timer_callback)</span>
+<span id="cb55-9"><a href=""></a></span>
+<span id="cb55-10"><a href=""></a>    <span class="kw">def</span> timer_callback(<span class="va">self</span>):</span>
+<span id="cb55-11"><a href=""></a>        msg <span class="op">=</span> Person()</span>
+<span id="cb55-12"><a href=""></a>        msg.name <span class="op">=</span> <span class="st">"Alice"</span></span>
+<span id="cb55-13"><a href=""></a>        msg.age <span class="op">=</span> <span class="dv">28</span></span>
+<span id="cb55-14"><a href=""></a>        msg.height <span class="op">=</span> <span class="fl">1.65</span></span>
+<span id="cb55-15"><a href=""></a>        <span class="va">self</span>.publisher_.publish(msg)</span>
+<span id="cb55-16"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Publishing: </span><span class="sc">{</span>msg<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </div>
-<div id="tabset-7-7">
+<div id="tabset-8-7">
 <ul>
 <li>📥 7. Example Subscriber</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href=""></a><span class="im">from</span> my_robot_pkg.msg <span class="im">import</span> Person</span>
-<span id="cb54-2"><a href=""></a></span>
-<span id="cb54-3"><a href=""></a><span class="kw">class</span> PersonSubscriber(Node):</span>
-<span id="cb54-4"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb54-5"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'person_subscriber'</span>)</span>
-<span id="cb54-6"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
-<span id="cb54-7"><a href=""></a>            Person,</span>
-<span id="cb54-8"><a href=""></a>            <span class="st">'person_info'</span>,</span>
-<span id="cb54-9"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
-<span id="cb54-10"><a href=""></a>            <span class="dv">10</span>)</span>
-<span id="cb54-11"><a href=""></a></span>
-<span id="cb54-12"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
-<span id="cb54-13"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Received: Name=</span><span class="sc">{</span>msg<span class="sc">.</span>name<span class="sc">}</span><span class="ss">, Age=</span><span class="sc">{</span>msg<span class="sc">.</span>age<span class="sc">}</span><span class="ss">, Height=</span><span class="sc">{</span>msg<span class="sc">.</span>height<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href=""></a><span class="im">from</span> my_robot_pkg.msg <span class="im">import</span> Person</span>
+<span id="cb56-2"><a href=""></a></span>
+<span id="cb56-3"><a href=""></a><span class="kw">class</span> PersonSubscriber(Node):</span>
+<span id="cb56-4"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb56-5"><a href=""></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">'person_subscriber'</span>)</span>
+<span id="cb56-6"><a href=""></a>        <span class="va">self</span>.subscription <span class="op">=</span> <span class="va">self</span>.create_subscription(</span>
+<span id="cb56-7"><a href=""></a>            Person,</span>
+<span id="cb56-8"><a href=""></a>            <span class="st">'person_info'</span>,</span>
+<span id="cb56-9"><a href=""></a>            <span class="va">self</span>.listener_callback,</span>
+<span id="cb56-10"><a href=""></a>            <span class="dv">10</span>)</span>
+<span id="cb56-11"><a href=""></a></span>
+<span id="cb56-12"><a href=""></a>    <span class="kw">def</span> listener_callback(<span class="va">self</span>, msg):</span>
+<span id="cb56-13"><a href=""></a>        <span class="va">self</span>.get_logger().info(<span class="ss">f'Received: Name=</span><span class="sc">{</span>msg<span class="sc">.</span>name<span class="sc">}</span><span class="ss">, Age=</span><span class="sc">{</span>msg<span class="sc">.</span>age<span class="sc">}</span><span class="ss">, Height=</span><span class="sc">{</span>msg<span class="sc">.</span>height<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </div>
-<div id="tabset-7-8">
+<div id="tabset-8-8">
 <ul>
 <li>🔧 8. Add Nodes in <code>setup.py</code></li>
 </ul>
-<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href=""></a>entry_points<span class="op">=</span>{</span>
-<span id="cb55-2"><a href=""></a>    <span class="st">'console_scripts'</span>: [</span>
-<span id="cb55-3"><a href=""></a>        <span class="st">'person_publisher = my_robot_pkg.person_publisher:main'</span>,</span>
-<span id="cb55-4"><a href=""></a>        <span class="st">'person_subscriber = my_robot_pkg.person_subscriber:main'</span>,</span>
-<span id="cb55-5"><a href=""></a>    ],</span>
-<span id="cb55-6"><a href=""></a>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href=""></a>entry_points<span class="op">=</span>{</span>
+<span id="cb57-2"><a href=""></a>    <span class="st">'console_scripts'</span>: [</span>
+<span id="cb57-3"><a href=""></a>        <span class="st">'person_publisher = my_robot_pkg.person_publisher:main'</span>,</span>
+<span id="cb57-4"><a href=""></a>        <span class="st">'person_subscriber = my_robot_pkg.person_subscriber:main'</span>,</span>
+<span id="cb57-5"><a href=""></a>    ],</span>
+<span id="cb57-6"><a href=""></a>},</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
