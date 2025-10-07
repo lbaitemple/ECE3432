@@ -992,14 +992,14 @@ Figure&nbsp;1: A diagram of course mapping.
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href=""></a>            <span class="va">parameters</span><span class="op">=</span>[</span>
 <span id="cb16-2"><a href=""></a>                <span class="kw">{</span></span>
 <span id="cb16-3"><a href=""></a>                    <span class="st">'output_encoding'</span><span class="ex">:</span> output_encoding,</span>
-<span id="cb16-4"><a href=""></a>                    <span class="st">'image_size'</span><span class="ex">:</span> [320, 240],</span>
-<span id="cb16-5"><a href=""></a>                    <span class="st">'frame_rate'</span><span class="ex">:</span> 10,</span>
+<span id="cb16-4"><a href=""></a>                    <span class="st">'image_size'</span><span class="ex">:</span> [320, 240], <span class="co"># added line</span></span>
+<span id="cb16-5"><a href=""></a>                    <span class="st">'frame_rate'</span><span class="ex">:</span> 10, <span class="co"># added line</span></span>
 <span id="cb16-6"><a href=""></a>                </span>
 <span id="cb16-7"><a href=""></a>                <span class="ex">}],</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>rebuild mini_pupper_driver in workspace folder</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-selected</span> mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-3">
 <ul>
