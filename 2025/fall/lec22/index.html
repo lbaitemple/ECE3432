@@ -427,16 +427,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
-<g id="clust3" class="cluster">
-<title>cluster_docker</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
-<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_final</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
-<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
-</g>
 <g id="clust1" class="cluster">
 <title>cluster_system</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
@@ -446,6 +436,16 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <title>cluster_ros</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
 <text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_docker</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
+<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_final</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
+<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
 </g>
 <!-- kb1 -->
 <g id="node1" class="node">
@@ -973,7 +973,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <section id="run-minipupper-ros2" class="slide level2">
 <h2>Run Minipupper ROS2</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">bringup</a></li><li><a href="#tabset-3-2">camera resize</a></li><li><a href="#tabset-3-3">image_raw</a></li><li><a href="#tabset-3-4">cmd_vel</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">bringup</a></li><li><a href="#tabset-3-2">camera resize</a></li><li><a href="#tabset-3-3">rebuild</a></li><li><a href="#tabset-3-4">image_raw</a></li><li><a href="#tabset-3-5">cmd_vel</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
 <ul>
@@ -996,12 +996,14 @@ Figure&nbsp;1: A diagram of course mapping.
 <span id="cb16-5"><a href=""></a>                    <span class="st">'frame_rate'</span><span class="ex">:</span> 10, <span class="co"># added line</span></span>
 <span id="cb16-6"><a href=""></a>                </span>
 <span id="cb16-7"><a href=""></a>                <span class="ex">}],</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-3-3">
 <ul>
 <li>rebuild mini_pupper_driver in workspace folder</li>
 </ul>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-3">
+<div id="tabset-3-4">
 <ul>
 <li>display image on LCD</li>
 </ul>
@@ -1015,7 +1017,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>3 <span class="co"># ensure a number so you control your own robot</span></span>
 <span id="cb19-2"><a href=""></a><span class="ex">ros2</span> run rqt_image_view rqt_image_view</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-3-4">
+<div id="tabset-3-5">
 <ul>
 <li>Move robot forward</li>
 </ul>
