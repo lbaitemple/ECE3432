@@ -261,6 +261,14 @@
       background: #0f1c4d;
     }
 
+    .btn-secondary {
+      background: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+
     .sample-link {
       display: block;
       margin-top: 15px;
@@ -747,6 +755,13 @@
                 </svg>
                 Reset Template
               </button>
+              <button id="convertToNmConnectionBtn" class="btn btn-secondary">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                </svg>
+                Convert to .nmconnection
+              </button>
             </div>
           </div>
 
@@ -896,6 +911,7 @@
     const resetBtnCloudInit = document.getElementById("resetBtnCloudInit");
     const downloadBtnWpaSupplicant = document.getElementById("downloadBtnWpaSupplicant");
     const resetBtnWpaSupplicant = document.getElementById("resetBtnWpaSupplicant");
+    const convertToNmConnectionBtn = document.getElementById("convertToNmConnectionBtn");
     const resultLabel = document.getElementById("hashResult");
     const wpaResultLabel = document.getElementById("wpaResult");
     const pskLengthValidation = document.getElementById("pskLengthValidation");
@@ -1029,6 +1045,24 @@ network={
         // Activate clicked button and its corresponding content
         button.classList.add('active');
         document.getElementById(button.dataset.tab).classList.add('active');
+
+        // Enable/disable WPA password field based on active tab
+        const isWpaSupplicantTab = button.dataset.tab === 'tab-wpa-supplicant';
+        wpaPasswordField.disabled = !isWpaSupplicantTab;
+        toggleWpaBtn.disabled = !isWpaSupplicantTab;
+        
+        // Update visual styling for disabled state
+        if (isWpaSupplicantTab) {
+          wpaPasswordField.style.opacity = '1';
+          toggleWpaBtn.style.opacity = '1';
+          wpaPasswordField.style.cursor = 'text';
+          toggleWpaBtn.style.cursor = 'pointer';
+        } else {
+          wpaPasswordField.style.opacity = '0.5';
+          toggleWpaBtn.style.opacity = '0.5';
+          wpaPasswordField.style.cursor = 'not-allowed';
+          toggleWpaBtn.style.cursor = 'not-allowed';
+        }
 
         // Re-validate based on the newly active tab
         validateAndHighlight();
@@ -1643,13 +1677,17 @@ network={
       const a = document.createElement('a');
       a.href = url;
       a.download = filename;
+      a.style.display = 'none';
       document.body.appendChild(a);
       a.click();
 
+      // Longer cleanup delay for multiple downloads
       setTimeout(() => {
-        document.body.removeChild(a);
+        if (document.body.contains(a)) {
+          document.body.removeChild(a);
+        }
         URL.revokeObjectURL(url);
-      }, 100);
+      }, 1000);
     }
 
     // Reset template to original
@@ -1658,6 +1696,147 @@ network={
         textarea.value = originalContent;
         validator(); // Re-validate after reset
       }
+    }
+
+    // Convert wpa_supplicant.conf to .nmconnection files
+    async function convertToNmConnection() {
+      const wpaSupplicantContent = templateTextareaWpaSupplicant.value;
+      
+      // Parse wpa_supplicant.conf content to extract networks
+      const networks = parseWpaSupplicantNetworks(wpaSupplicantContent);
+      
+      if (networks.length === 0) {
+        alert("No networks found in wpa_supplicant.conf");
+        return;
+      }
+
+      // Generate and download .nmconnection files for each network with delays
+      for (let i = 0; i < networks.length; i++) {
+        const network = networks[i];
+        const nmConnectionContent = generateNmConnectionContent(network);
+        const filename = `${network.ssid.replace(/[^a-zA-Z0-9]/g, '_')}.nmconnection`;
+        
+        // Download with delay between files to prevent browser blocking
+        downloadFile(nmConnectionContent, filename);
+        
+        // Add delay between downloads (except for the last one)
+        if (i < networks.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+      }
+
+      alert(`Generated ${networks.length} .nmconnection file(s). Check your downloads folder.`);
+    }
+
+    // Parse wpa_supplicant.conf networks
+    function parseWpaSupplicantNetworks(content) {
+      const networks = [];
+      const networkBlocks = content.match(/network\s*=\s*\{[^}]*\}/g) || [];
+      
+      networkBlocks.forEach(block => {
+        const network = {};
+        
+        // Extract SSID
+        const ssidMatch = block.match(/ssid\s*=\s*"([^"]+)"/);
+        if (ssidMatch) {
+          network.ssid = ssidMatch[1];
+        }
+        
+        // Check for PSK (WPA/WPA2 Personal)
+        const pskMatch = block.match(/psk\s*=\s*"([^"]+)"/);
+        if (pskMatch) {
+          network.type = 'wpa-psk';
+          network.psk = pskMatch[1];
+        }
+        
+        // Check for EAP (Enterprise)
+        const eapMatch = block.match(/eap\s*=\s*(\w+)/);
+        const identityMatch = block.match(/identity\s*=\s*"([^"]+)"/);
+        const passwordHashMatch = block.match(/password\s*=\s*hash:([0-9a-fA-F]+)/);
+        const passwordPlainMatch = block.match(/password\s*=\s*"([^"]+)"/);
+        
+        if (eapMatch && identityMatch) {
+          network.type = 'wpa-eap';
+          network.eap = eapMatch[1].toUpperCase();
+          network.identity = identityMatch[1];
+          if (passwordHashMatch) {
+            network.passwordHash = passwordHashMatch[1];
+          } else if (passwordPlainMatch) {
+            network.password = passwordPlainMatch[1];
+          }
+        }
+        
+        // Only add networks with SSID
+        if (network.ssid) {
+          networks.push(network);
+        }
+      });
+      
+      return networks;
+    }
+
+    // Generate NetworkManager connection content
+    function generateNmConnectionContent(network) {
+      const uuid = generateUUID();
+      let content = `[connection]
+id=${network.ssid}
+uuid=${uuid}
+type=wifi
+autoconnect=true
+
+[wifi]
+mode=infrastructure
+ssid=${network.ssid}
+
+[wifi-security]
+`;
+
+      if (network.type === 'wpa-psk') {
+        content += `key-mgmt=wpa-psk
+psk=${network.psk}
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
+`;
+      } else if (network.type === 'wpa-eap') {
+        content += `key-mgmt=wpa-eap
+
+[802-1x]
+eap=${network.eap.toLowerCase()};
+identity=${network.identity}
+phase2-auth=mschapv2
+`;
+        if (network.passwordHash) {
+          content += `password=hash:${network.passwordHash}
+`;
+        } else if (network.password) {
+          content += `password=${network.password}
+`;
+        }
+        content += `
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
+`;
+      }
+
+      return content;
+    }
+
+    // Generate a simple UUID v4
+    function generateUUID() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
     }
 
     // Setup event listeners
@@ -1695,6 +1874,24 @@ network={
 
     resetBtnWpaSupplicant.addEventListener('click', () => {
       resetTemplate(templateTextareaWpaSupplicant, originalTemplateWpaSupplicant, validateWpaSupplicantConfiguration);
+    });
+
+    convertToNmConnectionBtn.addEventListener('click', async () => {
+      // Disable button during conversion
+      convertToNmConnectionBtn.disabled = true;
+      const originalText = convertToNmConnectionBtn.innerHTML;
+      convertToNmConnectionBtn.innerHTML = '<span>Converting...</span>';
+      
+      try {
+        await convertToNmConnection();
+      } catch (error) {
+        console.error('Conversion error:', error);
+        alert('Error during conversion. Please check the console for details.');
+      } finally {
+        // Re-enable button
+        convertToNmConnectionBtn.disabled = false;
+        convertToNmConnectionBtn.innerHTML = originalText;
+      }
     });
 
     templateTextareaWireless.addEventListener('input', validateWirelessConfiguration);
@@ -1754,6 +1951,14 @@ network={
       // Initial validation for all tabs
       validateWirelessConfiguration();
       validateWpaSupplicantConfiguration();
+
+      // Initialize WPA password field state (disabled by default since cloud-init tab is active)
+      wpaPasswordField.disabled = true;
+      toggleWpaBtn.disabled = true;
+      wpaPasswordField.style.opacity = '0.5';
+      toggleWpaBtn.style.opacity = '0.5';
+      wpaPasswordField.style.cursor = 'not-allowed';
+      toggleWpaBtn.style.cursor = 'not-allowed';
 
       passwordField.addEventListener("input", async () => {
         const password = passwordField.value;
@@ -1839,20 +2044,17 @@ network={
           
           // Skip wireless.txt template update (no WPA passphrase needed)
 
-          // Update 50-cloud-init.yaml template
+          // Update 50-cloud-init.yaml template with plain text passwords (no WPA hashing for non-Eduroam)
           let updatedCloudInitTemplate = templateTextareaCloudInit.value;
-          if (wpaHashes["IEEER2_5G"]) {
-            updatedCloudInitTemplate = updatedCloudInitTemplate.replace(
-              /("IEEER2_5G":\s*password:\s*")([^"]+)(")/,
-              `$1${wpaHashes["IEEER2_5G"]}$3`
-            );
-          }
-          if (wpaHashes["WIFI_AP2"]) {
-            updatedCloudInitTemplate = updatedCloudInitTemplate.replace(
-              /("WIFI_AP2":\s*password:\s*")([^"]+)(")/,
-              `$1${wpaHashes["WIFI_AP2"]}$3`
-            );
-          }
+          // For cloud-init, use plain text passwords for non-Eduroam networks
+          updatedCloudInitTemplate = updatedCloudInitTemplate.replace(
+            /("IEEER2_5G":\s*password:\s*")([^"]+)(")/,
+            `$1${wpaPassword}$3`
+          );
+          updatedCloudInitTemplate = updatedCloudInitTemplate.replace(
+            /("WIFI_AP2":\s*password:\s*")([^"]+)(")/,
+            `$1${wpaPassword}$3`
+          );
           templateTextareaCloudInit.value = updatedCloudInitTemplate;
 
           // Update wpa_supplicant.conf template - find the actual SSID dynamically
