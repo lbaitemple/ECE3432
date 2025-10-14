@@ -762,23 +762,14 @@ Figure&nbsp;1: A diagram of course mapping.
 <section id="enable-camera-in-mini_pupper_bringup" class="slide level2">
 <h2>Enable Camera in [mini_pupper_bringup]</h2>
 <ul>
-<li>Change config.yaml</li>
+<li>Change mini_pupper_2.yaml in ros2_ws/src/mini_pupper_ros <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/72b03937d92561b6d1725fce3560cdc89a86dee9/mini_pupper_bringup/config/mini_pupper_2.yaml">mini_pupper_bringup/config/mini_pupper_2.yaml</a></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a>sensors: </span>
-<span id="cb1-2"><a href=""></a>  lidar: true</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a>sensors:</span>
+<span id="cb1-2"><a href=""></a>  lidar: false</span>
 <span id="cb1-3"><a href=""></a>  imu: true</span>
-<span id="cb1-4"><a href=""></a>  camera: false</span>
+<span id="cb1-4"><a href=""></a>  camera: true</span>
 <span id="cb1-5"><a href=""></a>ports: </span>
 <span id="cb1-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>to</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource ymal number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href=""></a>sensors:</span>
-<span id="cb2-2"><a href=""></a>  lidar: false</span>
-<span id="cb2-3"><a href=""></a>  imu: true</span>
-<span id="cb2-4"><a href=""></a>  camera: true</span>
-<span id="cb2-5"><a href=""></a>ports: </span>
-<span id="cb2-6"><a href=""></a>  lidar: '/dev/ttyAMA1'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -791,8 +782,8 @@ Figure&nbsp;1: A diagram of course mapping.
 <ul>
 <li>check if camera yaml file exists</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
-<span id="cb3-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ros/camera_info</span>
+<span id="cb2-2"><a href=""></a><span class="fu">cp</span> ~/mini_pupper_ros/mmal_service_16.1.yaml ~/.ros/camera_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -803,17 +794,17 @@ Figure&nbsp;1: A diagram of course mapping.
 <li><p>check the <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/blob/72b03937d92561b6d1725fce3560cdc89a86dee9/mini_pupper_driver/launch/camera.launch.py">camera launch file</a></p></li>
 <li><p><code>mini_pupper_driver/launch/camera.launch.py</code> (line 39)</p></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a>            <span class="va">parameters</span><span class="op">=</span>[</span>
-<span id="cb4-2"><a href=""></a>                <span class="kw">{</span></span>
-<span id="cb4-3"><a href=""></a>                    <span class="st">'output_encoding'</span><span class="ex">:</span> output_encoding,</span>
-<span id="cb4-4"><a href=""></a>                    <span class="st">'image_size'</span><span class="ex">:</span> [320, 240], <span class="co"># added line</span></span>
-<span id="cb4-5"><a href=""></a>                    <span class="st">'frame_rate'</span><span class="ex">:</span> 10,  <span class="co"># added line</span></span>
-<span id="cb4-6"><a href=""></a>                </span>
-<span id="cb4-7"><a href=""></a>                <span class="ex">}],</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a>            <span class="va">parameters</span><span class="op">=</span>[</span>
+<span id="cb3-2"><a href=""></a>                <span class="kw">{</span></span>
+<span id="cb3-3"><a href=""></a>                    <span class="st">'output_encoding'</span><span class="ex">:</span> output_encoding,</span>
+<span id="cb3-4"><a href=""></a>                    <span class="st">'image_size'</span><span class="ex">:</span> [320, 240], <span class="co"># added line</span></span>
+<span id="cb3-5"><a href=""></a>                    <span class="st">'frame_rate'</span><span class="ex">:</span> 10,  <span class="co"># added line</span></span>
+<span id="cb3-6"><a href=""></a>                </span>
+<span id="cb3-7"><a href=""></a>                <span class="ex">}],</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>after revision, compile in ros2_ws</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="ex">colcon</span> build <span class="at">--packages-select</span> mini_pupper_driver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="bring-up" class="slide level2">
 <h2>Bring up</h2>
@@ -821,9 +812,9 @@ Figure&nbsp;1: A diagram of course mapping.
 <li><p>need to launch all hardware</p></li>
 <li><p>drift correction in champ</p></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb6-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py <span class="dt">\</span></span>
-<span id="cb6-3"><a href=""></a>            hardware_connected:=True drift_correction:=0.1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb5-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py <span class="dt">\</span></span>
+<span id="cb5-3"><a href=""></a>            hardware_connected:=True drift_correction:=0.1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="view-image" class="slide level2">
 <h2>View Image</h2>
@@ -831,9 +822,9 @@ Figure&nbsp;1: A diagram of course mapping.
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">on LCD</a></li><li><a href="#tabset-1-2">on Web</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb7-2"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--ros-args</span> <span class="dt">\</span></span>
-<span id="cb7-3"><a href=""></a>         <span class="at">-r</span> mini_pupper_lcd/image_raw:=/image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb6-2"><a href=""></a><span class="ex">ros2</span> run mini_pupper_driver display_interface <span class="at">--ros-args</span> <span class="dt">\</span></span>
+<span id="cb6-3"><a href=""></a>         <span class="at">-r</span> mini_pupper_lcd/image_raw:=/image_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>think about putting it into a ros2 launch file</li>
 <li>not a good idea, since computing is done on the minipupper</li>
@@ -843,8 +834,8 @@ Figure&nbsp;1: A diagram of course mapping.
 <ul>
 <li>preferably running on WSL</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb8-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_webcam single_viewer.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb7-2"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_webcam single_viewer.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once launched, open your web browser and navigate to:</p>
 <ul>
 <li>Single Viewer: http://localhost:5000 (or your custom port)</li>
@@ -859,9 +850,9 @@ Figure&nbsp;1: A diagram of course mapping.
 <li>line following code in <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/tree/72b03937d92561b6d1725fce3560cdc89a86dee9/mini_pupper_recognition">mini_pupper_recognition</a></li>
 <li>use another terminal to send recogntion code</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="co"># Terminal 2 (ssh or PC)</span></span>
-<span id="cb9-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb9-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="co"># Terminal 2 (ssh or PC)</span></span>
+<span id="cb8-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb8-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
