@@ -437,15 +437,15 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
 <text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_final</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
-<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_docker</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
 <text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_final</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
+<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
 </g>
 <!-- kb1 -->
 <g id="node1" class="node">
@@ -953,8 +953,7 @@ Restart your computer after enabling these features.
 </div>
 <div id="tabset-4-3">
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="fu">git</span> clone https://github.com/mangdangroboticsclub/mini_pupper_ros</span>
-<span id="cb8-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span>
-<span id="cb8-3"><a href=""></a><span class="ex">code</span> pc_install.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href=""></a><span class="bu">cd</span> mini_pupper_ros</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>revise the base to desktop ros2 install</li>
 </ul>
@@ -989,7 +988,7 @@ Restart your computer after enabling these features.
 <section id="wsl-firewall" class="slide level2">
 <h2>WSL Firewall</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">1</a></li><li><a href="#tabset-5-2">2</a></li><li><a href="#tabset-5-3">3</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">1</a></li><li><a href="#tabset-5-2">2</a></li><li><a href="#tabset-5-3">3</a></li><li><a href="#tabset-5-4">4</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
 <p>Step 1: enable the firewall based on firewall using ROS_DOMAIN_ID</p>
@@ -1011,9 +1010,9 @@ Restart your computer after enabling these features.
 </div>
 </div>
 </div>
-<ul>
-<li>e.g.</li>
-</ul>
+</div>
+<div id="tabset-5-2">
+<p>Step 2: enable the firewall using powershell (admin mode)</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="co"># Allow UDP port 13400 (discovery)</span></span>
 <span id="cb13-2"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 Domain 30 Discovery"</span> <span class="at">-Direction</span> Inbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 13400 <span class="at">-Action</span> Allow</span>
 <span id="cb13-3"><a href=""></a></span>
@@ -1023,12 +1022,16 @@ Restart your computer after enabling these features.
 <span id="cb13-7"><a href=""></a><span class="co"># Also allow the range for multicast (optional but recommended)</span></span>
 <span id="cb13-8"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 Multicast"</span> <span class="at">-Direction</span> Inbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 13400-13410 <span class="at">-Action</span> Allow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-5-2">
-<p>Step 2: restart the wsl in powershell</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--shutdown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div id="tabset-5-3">
-<p>Step 3: check ros2 topic</p>
+<p>Step 3: restart the wsl in powershell</p>
+<ul>
+<li>make sure you shutdown and restart wsl to enable firewall</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--shutdown</span></span>
+<span id="cb14-2"><a href=""></a><span class="ex">wsl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-5-4">
+<p>Step 4: check ros2 topic</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30  <span class="co"># if the ID is set to 30</span></span>
 <span id="cb15-2"><a href=""></a></span>
 <span id="cb15-3"><a href=""></a><span class="ex">ros2</span> daemon start        <span class="co"># may need to start the daemon in mirroe mode</span></span>
