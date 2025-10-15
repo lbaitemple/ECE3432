@@ -427,6 +427,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
+<g id="clust2" class="cluster">
+<title>cluster_ros</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
+<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_final</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
@@ -441,11 +446,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <title>cluster_system</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
 <text text-anchor="middle" x="142" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 1</text>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_ros</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
-<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
 </g>
 <!-- kb1 -->
 <g id="node1" class="node">
@@ -856,7 +856,7 @@ Figure&nbsp;1: A diagram of course mapping.
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="co"># Terminal 2 (ssh or PC)</span></span>
 <span id="cb8-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
-<span id="cb8-3"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb8-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb8-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
