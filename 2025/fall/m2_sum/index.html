@@ -659,31 +659,101 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 </div>
 </div>
 </section>
-<section id="tracking" class="slide level2">
-<h2>Tracking</h2>
+<section id="wsl-firewall" class="slide level2">
+<h2>WSL Firewall</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">minipupper</a></li><li><a href="#tabset-6-2">NUC</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">1</a></li><li><a href="#tabset-6-2">2</a></li><li><a href="#tabset-6-3">3</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
-<span id="cb30-2"><a href=""></a><span class="bu">source</span> ~/new_ws/install/setup.bash</span>
-<span id="cb30-3"><a href=""></a></span>
-<span id="cb30-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup_with_stanford_controller.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Step 1: enable the firewall based on firewall using ROS_DOMAIN_ID</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>use deepseek or chatgpt (find power-shell commands)</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href=""></a>    <span class="cf">if</span> <span class="ex">my</span> ROS_DOMAIN_ID is 30, how do I enable firewall port</span>
+<span id="cb30-2"><a href=""></a>    <span class="ex">so</span> I can see all ros2 topics in wsl ubuntu instance</span>
+<span id="cb30-3"><a href=""></a>    <span class="ex">running</span> inside of a windows 11 and wsl is in a mirror mode.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<ul>
+<li>e.g.</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="co"># Allow UDP port 13400 (discovery)</span></span>
+<span id="cb31-2"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 Domain 30 Discovery"</span> <span class="at">-Direction</span> Inbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 13400 <span class="at">-Action</span> Allow</span>
+<span id="cb31-3"><a href=""></a></span>
+<span id="cb31-4"><a href=""></a><span class="co"># Allow UDP port 13410 (topic data)  </span></span>
+<span id="cb31-5"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 Domain 30 Topics"</span> <span class="at">-Direction</span> Inbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 13410 <span class="at">-Action</span> Allow</span>
+<span id="cb31-6"><a href=""></a></span>
+<span id="cb31-7"><a href=""></a><span class="co"># Also allow the range for multicast (optional but recommended)</span></span>
+<span id="cb31-8"><a href=""></a><span class="ex">New-NetFirewallRule</span> <span class="at">-DisplayName</span> <span class="st">"ROS2 Multicast"</span> <span class="at">-Direction</span> Inbound <span class="at">-Protocol</span> UDP <span class="at">-LocalPort</span> 13400-13410 <span class="at">-Action</span> Allow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-6-2">
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>1</span>
-<span id="cb31-2"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
-<span id="cb31-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_tracking tracking.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Step 2: restart the wsl in powershell</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="ex">wsl</span> <span class="at">--shutdown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-6-3">
+<p>Step 3: check ros2 topic</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30  <span class="co"># if the ID is set to 30</span></span>
+<span id="cb33-2"><a href=""></a></span>
+<span id="cb33-3"><a href=""></a><span class="ex">ros2</span> daemon start        <span class="co"># may need to start the daemon in mirroe mode</span></span>
+<span id="cb33-4"><a href=""></a></span>
+<span id="cb33-5"><a href=""></a></span>
+<span id="cb33-6"><a href=""></a></span>
+<span id="cb33-7"><a href=""></a><span class="ex">ros2</span> topic list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="wsl---22.04" class="slide level2">
-<h2>WSL - 22.04</h2>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href=""></a><span class="bu">export</span> <span class="va">FASTRTPS_DEFAULT_PROFILES_FILE</span><span class="op">=</span>discovery_server_config.xml</span>
-<span id="cb32-2"><a href=""></a><span class="ex">fastdds</span> discovery <span class="at">--server-id</span> 0</span>
-<span id="cb32-3"><a href=""></a><span class="bu">export</span> <span class="va">ROS_LOCALHOST_ONLY</span><span class="op">=</span>0 </span>
-<span id="cb32-4"><a href=""></a><span class="bu">export</span> <span class="va">ROS_IP</span><span class="op">=</span>192.168.1.86 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="webcam" class="slide level2">
+<h2>Webcam</h2>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">minipupper</a></li><li><a href="#tabset-7-2">NUC</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
+<span id="cb34-2"><a href=""></a><span class="bu">source</span> ~/new_ws/install/setup.bash</span>
+<span id="cb34-3"><a href=""></a></span>
+<span id="cb34-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py <span class="dt">\</span></span>
+<span id="cb34-5"><a href=""></a>            hardware_connected:=True drift_correction:=0.1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-7-2">
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
+<span id="cb35-2"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb35-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_webcam single_viewer.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>make sure you open the firewall for inbound tcp port 5000 or 5001</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="tracking" class="slide level2">
+<h2>Tracking</h2>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">minipupper</a></li><li><a href="#tabset-8-2">NUC</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
+<span id="cb36-2"><a href=""></a><span class="bu">source</span> ~/new_ws/install/setup.bash</span>
+<span id="cb36-3"><a href=""></a></span>
+<span id="cb36-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup_with_stanford_controller.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-2">
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
+<span id="cb37-2"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb37-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_tracking tracking.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
