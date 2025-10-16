@@ -427,6 +427,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
+<g id="clust3" class="cluster">
+<title>cluster_docker</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
+<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_final</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
@@ -441,11 +446,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <title>cluster_ros</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
 <text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_docker</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
-<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
 </g>
 <!-- kb1 -->
 <g id="node1" class="node">
@@ -828,7 +828,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <li><p>need to launch all hardware</p></li>
 <li><p>drift correction in champ</p></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>0</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
 <span id="cb6-2"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb6-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_bringup bringup.launch.py <span class="dt">\</span></span>
 <span id="cb6-4"><a href=""></a>            hardware_connected:=True drift_correction:=0.1 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -836,7 +836,7 @@ Figure&nbsp;1: A diagram of course mapping.
 <section id="view-image" class="slide level2">
 <h2>View Image</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">on LCD</a></li><li><a href="#tabset-2-2">on Web</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">on LCD</a></li><li><a href="#tabset-2-2">on NUC</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
@@ -850,15 +850,15 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 <div id="tabset-2-2">
 <ul>
-<li>preferably running on WSL</li>
-<li>check the README.md</li>
+<li><p>download <a href="https://github.com/lbaitemple/mini_pupper_ros_aws/releases/download/class25/mini_pupper_webcam.zip">mini_pupper_web.zip</a> on NUC</p></li>
+<li><p>compile the code (recall how to do it)</p></li>
+<li><p>let us run the code…</p></li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
-<span id="cb8-2"><a href=""></a><span class="bu">.</span> ~/ros2_ws/install/setup.bash</span>
+<span id="cb8-2"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb8-3"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_webcam single_viewer.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Once launched, open your web browser and navigate to:</p>
 <ul>
-<li>Single Viewer: http://localhost:5000 (or your custom port)</li>
+<li>make sure you open the firewall for inbound tcp port 5000 or 5001</li>
 </ul>
 </div>
 </div>
