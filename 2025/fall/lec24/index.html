@@ -874,6 +874,49 @@ Figure&nbsp;1: A diagram of course mapping.
 <span id="cb9-2"><a href=""></a><span class="bu">export</span> <span class="va">ROS_DOMAIN_ID</span><span class="op">=</span>30</span>
 <span id="cb9-3"><a href=""></a><span class="bu">source</span> ~/ros2_ws/install/setup.bash</span>
 <span id="cb9-4"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_recognition recognition.launch.py <span class="co">#pid:=false if want to disable pid</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ros2-service-for-music" class="slide level2">
+<h2>ROS2 Service for Music</h2>
+<ul>
+<li>Review the instruction <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/tree/ros2-dev/mini_pupper_music">mini_pupper_music</a></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="ex">ros2</span> launch mini_pupper_music music.launch.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">service</a></li><li><a href="#tabset-3-2">run</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div>
+<ul>
+<li class="fragment">what is the package name?</li>
+<li class="fragment">what is the launch file [how to find it]?</li>
+<li class="fragment">what is the ROS2 node?</li>
+<li class="fragment">what services are provided</li>
+<li class="fragment">run <code>rqt_graph</code></li>
+</ul>
+</div>
+</div>
+<div id="tabset-3-2">
+<ul>
+<li>ensure enable <code>ROS_DOMAIN_ID</code> if run on WSL.</li>
+<li>To start the music</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="dt">\ </span></span>
+<span id="cb11-2"><a href=""></a>    <span class="st">"{file_name: 'robot1.mp3', start_second: 3}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>To stop the music</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ros2-service-for-dance" class="slide level2">
+<h2>ROS2 Service for Dance</h2>
+<ul>
+<li><p>Review the instruction <a href="https://github.com/mangdangroboticsclub/mini_pupper_ros/tree/ros2-dev/mini_pupper_dance">mini_pupper_dance</a></p></li>
+<li><p>How would you run the routine</p></li>
+<li><p><a href="https://github.com/lbaitemple/stanford_ws">Stanford Quadpad Kinematics</a></p></li>
+</ul>
 <div class="quarto-auto-generated-content">
 <p><img src="images/temple.png" class="slide-logo"></p>
 <div class="footer footer-default">
