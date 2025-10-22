@@ -427,11 +427,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
-<g id="clust2" class="cluster">
-<title>cluster_ros</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
-<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_final</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
@@ -441,6 +436,11 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <title>cluster_system</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
 <text text-anchor="middle" x="142" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 1</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_ros</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
+<text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_docker</title>
@@ -910,6 +910,20 @@ Figure&nbsp;1: A diagram of course mapping.
 </div>
 </div>
 </div>
+</section>
+<section id="ros2-add-ros-node-to-a-launch-file" class="slide level2">
+<h2>ROS2 Add ROS Node to a launch file</h2>
+<ul>
+<li>Why do we use two terminal windows</li>
+<li>Can we create a ROS2 Node in bringup.launch.py and rename it as bringup2.launch.py</li>
+<li>format of ROS Node and add it to bringup2.launch.py</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a>    <span class="ex">music_server_node</span> = Node<span class="er">(</span></span>
+<span id="cb13-2"><a href=""></a>            <span class="va">package</span><span class="op">=</span><span class="st">"mini_pupper_music"</span>,</span>
+<span id="cb13-3"><a href=""></a>            <span class="va">namespace</span><span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb13-4"><a href=""></a>            <span class="va">executable</span><span class="op">=</span><span class="st">"service"</span>,</span>
+<span id="cb13-5"><a href=""></a>            <span class="va">name</span><span class="op">=</span><span class="st">"music_server"</span>,</span>
+<span id="cb13-6"><a href=""></a>        <span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ros2-service-for-dance" class="slide level2">
 <h2>ROS2 Service for Dance</h2>
