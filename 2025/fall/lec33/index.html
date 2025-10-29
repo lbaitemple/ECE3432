@@ -426,6 +426,16 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 606.8)">
 <title>course_diagram</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-606.8 1152,-606.8 1152,4 -4,4"></polygon>
+<g id="clust4" class="cluster">
+<title>cluster_final</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
+<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_docker</title>
+<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
+<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
+</g>
 <g id="clust1" class="cluster">
 <title>cluster_system</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M20,-8C20,-8 264,-8 264,-8 270,-8 276,-14 276,-20 276,-20 276,-582.8 276,-582.8 276,-588.8 270,-594.8 264,-594.8 264,-594.8 20,-594.8 20,-594.8 14,-594.8 8,-588.8 8,-582.8 8,-582.8 8,-20 8,-20 8,-14 14,-8 20,-8"></path>
@@ -435,16 +445,6 @@ Li Bai <a href="https://orcid.org/0000-0002-6036-5947" class="quarto-title-autho
 <title>cluster_ros</title>
 <path fill="#000000" stroke="#000000" stroke-width="2" d="M308,-8C308,-8 552,-8 552,-8 558,-8 564,-14 564,-20 564,-20 564,-582.8 564,-582.8 564,-588.8 558,-594.8 552,-594.8 552,-594.8 308,-594.8 308,-594.8 302,-594.8 296,-588.8 296,-582.8 296,-582.8 296,-20 296,-20 296,-14 302,-8 308,-8"></path>
 <text text-anchor="middle" x="430" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 2</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_docker</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M596,-8C596,-8 840,-8 840,-8 846,-8 852,-14 852,-20 852,-20 852,-582.8 852,-582.8 852,-588.8 846,-594.8 840,-594.8 840,-594.8 596,-594.8 596,-594.8 590,-594.8 584,-588.8 584,-582.8 584,-582.8 584,-20 584,-20 584,-14 590,-8 596,-8"></path>
-<text text-anchor="middle" x="718" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 3</text>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_final</title>
-<path fill="#000000" stroke="#000000" stroke-width="2" d="M884,-8C884,-8 1128,-8 1128,-8 1134,-8 1140,-14 1140,-20 1140,-20 1140,-582.8 1140,-582.8 1140,-588.8 1134,-594.8 1128,-594.8 1128,-594.8 884,-594.8 884,-594.8 878,-594.8 872,-588.8 872,-582.8 872,-582.8 872,-20 872,-20 872,-14 878,-8 884,-8"></path>
-<text text-anchor="middle" x="1006" y="-578.2" font-family="Times,serif" font-size="14.00">Knowledge Block 4</text>
 </g>
 <!-- kb1 -->
 <g id="node1" class="node">
@@ -798,52 +798,55 @@ Figure&nbsp;1: A diagram of course mapping.
 <li><p>move imag_name.tar and docker-compose.yaml to the minipupper</p></li>
 <li><p>load the image</p></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">docker</span> load <span class="at">-i</span> image_name.tar </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/docker_save_image.png" class="quarto-figure quarto-figure-center" width="509"></p>
-</figure>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="fu">wget</span> https://github.com/lbaitemple/mini_pupper_ros_aws/releases/download/image/image_name.tar</span>
+<span id="cb5-2"><a href=""></a><span class="ex">docker</span> load <span class="at">-i</span> image_name.tar </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>the latest upgrades and latest docker-compose (v2.40.2)</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="fu">sudo</span> curl <span class="at">-L</span> <span class="st">"https://github.com/docker/compose/releases/latest/download/docker-compose-</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-s</span><span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span><span class="st">"</span> <span class="at">-o</span> /usr/local/bin/docker-compose</span>
+<span id="cb6-2"><a href=""></a><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose</span>
+<span id="cb6-3"><a href=""></a><span class="fu">sudo</span> rm /usr/bin/docker-compose</span>
+<span id="cb6-4"><a href=""></a><span class="fu">sudo</span> ln <span class="at">-s</span> /usr/local/bin/docker-compose /usr/bin/docker-compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-4">
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="fu">mkdir</span> ~/tmp <span class="kw">&amp;</span> <span class="bu">cd</span> ~/tmp</span>
-<span id="cb6-2"><a href=""></a><span class="fu">wget</span> https://raw.githubusercontent.com/lbaitemple/mini_pupper_ros_aws/refs/heads/ros2-dev-music/greengrass/docker-compose.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href=""></a><span class="fu">mkdir</span> ~/tmp <span class="kw">&amp;</span> <span class="bu">cd</span> ~/tmp</span>
+<span id="cb7-2"><a href=""></a><span class="fu">wget</span> https://raw.githubusercontent.com/lbaitemple/mini_pupper_ros_aws/refs/heads/ros2-dev-music/greengrass/docker-compose.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check the docker-compose.yml</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href=""></a><span class="at">  </span><span class="fu">pupper-robot</span><span class="kw">:</span></span>
-<span id="cb7-2"><a href=""></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> ros-humble-greengrass-music-minipupper:latest</span></span>
-<span id="cb7-3"><a href=""></a><span class="at">    </span><span class="fu">devices</span><span class="kw">:</span></span>
-<span id="cb7-4"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"/dev/snd:/dev/snd"</span><span class="co">   # Pass the sound device from the host to the container</span></span>
-<span id="cb7-5"><a href=""></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb7-6"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /tmp/esp32-proxy.socket:/tmp/esp32-proxy.socket</span></span>
-<span id="cb7-7"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /home/ubuntu/minipupper/playlist:/app/audio </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href=""></a><span class="at">  </span><span class="fu">pupper-robot</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href=""></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> ros-humble-greengrass-music-minipupper:latest</span></span>
+<span id="cb8-3"><a href=""></a><span class="at">    </span><span class="fu">devices</span><span class="kw">:</span></span>
+<span id="cb8-4"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"/dev/snd:/dev/snd"</span><span class="co">   # Pass the sound device from the host to the container</span></span>
+<span id="cb8-5"><a href=""></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb8-6"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /tmp/esp32-proxy.socket:/tmp/esp32-proxy.socket</span></span>
+<span id="cb8-7"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> /home/ubuntu/minipupper/playlist:/app/audio </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>docker compose up with docker-compose.yaml file</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href=""></a><span class="bu">cd</span> ~/tmp</span>
-<span id="cb8-2"><a href=""></a><span class="ex">docker-compose</span>  <span class="at">--profile</span> pupper-robot  up <span class="at">-d</span></span>
-<span id="cb8-3"><a href=""></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="pp">[</span><span class="ss">continer_id</span><span class="pp">]</span> /robot-entrypoint.sh /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">cd</span> ~/tmp</span>
+<span id="cb9-2"><a href=""></a><span class="ex">docker-compose</span>  <span class="at">--profile</span> pupper-robot  up <span class="at">-d</span></span>
+<span id="cb9-3"><a href=""></a><span class="ex">docker</span> exec <span class="at">-it</span> <span class="pp">[</span><span class="ss">continer_id</span><span class="pp">]</span> /robot-entrypoint.sh /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-5">
 <ul>
 <li>check the service in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="bu">source</span> /opt/ros_demos/setup.bash </span>
-<span id="cb9-2"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot0.mp3', start_second: 3}"</span></span>
-<span id="cb9-3"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="bu">source</span> /opt/ros_demos/setup.bash </span>
+<span id="cb10-2"><a href=""></a><span class="ex">ros2</span> service call /play_music mini_pupper_interfaces/srv/PlayMusic <span class="st">"{file_name: 'robot0.mp3', start_second: 3}"</span></span>
+<span id="cb10-3"><a href=""></a><span class="ex">ros2</span> service call /stop_music mini_pupper_interfaces/srv/StopMusic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>send music file to the topic in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>robot0.mp3<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>robot0.mp3<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>stop the music using the topic in docker exec</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>stop<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">ros2</span> topic pub <span class="at">--once</span> /music_file std_msgs/msg/String data:<span class="dt">\ \'</span>stop<span class="dt">\'\ </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>check log of docker container</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">docker-compose</span> logs pupper-robot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href=""></a><span class="ex">docker-compose</span> logs pupper-robot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
