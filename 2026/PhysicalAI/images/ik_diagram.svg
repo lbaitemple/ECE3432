@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="250" viewBox="0 0 280 250">
+
+  <rect width="280" height="250" fill="#f8fafc" rx="6"/>
+
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- z axis (downward) -->
+  <line x1="130" y1="28" x2="130" y2="235" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+  <text x="118" y="247" fill="#64748b" font-size="13" font-family="Georgia,serif" font-style="italic">z</text>
+
+  <!-- y axis (horizontal) -->
+  <line x1="35" y1="28" x2="265" y2="28" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+  <text x="268" y="33" fill="#64748b" font-size="13" font-family="Georgia,serif" font-style="italic">y</text>
+
+  <!-- Dashed projection lines to foot -->
+  <line x1="115" y1="28" x2="115" y2="218" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="115" y1="218" x2="130" y2="218" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- L1: hip(130,28) → knee(185,133) -->
+  <line x1="130" y1="28" x2="185" y2="133" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- L2: knee(185,133) → foot(115,218) -->
+  <line x1="185" y1="133" x2="115" y2="218" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- theta_hip arc: from z-axis to L1 direction, r=28 -->
+  <!-- z-axis pt: (130,56)  L1-unit=(0.464,0.886), end=(143.0,52.8) sweep CCW -->
+  <path d="M 130 56 A 28 28 0 0 0 143.0 52.8" fill="none" stroke="#f59e0b" stroke-width="2"/>
+
+  <!-- theta_knee arc: from L1-direction to L2-direction at knee, r=22 -->
+  <!-- L1-unit pt=(195.2,152.5)  L2-unit=(-0.636,0.772), end=(171.0,150.0) sweep CCW -->
+  <path d="M 195.2 152.5 A 22 22 0 0 0 171.0 150.0" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+
+  <!-- L1 label -->
+  <text x="161" y="78" fill="#2563eb" font-size="16" font-family="Georgia,serif" font-style="italic">L₁</text>
+
+  <!-- L2 label -->
+  <text x="132" y="183" fill="#dc2626" font-size="16" font-family="Georgia,serif" font-style="italic">L₂</text>
+
+  <!-- theta_hip label -->
+  <text x="138" y="70" fill="#d97706" font-size="12" font-family="Georgia,serif">
+    θ<tspan dy="3" font-size="9">hip</tspan>
+  </text>
+
+  <!-- theta_knee label -->
+  <text x="173" y="168" fill="#7c3aed" font-size="12" font-family="Georgia,serif">
+    θ<tspan dy="3" font-size="9">knee</tspan>
+  </text>
+
+  <!-- Hip joint -->
+  <circle cx="130" cy="28" r="6" fill="white" stroke="#3b82f6" stroke-width="2.5"/>
+
+  <!-- Knee joint -->
+  <circle cx="185" cy="133" r="5" fill="white" stroke="#64748b" stroke-width="2"/>
+
+  <!-- Foot -->
+  <circle cx="115" cy="218" r="5" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+
+  <!-- Node labels -->
+  <text x="138" y="25" fill="#475569" font-size="10" font-family="sans-serif">Hip</text>
+  <text x="190" y="131" fill="#475569" font-size="10" font-family="sans-serif">Knee</text>
+  <text x="74" y="228" fill="#b91c1c" font-size="10" font-family="sans-serif">Foot (y, z)</text>
+
+</svg>
