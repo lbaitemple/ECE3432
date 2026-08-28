@@ -531,84 +531,8 @@
           <div class="tabs">
             <button class="tab-button active" data-tab="tab-cloud-init">50-cloud-init.yaml</button>
             <button class="tab-button" data-tab="tab-wpa-supplicant">wpa_supplicant.conf</button>
+            <button class="tab-button" data-tab="tab-wpa-supplicant-wlan0">wpa_supplicant-wlan0.conf</button>
             <button class="tab-button" data-tab="tab-wireless">wireless.txt</button>
-          </div>
-
-          <!-- 50-cloud-init.yaml Tab Content -->
-          <div id="tab-cloud-init" class="tab-content active">
-            <div class="input-group">
-              <label for="templateTextareaCloudInit">Edit 50-cloud-init.yaml:</label>
-              <textarea id="templateTextareaCloudInit"></textarea>
-            </div>
-
-            <!-- Validation Section for 50-cloud-init.yaml -->
-            <div class="validation-section">
-              <h4>Configuration Validation (50-cloud-init.yaml):</h4>
-              <div class="validation-result">
-                <div id="cloudInitApValidation" class="validation-status info">
-                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#1a2a6c" />
-                    <path d="M12 8v4M12 16h0" stroke="#fff" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                  Access Points: Must have wifis section with access-points
-                </div>
-                <div id="cloudInitAp1Validation" class="validation-status">
-                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
-                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                  AP1: Password must be ≥8 characters
-                </div>
-                <div id="cloudInitAp2Validation" class="validation-status">
-                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
-                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                  AP2: Password must be ≥8 characters
-                </div>
-                <div id="cloudInitEduroamValidation" class="validation-status">
-                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
-                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                  Eduroam: Requires valid hash and email identity
-                </div>
-                <div id="cloudInitEduroamHashValidation" class="validation-status">
-                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
-                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                  Eduroam Hash: Must be 32-character hex hash
-                </div>
-                <div id="cloudInitEduroamIdentityValidation" class="validation-status">
-                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
-                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                  Eduroam Identity: Must be valid email address
-                </div>
-              </div>
-            </div>
-
-            <div class="actions">
-              <button id="downloadBtnCloudInit" class="btn btn-download">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path
-                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                  <path
-                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                </svg>
-                Download 50-cloud-init.yaml
-              </button>
-              <button id="resetBtnCloudInit" class="btn btn-reset">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
-                  <path
-                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-                </svg>
-                Reset Template
-              </button>
-            </div>
           </div>
 
           <!-- 50-cloud-init.yaml Tab Content -->
@@ -765,6 +689,83 @@
             </div>
           </div>
 
+          <!-- wpa_supplicant-wlan0.conf Tab Content -->
+          <div id="tab-wpa-supplicant-wlan0" class="tab-content">
+            <div class="input-group">
+              <label for="templateTextareaWpaSupplicantWlan0">Edit wpa_supplicant-wlan0.conf:</label>
+              <textarea id="templateTextareaWpaSupplicantWlan0"></textarea>
+            </div>
+
+            <!-- Validation Section for wpa_supplicant-wlan0.conf -->
+            <div class="validation-section">
+              <h4>Configuration Validation (wpa_supplicant-wlan0.conf):</h4>
+              <div class="validation-result">
+                <div id="wpaSupplicantWlan0CountryValidation" class="validation-status info">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#1a2a6c" />
+                    <path d="M12 8v4M12 16h0" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  Country: Must be 2-letter country code
+                </div>
+                <div id="wpaSupplicantWlan0Ap1Validation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  WIFI_AP1: PSK must be ≥8 characters
+                </div>
+                <div id="wpaSupplicantWlan0Ap2Validation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  WIFI_AP2: PSK must be ≥8 characters
+                </div>
+                <div id="wpaSupplicantWlan0EduroamValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  Eduroam: Valid identity and hash required
+                </div>
+                <div id="wpaSupplicantWlan0EduroamHashValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  Eduroam Hash: Must be 32-character hex hash
+                </div>
+                <div id="wpaSupplicantWlan0EduroamIdentityValidation" class="validation-status">
+                  <svg class="status-icon" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="#ffeb3b" stroke="#fbc02d" stroke-width="1" />
+                    <path d="M12 8v4M12 16h0" stroke="#f57f17" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  Eduroam Identity: Must be valid email address
+                </div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button id="downloadBtnWpaSupplicantWlan0" class="btn btn-download">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path
+                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                  <path
+                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                </svg>
+                Download wpa_supplicant-wlan0.conf
+              </button>
+              <button id="resetBtnWpaSupplicantWlan0" class="btn btn-reset">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                  <path
+                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                </svg>
+                Reset Template
+              </button>
+            </div>
+          </div>
+
           <!-- wireless.txt Tab Content -->
           <div id="tab-wireless" class="tab-content">
             <div class="input-group">
@@ -905,12 +906,15 @@
     const templateTextareaWireless = document.getElementById("templateTextareaWireless");
     const templateTextareaCloudInit = document.getElementById("templateTextareaCloudInit");
     const templateTextareaWpaSupplicant = document.getElementById("templateTextareaWpaSupplicant");
+    const templateTextareaWpaSupplicantWlan0 = document.getElementById("templateTextareaWpaSupplicantWlan0");
     const downloadBtnWireless = document.getElementById("downloadBtnWireless");
     const resetBtnWireless = document.getElementById("resetBtnWireless");
     const downloadBtnCloudInit = document.getElementById("downloadBtnCloudInit");
     const resetBtnCloudInit = document.getElementById("resetBtnCloudInit");
     const downloadBtnWpaSupplicant = document.getElementById("downloadBtnWpaSupplicant");
     const resetBtnWpaSupplicant = document.getElementById("resetBtnWpaSupplicant");
+    const downloadBtnWpaSupplicantWlan0 = document.getElementById("downloadBtnWpaSupplicantWlan0");
+    const resetBtnWpaSupplicantWlan0 = document.getElementById("resetBtnWpaSupplicantWlan0");
     const convertToNmConnectionBtn = document.getElementById("convertToNmConnectionBtn");
     const resultLabel = document.getElementById("hashResult");
     const wpaResultLabel = document.getElementById("wpaResult");
@@ -936,6 +940,14 @@
     const wpaSupplicantEduroamValidation = document.getElementById("wpaSupplicantEduroamValidation");
     const wpaSupplicantEduroamHashValidation = document.getElementById("wpaSupplicantEduroamHashValidation");
     const wpaSupplicantEduroamIdentityValidation = document.getElementById("wpaSupplicantEduroamIdentityValidation");
+
+    // WPA Supplicant wlan0 validation elements
+    const wpaSupplicantWlan0CountryValidation = document.getElementById("wpaSupplicantWlan0CountryValidation");
+    const wpaSupplicantWlan0Ap1Validation = document.getElementById("wpaSupplicantWlan0Ap1Validation");
+    const wpaSupplicantWlan0Ap2Validation = document.getElementById("wpaSupplicantWlan0Ap2Validation");
+    const wpaSupplicantWlan0EduroamValidation = document.getElementById("wpaSupplicantWlan0EduroamValidation");
+    const wpaSupplicantWlan0EduroamHashValidation = document.getElementById("wpaSupplicantWlan0EduroamHashValidation");
+    const wpaSupplicantWlan0EduroamIdentityValidation = document.getElementById("wpaSupplicantWlan0EduroamIdentityValidation");
 
     // Tab elements
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -1016,10 +1028,65 @@ network={
       password=hash:66b83627fb9b2121e84a0dce92c11234
 }`;
 
+    const originalTemplateWpaSupplicantWlan0 = `ctrl_interface=DIR=/run/wpa_supplicant GROUP=netdev
+update_config=0
+country=US
+ap_scan=1
+fast_reauth=1
+
+# --------------------------------------------------
+# Temple secure enterprise wireless
+# PEAP / MSCHAPv2
+# WPA3-Enterprise capable configuration
+# --------------------------------------------------
+network={
+    ssid="eduroam"
+    scan_ssid=1
+
+    key_mgmt=WPA-EAP WPA-EAP-SHA256
+    eap=PEAP
+
+    identity="lbai@temple.edu"
+
+    # MSCHAPv2 NT-password hash
+    password=hash:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4
+
+    phase1="peapver=0"
+    phase2="auth=MSCHAPV2"
+
+    # Protected Management Frames.
+    # 1 = capable/optional. This allows WPA2/WPA3 enterprise
+    # transition while still supporting PMF.
+    ieee80211w=1
+
+    priority=100
+}
+
+# --------------------------------------------------
+# Normal Wi-Fi AP 1
+# --------------------------------------------------
+network={
+    ssid="WIFI_AP1"
+    psk="wifipasswd1"
+    key_mgmt=WPA-PSK
+    priority=20
+}
+
+# --------------------------------------------------
+# Normal Wi-Fi AP 2
+# --------------------------------------------------
+network={
+    ssid="WIFI_AP2"
+    psk="wifipasswd2"
+    key_mgmt=WPA-PSK
+    priority=10
+}`;
+
     // Initialize templates
     templateTextareaWireless.value = originalTemplateWireless;
     templateTextareaCloudInit.value = originalTemplateCloudInit;
     templateTextareaWpaSupplicant.value = originalTemplateWpaSupplicant;
+    templateTextareaWpaSupplicantWlan0.value = originalTemplateWpaSupplicantWlan0;
 
     // Toggle password visibility
     toggleBtn.addEventListener("click", () => {
@@ -1047,7 +1114,8 @@ network={
         document.getElementById(button.dataset.tab).classList.add('active');
 
         // Enable/disable WPA password field based on active tab
-        const isWpaSupplicantTab = button.dataset.tab === 'tab-wpa-supplicant';
+        const isWpaSupplicantTab = button.dataset.tab === 'tab-wpa-supplicant' ||
+          button.dataset.tab === 'tab-wpa-supplicant-wlan0';
         wpaPasswordField.disabled = !isWpaSupplicantTab;
         toggleWpaBtn.disabled = !isWpaSupplicantTab;
         
@@ -1655,6 +1723,94 @@ network={
       return countryValid && rocketValid && eduroamValid;
     }
 
+    // Validate configuration for wpa_supplicant-wlan0.conf
+    function validateWpaSupplicantWlan0Configuration() {
+      const template = templateTextareaWpaSupplicantWlan0.value;
+      let countryValid = false;
+      let ap1Valid = false;
+      let ap2Valid = false;
+      let eduroamValid = false;
+      let eduroamHashValid = false;
+      let eduroamIdentityValid = false;
+
+      // Check country code
+      const countryMatch = template.match(/country=([A-Z]{2})/);
+      countryValid = countryMatch && countryMatch[1].length === 2;
+
+      // Check WIFI_AP1 / WIFI_AP2 PSKs
+      const ap1Match = template.match(/ssid="WIFI_AP1"[\s\S]*?psk="([^"]+)"/);
+      if (ap1Match) {
+        ap1Valid = ap1Match[1].length >= 8;
+      }
+
+      const ap2Match = template.match(/ssid="WIFI_AP2"[\s\S]*?psk="([^"]+)"/);
+      if (ap2Match) {
+        ap2Valid = ap2Match[1].length >= 8;
+      }
+
+      // Check eduroam network
+      const eduroamMatch = template.match(/ssid="eduroam"[\s\S]*?identity="([^"]+)"[\s\S]*?password=hash:([0-9a-fA-F]+)/);
+      if (eduroamMatch) {
+        const identity = eduroamMatch[1];
+        const hash = eduroamMatch[2];
+
+        eduroamIdentityValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity);
+        eduroamHashValid = hash.length === 32 && /^[0-9a-fA-F]+$/.test(hash);
+        eduroamValid = eduroamIdentityValid && eduroamHashValid;
+      }
+
+      // Update UI validation states
+      updateValidationUIWpaSupplicant(
+        wpaSupplicantWlan0CountryValidation,
+        countryValid,
+        "Country Code",
+        countryMatch ? `Valid (${countryMatch[1]})` : "Valid",
+        "Must be 2-letter country code (e.g., US, GB)"
+      );
+
+      updateValidationUIWpaSupplicant(
+        wpaSupplicantWlan0Ap1Validation,
+        ap1Valid,
+        "WIFI_AP1 PSK",
+        "Valid (8+ characters)",
+        "Must be at least 8 characters"
+      );
+
+      updateValidationUIWpaSupplicant(
+        wpaSupplicantWlan0Ap2Validation,
+        ap2Valid,
+        "WIFI_AP2 PSK",
+        "Valid (8+ characters)",
+        "Must be at least 8 characters"
+      );
+
+      updateValidationUIWpaSupplicant(
+        wpaSupplicantWlan0EduroamValidation,
+        eduroamValid,
+        "Eduroam Network",
+        "Valid configuration",
+        "Requires valid identity and hash"
+      );
+
+      updateValidationUIWpaSupplicant(
+        wpaSupplicantWlan0EduroamHashValidation,
+        eduroamHashValid,
+        "Eduroam Hash",
+        "Valid MD4 hash",
+        "Must be 32-character hex hash"
+      );
+
+      updateValidationUIWpaSupplicant(
+        wpaSupplicantWlan0EduroamIdentityValidation,
+        eduroamIdentityValid,
+        "Eduroam Identity",
+        "Valid email address",
+        "Must be valid email address"
+      );
+
+      return countryValid && ap1Valid && ap2Valid && eduroamValid;
+    }
+
     // Combined validation function to call based on active tab
     function validateAndHighlight() {
       const activeTab = document.querySelector('.tab-content.active');
@@ -1666,6 +1822,8 @@ network={
         validateCloudInitConfiguration();
       } else if (activeTab.id === 'tab-wpa-supplicant') {
         validateWpaSupplicantConfiguration();
+      } else if (activeTab.id === 'tab-wpa-supplicant-wlan0') {
+        validateWpaSupplicantWlan0Configuration();
       }
     }
 
@@ -1876,6 +2034,18 @@ method=auto
       resetTemplate(templateTextareaWpaSupplicant, originalTemplateWpaSupplicant, validateWpaSupplicantConfiguration);
     });
 
+    downloadBtnWpaSupplicantWlan0.addEventListener('click', () => {
+      if (!validateWpaSupplicantWlan0Configuration()) {
+        alert("Error: Please fix all validation issues in wpa_supplicant-wlan0.conf before downloading!");
+        return;
+      }
+      downloadFile(templateTextareaWpaSupplicantWlan0.value, 'wpa_supplicant-wlan0.conf');
+    });
+
+    resetBtnWpaSupplicantWlan0.addEventListener('click', () => {
+      resetTemplate(templateTextareaWpaSupplicantWlan0, originalTemplateWpaSupplicantWlan0, validateWpaSupplicantWlan0Configuration);
+    });
+
     convertToNmConnectionBtn.addEventListener('click', async () => {
       // Disable button during conversion
       convertToNmConnectionBtn.disabled = true;
@@ -1896,6 +2066,7 @@ method=auto
 
     templateTextareaWireless.addEventListener('input', validateWirelessConfiguration);
     templateTextareaCloudInit.addEventListener('input', validateCloudInitConfiguration);
+    templateTextareaWpaSupplicantWlan0.addEventListener('input', validateWpaSupplicantWlan0Configuration);
     
     // Add special handling for wpa_supplicant.conf to regenerate PSK when SSID changes
     templateTextareaWpaSupplicant.addEventListener('input', async function() {
@@ -1951,6 +2122,7 @@ method=auto
       // Initial validation for all tabs
       validateWirelessConfiguration();
       validateWpaSupplicantConfiguration();
+      validateWpaSupplicantWlan0Configuration();
 
       // Initialize WPA password field state (disabled by default since cloud-init tab is active)
       wpaPasswordField.disabled = true;
@@ -2001,6 +2173,11 @@ method=auto
             const wpaEduroamRegex = /(password=hash:)([0-9a-fA-F]+)/;
             updatedWpaSupplicantTemplate = updatedWpaSupplicantTemplate.replace(wpaEduroamRegex, `$1${hash}`);
             templateTextareaWpaSupplicant.value = updatedWpaSupplicantTemplate;
+
+            // Update wpa_supplicant-wlan0.conf template with hash for eduroam
+            let updatedWpaSupplicantWlan0Template = templateTextareaWpaSupplicantWlan0.value;
+            updatedWpaSupplicantWlan0Template = updatedWpaSupplicantWlan0Template.replace(wpaEduroamRegex, `$1${hash}`);
+            templateTextareaWpaSupplicantWlan0.value = updatedWpaSupplicantWlan0Template;
 
             validateAndHighlight();
           } catch (error) {
@@ -2077,6 +2254,27 @@ method=auto
             }
           }
           templateTextareaWpaSupplicant.value = updatedWpaSupplicantTemplate;
+
+          // Update wpa_supplicant-wlan0.conf template - WIFI_AP1 and WIFI_AP2 PSKs
+          let updatedWpaSupplicantWlan0Template = templateTextareaWpaSupplicantWlan0.value;
+
+          const wpaHashAp1 = await generateWpaPassphrase(wpaPassword, "WIFI_AP1");
+          if (wpaHashAp1) {
+            updatedWpaSupplicantWlan0Template = updatedWpaSupplicantWlan0Template.replace(
+              /(ssid="WIFI_AP1"[\s\S]*?psk=")([^"]+)(")/,
+              `$1${wpaHashAp1}$3`
+            );
+          }
+
+          const wpaHashAp2 = await generateWpaPassphrase(wpaPassword, "WIFI_AP2");
+          if (wpaHashAp2) {
+            updatedWpaSupplicantWlan0Template = updatedWpaSupplicantWlan0Template.replace(
+              /(ssid="WIFI_AP2"[\s\S]*?psk=")([^"]+)(")/,
+              `$1${wpaHashAp2}$3`
+            );
+          }
+
+          templateTextareaWpaSupplicantWlan0.value = updatedWpaSupplicantWlan0Template;
 
           // Display the hash from wpa_supplicant.conf as the main result
           if (finalWpaHash) {
