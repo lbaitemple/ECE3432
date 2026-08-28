@@ -1737,26 +1737,50 @@ network={
       const countryMatch = template.match(/country=([A-Z]{2})/);
       countryValid = countryMatch && countryMatch[1].length === 2;
 
-      // Check WIFI_AP1 / WIFI_AP2 PSKs
-      const ap1Match = template.match(/ssid="WIFI_AP1"[\s\S]*?psk="([^"]+)"/);
-      if (ap1Match) {
-        ap1Valid = ap1Match[1].length >= 8;
-      }
+      // Parse each network={...} block independently so renamed SSIDs
+      // (or reordered blocks) are detected correctly instead of relying
+      // on hardcoded SSID names.
+      const networkBlocks = template.match(/network\s*=\s*\{[^}]*\}/g) || [];
+      const pskNetworks = [];
+      let eapNetwork = null;
 
-      const ap2Match = template.match(/ssid="WIFI_AP2"[\s\S]*?psk="([^"]+)"/);
-      if (ap2Match) {
-        ap2Valid = ap2Match[1].length >= 8;
-      }
+      networkBlocks.forEach(block => {
+        const ssidMatch = block.match(/ssid\s*=\s*"([^"]+)"/);
+        if (!ssidMatch) return;
+        const ssid = ssidMatch[1];
 
-      // Check eduroam network
-      const eduroamMatch = template.match(/ssid="eduroam"[\s\S]*?identity="([^"]+)"[\s\S]*?password=hash:([0-9a-fA-F]+)/);
-      if (eduroamMatch) {
-        const identity = eduroamMatch[1];
-        const hash = eduroamMatch[2];
+        const pskMatch = block.match(/psk\s*=\s*"([^"]+)"/);
+        if (pskMatch) {
+          pskNetworks.push({ ssid, psk: pskMatch[1] });
+          return;
+        }
 
-        eduroamIdentityValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity);
-        eduroamHashValid = hash.length === 32 && /^[0-9a-fA-F]+$/.test(hash);
-        eduroamValid = eduroamIdentityValid && eduroamHashValid;
+        const identityMatch = block.match(/identity\s*=\s*"([^"]+)"/);
+        const hashMatch = block.match(/password\s*=\s*hash:([0-9a-fA-F]*)/);
+        if (identityMatch || hashMatch) {
+          eapNetwork = {
+            ssid,
+            identity: identityMatch ? identityMatch[1] : '',
+            hash: hashMatch ? hashMatch[1] : ''
+          };
+        }
+      });
+
+      const ap1Name = pskNetworks[0] ? pskNetworks[0].ssid : "AP1";
+      const ap2Name = pskNetworks[1] ? pskNetworks[1].ssid : "AP2";
+      if (pskNetworks[0]) ap1Valid = pskNetworks[0].psk.length >= 8;
+      if (pskNetworks[1]) ap2Valid = pskNetworks[1].psk.length >= 8;
+
+      // EAP network: identity only needs to be an email when the SSID
+      // is literally "eduroam" — any other EAP network just needs a
+      // non-empty identity, matching the cloud-init/wpa_supplicant.conf tabs.
+      const eapName = eapNetwork ? eapNetwork.ssid : "EAP Network";
+      if (eapNetwork) {
+        eduroamHashValid = eapNetwork.hash.length === 32 && /^[0-9a-fA-F]+$/.test(eapNetwork.hash);
+        eduroamIdentityValid = eapNetwork.ssid.toLowerCase() === 'eduroam'
+          ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eapNetwork.identity)
+          : eapNetwork.identity.trim().length > 0;
+        eduroamValid = eduroamHashValid && eduroamIdentityValid;
       }
 
       // Update UI validation states
@@ -1770,45 +1794,48 @@ network={
 
       updateValidationUIWpaSupplicant(
         wpaSupplicantWlan0Ap1Validation,
-        ap1Valid,
-        "WIFI_AP1 PSK",
+        pskNetworks[0] ? ap1Valid : true,
+        `${ap1Name} PSK`,
         "Valid (8+ characters)",
         "Must be at least 8 characters"
       );
 
       updateValidationUIWpaSupplicant(
         wpaSupplicantWlan0Ap2Validation,
-        ap2Valid,
-        "WIFI_AP2 PSK",
+        pskNetworks[1] ? ap2Valid : true,
+        `${ap2Name} PSK`,
         "Valid (8+ characters)",
         "Must be at least 8 characters"
       );
 
       updateValidationUIWpaSupplicant(
         wpaSupplicantWlan0EduroamValidation,
-        eduroamValid,
-        "Eduroam Network",
+        eapNetwork ? eduroamValid : true,
+        `${eapName} Network`,
         "Valid configuration",
         "Requires valid identity and hash"
       );
 
       updateValidationUIWpaSupplicant(
         wpaSupplicantWlan0EduroamHashValidation,
-        eduroamHashValid,
-        "Eduroam Hash",
+        eapNetwork ? eduroamHashValid : true,
+        `${eapName} Hash`,
         "Valid MD4 hash",
         "Must be 32-character hex hash"
       );
 
       updateValidationUIWpaSupplicant(
         wpaSupplicantWlan0EduroamIdentityValidation,
-        eduroamIdentityValid,
-        "Eduroam Identity",
-        "Valid email address",
-        "Must be valid email address"
+        eapNetwork ? eduroamIdentityValid : true,
+        `${eapName} Identity`,
+        eapName.toLowerCase() === 'eduroam' ? "Valid email address" : "Valid identity",
+        eapName.toLowerCase() === 'eduroam' ? "Must be valid email address" : "Must not be empty"
       );
 
-      return countryValid && ap1Valid && ap2Valid && eduroamValid;
+      return countryValid &&
+        (pskNetworks[0] ? ap1Valid : true) &&
+        (pskNetworks[1] ? ap2Valid : true) &&
+        (eapNetwork ? eduroamValid : true);
     }
 
     // Combined validation function to call based on active tab
@@ -2255,23 +2282,22 @@ method=auto
           }
           templateTextareaWpaSupplicant.value = updatedWpaSupplicantTemplate;
 
-          // Update wpa_supplicant-wlan0.conf template - WIFI_AP1 and WIFI_AP2 PSKs
+          // Update wpa_supplicant-wlan0.conf template - regenerate PSKs for
+          // every PSK network block, using each block's own (possibly renamed) SSID
+          // as the PBKDF2 salt so renamed access points still get a correct PSK.
           let updatedWpaSupplicantWlan0Template = templateTextareaWpaSupplicantWlan0.value;
+          const wlan0Blocks = updatedWpaSupplicantWlan0Template.match(/network\s*=\s*\{[^}]*\}/g) || [];
 
-          const wpaHashAp1 = await generateWpaPassphrase(wpaPassword, "WIFI_AP1");
-          if (wpaHashAp1) {
-            updatedWpaSupplicantWlan0Template = updatedWpaSupplicantWlan0Template.replace(
-              /(ssid="WIFI_AP1"[\s\S]*?psk=")([^"]+)(")/,
-              `$1${wpaHashAp1}$3`
-            );
-          }
+          for (const block of wlan0Blocks) {
+            const ssidMatch = block.match(/ssid\s*=\s*"([^"]+)"/);
+            const pskMatch = block.match(/psk\s*=\s*"([^"]+)"/);
+            if (!ssidMatch || !pskMatch) continue;
 
-          const wpaHashAp2 = await generateWpaPassphrase(wpaPassword, "WIFI_AP2");
-          if (wpaHashAp2) {
-            updatedWpaSupplicantWlan0Template = updatedWpaSupplicantWlan0Template.replace(
-              /(ssid="WIFI_AP2"[\s\S]*?psk=")([^"]+)(")/,
-              `$1${wpaHashAp2}$3`
-            );
+            const wpaHash = await generateWpaPassphrase(wpaPassword, ssidMatch[1]);
+            if (wpaHash) {
+              const updatedBlock = block.replace(/(psk=")([^"]+)(")/, `$1${wpaHash}$3`);
+              updatedWpaSupplicantWlan0Template = updatedWpaSupplicantWlan0Template.replace(block, updatedBlock);
+            }
           }
 
           templateTextareaWpaSupplicantWlan0.value = updatedWpaSupplicantWlan0Template;
