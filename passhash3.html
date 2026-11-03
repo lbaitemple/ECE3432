@@ -529,14 +529,14 @@
 
         <div class="tab-container">
           <div class="tabs">
-            <button class="tab-button active" data-tab="tab-cloud-init">50-cloud-init.yaml</button>
+            <button class="tab-button" data-tab="tab-cloud-init">50-cloud-init.yaml</button>
             <button class="tab-button" data-tab="tab-wpa-supplicant">wpa_supplicant.conf</button>
-            <button class="tab-button" data-tab="tab-wpa-supplicant-wlan0">wpa_supplicant-wlan0.conf</button>
+            <button class="tab-button active" data-tab="tab-wpa-supplicant-wlan0">wpa_supplicant-wlan0.conf</button>
             <button class="tab-button" data-tab="tab-wireless">wireless.txt</button>
           </div>
 
           <!-- 50-cloud-init.yaml Tab Content -->
-          <div id="tab-cloud-init" class="tab-content active">
+          <div id="tab-cloud-init" class="tab-content">
             <div class="input-group">
               <label for="templateTextareaCloudInit">Edit 50-cloud-init.yaml:</label>
               <textarea id="templateTextareaCloudInit"></textarea>
@@ -690,7 +690,7 @@
           </div>
 
           <!-- wpa_supplicant-wlan0.conf Tab Content -->
-          <div id="tab-wpa-supplicant-wlan0" class="tab-content">
+          <div id="tab-wpa-supplicant-wlan0" class="tab-content active">
             <div class="input-group">
               <label for="templateTextareaWpaSupplicantWlan0">Edit wpa_supplicant-wlan0.conf:</label>
               <textarea id="templateTextareaWpaSupplicantWlan0"></textarea>
@@ -2151,13 +2151,13 @@ method=auto
       validateWpaSupplicantConfiguration();
       validateWpaSupplicantWlan0Configuration();
 
-      // Initialize WPA password field state (disabled by default since cloud-init tab is active)
-      wpaPasswordField.disabled = true;
-      toggleWpaBtn.disabled = true;
-      wpaPasswordField.style.opacity = '0.5';
-      toggleWpaBtn.style.opacity = '0.5';
-      wpaPasswordField.style.cursor = 'not-allowed';
-      toggleWpaBtn.style.cursor = 'not-allowed';
+      // Initialize WPA password field state (enabled by default since wpa_supplicant-wlan0.conf tab is active)
+      wpaPasswordField.disabled = false;
+      toggleWpaBtn.disabled = false;
+      wpaPasswordField.style.opacity = '1';
+      toggleWpaBtn.style.opacity = '1';
+      wpaPasswordField.style.cursor = 'text';
+      toggleWpaBtn.style.cursor = 'pointer';
 
       passwordField.addEventListener("input", async () => {
         const password = passwordField.value;
